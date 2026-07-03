@@ -1,0 +1,289 @@
+---
+import type { Locale } from "../i18n/ui";
+import { t } from "../i18n/utils";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const h = t(locale).how;
+const x = t(locale).extras;
+
+const steps = [
+  { n: "01", title: h.s1Title, body: h.s1Body },
+  { n: "02", title: h.s2Title, body: h.s2Body },
+  { n: "03", title: h.s3Title, body: h.s3Body },
+  { n: "04", title: h.s4Title, body: h.s4Body },
+];
+
+// Decorative persona avatars used inside the scenes (names read naturally in
+// all three locales).
+const people = [
+  { init: "A", name: "Aziza", bg: "linear-gradient(135deg,#B56CFF,#7A6CFF)" },
+  { init: "B", name: "Bekzod", bg: "linear-gradient(135deg,#7A6CFF,#34E2E6)" },
+  { init: "M", name: "Malika", bg: "linear-gradient(135deg,#34E2E6,#22C55E)" },
+  { init: "S", name: "Sardor", bg: "linear-gradient(135deg,#F59E0B,#EF4444)" },
+];
+---
+
+<section id="how" class="relative" data-how>
+  <div
+    aria-hidden="true"
+    class="absolute inset-x-0 top-0 h-72 pointer-events-none bg-gradient-to-b from-accent/[0.05] to-transparent"
+  ></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+    <!-- Header -->
+    <div class="max-w-2xl reveal">
+      <span class="inline-flex items-center h-7 px-3 rounded-pill border border-border bg-surface/60 backdrop-blur-sm text-2xs uppercase tracking-[0.18em] text-foreground-soft mb-6">
+        {h.eyebrow}
+      </span>
+      <h2 class="font-display text-[2.1rem] sm:text-[2.8rem] font-semibold tracking-[-0.018em] leading-[1.12] text-foreground text-balance">
+        <span class="block">{h.titlePre}</span>
+        <span class="block text-accent">{h.titleAccent}</span>
+      </h2>
+      <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{h.sub}</p>
+    </div>
+
+    <div class="mt-12 lg:mt-16 grid lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-16 items-start">
+      <!-- Sticky product mockup: 4 crossfading scenes -->
+      <div class="sticky top-14 lg:top-24 z-10 bg-background pt-2 pb-4 lg:pb-0 reveal">
+        <div class="relative">
+          <div aria-hidden="true" class="absolute -inset-px rounded-panel bg-brand-gradient opacity-25 blur-[2px]"></div>
+          <div class="relative flex flex-col rounded-panel border border-border bg-surface shadow-pop overflow-hidden aspect-[4/3]">
+            <!-- Window chrome -->
+            <div class="h-9 shrink-0 border-b border-border/70 flex items-center justify-between px-3">
+              <span class="flex items-center gap-2 text-xs font-medium text-foreground-soft">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+                {h.scene.meetingTitle}
+              </span>
+              <span class="flex -space-x-1.5" aria-hidden="true">
+                {people.slice(0, 3).map((p) => (
+                  <span class="w-4 h-4 rounded-full border border-surface" style={`background:${p.bg}`}></span>
+                ))}
+              </span>
+            </div>
+
+            <div class="relative flex-1">
+              <!-- Scene 1: the live meeting grid -->
+              <div class="how-scene is-active" data-scene="0">
+                <div class="absolute inset-0 p-3 grid grid-cols-2 grid-rows-2 gap-2">
+                  {people.map((p, i) => (
+                    <div class:list={["relative rounded-card bg-surface-2 border border-border/60 grid place-items-center overflow-hidden", i === 0 && "ring-2 ring-accent"]}>
+                      <span class="w-11 h-11 rounded-full grid place-items-center text-white text-sm font-semibold" style={`background:${p.bg}`}>{p.init}</span>
+                      <span class="absolute bottom-1.5 left-1.5 text-2xs px-1.5 py-0.5 rounded-md bg-black/45 text-white/90">{p.name}</span>
+                      {i === 0 && (
+                        <span class="absolute bottom-2 right-2 flex items-end gap-[2px] h-3" aria-hidden="true">
+                          {[0, 1, 2].map((b) => (
+                            <span class="w-[3px] rounded-full bg-accent animate-equalize" style={`height:100%;animation-delay:${b * 0.14}s`}></span>
+                          ))}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Scene 2: recording -->
+              <div class="how-scene" data-scene="1">
+                <div class="absolute inset-0 p-3 grid grid-cols-2 grid-rows-2 gap-2 opacity-90">
+                  {people.map((p) => (
+                    <div class="relative rounded-card bg-surface-2 border border-border/60 grid place-items-center overflow-hidden">
+                      <span class="w-11 h-11 rounded-full grid place-items-center text-white text-sm font-semibold" style={`background:${p.bg}`}>{p.init}</span>
+                      <span class="absolute bottom-1.5 left-1.5 text-2xs px-1.5 py-0.5 rounded-md bg-black/45 text-white/90">{p.name}</span>
+                    </div>
+                  ))}
+                </div>
+                <span class="scene-pop absolute top-5 right-5 inline-flex items-center gap-1.5 h-6 px-2.5 rounded-pill bg-live/15 border border-live/30 text-live text-2xs font-semibold">
+                  <span class="relative flex h-1.5 w-1.5">
+                    <span class="absolute inline-flex h-full w-full rounded-full bg-live opacity-70 animate-ping"></span>
+                    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span>
+                  </span>
+                  {h.scene.rec}
+                </span>
+                <div class="scene-pop scene-pop-late absolute bottom-5 inset-x-5 h-10 rounded-control bg-black/55 backdrop-blur-sm flex items-center gap-3 px-3.5">
+                  <span class="w-2 h-2 rounded-full bg-live" aria-hidden="true"></span>
+                  <span class="text-xs font-medium text-white/90 tabular-nums">12:47</span>
+                  <span class="flex-1"></span>
+                  <span class="flex items-end gap-[3px] h-4" aria-hidden="true">
+                    {[0, 1, 2, 3].map((b) => (
+                      <span class="w-[3px] rounded-full bg-brand-cyan animate-equalize" style={`height:100%;animation-delay:${b * 0.16}s`}></span>
+                    ))}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Scene 3: transcript + AI summary -->
+              <div class="how-scene" data-scene="2">
+                <div class="absolute inset-0 p-4 flex flex-col">
+                  <div class="flex items-center gap-2">
+                    <span class="text-2xs uppercase tracking-[0.16em] text-muted-soft">{h.scene.transcript}</span>
+                    <span class="ml-auto flex gap-1" aria-hidden="true">
+                      {["UZ", "RU", "EN"].map((l) => (
+                        <span class="text-2xs px-1.5 py-0.5 rounded-md bg-surface-3 text-foreground-soft font-medium">{l}</span>
+                      ))}
+                    </span>
+                  </div>
+                  <div class="mt-3 space-y-2.5">
+                    {[
+                      { p: people[0], w1: "88%", w2: "56%" },
+                      { p: people[1], w1: "72%", w2: "" },
+                      { p: people[2], w1: "94%", w2: "38%" },
+                      { p: people[0], w1: "64%", w2: "" },
+                    ].map((row, i) => (
+                      <div class="scene-pop flex items-start gap-2" style={`animation-delay:${0.15 + i * 0.08}s`}>
+                        <span class="w-5 h-5 shrink-0 rounded-full grid place-items-center text-white text-[9px] font-semibold" style={`background:${row.p.bg}`}>{row.p.init}</span>
+                        <span class="flex-1 space-y-1 pt-0.5">
+                          <span class="block h-2 rounded bg-surface-3" style={`width:${row.w1}`}></span>
+                          {row.w2 && <span class="block h-2 rounded bg-surface-3" style={`width:${row.w2}`}></span>}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div class="scene-pop scene-pop-late mt-auto rounded-card border border-accent/30 bg-background shadow-glow p-3.5">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent">
+                        <path d="M12 3l1.9 5.7L19.6 10l-5.7 1.9L12 17.6l-1.9-5.7L4.4 10l5.7-1.9z"></path>
+                      </svg>
+                      <span class="text-sm font-semibold text-foreground">{h.scene.summaryReady}</span>
+                    </div>
+                    <p class="text-2xs uppercase tracking-[0.14em] text-muted-soft mt-2.5 mb-1.5">{h.scene.actionItems}</p>
+                    <ul class="space-y-1">
+                      {[h.scene.item1, h.scene.item2, h.scene.item3].map((item) => (
+                        <li class="flex items-center gap-2 text-xs text-foreground-soft">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent shrink-0">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene 4: share the recap -->
+              <div class="how-scene" data-scene="3">
+                <div class="absolute inset-0 p-5 flex flex-col items-center justify-center gap-4">
+                  <span class="scene-pop inline-flex items-center gap-2.5 h-10 px-4 rounded-pill border border-border bg-surface-2 font-mono text-xs text-foreground-soft">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted">
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    dicta.uz/abc-defg-hij
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </span>
+                  <div class="scene-pop scene-pop-late w-full max-w-[300px] rounded-card border border-border bg-surface-2 p-3.5 text-left">
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-sm font-semibold text-foreground">{h.scene.recap}</span>
+                      <span class="inline-flex items-center gap-1 text-2xs font-medium text-accent tabular-nums">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 20 12 6 21"></polygon></svg>
+                        42:18
+                      </span>
+                    </div>
+                    <span class="block h-2 rounded bg-surface-3 w-full mt-3" aria-hidden="true"></span>
+                    <span class="block h-2 rounded bg-surface-3 w-2/3 mt-1.5" aria-hidden="true"></span>
+                    <div class="flex items-center mt-3.5">
+                      <span class="flex -space-x-2" aria-hidden="true">
+                        {people.slice(0, 3).map((p) => (
+                          <span class="w-6 h-6 rounded-full border-2 border-surface-2 grid place-items-center text-white text-[9px] font-semibold" style={`background:${p.bg}`}>{p.init}</span>
+                        ))}
+                      </span>
+                      <span class="ml-auto text-2xs text-muted">{h.scene.watch}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The four acts -->
+      <ol class="relative">
+        <div aria-hidden="true" class="absolute left-5 top-4 bottom-4 w-px bg-border">
+          <span data-progress class="absolute left-0 top-0 w-px bg-accent transition-[height] duration-500 ease-out-quint" style="height:25%"></span>
+        </div>
+        {steps.map((s, i) => (
+          <li class:list={["how-step relative grid grid-cols-[2.5rem_1fr] gap-x-5 py-10 lg:py-14 first:pt-2 last:pb-2", i === 0 && "is-active"]} data-step={i}>
+            <span class="how-step-num w-10 h-10 rounded-full border border-border bg-background grid place-items-center text-sm font-semibold tabular-nums text-muted transition-colors duration-300">
+              {s.n}
+            </span>
+            <div class="pt-1.5">
+              <h3 class="font-display text-2xl lg:text-[1.75rem] font-semibold tracking-tight text-foreground">{s.title}</h3>
+              <p class="text-sm sm:text-base text-muted leading-relaxed mt-2.5 max-w-[46ch]">{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <!-- Also in the box -->
+    <div class="mt-16 lg:mt-24 reveal" style="--rd:.1s">
+      <div class="rounded-panel border border-border bg-surface/60 backdrop-blur-sm overflow-hidden grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-border/60 lg:divide-x sm:[&>*:nth-child(-n+2)]:border-b sm:[&>*]:border-border/60 lg:[&>*]:border-b-0">
+        {[
+          {
+            text: x.e1,
+            icon: '<path d="m22 8-6 4 6 4V8z"></path><rect x="2" y="6" width="14" height="12" rx="2"></rect>',
+          },
+          {
+            text: x.e2,
+            icon: '<rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>',
+          },
+          {
+            text: x.e3,
+            icon: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>',
+          },
+          {
+            text: x.e4,
+            icon: '<circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>',
+          },
+        ].map((f) => (
+          <div class="flex items-start gap-3 p-5">
+            <span class="shrink-0 grid place-items-center w-8 h-8 rounded-lg bg-accent-soft text-accent">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={f.icon} />
+            </span>
+            <p class="text-sm text-foreground-soft leading-snug pt-1">{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-step.is-active .how-step-num {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+</style>
+
+<script>
+  const section = document.querySelector("[data-how]");
+  if (section) {
+    const steps = [...section.querySelectorAll("[data-step]")];
+    const scenes = [...section.querySelectorAll("[data-scene]")];
+    const fill = section.querySelector("[data-progress]");
+
+    const activate = (i) => {
+      steps.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+      scenes.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+      if (fill) fill.style.height = `${((i + 1) / steps.length) * 100}%`;
+    };
+
+    // A step becomes active when it crosses the middle band of the viewport.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) activate(steps.indexOf(e.target));
+        }
+      },
+      { rootMargin: "-42% 0px -42% 0px", threshold: 0 },
+    );
+    steps.forEach((s) => io.observe(s));
+  }
+</script>

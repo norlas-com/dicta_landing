@@ -42,9 +42,11 @@ const htmlLangMap: Record<Locale, string> = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Apply the stored theme before first paint (no flash). -->
+    <!-- Apply the stored theme before first paint (no flash). Also mark the
+         document as JS-capable so .reveal elements may start hidden. -->
     <script is:inline>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var stored = localStorage.getItem("dicta-theme");
           var choice =
@@ -118,5 +120,24 @@ const htmlLangMap: Record<Locale, string> = {
     <main class="min-h-screen bg-background text-foreground flex flex-col">
       <slot />
     </main>
+
+    <script>
+      // Scroll-reveal: elements with .reveal rise in on first intersection.
+      const revealables = document.querySelectorAll(".reveal");
+      if (revealables.length) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add("revealed");
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+        );
+        revealables.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>

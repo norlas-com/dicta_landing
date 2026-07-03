@@ -5,6 +5,7 @@ import { fetchCatalog } from "../../lib/catalog";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Hero from "../Hero.astro";
+import HowItWorks from "../HowItWorks.astro";
 import Pricing from "../Pricing.astro";
 import Footer from "../Footer.astro";
 
@@ -45,6 +46,7 @@ const jsonLd = [
 <Layout title={title} description={description} locale={locale} path="/" jsonLd={jsonLd}>
   <Header locale={locale} path="/" />
   <Hero locale={locale} />
+  <HowItWorks locale={locale} />
   {catalog && <Pricing locale={locale} catalog={catalog} />}
   <Footer locale={locale} />
 </Layout>

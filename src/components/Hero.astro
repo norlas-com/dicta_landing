@@ -19,10 +19,13 @@ const features = [
 <section class="relative overflow-hidden">
   <div
     aria-hidden="true"
+    data-plx="0.16"
+    data-plx-center
     class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1200px] h-[760px] pointer-events-none opacity-[0.22] dark:opacity-30 blur-[90px] bg-brand-gradient bg-[length:200%_200%] animate-gradient-shimmer"
   ></div>
   <div
     aria-hidden="true"
+    data-plx="0.07"
     class="absolute -top-24 right-[-10%] w-[520px] h-[520px] rounded-full pointer-events-none bg-accent/10 blur-3xl"
   ></div>
   <div
@@ -34,7 +37,7 @@ const features = [
   <div class="relative max-w-6xl mx-auto px-6 lg:px-10 pt-14 pb-20 lg:pt-20 lg:pb-28">
     <div class="grid lg:grid-cols-[1.35fr_1fr] gap-12 lg:gap-16 items-center">
       <div>
-        <span class="inline-flex items-center gap-2 h-7 pl-2 pr-3 rounded-pill border border-border bg-surface/60 backdrop-blur-sm text-2xs uppercase tracking-[0.18em] text-foreground-soft mb-6">
+        <span class="reveal inline-flex items-center gap-2 h-7 pl-2 pr-3 rounded-pill border border-border bg-surface/60 backdrop-blur-sm text-2xs uppercase tracking-[0.18em] text-foreground-soft mb-6">
           <span class="relative flex h-2 w-2">
             <span class="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-ping"></span>
             <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
@@ -42,16 +45,16 @@ const features = [
           Dicta · Voice meetings
         </span>
 
-        <h1 class="font-display text-[2.6rem] sm:text-[3.4rem] lg:text-[4.6rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance">
+        <h1 class="reveal font-display text-[2.6rem] sm:text-[3.4rem] lg:text-[4.6rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance" style="--rd:.06s">
           <span class="block">{d.landing.h1Pre}</span>
           <span class="block text-accent">{d.landing.h1Accent}</span>
         </h1>
 
-        <p class="text-base sm:text-lg text-muted mt-6 max-w-[54ch] leading-relaxed">
+        <p class="reveal text-base sm:text-lg text-muted mt-6 max-w-[54ch] leading-relaxed" style="--rd:.14s">
           {d.landing.sub}
         </p>
 
-        <div class="mt-8 max-w-xl">
+        <div class="reveal mt-8 max-w-xl" style="--rd:.22s">
           <div class="flex flex-col gap-4">
             <div class="flex flex-col sm:flex-row gap-3">
               <a
@@ -66,6 +69,17 @@ const features = [
               >
                 {d.common.login}
               </a>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-muted">
+              {[d.landing.heroPoint1, d.landing.heroPoint2].map((pt) => (
+                <span class="inline-flex items-center gap-1.5">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  {pt}
+                </span>
+              ))}
             </div>
 
             <a
@@ -83,7 +97,7 @@ const features = [
         </div>
       </div>
 
-      <aside class="space-y-4">
+      <aside class="reveal space-y-4" style="--rd:.18s">
         <NotetakerShowcase locale={locale} />
 
         <div class="relative">
@@ -111,3 +125,32 @@ const features = [
     </div>
   </div>
 </section>
+
+<script>
+  // Gentle parallax on the hero's decorative layers. Skipped for
+  // reduced-motion users; transform-only so it never causes layout.
+  const els = [...document.querySelectorAll("[data-plx]")];
+  if (els.length && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    let ticking = false;
+    const apply = () => {
+      const y = scrollY;
+      for (const el of els) {
+        const f = parseFloat(el.dataset.plx || "0");
+        const x = el.hasAttribute("data-plx-center") ? "-50%" : "0";
+        el.style.transform = `translate3d(${x}, ${y * f}px, 0)`;
+      }
+      ticking = false;
+    };
+    addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(apply);
+        }
+      },
+      { passive: true },
+    );
+    apply();
+  }
+</script>

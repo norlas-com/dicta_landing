@@ -149,6 +149,68 @@ html {
   background: transparent;
 }
 
+/* ---- Scroll-reveal ----------------------------------------------------
+ * Elements with .reveal rise+fade in when they enter the viewport. Gated on
+ * html.js (set by the observer script in Layout) so content is never hidden
+ * for no-JS visitors. Stagger per element via --rd (reveal delay). */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--rd, 0s);
+}
+html.js .reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- "From meeting to memo" scrollytelling ---------------------------- */
+.how-scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  transition:
+    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.how-scene.is-active {
+  opacity: 1;
+  transform: none;
+}
+/* Elements inside a scene that replay their entrance each activation. */
+.how-scene .scene-pop {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.how-scene.is-active .scene-pop {
+  animation: sceneRise 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+.how-scene.is-active .scene-pop-late {
+  animation-delay: 0.4s;
+}
+@keyframes sceneRise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.how-step {
+  opacity: 0.35;
+  transition: opacity 0.35s ease-out;
+}
+.how-step.is-active {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -157,5 +219,13 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  html.js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .how-scene .scene-pop {
+    opacity: 1;
+    transform: none;
   }
 }
