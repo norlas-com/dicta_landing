@@ -166,49 +166,27 @@ html.js .reveal.revealed {
   transform: none;
 }
 
-/* ---- "From meeting to memo" scrollytelling ---------------------------- */
-.how-scene {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: translateY(14px) scale(0.985);
-  transition:
-    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-.how-scene.is-active {
-  opacity: 1;
-  transform: none;
-}
-/* Elements inside a scene that replay their entrance each activation. */
-.how-scene .scene-pop {
-  opacity: 0;
-  transform: translateY(10px);
-}
-.how-scene.is-active .scene-pop {
-  animation: sceneRise 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
-}
-.how-scene.is-active .scene-pop-late {
-  animation-delay: 0.4s;
-}
-@keyframes sceneRise {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
+/* ---- Feature story scroll-snap ----------------------------------------
+ * Gentle snap on the root scroller while the feature story is on the page.
+ * Proximity (never mandatory) so sections taller than the viewport stay
+ * reachable; disabled on short viewports and for reduced-motion users. */
+@supports selector(:has(*)) {
+  @media (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+    html:has([data-feature-story]) {
+      scroll-snap-type: y proximity;
+    }
   }
 }
-
-.how-step {
-  opacity: 0.35;
-  transition: opacity 0.35s ease-out;
+.feature-screen {
+  min-height: 100vh;
+  min-height: 100svh;
+  scroll-snap-align: start;
 }
-.how-step.is-active {
-  opacity: 1;
+/* The dot rail needs vertical room too (it's already hidden below lg). */
+@media (max-height: 599px) {
+  .feature-dots {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -221,10 +199,6 @@ html.js .reveal.revealed {
     scroll-behavior: auto !important;
   }
   html.js .reveal {
-    opacity: 1;
-    transform: none;
-  }
-  .how-scene .scene-pop {
     opacity: 1;
     transform: none;
   }

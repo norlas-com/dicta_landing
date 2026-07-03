@@ -1,19 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import type { Locale } from "../i18n/ui";
 import { t, localePath, appUrl } from "../i18n/utils";
-import NotetakerShowcase from "./NotetakerShowcase.astro";
+import heroPhoto from "../assets/landing/hero.jpg";
 
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
 const d = t(locale);
-
-const features = [
-  { n: "01", title: d.landing.feat1Title, body: d.landing.feat1Body },
-  { n: "02", title: d.landing.feat2Title, body: d.landing.feat2Body },
-  { n: "03", title: d.landing.feat3Title, body: d.landing.feat3Body },
-];
 ---
 
 <section class="relative overflow-hidden">
@@ -97,29 +92,20 @@ const features = [
         </div>
       </div>
 
-      <aside class="reveal space-y-4" style="--rd:.18s">
-        <NotetakerShowcase locale={locale} />
-
-        <div class="relative">
-          <div class="absolute -inset-px rounded-panel bg-brand-gradient opacity-30 blur-[1px]" aria-hidden="true"></div>
-          <div class="relative rounded-panel border border-border bg-surface/90 backdrop-blur-sm shadow-pop overflow-hidden">
-            <div class="h-1 bg-brand-gradient" aria-hidden="true"></div>
-            <div class="p-6 sm:p-7 divide-y divide-border/60">
-              {
-                features.map((f) => (
-                  <div class="flex gap-3.5 py-4 first:pt-0 last:pb-0">
-                    <span class="shrink-0 grid place-items-center w-7 h-7 rounded-lg bg-accent-soft text-accent text-xs font-semibold tabular-nums">
-                      {f.n}
-                    </span>
-                    <div>
-                      <h3 class="text-[15px] font-semibold text-foreground leading-snug">{f.title}</h3>
-                      <p class="text-sm text-muted leading-relaxed mt-1">{f.body}</p>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
+      <aside class="reveal relative w-full max-w-md mx-auto lg:mx-0 lg:justify-self-end" style="--rd:.18s">
+        <div class="absolute -inset-px rounded-panel bg-brand-gradient opacity-30 blur-[1px]" aria-hidden="true"></div>
+        <div class="relative rounded-panel border border-border bg-surface/90 backdrop-blur-sm shadow-pop overflow-hidden">
+          <div class="h-1 bg-brand-gradient" aria-hidden="true"></div>
+          <Image
+            src={heroPhoto}
+            alt={d.landing.heroPhotoAlt}
+            widths={[480, 800, 1200, 1400]}
+            sizes="(min-width: 1024px) 28rem, calc(100vw - 3rem)"
+            format="webp"
+            loading="eager"
+            fetchpriority="high"
+            class="w-full aspect-[4/5] object-cover"
+          />
         </div>
       </aside>
     </div>
@@ -129,7 +115,7 @@ const features = [
 <script>
   // Gentle parallax on the hero's decorative layers. Skipped for
   // reduced-motion users; transform-only so it never causes layout.
-  const els = [...document.querySelectorAll("[data-plx]")];
+  const els = [...document.querySelectorAll<HTMLElement>("[data-plx]")];
   if (els.length && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
     let ticking = false;
     const apply = () => {

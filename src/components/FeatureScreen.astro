@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+/**
+ * One full-viewport screen of the feature story: numbered eyebrow chip,
+ * serif title, Problem → Our solution copy, and a portrait photo card.
+ * Sides alternate per screen via `flip`. Snap behavior comes from the
+ * `.feature-screen` rules in global.css.
+ */
+interface Props {
+  /** 1-based screen number (renders as the "01" chip). */
+  index: number;
+  id: string;
+  title: string;
+  problem: string;
+  solution: string;
+  image: ImageMetadata;
+  alt: string;
+  /** Photo on the left on desktop (text stays first on mobile). */
+  flip?: boolean;
+  labels: { problem: string; solution: string };
+}
+const { index, id, title, problem, solution, image, alt, flip = false, labels } = Astro.props;
+const num = String(index).padStart(2, "0");
+---
+
+<section id={id} data-screen class="feature-screen relative flex items-center overflow-hidden">
+  <div class="w-full max-w-6xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class:list={["reveal", flip && "lg:order-2"]}>
+        <span class="grid place-items-center w-7 h-7 rounded-lg bg-accent-soft text-accent text-xs font-semibold tabular-nums">
+          {num}
+        </span>
+
+        <h2 class="font-display text-[2.1rem] sm:text-[2.6rem] lg:text-[2.9rem] font-semibold tracking-[-0.018em] leading-[1.12] text-foreground text-balance mt-5">
+          {title}
+        </h2>
+
+        <div class="mt-7 space-y-6 max-w-[52ch]">
+          <div>
+            <p class="text-2xs uppercase tracking-[0.18em] text-muted-soft mb-2">{labels.problem}</p>
+            <p class="text-base sm:text-lg text-muted leading-relaxed">{problem}</p>
+          </div>
+          <div>
+            <p class="text-2xs uppercase tracking-[0.18em] text-accent mb-2">{labels.solution}</p>
+            <p class="text-base sm:text-lg text-foreground-soft leading-relaxed">{solution}</p>
+          </div>
+        </div>
+
+        {
+          Astro.slots.has("cta") && (
+            <div class="mt-8">
+              <slot name="cta" />
+            </div>
+          )
+        }
+      </div>
+
+      <div
+        class:list={[
+          "reveal relative w-full max-w-md mx-auto lg:mx-0",
+          flip ? "lg:order-1 lg:justify-self-start" : "lg:justify-self-end",
+        ]}
+        style="--rd:.12s"
+      >
+        <div class="absolute -inset-px rounded-panel bg-brand-gradient opacity-30 blur-[1px]" aria-hidden="true"></div>
+        <div class="relative rounded-panel border border-border bg-surface/90 shadow-pop overflow-hidden">
+          <div class="h-1 bg-brand-gradient" aria-hidden="true"></div>
+          <Image
+            src={image}
+            alt={alt}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 1024px) 28rem, calc(100vw - 3rem)"
+            format="webp"
+            loading="lazy"
+            class="w-full aspect-[4/5] object-cover"
+          />
+        </div>
+        <slot name="visual" />
+      </div>
+    </div>
+  </div>
+</section>

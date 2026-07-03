@@ -195,12 +195,12 @@ const packsUSD = packsLineFor("USD");
 <script>
   document.querySelectorAll("[data-pricing]").forEach((section) => {
     const btns = section.querySelectorAll("[data-cur-btn]");
-    const apply = (cur) => {
+    const apply = (cur: string) => {
       const key = cur === "UZS" ? "uzs" : "usd";
       section.querySelectorAll("[data-price-amount]").forEach((el) => {
         el.textContent = el.getAttribute(`data-${key}`) ?? el.textContent;
       });
-      section.querySelectorAll("[data-price-unit]").forEach((el) => {
+      section.querySelectorAll<HTMLElement>("[data-price-unit]").forEach((el) => {
         const v = el.getAttribute(`data-${key}`) ?? "";
         el.textContent = v;
         el.hidden = v === "";
@@ -219,7 +219,7 @@ const packsUSD = packsLineFor("USD");
       });
     };
     btns.forEach((b) =>
-      b.addEventListener("click", () => apply(b.getAttribute("data-cur-btn"))),
+      b.addEventListener("click", () => apply(b.getAttribute("data-cur-btn") ?? "UZS")),
     );
   });
 </script>

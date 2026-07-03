@@ -7,13 +7,10 @@ import ThemeToggle from "./ThemeToggle.astro";
 interface Props {
   locale: Locale;
   path: string;
-  /** The auto-revealing "get the desktop app" tooltip (off on /download). */
-  showDesktopTip?: boolean;
 }
-const { locale, path, showDesktopTip = true } = Astro.props;
+const { locale, path } = Astro.props;
 const d = t(locale);
 const home = localePath("/", locale);
-const download = localePath("/download", locale);
 ---
 
 <header class="w-full">
@@ -31,50 +28,6 @@ const download = localePath("/download", locale);
         {d.pricing.navLabel}
       </a>
 
-      <div class="relative">
-        <a
-          href={download}
-          data-download-label
-          data-win-label={d.nav.downloadWin}
-          class="inline-flex items-center gap-1.5 h-10 px-3.5 sm:px-5 rounded-full bg-accent text-accent-fg text-sm font-medium hover:bg-accent-strong transition-colors duration-150 ease-out-expo"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          <span class="hidden sm:inline" data-download-text>{d.nav.download}</span>
-        </a>
-
-        {
-          showDesktopTip && (
-            <div
-              role="status"
-              data-desktop-tip
-              class="absolute right-0 top-full mt-3 w-64 z-50 origin-top-right transition-all duration-300 ease-out-expo opacity-0 -translate-y-1 pointer-events-none"
-            >
-              <span aria-hidden="true" class="absolute -top-1.5 right-6 w-3 h-3 rotate-45 bg-surface border-l border-t border-border"></span>
-              <div class="relative rounded-panel border border-border bg-surface shadow-pop overflow-hidden">
-                <div class="h-1 bg-brand-gradient" aria-hidden="true"></div>
-                <div class="p-4">
-                  <p class="text-sm font-semibold text-foreground mb-2.5">{d.desktopTip.title}</p>
-                  <ul class="space-y-2">
-                    {[d.desktopTip.point1, d.desktopTip.point2, d.desktopTip.point3].map((point) => (
-                      <li class="flex items-start gap-2 text-xs text-muted leading-snug">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 mt-px text-accent">
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          )
-        }
-      </div>
-
       <LanguageSwitcher locale={locale} path={path} />
       <ThemeToggle />
 
@@ -87,45 +40,3 @@ const download = localePath("/download", locale);
     </nav>
   </div>
 </header>
-
-<script>
-  // OS-aware download label (Mac default; swap to Windows label when detected).
-  const isWin = /Win(dows|32|64|CE)/i.test(navigator.userAgent);
-  if (isWin) {
-    document.querySelectorAll("[data-download-label]").forEach((el) => {
-      const win = el.getAttribute("data-win-label");
-      const text = el.querySelector("[data-download-text]");
-      if (win && text) text.textContent = win;
-    });
-  }
-
-  // Desktop tooltip: auto-reveal 800ms after load, auto-hide after 6s; stays
-  // open while hovered/focused.
-  document.querySelectorAll("[data-desktop-tip]").forEach((tip) => {
-    const shownCls = ["opacity-100", "translate-y-0"];
-    const hiddenCls = ["opacity-0", "-translate-y-1", "pointer-events-none"];
-    let hideTimer;
-    const show = () => {
-      tip.classList.remove(...hiddenCls);
-      tip.classList.add(...shownCls);
-    };
-    const hide = () => {
-      tip.classList.remove(...shownCls);
-      tip.classList.add(...hiddenCls);
-    };
-    const wrap = tip.parentElement;
-    setTimeout(() => {
-      show();
-      hideTimer = setTimeout(hide, 6000);
-    }, 800);
-    if (wrap) {
-      wrap.addEventListener("mouseenter", () => {
-        clearTimeout(hideTimer);
-        show();
-      });
-      wrap.addEventListener("mouseleave", () => {
-        hideTimer = setTimeout(hide, 1200);
-      });
-    }
-  });
-</script>

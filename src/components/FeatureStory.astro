@@ -1,0 +1,163 @@
+---
+import type { Locale } from "../i18n/ui";
+import { t, localePath } from "../i18n/utils";
+import FeatureScreen from "./FeatureScreen.astro";
+import FeatureCloser from "./FeatureCloser.astro";
+import NotetakerShowcase from "./NotetakerShowcase.astro";
+
+import f1 from "../assets/landing/f1-dicta-meet.jpg";
+import f2 from "../assets/landing/f2-transcription.jpg";
+import f3 from "../assets/landing/f3-ai-summary.jpg";
+import f4 from "../assets/landing/f4-tasks.jpg";
+import f5 from "../assets/landing/f5-bots.jpg";
+import f6 from "../assets/landing/f6-desktop.jpg";
+import f7 from "../assets/landing/f7-mobile.jpg";
+
+/**
+ * The scroll-driven feature story: 7 one-viewport screens (Problem → Our
+ * solution → photo, alternating sides) plus the pricing closer. The
+ * `data-feature-story` marker enables root-scroller snap in global.css, and
+ * the fixed dot rail tracks / jumps between screens on tall desktop viewports.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+const f = d.landing.features;
+const labels = { problem: f.problemLabel, solution: f.solutionLabel };
+
+const screens = [
+  { ...f.f1, image: f1 },
+  { ...f.f2, image: f2 },
+  { ...f.f3, image: f3 },
+  { ...f.f4, image: f4 },
+  { ...f.f5, image: f5 },
+  { ...f.f6, image: f6 },
+  { ...f.f7, image: f7 },
+];
+
+const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.closer.titleAccent}`];
+---
+
+<div data-feature-story>
+  {
+    screens.map((s, i) => (
+      <FeatureScreen
+        index={i + 1}
+        id={`feature-${i + 1}`}
+        title={s.title}
+        problem={s.problem}
+        solution={s.solution}
+        image={s.image}
+        alt={s.alt}
+        flip={i % 2 === 1}
+        labels={labels}
+      >
+        {i === 4 && (
+          <div slot="visual" class="hidden lg:block absolute -bottom-6 -left-6 w-80 scale-90 origin-bottom-left">
+            <NotetakerShowcase locale={locale} />
+          </div>
+        )}
+        {i === 5 && (
+          <a
+            slot="cta"
+            href={localePath("/download", locale)}
+            data-download-label
+            data-win-label={d.nav.downloadWin}
+            class="inline-flex items-center gap-2 h-12 px-7 rounded-pill bg-accent text-accent-fg font-medium hover:bg-accent-strong transition-colors duration-150 ease-out-expo"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-download-text>{f.f6cta}</span>
+          </a>
+        )}
+      </FeatureScreen>
+    ))
+  }
+
+  <FeatureCloser locale={locale} />
+
+  <nav
+    data-feature-dots
+    aria-label={f.dotsLabel}
+    class="feature-dots fixed right-4 lg:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-2.5 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    {
+      dotLabels.map((label, i) => (
+        <button
+          type="button"
+          data-dot={i}
+          aria-label={label}
+          class:list={[
+            "w-2.5 h-2.5 rounded-full transition-all duration-300",
+            i === 0 ? "bg-accent scale-125" : "bg-foreground/20 hover:bg-foreground/40",
+          ]}
+        ></button>
+      ))
+    }
+  </nav>
+</div>
+
+<script>
+  const story = document.querySelector("[data-feature-story]");
+  if (story) {
+    const screens = [...story.querySelectorAll("[data-screen]")];
+    const dotsNav = story.querySelector("[data-feature-dots]");
+    const dots = dotsNav ? [...dotsNav.querySelectorAll("[data-dot]")] : [];
+
+    const setActive = (i: number) => {
+      dots.forEach((dot, idx) => {
+        const on = idx === i;
+        dot.classList.toggle("bg-accent", on);
+        dot.classList.toggle("scale-125", on);
+        dot.classList.toggle("bg-foreground/20", !on);
+        dot.classList.toggle("hover:bg-foreground/40", !on);
+        if (on) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    };
+
+    // A screen becomes active when it crosses the middle band of the viewport.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) setActive(screens.indexOf(e.target));
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+    );
+    screens.forEach((s) => io.observe(s));
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => screens[i]?.scrollIntoView({ block: "start" }));
+    });
+
+    // The dot rail only shows while the story is on screen (hero, pricing and
+    // footer stay clean).
+    if (dotsNav) {
+      const vis = new IntersectionObserver(
+        ([e]) => {
+          dotsNav.classList.toggle("opacity-0", !e.isIntersecting);
+          dotsNav.classList.toggle("pointer-events-none", !e.isIntersecting);
+        },
+        { threshold: 0.04 },
+      );
+      vis.observe(story);
+    }
+  }
+
+  // OS-aware download label on the screen-6 CTA (generic default; swap to the
+  // Windows label when detected) — same pattern the header button used.
+  const isWin = /Win(dows|32|64|CE)/i.test(navigator.userAgent);
+  if (isWin) {
+    document.querySelectorAll("[data-download-label]").forEach((el) => {
+      const win = el.getAttribute("data-win-label");
+      const text = el.querySelector("[data-download-text]");
+      if (win && text) text.textContent = win;
+    });
+  }
+</script>

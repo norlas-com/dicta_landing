@@ -21,12 +21,6 @@ const en = {
     download: "Download for Mac",
     downloadWin: "Download for Windows",
   },
-  desktopTip: {
-    title: "Get the desktop app",
-    point1: "Runs quietly in the background",
-    point2: "No bot joins your call",
-    point3: "Captured locally on your Mac",
-  },
   landing: {
     h1Pre: "All-in-one",
     h1Accent: "meeting platform.",
@@ -34,47 +28,75 @@ const en = {
     signupCta: "Sign up, it's free",
     heroPoint1: "No credit card required",
     heroPoint2: "Set up in under a minute",
-    feat1Title: "High-quality video",
-    feat1Body: "Adaptive bitrate, screen sharing, and grid layouts that scale to your team.",
-    feat2Title: "AI transcription",
-    feat2Body: "Accurate transcripts in Uzbek, Russian, and English, ready minutes after the meeting ends.",
-    feat3Title: "AI summaries",
-    feat3Body: "Action items, decisions, and topics extracted automatically when the meeting ends.",
+    heroPhotoAlt: "A team video call with a grid of smiling participants",
     downloadCta: "Download the desktop app",
     footerRights: "All rights reserved.",
-  },
-  how: {
-    eyebrow: "How it works",
-    titlePre: "From meeting",
-    titleAccent: "to memo.",
-    sub: "You run the conversation. Dicta turns it into a document your team can act on.",
-    s1Title: "Start the meeting",
-    s1Body: "One link, zero installs. Guests join from any browser with a short code, on any device.",
-    s2Title: "Hit record",
-    s2Body: "One tap captures the whole room. The replay is ready right after the call ends.",
-    s3Title: "Dicta writes the notes",
-    s3Body: "A full transcript and an AI summary in Uzbek, Russian, or English, minutes after you hang up. Decisions, topics, action items.",
-    s4Title: "Share the recap",
-    s4Body: "Send one link. Teammates read the summary, replay the recording, and pick up their tasks.",
-    scene: {
-      meetingTitle: "Weekly sync",
-      rec: "REC",
-      transcript: "Transcript",
-      summaryReady: "Summary ready",
-      actionItems: "Action items",
-      item1: "Send the proposal to Aziza",
-      item2: "Book Friday's demo",
-      item3: "Update the pricing page",
-      recap: "Recap",
-      watch: "Watch recording",
+    features: {
+      problemLabel: "The problem",
+      solutionLabel: "Our solution",
+      dotsLabel: "Sections",
+      f6cta: "Download the desktop app",
+      f1: {
+        title: "Uzbekistan's own meeting platform",
+        problem:
+          "Zoom, Google Meet and Teams keep your conversations on servers far away. For many teams here, that's a risk they can't accept.",
+        solution:
+          "Dicta Meet works better than Zoom, Google Meet and Teams — and your data never leaves Uzbekistan.",
+        alt: "A video call participant giving a thumbs up on screen",
+      },
+      f2: {
+        title: "Transcription in any language",
+        problem:
+          "Taking notes during a meeting means you either listen or write — never both well.",
+        solution:
+          "Dicta transcribes meetings in any language with high accuracy. Every person's words are captured and attributed to the right speaker.",
+        alt: "Handwritten meeting notes in a paper notebook",
+      },
+      f3: {
+        title: "A 1-hour meeting, read in 2 minutes",
+        problem:
+          "Hours of meetings every week — and from half of them you only needed the conclusions.",
+        solution:
+          "Dicta prepares a full AI summary of every meeting: decisions, tasks and topics. Read it in 2 minutes — and search the recording by text to jump to the exact video moment.",
+        alt: "A calm one-on-one video call on a laptop",
+      },
+      f4: {
+        title: "Tasks create themselves",
+        problem:
+          "After the meeting, someone still has to write down every task and assign it by hand. It's slow, and things get lost.",
+        solution:
+          "Dicta creates tasks from the meeting automatically and assigns them to the right person. Works with Jira, Trello, Asana, ClickUp — or your own task platform.",
+        alt: "A kanban board with task cards on a screen",
+      },
+      f5: {
+        title: "Send a bot instead of yourself",
+        problem: "Two meetings at the same time? No time to attend at all?",
+        solution:
+          "Send a Dicta bot on your behalf. It joins Zoom, Google Meet and Teams meetings — and you still get the full transcription and AI summary.",
+        alt: "A large video call grid with many participants",
+      },
+      f6: {
+        title: "Dicta Desktop — no bots in the call",
+        problem: "Don't want a visible bot sitting in your meetings?",
+        solution:
+          "The Dicta desktop app detects when you join a call and records it for you. At the end you get the recording and the AI summary — and no one knows the meeting was recorded.",
+        alt: "A laptop on a desk showing a dark dashboard",
+      },
+      f7: {
+        title: "A mobile app for face-to-face meetings",
+        problem:
+          "Great ideas are born in face-to-face meetings — and get lost there too.",
+        solution:
+          "Tap one button and Dicta records your in-person meeting. The app automatically detects different speakers and can identify who is talking by their voice.",
+        alt: "Colleagues talking around a flipchart in a meeting room",
+      },
+      closer: {
+        titlePre: "All of this —",
+        titleAccent: "at the lowest price on the market",
+        sub: "Compare us with any competitor: accuracy, speed and privacy at the lowest price in the AI era. Try it — it's free, no card required.",
+        cta: "See pricing",
+      },
     },
-  },
-  extras: {
-    title: "Also in the box",
-    e1: "Notetaker bot for Google Meet, Zoom, and Teams",
-    e2: "Desktop app that captures meetings in the background",
-    e3: "Recap links your whole team can open",
-    e4: "Uzbek, Russian, and English",
   },
   pricing: {
     navLabel: "Pricing",
@@ -201,7 +223,7 @@ const en = {
       contact: { title: "Contact", legalLabel: "Legal: " },
     },
   },
-} as const;
+};
 
 const ru: typeof en = {
   common: { login: "Войти" },
@@ -211,12 +233,6 @@ const ru: typeof en = {
     download: "Скачать для Mac",
     downloadWin: "Скачать для Windows",
   },
-  desktopTip: {
-    title: "Установите приложение для компьютера",
-    point1: "Тихо работает в фоне",
-    point2: "Бот не подключается к звонку",
-    point3: "Запись локально на вашем Mac",
-  },
   landing: {
     h1Pre: "Универсальная платформа",
     h1Accent: "для встреч.",
@@ -224,47 +240,75 @@ const ru: typeof en = {
     signupCta: "Зарегистрироваться, бесплатно",
     heroPoint1: "Карта не требуется",
     heroPoint2: "Настройка меньше чем за минуту",
-    feat1Title: "Качественное видео",
-    feat1Body: "Адаптивный битрейт, демонстрация экрана и сетка, масштабируемая под вашу команду.",
-    feat2Title: "AI-транскрипция",
-    feat2Body: "Точные расшифровки на узбекском, русском и английском: готовы через несколько минут после встречи.",
-    feat3Title: "AI-резюме",
-    feat3Body: "По окончании встречи автоматически извлекаются задачи, решения и темы.",
+    heroPhotoAlt: "Командный видеозвонок с сеткой улыбающихся участников",
     downloadCta: "Скачать настольное приложение",
     footerRights: "Все права защищены.",
-  },
-  how: {
-    eyebrow: "Как это работает",
-    titlePre: "Из встречи",
-    titleAccent: "в конспект.",
-    sub: "Вы ведёте разговор. Dicta превращает его в документ, с которым команда может работать.",
-    s1Title: "Начните встречу",
-    s1Body: "Одна ссылка, без установки. Гости заходят из браузера по короткому коду с любого устройства.",
-    s2Title: "Включите запись",
-    s2Body: "Одно нажатие записывает всю комнату. Реплей готов сразу после звонка.",
-    s3Title: "Dicta пишет конспект",
-    s3Body: "Полная расшифровка и AI-резюме на узбекском, русском или английском через несколько минут после встречи. Решения, темы, задачи.",
-    s4Title: "Поделитесь итогами",
-    s4Body: "Отправьте одну ссылку. Коллеги читают резюме, пересматривают запись и забирают свои задачи.",
-    scene: {
-      meetingTitle: "Еженедельный синк",
-      rec: "REC",
-      transcript: "Расшифровка",
-      summaryReady: "Резюме готово",
-      actionItems: "Задачи",
-      item1: "Отправить предложение Азизе",
-      item2: "Назначить демо на пятницу",
-      item3: "Обновить страницу цен",
-      recap: "Итоги",
-      watch: "Смотреть запись",
+    features: {
+      problemLabel: "Проблема",
+      solutionLabel: "Наше решение",
+      dotsLabel: "Разделы",
+      f6cta: "Скачать приложение для компьютера",
+      f1: {
+        title: "Собственная платформа встреч Узбекистана",
+        problem:
+          "Zoom, Google Meet и Teams хранят ваши разговоры на далёких серверах. Для многих команд это неприемлемый риск.",
+        solution:
+          "Dicta Meet работает лучше Zoom, Google Meet и Teams — а ваши данные никогда не покидают Узбекистан.",
+        alt: "Участник видеозвонка показывает большой палец вверх",
+      },
+      f2: {
+        title: "Транскрипция на любом языке",
+        problem:
+          "Вести заметки на встрече — значит либо слушать, либо писать. Хорошо делать и то и другое не получится.",
+        solution:
+          "Dicta расшифровывает встречи на любом языке с высокой точностью. Слова каждого участника фиксируются и привязываются к нужному спикеру.",
+        alt: "Рукописные заметки со встречи в бумажном блокноте",
+      },
+      f3: {
+        title: "Часовая встреча — за 2 минуты",
+        problem:
+          "Часы встреч каждую неделю — а от половины вам нужны были только выводы.",
+        solution:
+          "Dicta готовит полное AI-резюме каждой встречи: решения, задачи и темы. Прочитайте его за 2 минуты — и ищите по тексту записи, чтобы перейти к нужному моменту видео.",
+        alt: "Спокойный видеозвонок один на один на ноутбуке",
+      },
+      f4: {
+        title: "Задачи создаются сами",
+        problem:
+          "После встречи кто-то всё равно должен записать каждую задачу и назначить её вручную. Это медленно, и что-то обязательно теряется.",
+        solution:
+          "Dicta автоматически создаёт задачи по итогам встречи и назначает их нужному человеку. Работает с Jira, Trello, Asana, ClickUp — или вашей собственной платформой.",
+        alt: "Канбан-доска с карточками задач на экране",
+      },
+      f5: {
+        title: "Отправьте бота вместо себя",
+        problem: "Две встречи одновременно? Совсем нет времени участвовать?",
+        solution:
+          "Отправьте бота Dicta от своего имени. Он подключается к встречам в Zoom, Google Meet и Teams — а вы получаете полную расшифровку и AI-резюме.",
+        alt: "Большая сетка видеозвонка со множеством участников",
+      },
+      f6: {
+        title: "Dicta Desktop — никаких ботов в звонке",
+        problem: "Не хотите, чтобы во встрече сидел заметный бот?",
+        solution:
+          "Приложение Dicta для компьютера само определяет, что вы в звонке, и записывает его для вас. В конце у вас запись и AI-резюме — и никто не знает, что встреча записывалась.",
+        alt: "Ноутбук на столе с тёмной информационной панелью",
+      },
+      f7: {
+        title: "Мобильное приложение для живых встреч",
+        problem:
+          "Отличные идеи рождаются на живых встречах — и там же теряются.",
+        solution:
+          "Нажмите одну кнопку — и Dicta запишет вашу очную встречу. Приложение автоматически различает говорящих и может определить по голосу, кто говорит.",
+        alt: "Коллеги обсуждают идеи у флипчарта в переговорной",
+      },
+      closer: {
+        titlePre: "Всё это —",
+        titleAccent: "по самой низкой цене на рынке",
+        sub: "Сравните нас с любым конкурентом: точность, скорость и приватность по самой низкой цене в эпоху AI. Попробуйте — это бесплатно, карта не нужна.",
+        cta: "Посмотреть цены",
+      },
     },
-  },
-  extras: {
-    title: "И это ещё не всё",
-    e1: "Бот-секретарь для Google Meet, Zoom и Teams",
-    e2: "Приложение для компьютера: пишет встречи в фоне",
-    e3: "Ссылки на итоги для всей команды",
-    e4: "Узбекский, русский и английский",
   },
   pricing: {
     navLabel: "Цены",
@@ -401,12 +445,6 @@ const uz: typeof en = {
     download: "Mac uchun yuklab olish",
     downloadWin: "Windows uchun yuklab olish",
   },
-  desktopTip: {
-    title: "Desktop ilovasini oʻrnating",
-    point1: "Fon rejimida sokin ishlaydi",
-    point2: "Qoʻngʻiroqqa bot qoʻshilmaydi",
-    point3: "Mac'ingizda lokal yoziladi",
-  },
   landing: {
     h1Pre: "Uchrashuvlar uchun",
     h1Accent: "yagona platforma.",
@@ -414,47 +452,75 @@ const uz: typeof en = {
     signupCta: "Roʻyxatdan oʻtish, bepul",
     heroPoint1: "Karta talab qilinmaydi",
     heroPoint2: "Bir daqiqada sozlanadi",
-    feat1Title: "Yuqori sifatli video",
-    feat1Body: "Adaptiv bitrate, ekranni ulashish va jamoangiz uchun kengaytiriladigan grid koʻrinish.",
-    feat2Title: "AI transkripsiya",
-    feat2Body: "Oʻzbek, rus va ingliz tillarida aniq transkriptlar. Uchrashuv tugagach bir necha daqiqada tayyor.",
-    feat3Title: "AI xulosalari",
-    feat3Body: "Uchrashuv yakunida vazifalar, qarorlar va mavzular avtomatik tarzda chiqariladi.",
+    heroPhotoAlt: "Katakli koʻrinishdagi tabassumli ishtirokchilar bilan jamoaviy videoqoʻngʻiroq",
     downloadCta: "Kompyuter ilovasini yuklab olish",
     footerRights: "Barcha huquqlar himoyalangan.",
-  },
-  how: {
-    eyebrow: "Qanday ishlaydi",
-    titlePre: "Uchrashuvdan",
-    titleAccent: "xulosagacha.",
-    sub: "Suhbatni siz olib borasiz. Dicta uni jamoangiz ishlata oladigan hujjatga aylantiradi.",
-    s1Title: "Uchrashuvni boshlang",
-    s1Body: "Bitta havola, oʻrnatish shart emas. Mehmonlar istalgan qurilmada, brauzer orqali qisqa kod bilan qoʻshiladi.",
-    s2Title: "Yozib olishni yoqing",
-    s2Body: "Bir bosishda butun xona yoziladi. Qoʻngʻiroq tugashi bilan yozuv tayyor.",
-    s3Title: "Dicta konspekt yozadi",
-    s3Body: "Toʻliq transkript va AI xulosa: oʻzbek, rus yoki ingliz tilida, uchrashuvdan bir necha daqiqa oʻtib. Qarorlar, mavzular, vazifalar.",
-    s4Title: "Xulosani ulashing",
-    s4Body: "Bitta havola yuboring. Jamoadoshlar xulosani oʻqiydi, yozuvni koʻradi va oʻz vazifalarini oladi.",
-    scene: {
-      meetingTitle: "Haftalik sink",
-      rec: "REC",
-      transcript: "Transkript",
-      summaryReady: "Xulosa tayyor",
-      actionItems: "Vazifalar",
-      item1: "Azizaga taklifni yuborish",
-      item2: "Jumaga demo belgilash",
-      item3: "Narxlar sahifasini yangilash",
-      recap: "Xulosa",
-      watch: "Yozuvni koʻrish",
+    features: {
+      problemLabel: "Muammo",
+      solutionLabel: "Bizning yechim",
+      dotsLabel: "Boʻlimlar",
+      f6cta: "Kompyuter ilovasini yuklab olish",
+      f1: {
+        title: "Oʻzbekistonning oʻz uchrashuv platformasi",
+        problem:
+          "Zoom, Google Meet va Teams suhbatlaringizni uzoqdagi serverlarda saqlaydi. Koʻp jamoalar uchun bu qabul qilib boʻlmas xavf.",
+        solution:
+          "Dicta Meet Zoom, Google Meet va Teams'dan yaxshiroq ishlaydi — maʼlumotlaringiz esa hech qachon Oʻzbekistondan chiqmaydi.",
+        alt: "Videoqoʻngʻiroq ishtirokchisi ekranda bosh barmogʻini koʻrsatmoqda",
+      },
+      f2: {
+        title: "Istalgan tilda transkripsiya",
+        problem:
+          "Uchrashuv paytida yozib borish — yo tinglaysiz, yo yozasiz. Ikkalasini birga qilib boʻlmaydi.",
+        solution:
+          "Dicta uchrashuvlarni istalgan tilda yuqori aniqlikda transkripsiya qiladi. Har bir ishtirokchining soʻzlari aniq yozib olinadi va toʻgʻri kishiga biriktiriladi.",
+        alt: "Qogʻoz daftarga qoʻlda yozilgan uchrashuv qaydlari",
+      },
+      f3: {
+        title: "1 soatlik uchrashuv — 2 daqiqada",
+        problem:
+          "Har hafta soatlab uchrashuvlar — yarmidan sizga faqat xulosalar kerak edi, xolos.",
+        solution:
+          "Dicta har bir uchrashuvning toʻliq AI xulosasini tayyorlaydi: qarorlar, vazifalar va mavzular. Uni 2 daqiqada oʻqing — matn orqali yozuvdan qidirib, videoning kerakli lahzasiga oʻting.",
+        alt: "Noutbukda xotirjam yakkama-yakka videoqoʻngʻiroq",
+      },
+      f4: {
+        title: "Vazifalar oʻzi yaratiladi",
+        problem:
+          "Uchrashuvdan keyin kimdir baribir har bir vazifani yozib, qoʻlda biriktirib chiqishi kerak. Bu sekin, va nimadir albatta yoʻqoladi.",
+        solution:
+          "Dicta uchrashuvdagi vazifalarni avtomatik yaratadi va toʻgʻri kishiga biriktiradi. Jira, Trello, Asana, ClickUp — yoki oʻzingizning platformangiz bilan ishlaydi.",
+        alt: "Ekrandagi vazifa kartochkalari joylashgan kanban doskasi",
+      },
+      f5: {
+        title: "Oʻzingiz oʻrniga bot yuboring",
+        problem: "Bir vaqtda ikkita uchrashuvmi? Umuman borishga vaqt yoʻqmi?",
+        solution:
+          "Oʻzingiz oʻrniga Dicta botini yuboring. U Zoom, Google Meet va Teams uchrashuvlariga qoʻshiladi — siz esa toʻliq transkripsiya va AI xulosani olasiz.",
+        alt: "Koʻp ishtirokchili katta katakli videoqoʻngʻiroq",
+      },
+      f6: {
+        title: "Dicta Desktop — qoʻngʻiroqda hech qanday bot yoʻq",
+        problem: "Uchrashuvlaringizda koʻrinib turadigan bot boʻlishini istamaysizmi?",
+        solution:
+          "Dicta kompyuter ilovasi qoʻngʻiroqqa qoʻshilganingizni oʻzi aniqlab, siz uchun yozib boradi. Yakunida yozuv va AI xulosa sizda — uchrashuv yozilganini esa hech kim bilmaydi.",
+        alt: "Stol ustidagi noutbukda qora fondagi boshqaruv paneli",
+      },
+      f7: {
+        title: "Jonli uchrashuvlar uchun mobil ilova",
+        problem:
+          "Zoʻr gʻoyalar jonli uchrashuvlarda tugʻiladi — va oʻsha yerda yoʻqoladi ham.",
+        solution:
+          "Bitta tugmani bosing — Dicta jonli uchrashuvingizni yozib oladi. Ilova soʻzlovchilarni avtomatik ajratadi va ovozidan kim gapirayotganini aniqlay oladi.",
+        alt: "Majlis xonasida flipchart atrofida suhbatlashayotgan hamkasblar",
+      },
+      closer: {
+        titlePre: "Bularning barchasi —",
+        titleAccent: "bozordagi eng arzon narxda",
+        sub: "Bizni istalgan raqobatchi bilan solishtiring: AI davrida aniqlik, tezlik va maxfiylik — eng arzon narxda. Sinab koʻring — bepul, karta shart emas.",
+        cta: "Narxlarni koʻrish",
+      },
     },
-  },
-  extras: {
-    title: "Va yana",
-    e1: "Google Meet, Zoom va Teams uchun notetaker bot",
-    e2: "Fon rejimida yozadigan kompyuter ilovasi",
-    e3: "Butun jamoa ochadigan xulosa havolalari",
-    e4: "Oʻzbek, rus va ingliz tillari",
   },
   pricing: {
     navLabel: "Narxlar",
