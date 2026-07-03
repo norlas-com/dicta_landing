@@ -15,9 +15,10 @@ import f7 from "../assets/landing/f7-mobile.jpg";
 
 /**
  * The scroll-driven feature story: 7 one-viewport screens (Problem → Our
- * solution → photo, alternating sides) plus the pricing closer. The
- * `data-feature-story` marker enables root-scroller snap in global.css, and
- * the fixed dot rail tracks / jumps between screens on tall desktop viewports.
+ * solution → full-bleed photo, alternating sides) plus the pricing closer.
+ * `data-feature-story` enables mandatory root-scroller snap (global.css);
+ * the fixed dot rail and the up/down arrow rail track and page between
+ * screens; each screen re-animates its content whenever it becomes active.
  */
 interface Props {
   locale: Locale;
@@ -28,13 +29,13 @@ const f = d.landing.features;
 const labels = { problem: f.problemLabel, solution: f.solutionLabel };
 
 const screens = [
-  { ...f.f1, image: f1 },
-  { ...f.f2, image: f2 },
-  { ...f.f3, image: f3 },
-  { ...f.f4, image: f4 },
-  { ...f.f5, image: f5 },
-  { ...f.f6, image: f6 },
-  { ...f.f7, image: f7 },
+  { ...f.f1, image: f1, brands: ["meet", "zoom", "teams"] },
+  { ...f.f2, image: f2, brands: undefined },
+  { ...f.f3, image: f3, brands: undefined },
+  { ...f.f4, image: f4, brands: ["jira", "trello", "asana", "clickup"] },
+  { ...f.f5, image: f5, brands: ["zoom", "meet", "teams"] },
+  { ...f.f6, image: f6, brands: undefined },
+  { ...f.f7, image: f7, brands: undefined },
 ];
 
 const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.closer.titleAccent}`];
@@ -53,9 +54,10 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
         alt={s.alt}
         flip={i % 2 === 1}
         labels={labels}
+        brands={s.brands}
       >
         {i === 4 && (
-          <div slot="visual" class="hidden lg:block absolute -bottom-6 -left-6 w-80 scale-90 origin-bottom-left">
+          <div slot="visual" class="hidden lg:block absolute bottom-8 left-8 w-80 drop-shadow-xl">
             <NotetakerShowcase locale={locale} />
           </div>
         )}
@@ -84,7 +86,7 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
   <nav
     data-feature-dots
     aria-label={f.dotsLabel}
-    class="feature-dots fixed right-4 lg:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-2.5 opacity-0 pointer-events-none transition-opacity duration-300"
+    class="feature-dots fixed right-4 lg:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-2.5 p-2 rounded-pill bg-background/55 backdrop-blur-sm border border-border/60 opacity-0 pointer-events-none transition-opacity duration-300"
   >
     {
       dotLabels.map((label, i) => (
@@ -94,12 +96,38 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
           aria-label={label}
           class:list={[
             "w-2.5 h-2.5 rounded-full transition-all duration-300",
-            i === 0 ? "bg-accent scale-125" : "bg-foreground/20 hover:bg-foreground/40",
+            i === 0 ? "bg-accent scale-125" : "bg-foreground/25 hover:bg-foreground/50",
           ]}
         ></button>
       ))
     }
   </nav>
+
+  <div
+    data-feature-arrows
+    class="feature-arrows fixed right-4 lg:right-6 bottom-5 lg:bottom-8 z-40 flex flex-col gap-2 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <button
+      type="button"
+      data-arrow="-1"
+      aria-label={f.prevLabel}
+      class="grid place-items-center w-11 h-11 rounded-full border border-border bg-background/70 backdrop-blur-sm text-foreground shadow-card hover:bg-surface-2 hover:border-border-strong active:scale-95 transition-all duration-150 ease-out-expo disabled:opacity-35 disabled:pointer-events-none"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+    <button
+      type="button"
+      data-arrow="1"
+      aria-label={f.nextLabel}
+      class="grid place-items-center w-11 h-11 rounded-full border border-border bg-background/70 backdrop-blur-sm text-foreground shadow-card hover:bg-surface-2 hover:border-border-strong active:scale-95 transition-all duration-150 ease-out-expo disabled:opacity-35 disabled:pointer-events-none"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </div>
 </div>
 
 <script>
@@ -108,16 +136,27 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
     const screens = [...story.querySelectorAll("[data-screen]")];
     const dotsNav = story.querySelector("[data-feature-dots]");
     const dots = dotsNav ? [...dotsNav.querySelectorAll("[data-dot]")] : [];
+    const arrowsBox = story.querySelector("[data-feature-arrows]");
+    const arrows = arrowsBox ? [...arrowsBox.querySelectorAll<HTMLButtonElement>("[data-arrow]")] : [];
+    let active = 0;
 
     const setActive = (i: number) => {
+      active = i;
+      screens.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
       dots.forEach((dot, idx) => {
         const on = idx === i;
         dot.classList.toggle("bg-accent", on);
         dot.classList.toggle("scale-125", on);
-        dot.classList.toggle("bg-foreground/20", !on);
-        dot.classList.toggle("hover:bg-foreground/40", !on);
+        dot.classList.toggle("bg-foreground/25", !on);
+        dot.classList.toggle("hover:bg-foreground/50", !on);
         if (on) dot.setAttribute("aria-current", "true");
         else dot.removeAttribute("aria-current");
+      });
+      arrows.forEach((btn) => {
+        const dir = Number(btn.dataset.arrow);
+        // The up arrow keeps working on the first screen (it returns to the
+        // hero); only the down arrow dead-ends on the last screen.
+        btn.disabled = dir === 1 && i === screens.length - 1;
       });
     };
 
@@ -136,13 +175,27 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
       dot.addEventListener("click", () => screens[i]?.scrollIntoView({ block: "start" }));
     });
 
-    // The dot rail only shows while the story is on screen (hero, pricing and
+    arrows.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const dir = Number(btn.dataset.arrow);
+        if (active === 0 && dir === -1) {
+          window.scrollTo({ top: 0 });
+          return;
+        }
+        screens[active + dir]?.scrollIntoView({ block: "start" });
+      });
+    });
+
+    // The rails only show while the story is on screen (hero, pricing and
     // footer stay clean).
-    if (dotsNav) {
+    const rails = [dotsNav, arrowsBox].filter(Boolean) as Element[];
+    if (rails.length) {
       const vis = new IntersectionObserver(
         ([e]) => {
-          dotsNav.classList.toggle("opacity-0", !e.isIntersecting);
-          dotsNav.classList.toggle("pointer-events-none", !e.isIntersecting);
+          rails.forEach((el) => {
+            el.classList.toggle("opacity-0", !e.isIntersecting);
+            el.classList.toggle("pointer-events-none", !e.isIntersecting);
+          });
         },
         { threshold: 0.04 },
       );

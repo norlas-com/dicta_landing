@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { Locale } from "../i18n/ui";
-import { t, localePath, appUrl } from "../i18n/utils";
+import { t, appUrl } from "../i18n/utils";
 import heroPhoto from "../assets/landing/hero.jpg";
 
 interface Props {
@@ -77,17 +77,6 @@ const d = t(locale);
               ))}
             </div>
 
-            <a
-              href={localePath("/download", locale)}
-              class="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors duration-150 ease-out-expo w-fit"
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              {d.landing.downloadCta}
-            </a>
           </div>
         </div>
       </div>
@@ -109,10 +98,31 @@ const d = t(locale);
         </div>
       </aside>
     </div>
+
+    <!-- Scroll cue: tells first-time visitors the story continues below. -->
+    <div class="reveal flex justify-center mt-12 lg:mt-16" style="--rd:.3s">
+      <button
+        type="button"
+        data-scroll-cue
+        class="inline-flex flex-col items-center gap-1.5 text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
+      >
+        <span class="text-2xs uppercase tracking-[0.18em]">{d.landing.scrollCue}</span>
+        <span class="scroll-cue-icon grid place-items-center w-9 h-9 rounded-full border border-border bg-surface/70 backdrop-blur-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </button>
+    </div>
   </div>
 </section>
 
 <script>
+  // Scroll cue → first feature screen.
+  document.querySelector("[data-scroll-cue]")?.addEventListener("click", () => {
+    document.getElementById("feature-1")?.scrollIntoView({ block: "start" });
+  });
+
   // Gentle parallax on the hero's decorative layers. Skipped for
   // reduced-motion users; transform-only so it never causes layout.
   const els = [...document.querySelectorAll<HTMLElement>("[data-plx]")];

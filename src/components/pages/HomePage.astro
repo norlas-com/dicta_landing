@@ -44,9 +44,15 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} locale={locale} path="/" jsonLd={jsonLd}>
-  <Header locale={locale} path="/" />
-  <Hero locale={locale} />
+  {/* data-snap-free wrappers are snap areas around the story: taller than the
+      viewport they scroll freely under mandatory snap (see global.css). */}
+  <div data-snap-free>
+    <Header locale={locale} path="/" />
+    <Hero locale={locale} />
+  </div>
   <FeatureStory locale={locale} />
-  {catalog && <Pricing locale={locale} catalog={catalog} />}
-  <Footer locale={locale} />
+  <div data-snap-free>
+    {catalog && <Pricing locale={locale} catalog={catalog} />}
+    <Footer locale={locale} />
+  </div>
 </Layout>

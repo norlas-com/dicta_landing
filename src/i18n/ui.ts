@@ -29,19 +29,22 @@ const en = {
     heroPoint1: "No credit card required",
     heroPoint2: "Set up in under a minute",
     heroPhotoAlt: "A team video call with a grid of smiling participants",
-    downloadCta: "Download the desktop app",
+    scrollCue: "Scroll",
     footerRights: "All rights reserved.",
+    developedBy: "Developed by",
     features: {
       problemLabel: "The problem",
       solutionLabel: "Our solution",
       dotsLabel: "Sections",
+      prevLabel: "Previous section",
+      nextLabel: "Next section",
       f6cta: "Download the desktop app",
       f1: {
         title: "Uzbekistan's own meeting platform",
         problem:
           "Zoom, Google Meet and Teams keep your conversations on servers far away. For many teams here, that's a risk they can't accept.",
         solution:
-          "Dicta Meet works better than Zoom, Google Meet and Teams — and your data never leaves Uzbekistan.",
+          "Dicta Meet works better than Zoom, Google Meet and Teams. Our meeting servers live in the TAS-IX network — your data never leaves Uzbekistan.",
         alt: "A video call participant giving a thumbs up on screen",
       },
       f2: {
@@ -94,7 +97,7 @@ const en = {
         titlePre: "All of this —",
         titleAccent: "at the lowest price on the market",
         sub: "Compare us with any competitor: accuracy, speed and privacy at the lowest price in the AI era. Try it — it's free, no card required.",
-        cta: "See pricing",
+        cta: "Try it out",
       },
     },
   },
@@ -241,19 +244,22 @@ const ru: typeof en = {
     heroPoint1: "Карта не требуется",
     heroPoint2: "Настройка меньше чем за минуту",
     heroPhotoAlt: "Командный видеозвонок с сеткой улыбающихся участников",
-    downloadCta: "Скачать настольное приложение",
+    scrollCue: "Листайте",
     footerRights: "Все права защищены.",
+    developedBy: "Разработано",
     features: {
       problemLabel: "Проблема",
       solutionLabel: "Наше решение",
       dotsLabel: "Разделы",
+      prevLabel: "Предыдущий раздел",
+      nextLabel: "Следующий раздел",
       f6cta: "Скачать приложение для компьютера",
       f1: {
         title: "Собственная платформа встреч Узбекистана",
         problem:
           "Zoom, Google Meet и Teams хранят ваши разговоры на далёких серверах. Для многих команд это неприемлемый риск.",
         solution:
-          "Dicta Meet работает лучше Zoom, Google Meet и Teams — а ваши данные никогда не покидают Узбекистан.",
+          "Dicta Meet работает лучше Zoom, Google Meet и Teams. Наши серверы встреч находятся в сети TAS-IX — ваши данные никогда не покидают Узбекистан.",
         alt: "Участник видеозвонка показывает большой палец вверх",
       },
       f2: {
@@ -306,7 +312,7 @@ const ru: typeof en = {
         titlePre: "Всё это —",
         titleAccent: "по самой низкой цене на рынке",
         sub: "Сравните нас с любым конкурентом: точность, скорость и приватность по самой низкой цене в эпоху AI. Попробуйте — это бесплатно, карта не нужна.",
-        cta: "Посмотреть цены",
+        cta: "Попробовать",
       },
     },
   },
@@ -453,19 +459,22 @@ const uz: typeof en = {
     heroPoint1: "Karta talab qilinmaydi",
     heroPoint2: "Bir daqiqada sozlanadi",
     heroPhotoAlt: "Katakli koʻrinishdagi tabassumli ishtirokchilar bilan jamoaviy videoqoʻngʻiroq",
-    downloadCta: "Kompyuter ilovasini yuklab olish",
+    scrollCue: "Pastga suring",
     footerRights: "Barcha huquqlar himoyalangan.",
+    developedBy: "Ishlab chiquvchi",
     features: {
       problemLabel: "Muammo",
       solutionLabel: "Bizning yechim",
       dotsLabel: "Boʻlimlar",
+      prevLabel: "Oldingi boʻlim",
+      nextLabel: "Keyingi boʻlim",
       f6cta: "Kompyuter ilovasini yuklab olish",
       f1: {
         title: "Oʻzbekistonning oʻz uchrashuv platformasi",
         problem:
           "Zoom, Google Meet va Teams suhbatlaringizni uzoqdagi serverlarda saqlaydi. Koʻp jamoalar uchun bu qabul qilib boʻlmas xavf.",
         solution:
-          "Dicta Meet Zoom, Google Meet va Teams'dan yaxshiroq ishlaydi — maʼlumotlaringiz esa hech qachon Oʻzbekistondan chiqmaydi.",
+          "Dicta Meet Zoom, Google Meet va Teams'dan yaxshiroq ishlaydi. Uchrashuv serverlarimiz TAS-IX tarmogʻida joylashgan — maʼlumotlaringiz hech qachon Oʻzbekistondan chiqmaydi.",
         alt: "Videoqoʻngʻiroq ishtirokchisi ekranda bosh barmogʻini koʻrsatmoqda",
       },
       f2: {
@@ -518,7 +527,7 @@ const uz: typeof en = {
         titlePre: "Bularning barchasi —",
         titleAccent: "bozordagi eng arzon narxda",
         sub: "Bizni istalgan raqobatchi bilan solishtiring: AI davrida aniqlik, tezlik va maxfiylik — eng arzon narxda. Sinab koʻring — bepul, karta shart emas.",
-        cta: "Narxlarni koʻrish",
+        cta: "Sinab koʻring",
       },
     },
   },
