@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dicta.uz/sitemap-index.xml

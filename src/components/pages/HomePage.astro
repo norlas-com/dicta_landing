@@ -1,0 +1,50 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { t } from "../../i18n/utils";
+import { fetchCatalog } from "../../lib/catalog";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Hero from "../Hero.astro";
+import Pricing from "../Pricing.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+const catalog = await fetchCatalog();
+
+const title = "Dicta — " + d.landing.h1Pre + " " + d.landing.h1Accent;
+const description = d.landing.sub;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Dicta",
+    url: "https://dicta.uz",
+    logo: "https://dicta.uz/apple-touch-icon.png",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Dicta",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web, macOS, Windows",
+    description,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "UZS",
+    },
+  },
+];
+---
+
+<Layout title={title} description={description} locale={locale} path="/" jsonLd={jsonLd}>
+  <Header locale={locale} path="/" />
+  <Hero locale={locale} />
+  {catalog && <Pricing locale={locale} catalog={catalog} />}
+  <Footer locale={locale} />
+</Layout>

@@ -1,0 +1,88 @@
+---
+import { LOCALES, LOCALE_LABEL, LOCALE_COOKIE, type Locale } from "../i18n/ui";
+import { switchLocalePath, t } from "../i18n/utils";
+
+interface Props {
+  locale: Locale;
+  path: string;
+}
+const { locale, path } = Astro.props;
+const dict = t(locale);
+---
+
+<div class="relative" data-lang-switcher>
+  <button
+    type="button"
+    data-lang-trigger
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-label={dict.language}
+    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-surface-2 text-sm text-muted hover:text-foreground transition-colors"
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M2 12h20"></path>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </svg>
+    <span class="uppercase">{locale}</span>
+  </button>
+
+  <div
+    role="menu"
+    data-lang-menu
+    hidden
+    class="absolute right-0 mt-2 w-44 bg-surface border border-border rounded-2xl p-2 shadow-pop z-50"
+  >
+    {
+      LOCALES.map((code) => (
+        <a
+          role="menuitem"
+          href={switchLocalePath(path, code)}
+          data-set-locale={code}
+          class:list={[
+            "w-full text-left px-3 py-2 rounded-lg hover:bg-surface-2 text-sm flex items-center justify-between transition-colors",
+            code === locale ? "text-accent" : "text-foreground-soft",
+          ]}
+        >
+          <span>{LOCALE_LABEL[code]}</span>
+          <span class="uppercase text-xs text-muted">{code}</span>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script define:vars={{ cookie: LOCALE_COOKIE }}>
+  document.querySelectorAll("[data-lang-switcher]").forEach((root) => {
+    const trigger = root.querySelector("[data-lang-trigger]");
+    const menu = root.querySelector("[data-lang-menu]");
+    if (!trigger || !menu) return;
+
+    const close = () => {
+      menu.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+    };
+    const open = () => {
+      menu.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+    };
+
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.hidden ? open() : close();
+    });
+    // Persist the choice on a parent-domain cookie so the app inherits it.
+    menu.querySelectorAll("[data-set-locale]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const code = link.getAttribute("data-set-locale");
+        document.cookie = `${cookie}=${code}; path=/; max-age=31536000; domain=.dicta.uz; samesite=lax`;
+      });
+    });
+    document.addEventListener("click", (e) => {
+      if (!root.contains(e.target)) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  });
+</script>

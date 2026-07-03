@@ -1,0 +1,21 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# cloudflare / wrangler
+.wrangler/
+
+# env / secrets
+.env
+.env.production
+.dev.vars
+
+# local tooling
+.claude/
+.playwright-mcp/
+
+# os
+.DS_Store

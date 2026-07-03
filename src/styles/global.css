@@ -1,0 +1,161 @@
+/* Self-hosted display + UI faces (no external Google Fonts roundtrip).
+ * Urbanist = body/UI; Lora = editorial display serif with Latin + Cyrillic so
+ * Uzbek and Russian headings share one voice. Exposed as the CSS variables the
+ * Tailwind font families resolve to (--font-urbanist / --font-serif). */
+@import "@fontsource-variable/urbanist";
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/500.css";
+@import "@fontsource/lora/600.css";
+@import "@fontsource/lora/700.css";
+@import "@fontsource/lora/400-italic.css";
+@import "@fontsource/lora/cyrillic-400.css";
+@import "@fontsource/lora/cyrillic-500.css";
+@import "@fontsource/lora/cyrillic-600.css";
+@import "@fontsource/lora/cyrillic-700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-urbanist: "Urbanist Variable", "Urbanist";
+  --font-serif: "Lora";
+}
+
+/* Theme tokens — ported from the app (web/app/globals.css). Default = dark;
+ * the `.light` class on <html> overrides. Values are raw colors consumed via
+ * var(--color-*) from tailwind.config.mjs. */
+:root,
+.dark {
+  color-scheme: dark;
+
+  --color-background: #0a0a0f;
+  --color-surface: #15151d;
+  --color-surface-2: #1c1c26;
+  --color-surface-3: #22222e;
+  --color-border: #262633;
+  --color-border-strong: #33334a;
+  --color-foreground: #f4f4f6;
+  --color-foreground-soft: #d4d4d8;
+  --color-muted: #a1a1aa;
+  --color-muted-soft: #71717a;
+
+  --color-accent: #7a6cff;
+  --color-accent-strong: #6a5bff;
+  --color-accent-soft: #3d3a6e;
+  --color-accent-fg: #ffffff;
+  --color-accent-glow: rgba(122, 108, 255, 0.35);
+
+  --color-platform-meet: #00ac47;
+  --color-platform-zoom: #2d8cff;
+  --color-platform-teams: #5b5fc7;
+
+  --color-brand-violet: #b56cff;
+  --color-brand-indigo: #7a6cff;
+  --color-brand-cyan: #34e2e6;
+
+  --color-live: #ef4444;
+  --color-live-fg: #ffffff;
+  --color-danger: #ef4444;
+  --color-danger-strong: #dc2626;
+  --color-danger-fg: #ffffff;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+
+  --selection: rgba(122, 108, 255, 0.35);
+  --selection-fg: #ffffff;
+  --scrollbar-thumb: #262633;
+  --scrollbar-thumb-hover: #33334a;
+}
+
+.light {
+  color-scheme: light;
+
+  --color-background: #fafafb;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f4f6;
+  --color-surface-3: #e4e4e7;
+  --color-border: rgba(0, 0, 0, 0.07);
+  --color-border-strong: rgba(0, 0, 0, 0.14);
+  --color-foreground: #0a0a0f;
+  --color-foreground-soft: #27272a;
+  --color-muted: #52525b;
+  --color-muted-soft: #71717a;
+
+  --color-accent-soft: #e0deff;
+  --color-accent-glow: rgba(122, 108, 255, 0.22);
+
+  --color-platform-meet: #00ac47;
+  --color-platform-zoom: #2d8cff;
+  --color-platform-teams: #5b5fc7;
+
+  --selection: rgba(122, 108, 255, 0.22);
+  --selection-fg: #0a0a0f;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.18);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  font-feature-settings: "calt", "ccmp";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Display = Lora serif; proportional figures read better than tabular here. */
+.font-display {
+  letter-spacing: -0.01em;
+  font-feature-settings: "calt", "liga";
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--selection-fg);
+}
+
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: 2px solid rgba(122, 108, 255, 0.85);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

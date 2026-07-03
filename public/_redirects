@@ -1,0 +1,26 @@
+# App routes live on meet.dicta.uz after the split. These 301s forward old
+# dicta.uz links for WEB browsers. Mobile Universal Links intercept before HTTP
+# (see /.well-known/apple-app-site-association), so app installs open natively.
+#
+# NOTE: root-level share codes (^[a-z]{3}-[a-z]{4}-[a-z]{3}$, e.g. dicta.uz/abc-defg-hij)
+# CANNOT be matched here (no regex in _redirects). Add a Cloudflare Worker on
+# dicta.uz/* for those — see docs/cloudflare-migration.md. Marketing pages
+# (/, /pricing anchor, /privacy, /terms, /download, /ru/*, /en/*, /.well-known/*)
+# are real files and are served without a rule.
+
+/m/*                  https://meet.dicta.uz/m/:splat                  301
+/recap/*              https://meet.dicta.uz/recap/:splat              301
+/join/*               https://meet.dicta.uz/join/:splat               301
+/invite/*             https://meet.dicta.uz/invite/:splat             301
+/dm/*                 https://meet.dicta.uz/dm/:splat                 301
+/room/*               https://meet.dicta.uz/room/:splat               301
+/dashboard/*          https://meet.dicta.uz/dashboard/:splat          301
+/settings/*           https://meet.dicta.uz/settings/:splat           301
+/account/*            https://meet.dicta.uz/account/:splat            301
+/billing/*            https://meet.dicta.uz/billing/:splat            301
+/support/*            https://meet.dicta.uz/support/:splat            301
+/impersonate/*        https://meet.dicta.uz/impersonate/:splat        301
+/desktop-auth/*       https://meet.dicta.uz/desktop-auth/:splat       301
+/connect-telegram/*   https://meet.dicta.uz/connect-telegram/:splat   301
+/sign-in              https://meet.dicta.uz/sign-in                   301
+/sign-up              https://meet.dicta.uz/sign-up                   301

@@ -1,0 +1,113 @@
+---
+import type { Locale } from "../i18n/ui";
+import { t, localePath, appUrl } from "../i18n/utils";
+import NotetakerShowcase from "./NotetakerShowcase.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+
+const features = [
+  { n: "01", title: d.landing.feat1Title, body: d.landing.feat1Body },
+  { n: "02", title: d.landing.feat2Title, body: d.landing.feat2Body },
+  { n: "03", title: d.landing.feat3Title, body: d.landing.feat3Body },
+];
+---
+
+<section class="relative overflow-hidden">
+  <div
+    aria-hidden="true"
+    class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1200px] h-[760px] pointer-events-none opacity-[0.22] dark:opacity-30 blur-[90px] bg-brand-gradient bg-[length:200%_200%] animate-gradient-shimmer"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="absolute -top-24 right-[-10%] w-[520px] h-[520px] rounded-full pointer-events-none bg-accent/10 blur-3xl"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 pointer-events-none opacity-[0.04]"
+    style="background-image: linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(900px 500px at 60% 0%, #000, transparent 75%); mask-image: radial-gradient(900px 500px at 60% 0%, #000, transparent 75%);"
+  ></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 pt-14 pb-20 lg:pt-20 lg:pb-28">
+    <div class="grid lg:grid-cols-[1.35fr_1fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 h-7 pl-2 pr-3 rounded-pill border border-border bg-surface/60 backdrop-blur-sm text-2xs uppercase tracking-[0.18em] text-foreground-soft mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-ping"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+          </span>
+          Dicta · Voice meetings
+        </span>
+
+        <h1 class="font-display text-[2.6rem] sm:text-[3.4rem] lg:text-[4.6rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance">
+          <span class="block">{d.landing.h1Pre}</span>
+          <span class="block text-accent">{d.landing.h1Accent}</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-muted mt-6 max-w-[54ch] leading-relaxed">
+          {d.landing.sub}
+        </p>
+
+        <div class="mt-8 max-w-xl">
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                href={appUrl("/sign-up")}
+                class="group relative inline-flex items-center justify-center h-12 px-7 rounded-pill font-medium text-white overflow-hidden bg-brand-gradient bg-[length:160%_160%] shadow-glow transition-[background-position,transform] duration-500 ease-out-expo hover:bg-[position:100%_50%] active:scale-[0.98]"
+              >
+                {d.landing.signupCta}
+              </a>
+              <a
+                href={appUrl("/sign-in")}
+                class="inline-flex items-center justify-center h-12 bg-surface/70 backdrop-blur-sm text-foreground border border-border-strong rounded-pill px-7 font-medium hover:bg-surface-2 transition-colors duration-150 ease-out-expo"
+              >
+                {d.common.login}
+              </a>
+            </div>
+
+            <a
+              href={localePath("/download", locale)}
+              class="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors duration-150 ease-out-expo w-fit"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              {d.landing.downloadCta}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="space-y-4">
+        <NotetakerShowcase locale={locale} />
+
+        <div class="relative">
+          <div class="absolute -inset-px rounded-panel bg-brand-gradient opacity-30 blur-[1px]" aria-hidden="true"></div>
+          <div class="relative rounded-panel border border-border bg-surface/90 backdrop-blur-sm shadow-pop overflow-hidden">
+            <div class="h-1 bg-brand-gradient" aria-hidden="true"></div>
+            <div class="p-6 sm:p-7 divide-y divide-border/60">
+              {
+                features.map((f) => (
+                  <div class="flex gap-3.5 py-4 first:pt-0 last:pb-0">
+                    <span class="shrink-0 grid place-items-center w-7 h-7 rounded-lg bg-accent-soft text-accent text-xs font-semibold tabular-nums">
+                      {f.n}
+                    </span>
+                    <div>
+                      <h3 class="text-[15px] font-semibold text-foreground leading-snug">{f.title}</h3>
+                      <p class="text-sm text-muted leading-relaxed mt-1">{f.body}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

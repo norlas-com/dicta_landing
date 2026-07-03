@@ -1,0 +1,60 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { t } from "../../i18n/utils";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const L = t(locale).legal;
+const p = L.privacy;
+const email = "support@dicta.uz";
+const prose =
+  "max-w-3xl w-full mx-auto px-6 py-16 space-y-6 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h2]:mt-8 [&_h2]:mb-2 [&_p]:text-muted [&_p]:leading-relaxed [&_a]:text-accent [&_a]:hover:text-accent-strong [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-muted [&_ul]:space-y-1.5 [&_li]:leading-relaxed [&_strong]:text-foreground";
+---
+
+<Layout
+  title={`${L.privacyTitle} — Dicta`}
+  description={p.intro}
+  locale={locale}
+  path="/privacy"
+  noindex={false}
+>
+  <Header locale={locale} path="/privacy" />
+  <article class={prose}>
+    <h1 class="font-display text-4xl font-semibold text-foreground">{L.privacyTitle}</h1>
+    <p class="!text-sm">{L.privacyUpdated}</p>
+
+    <p>{p.intro}</p>
+
+    <h2>{p.dataCollect.title}</h2>
+    <ul>
+      <li><strong>{p.dataCollect.accountInfo.label}</strong> {p.dataCollect.accountInfo.text}</li>
+      <li><strong>{p.dataCollect.meetings.label}</strong> {p.dataCollect.meetings.text}</li>
+      <li><strong>{p.dataCollect.transcripts.label}</strong> {p.dataCollect.transcripts.text}</li>
+      <li><strong>{p.dataCollect.recordings.label}</strong> {p.dataCollect.recordings.text}</li>
+      <li><strong>{p.dataCollect.logs.label}</strong> {p.dataCollect.logs.text}</li>
+    </ul>
+
+    <h2>{p.howWeUse.title}</h2>
+    <p>{p.howWeUse.body}</p>
+
+    <h2>{p.thirdParties.title}</h2>
+    <ul>
+      <li>{p.thirdParties.googleSignIn}</li>
+      <li>{p.thirdParties.gemini}</li>
+      <li>{p.thirdParties.r2}</li>
+      <li>{p.thirdParties.livekit}</li>
+    </ul>
+
+    <h2>{p.yourRights.title}</h2>
+    <p>{p.yourRights.bodyBefore}<a href={`mailto:${email}`}>{email}</a>{p.yourRights.bodyAfter}</p>
+
+    <h2>{p.contact.title}</h2>
+    <p>{p.contact.bodyBefore}<a href={`mailto:${email}`}>{email}</a>{p.contact.bodyAfter}</p>
+  </article>
+  <Footer locale={locale} />
+</Layout>

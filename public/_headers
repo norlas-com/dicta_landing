@@ -1,0 +1,15 @@
+# Cloudflare Pages headers.
+
+# AASA must be served as application/json (extensionless file defaults to
+# octet-stream otherwise, which breaks iOS Universal Links).
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+
+/.well-known/assetlinks.json
+  Content-Type: application/json
+
+# Baseline security headers for the marketing site.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN

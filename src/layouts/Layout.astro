@@ -1,0 +1,122 @@
+---
+import "../styles/global.css";
+import { LOCALES, type Locale } from "../i18n/ui";
+import { localePath, switchLocalePath } from "../i18n/utils";
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  /** Bare route (no locale prefix), e.g. "/" or "/download". */
+  path: string;
+  ogImage?: string;
+  /** Extra JSON-LD objects to embed in <head>. */
+  jsonLd?: Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  locale,
+  path,
+  ogImage = "/og/meeting.png",
+  jsonLd = [],
+  noindex = false,
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://dicta.uz");
+const canonical = new URL(localePath(path, locale), site).toString();
+const ogImageAbs = new URL(ogImage, site).toString();
+const htmlLangMap: Record<Locale, string> = {
+  uz: "uz-UZ",
+  ru: "ru-RU",
+  en: "en-US",
+};
+---
+
+<!doctype html>
+<html lang={htmlLangMap[locale]} class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Apply the stored theme before first paint (no flash). -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("dicta-theme");
+          var choice =
+            stored === "light" || stored === "dark"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          var root = document.documentElement;
+          root.classList.toggle("light", choice === "light");
+          root.classList.toggle("dark", choice === "dark");
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- hreflang alternates -->
+    {
+      LOCALES.map((l) => (
+        <link
+          rel="alternate"
+          hreflang={htmlLangMap[l]}
+          href={new URL(switchLocalePath(path, l), site).toString()}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(switchLocalePath(path, "uz"), site).toString()}
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dicta" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:locale" content={htmlLangMap[locale].replace("-", "_")} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <!-- Icons + PWA -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0A0A0F" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FAFAFB" media="(prefers-color-scheme: light)" />
+
+    {
+      jsonLd.map((obj) => (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(obj)}
+        />
+      ))
+    }
+  </head>
+  <body class="font-sans">
+    <main class="min-h-screen bg-background text-foreground flex flex-col">
+      <slot />
+    </main>
+  </body>
+</html>
