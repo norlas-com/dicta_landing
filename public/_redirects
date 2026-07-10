@@ -20,6 +20,10 @@
 /billing/*            https://meet.dicta.uz/billing/:splat            301
 /support/*            https://meet.dicta.uz/support/:splat            301
 /impersonate/*        https://meet.dicta.uz/impersonate/:splat        301
+# Exact (no trailing slash) — the desktop app opens /desktop-auth?state=..&challenge=..
+# which the /desktop-auth/* glob does NOT match, so it must be listed explicitly
+# (same as /sign-in below). Without this the app's auth bounce hits the marketing SPA.
+/desktop-auth         https://meet.dicta.uz/desktop-auth              301
 /desktop-auth/*       https://meet.dicta.uz/desktop-auth/:splat       301
 /connect-telegram/*   https://meet.dicta.uz/connect-telegram/:splat   301
 /sign-in              https://meet.dicta.uz/sign-in                   301
