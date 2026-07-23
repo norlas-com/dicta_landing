@@ -67,6 +67,9 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
             href={localePath("/download", locale)}
             data-download-label
             data-win-label={d.nav.downloadWin}
+            data-analytics-event="download_app_clicked"
+            data-analytics-os="na"
+            data-analytics-arch="na"
             class="inline-flex items-center gap-2 h-12 px-7 rounded-pill bg-accent text-accent-fg font-medium hover:bg-accent-strong transition-colors duration-150 ease-out-expo"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -131,6 +134,7 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
 </div>
 
 <script>
+  import { track } from "../lib/analytics";
   const story = document.querySelector("[data-feature-story]");
   if (story) {
     const screens = [...story.querySelectorAll("[data-screen]")];
@@ -139,9 +143,18 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
     const arrowsBox = story.querySelector("[data-feature-arrows]");
     const arrows = arrowsBox ? [...arrowsBox.querySelectorAll<HTMLButtonElement>("[data-arrow]")] : [];
     let active = 0;
+    // Fire feature_section_viewed once per section per page-load.
+    const seen = new Set<number>();
 
     const setActive = (i: number) => {
       active = i;
+      if (!seen.has(i)) {
+        seen.add(i);
+        track("feature_section_viewed", {
+          index: i,
+          title: dots[i]?.getAttribute("aria-label") ?? "",
+        });
+      }
       screens.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
       dots.forEach((dot, idx) => {
         const on = idx === i;
@@ -172,12 +185,16 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
     screens.forEach((s) => io.observe(s));
 
     dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => screens[i]?.scrollIntoView({ block: "start" }));
+      dot.addEventListener("click", () => {
+        track("feature_nav_clicked", { index: i });
+        screens[i]?.scrollIntoView({ block: "start" });
+      });
     });
 
     arrows.forEach((btn) => {
       btn.addEventListener("click", () => {
         const dir = Number(btn.dataset.arrow);
+        track("feature_nav_clicked", { direction: dir === 1 ? "next" : "prev" });
         if (active === 0 && dir === -1) {
           window.scrollTo({ top: 0 });
           return;

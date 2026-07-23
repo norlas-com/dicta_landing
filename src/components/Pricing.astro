@@ -162,6 +162,8 @@ const packsUSD = packsLineFor("USD");
                 <div class="mt-6 pt-2 flex-1 flex items-end">
                   <a
                     href={appUrl("/sign-up")}
+                    data-analytics-event="pricing_plan_selected"
+                    data-analytics-plan={plan.id}
                     class:list={[
                       "w-full inline-flex items-center justify-center h-11 rounded-pill font-medium transition-[background-position,background-color,transform] duration-300 ease-out-expo active:scale-[0.98]",
                       plan.popular
@@ -193,6 +195,7 @@ const packsUSD = packsLineFor("USD");
 </section>
 
 <script>
+  import { track } from "../lib/analytics";
   document.querySelectorAll("[data-pricing]").forEach((section) => {
     const btns = section.querySelectorAll("[data-cur-btn]");
     const apply = (cur: string) => {
@@ -219,7 +222,11 @@ const packsUSD = packsLineFor("USD");
       });
     };
     btns.forEach((b) =>
-      b.addEventListener("click", () => apply(b.getAttribute("data-cur-btn") ?? "UZS")),
+      b.addEventListener("click", () => {
+        const cur = b.getAttribute("data-cur-btn") ?? "UZS";
+        apply(cur);
+        track("pricing_currency_toggled", { currency: cur.toLowerCase() });
+      }),
     );
   });
 </script>

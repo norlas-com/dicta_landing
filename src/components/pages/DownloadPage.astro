@@ -27,7 +27,7 @@ const rel = await fetchDesktopRelease();
       </h1>
       <p class="text-base sm:text-lg text-muted mt-5 max-w-[52ch] mx-auto leading-relaxed">{dl.sub}</p>
 
-      <div class="mt-12 grid gap-5 sm:grid-cols-2 text-left" data-download data-arm={rel.arm64Url} data-intel={rel.intelUrl}>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 text-left" data-download data-arm={rel.arm64Url} data-intel={rel.intelUrl} data-win={rel.winUrl}>
         <!-- macOS -->
         <div data-os-card="mac" class="rounded-panel border border-border bg-surface/70 backdrop-blur-sm p-6 transition-shadow">
           <div class="flex items-center gap-3">
@@ -43,13 +43,16 @@ const rel = await fetchDesktopRelease();
           <a
             data-mac-primary
             href={rel.arm64Url}
+            data-analytics-event="download_app_clicked"
+            data-analytics-os="macos"
+            data-analytics-arch="arm"
             class="mt-5 w-full inline-flex items-center justify-center gap-2 h-11 rounded-pill font-medium text-white bg-brand-gradient bg-[length:160%_160%] shadow-glow hover:bg-[position:100%_50%] transition-[background-position] duration-300 ease-out-expo"
           >
             {dl.mac} · <span data-mac-arch>{dl.appleSilicon}</span>
           </a>
           <div class="mt-3 flex items-center justify-between text-xs">
-            <a href={rel.arm64Url} data-mac-alt-arm class="text-muted hover:text-foreground transition-colors">{dl.appleSilicon}</a>
-            <a href={rel.intelUrl} data-mac-alt-intel class="text-muted hover:text-foreground transition-colors">{dl.intel}</a>
+            <a href={rel.arm64Url} data-mac-alt-arm data-analytics-event="download_app_clicked" data-analytics-os="macos" data-analytics-arch="arm" class="text-muted hover:text-foreground transition-colors">{dl.appleSilicon}</a>
+            <a href={rel.intelUrl} data-mac-alt-intel data-analytics-event="download_app_clicked" data-analytics-os="macos" data-analytics-arch="intel" class="text-muted hover:text-foreground transition-colors">{dl.intel}</a>
           </div>
         </div>
 
@@ -66,7 +69,11 @@ const rel = await fetchDesktopRelease();
           </div>
 
           <a
+            data-win-primary
             href={rel.winUrl}
+            data-analytics-event="download_app_clicked"
+            data-analytics-os="windows"
+            data-analytics-arch="na"
             class="mt-5 w-full inline-flex items-center justify-center gap-2 h-11 rounded-pill font-medium text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3 transition-colors"
           >
             {dl.windows}
@@ -83,7 +90,7 @@ const rel = await fetchDesktopRelease();
   <Footer locale={locale} />
 </Layout>
 
-<script define:vars={{ intelHint: dl.intelHint, macHint: dl.macHint, intelLabel: dl.intel, armLabel: dl.appleSilicon }}>
+<script define:vars={{ intelHint: dl.intelHint, macHint: dl.macHint, intelLabel: dl.intel, armLabel: dl.appleSilicon, apiLatest: "https://api.dicta.uz/v1/desktop/latest" }}>
   document.querySelectorAll("[data-download]").forEach((root) => {
     const ua = navigator.userAgent;
     const isWin = /Win(dows|32|64|CE)/i.test(ua);
@@ -109,14 +116,44 @@ const rel = await fetchDesktopRelease();
       return null;
     }
 
-    if (!isWin && macArch() === "intel") {
+    // Point every download control at the given release URLs, then pick the
+    // right default macOS arch. Runs first with the build-time (baked) URLs,
+    // then again if the live API returns fresher ones — so the page always
+    // links the newest release without a rebuild, and still works if the API
+    // is unreachable (the baked URLs stay in place).
+    function apply(arm, intel, win) {
+      if (arm) root.setAttribute("data-arm", arm);
+      if (intel) root.setAttribute("data-intel", intel);
+      if (win) root.setAttribute("data-win", win);
+      const armUrl = root.getAttribute("data-arm");
+      const intelUrl = root.getAttribute("data-intel");
+      const winUrl = root.getAttribute("data-win");
       const primary = root.querySelector("[data-mac-primary]");
+      const altArm = root.querySelector("[data-mac-alt-arm]");
+      const altIntel = root.querySelector("[data-mac-alt-intel]");
+      const winPrimary = root.querySelector("[data-win-primary]");
       const archSpan = root.querySelector("[data-mac-arch]");
       const hint = root.querySelector("[data-mac-hint]");
-      const intelUrl = root.getAttribute("data-intel");
-      if (primary && intelUrl) primary.setAttribute("href", intelUrl);
-      if (archSpan) archSpan.textContent = intelLabel;
-      if (hint) hint.textContent = intelHint;
+      if (altArm && armUrl) altArm.setAttribute("href", armUrl);
+      if (altIntel && intelUrl) altIntel.setAttribute("href", intelUrl);
+      if (winPrimary && winUrl) winPrimary.setAttribute("href", winUrl);
+      const intelMac = !isWin && macArch() === "intel";
+      const macUrl = intelMac ? intelUrl : armUrl;
+      if (primary && macUrl) primary.setAttribute("href", macUrl);
+      // Keep the analytics arch param in sync with the detected default arch,
+      // so download_app_clicked reports the real target for the primary button.
+      if (primary) primary.setAttribute("data-analytics-arch", intelMac ? "intel" : "arm");
+      if (archSpan) archSpan.textContent = intelMac ? intelLabel : armLabel;
+      if (hint) hint.textContent = intelMac ? intelHint : macHint;
     }
+
+    // Baked URLs already on the elements are the fallback.
+    apply(root.getAttribute("data-arm"), root.getAttribute("data-intel"), root.getAttribute("data-win"));
+
+    // Upgrade to the true latest from the public backend endpoint.
+    fetch(apiLatest, { headers: { accept: "application/json" } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (d) apply(d.mac_arm64_url, d.mac_intel_url, d.win_url); })
+      .catch(() => {});
   });
 </script>

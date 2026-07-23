@@ -54,12 +54,16 @@ const d = t(locale);
             <div class="flex flex-col sm:flex-row gap-3">
               <a
                 href={appUrl("/sign-up")}
+                data-analytics-event="signup_start_click"
+                data-analytics-location="hero"
                 class="group relative inline-flex items-center justify-center h-12 px-7 rounded-pill font-medium text-white overflow-hidden bg-brand-gradient bg-[length:160%_160%] shadow-glow transition-[background-position,transform] duration-500 ease-out-expo hover:bg-[position:100%_50%] active:scale-[0.98]"
               >
                 {d.landing.signupCta}
               </a>
               <a
                 href={appUrl("/sign-in")}
+                data-analytics-event="login_click"
+                data-analytics-location="hero"
                 class="inline-flex items-center justify-center h-12 bg-surface/70 backdrop-blur-sm text-foreground border border-border-strong rounded-pill px-7 font-medium hover:bg-surface-2 transition-colors duration-150 ease-out-expo"
               >
                 {d.common.login}

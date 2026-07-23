@@ -33,6 +33,12 @@ const htmlLangMap: Record<Locale, string> = {
   ru: "ru-RU",
   en: "en-US",
 };
+
+// GA4 "Landing" data stream (property dicta-4e39f / 535205407). The measurement
+// id is public (visible in page source), so it's committed as a fallback so the
+// Cloudflare Pages build always has it; a PUBLIC_GA_MEASUREMENT_ID env var (Pages
+// settings) overrides it if ever needed. Build-time inlined; skipped on noindex.
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
 ---
 
 <!doctype html>
@@ -68,6 +74,39 @@ const htmlLangMap: Record<Locale, string> = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    {/* GA4 (gtag.js). Consent Mode v2 defaults granted now so a later cookie
+        banner just flips consent. Cross-domain linker stitches the
+        dicta.uz → meet.dicta.uz handoff. MPA → automatic page_view per load. */}
+    {
+      gaId && !noindex && (
+        <Fragment>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+          <script is:inline define:vars={{ gaId, contentLanguage: htmlLangMap[locale] }}>
+            window.dataLayer = window.dataLayer || [];
+            // Assigned to window (not a bare `function`) because Astro's
+            // define:vars wraps this script in an IIFE — a local function would
+            // not be reachable from the helper/delegated listener.
+            window.gtag = function () {
+              window.dataLayer.push(arguments);
+            };
+            gtag("js", new Date());
+            gtag("consent", "default", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "granted",
+            });
+            gtag("config", gaId, {
+              anonymize_ip: true,
+              allow_google_signals: false,
+              content_language: contentLanguage,
+              linker: { domains: ["dicta.uz", "meet.dicta.uz"] },
+            });
+          </script>
+        </Fragment>
+      )
+    }
 
     <!-- hreflang alternates -->
     {
@@ -138,6 +177,38 @@ const htmlLangMap: Record<Locale, string> = {
         );
         revealables.forEach((el) => io.observe(el));
       }
+    </script>
+
+    <script>
+      // Delegated GA4 click tracking: any element (or ancestor) tagged with
+      // data-analytics-event fires that event; extra data-analytics-<key>
+      // attributes become event params (kebab → snake_case). Lets CTAs stay
+      // plain <a>/<button> with declarative tracking, no per-component wiring.
+      import { track } from "../lib/analytics";
+      document.addEventListener(
+        "click",
+        (e) => {
+          const target = e.target as HTMLElement | null;
+          const el = target?.closest<HTMLElement>("[data-analytics-event]");
+          if (!el) return;
+          const event = el.dataset.analyticsEvent;
+          if (!event) return;
+          const params: Record<string, string> = {};
+          for (const attr of Array.from(el.attributes)) {
+            if (
+              attr.name.startsWith("data-analytics-") &&
+              attr.name !== "data-analytics-event"
+            ) {
+              const key = attr.name
+                .slice("data-analytics-".length)
+                .replace(/-/g, "_");
+              params[key] = attr.value;
+            }
+          }
+          track(event, params);
+        },
+        { capture: true },
+      );
     </script>
   </body>
 </html>

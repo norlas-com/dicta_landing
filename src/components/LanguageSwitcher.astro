@@ -39,6 +39,8 @@ const dict = t(locale);
           role="menuitem"
           href={switchLocalePath(path, code)}
           data-set-locale={code}
+          data-analytics-event="language_changed"
+          data-analytics-lang={code}
           class:list={[
             "w-full text-left px-3 py-2 rounded-lg hover:bg-surface-2 text-sm flex items-center justify-between transition-colors",
             code === locale ? "text-accent" : "text-foreground-soft",
