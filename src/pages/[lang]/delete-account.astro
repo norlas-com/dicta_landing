@@ -1,0 +1,14 @@
+---
+import type { GetStaticPaths } from "astro";
+import DeleteAccountPage from "../../components/pages/DeleteAccountPage.astro";
+import type { Locale } from "../../i18n/ui";
+
+export const getStaticPaths = (() => [
+  { params: { lang: "ru" } },
+  { params: { lang: "en" } },
+]) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+---
+
+<DeleteAccountPage locale={lang as Locale} />

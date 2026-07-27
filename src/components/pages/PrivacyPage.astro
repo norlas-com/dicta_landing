@@ -1,6 +1,6 @@
 ---
 import type { Locale } from "../../i18n/ui";
-import { t } from "../../i18n/utils";
+import { t, localePath } from "../../i18n/utils";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
@@ -52,6 +52,9 @@ const prose =
 
     <h2>{p.yourRights.title}</h2>
     <p>{p.yourRights.bodyBefore}<a href={`mailto:${email}`}>{email}</a>{p.yourRights.bodyAfter}</p>
+    <p>
+      {p.yourRights.selfServeBefore}<a href={localePath("/delete-account", locale)}>{p.yourRights.selfServeLink}</a>{p.yourRights.selfServeAfter}
+    </p>
 
     <h2>{p.contact.title}</h2>
     <p>{p.contact.bodyBefore}<a href={`mailto:${email}`}>{email}</a>{p.contact.bodyAfter}</p>

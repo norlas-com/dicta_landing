@@ -18,6 +18,7 @@ const en = {
   nav: {
     privacy: "Privacy",
     terms: "Terms",
+    deleteAccount: "Delete account",
     download: "Download for Mac",
     downloadWin: "Download for Windows",
   },
@@ -149,6 +150,8 @@ const en = {
     privacyUpdated: "Last updated: May 1, 2026",
     termsTitle: "Terms of Service",
     termsUpdated: "Last updated: May 1, 2026",
+    deleteAccountTitle: "How to delete your Dicta account",
+    deleteAccountUpdated: "Last updated: July 27, 2026",
     privacy: {
       intro:
         'Dicta ("we", "our") operates the meeting service at dicta.uz. This page explains what we collect and why.',
@@ -190,11 +193,84 @@ const en = {
         title: "Your rights",
         bodyBefore: "You can delete your account at any time by emailing ",
         bodyAfter: ". We will remove your account, transcripts, and recordings within 30 days.",
+        selfServeBefore:
+          "You can also do it yourself, from inside the app, without contacting us — see ",
+        selfServeLink: "how to delete your Dicta account",
+        selfServeAfter: ".",
       },
       contact: {
         title: "Contact",
         bodyBefore: "Questions or requests: ",
         bodyAfter: ".",
+      },
+    },
+    deleteAccount: {
+      intro:
+        "You can delete your Dicta account yourself, from inside the app — you don't need to email us or ask permission. This page explains where the button is, what happens after you press it, and exactly what gets deleted.",
+      where: {
+        title: "Where to find the button",
+        ios: {
+          label: "iPhone and iPad.",
+          text: "Open the Dicta app, go to Settings, and scroll to the bottom — “Delete account”.",
+        },
+        android: {
+          label: "Android.",
+          text: "Open the Dicta app, go to Settings, and scroll to the bottom — “Delete account”.",
+        },
+        web: {
+          label: "Web.",
+          text: "Sign in at meet.dicta.uz, open Settings, and scroll to the bottom — “Delete account”.",
+        },
+      },
+      confirm: {
+        title: "What you'll be asked to confirm",
+        typeDelete:
+          "Type the word DELETE, in capitals, to confirm you meant to press the button.",
+        reauth:
+          "Prove it's you. If your account has a password, you'll enter it. If you only ever signed in with Google or Apple, we email you a one-time code instead.",
+        blockers:
+          "If you own a workspace that still has other members in it, you'll be asked to hand ownership to someone else first, so their meetings don't disappear along with your account. The app walks you through it.",
+      },
+      immediate: {
+        title: "What happens right away",
+        body: "Your account is locked the moment you confirm. You're signed out on every device and Dicta stops working for you — no meetings, no recordings, no transcripts. Nothing is erased yet.",
+      },
+      grace: {
+        title: "The 30-day grace period",
+        body: "We wait 30 days before erasing anything. That delay is deliberate: it protects you from a mis-tap, a decision made in frustration, or someone else getting into your account.",
+        restore:
+          "To cancel the deletion, just sign in again during those 30 days and press Restore. Everything comes back exactly as it was. After 30 days the deletion is final and cannot be reversed.",
+      },
+      deleted: {
+        title: "What is permanently deleted after 30 days",
+        meetings:
+          "Every meeting you hosted, along with its participant list, chat and notes.",
+        recordings:
+          "Every video and audio recording of those meetings, erased from our storage.",
+        transcripts: "Every transcript produced from those meetings.",
+        summaries:
+          "Every AI summary, decision list and action item generated from them.",
+        voices:
+          "Your voice profiles — the voiceprints used to recognize you as a speaker, including voice samples stored inside other people's meetings.",
+        workspaces:
+          "Any workspace you own, together with its settings and its content.",
+        account:
+          "The account itself: your email address, name and profile photo. We do not keep a hidden copy.",
+      },
+      anonymized: {
+        title: "What is anonymized instead of deleted",
+        body: "Meetings hosted by other people are their records, not yours — we can't delete someone else's meeting because you left. So instead of deleting those, we take you out of them: your name, email and photo are replaced with “Deleted user” everywhere you appear — in participant lists, in chat messages, in invitations.",
+        note: "One honest caveat: an AI summary is written prose, and it may mention your name in a sentence. Rewriting it would corrupt the host's record of their own meeting, so we leave those texts alone.",
+      },
+      payments: {
+        title: "Payment records",
+        body: "If you ever paid for Dicta, accounting and tax law require us to keep a record of the transaction. We keep only the amount, date, currency and plan, detached from your identity — your name, email and card details are not part of it. The record can no longer be traced back to you.",
+      },
+      contact: {
+        title: "Need help?",
+        bodyBefore:
+          "If you can't reach the button, or something goes wrong, write to ",
+        bodyAfter: " and we'll delete the account for you.",
       },
     },
     terms: {
@@ -233,6 +309,7 @@ const ru: typeof en = {
   nav: {
     privacy: "Конфиденциальность",
     terms: "Условия",
+    deleteAccount: "Удаление аккаунта",
     download: "Скачать для Mac",
     downloadWin: "Скачать для Windows",
   },
@@ -364,6 +441,8 @@ const ru: typeof en = {
     privacyUpdated: "Последнее обновление: 1 мая 2026 г.",
     termsTitle: "Условия использования",
     termsUpdated: "Последнее обновление: 1 мая 2026 г.",
+    deleteAccountTitle: "Как удалить аккаунт Dicta",
+    deleteAccountUpdated: "Последнее обновление: 27 июля 2026 г.",
     privacy: {
       intro:
         "Dicta («мы», «наш») управляет сервисом видеовстреч на dicta.uz. На этой странице описано, какие данные мы собираем и для чего.",
@@ -405,11 +484,84 @@ const ru: typeof en = {
         title: "Ваши права",
         bodyBefore: "Вы можете удалить свой аккаунт в любое время, написав на ",
         bodyAfter: ". Мы удалим ваш аккаунт, транскрипты и записи в течение 30 дней.",
+        selfServeBefore:
+          "Это также можно сделать самостоятельно, прямо в приложении, не обращаясь к нам — см. ",
+        selfServeLink: "как удалить аккаунт Dicta",
+        selfServeAfter: ".",
       },
       contact: {
         title: "Контакты",
         bodyBefore: "Вопросы и обращения: ",
         bodyAfter: ".",
+      },
+    },
+    deleteAccount: {
+      intro:
+        "Вы можете удалить аккаунт Dicta самостоятельно, прямо в приложении — писать нам или спрашивать разрешения не нужно. На этой странице описано, где находится кнопка, что произойдёт после нажатия и что именно будет удалено.",
+      where: {
+        title: "Где находится кнопка",
+        ios: {
+          label: "iPhone и iPad.",
+          text: "Откройте приложение Dicta, перейдите в «Настройки» и пролистайте вниз — «Удалить аккаунт».",
+        },
+        android: {
+          label: "Android.",
+          text: "Откройте приложение Dicta, перейдите в «Настройки» и пролистайте вниз — «Удалить аккаунт».",
+        },
+        web: {
+          label: "Веб-версия.",
+          text: "Войдите на meet.dicta.uz, откройте «Настройки» и пролистайте вниз — «Удалить аккаунт».",
+        },
+      },
+      confirm: {
+        title: "Что нужно будет подтвердить",
+        typeDelete:
+          "Введите слово DELETE заглавными буквами — чтобы подтвердить, что кнопка нажата не случайно.",
+        reauth:
+          "Подтвердите, что это вы. Если у аккаунта есть пароль, введите его. Если вы входили только через Google или Apple, мы отправим одноразовый код на вашу почту.",
+        blockers:
+          "Если вы владеете рабочим пространством, в котором остались другие участники, сначала потребуется передать владение другому человеку, чтобы его встречи не исчезли вместе с вашим аккаунтом. Приложение проведёт вас по этим шагам.",
+      },
+      immediate: {
+        title: "Что произойдёт сразу",
+        body: "Аккаунт блокируется в момент подтверждения. Вы выходите из системы на всех устройствах, и Dicta перестаёт для вас работать — ни встреч, ни записей, ни расшифровок. Но пока ничего не удалено.",
+      },
+      grace: {
+        title: "30 дней на отмену",
+        body: "Прежде чем что-либо удалить, мы ждём 30 дней. Эта задержка сделана намеренно: она защищает вас от случайного нажатия, решения на эмоциях или чужого доступа к вашему аккаунту.",
+        restore:
+          "Чтобы отменить удаление, просто войдите снова в течение этих 30 дней и нажмите «Восстановить». Всё вернётся ровно в том виде, в каком было. По истечении 30 дней удаление становится окончательным и необратимым.",
+      },
+      deleted: {
+        title: "Что удаляется навсегда через 30 дней",
+        meetings:
+          "Все встречи, которые вы проводили, вместе со списком участников, чатом и заметками.",
+        recordings:
+          "Все видео- и аудиозаписи этих встреч — они стираются из нашего хранилища.",
+        transcripts: "Все расшифровки этих встреч.",
+        summaries:
+          "Все AI-резюме, списки решений и задачи, созданные на их основе.",
+        voices:
+          "Ваши голосовые профили — слепки голоса, по которым вас узнавали как говорящего, включая образцы голоса, сохранённые во встречах других людей.",
+        workspaces:
+          "Любое рабочее пространство, которым вы владеете, вместе с его настройками и содержимым.",
+        account:
+          "Сам аккаунт: адрес электронной почты, имя и фотография профиля. Скрытой копии мы не храним.",
+      },
+      anonymized: {
+        title: "Что обезличивается вместо удаления",
+        body: "Встречи, которые проводили другие люди, принадлежат им, а не вам — мы не можем удалить чужую встречу из-за того, что вы уходите. Поэтому такие встречи мы не удаляем, а убираем из них вас: имя, почта и фотография заменяются на «Deleted user» везде, где вы упоминались — в списках участников, в сообщениях чата, в приглашениях.",
+        note: "Одна честная оговорка: AI-резюме — это связный текст, и в нём может встретиться ваше имя. Переписать его означало бы испортить запись чужой встречи, поэтому такие тексты мы не трогаем.",
+      },
+      payments: {
+        title: "Платёжные записи",
+        body: "Если вы когда-либо оплачивали Dicta, законодательство о бухгалтерском и налоговом учёте обязывает нас хранить запись о платеже. Мы оставляем только сумму, дату, валюту и тариф, отделённые от вашей личности — без имени, почты и данных карты. Связать такую запись с вами уже невозможно.",
+      },
+      contact: {
+        title: "Нужна помощь?",
+        bodyBefore:
+          "Если кнопка недоступна или что-то пошло не так, напишите на ",
+        bodyAfter: " — мы удалим аккаунт за вас.",
       },
     },
     terms: {
@@ -448,6 +600,7 @@ const uz: typeof en = {
   nav: {
     privacy: "Maxfiylik",
     terms: "Foydalanish shartlari",
+    deleteAccount: "Hisobni oʻchirish",
     download: "Mac uchun yuklab olish",
     downloadWin: "Windows uchun yuklab olish",
   },
@@ -579,6 +732,8 @@ const uz: typeof en = {
     privacyUpdated: "Oxirgi yangilangan: 2026-yil 1-may",
     termsTitle: "Foydalanish shartlari",
     termsUpdated: "Oxirgi yangilangan: 2026-yil 1-may",
+    deleteAccountTitle: "Dicta hisobini qanday oʻchirish mumkin",
+    deleteAccountUpdated: "Oxirgi yangilangan: 2026-yil 27-iyul",
     privacy: {
       intro:
         "«Dicta» («biz», «bizning») dicta.uz manzilidagi videouchrashuvlar xizmatini boshqaradi. Ushbu sahifada qanday maʼlumotlarni va nima uchun toʻplashimiz tushuntirilgan.",
@@ -620,11 +775,84 @@ const uz: typeof en = {
         title: "Sizning huquqlaringiz",
         bodyBefore: "Hisobingizni istalgan paytda quyidagi manzilga xat yozib oʻchirishingiz mumkin: ",
         bodyAfter: ". Biz hisobingizni, transkriptlaringizni va yozuvlaringizni 30 kun ichida oʻchirib tashlaymiz.",
+        selfServeBefore:
+          "Buni bizga murojaat qilmasdan, ilovaning oʻzida mustaqil ham bajarishingiz mumkin — qarang: ",
+        selfServeLink: "Dicta hisobini qanday oʻchirish mumkin",
+        selfServeAfter: ".",
       },
       contact: {
         title: "Aloqa",
         bodyBefore: "Savollar va murojaatlar: ",
         bodyAfter: ".",
+      },
+    },
+    deleteAccount: {
+      intro:
+        "Dicta hisobingizni ilovaning oʻzida mustaqil oʻchirishingiz mumkin — bizga xat yozish yoki ruxsat soʻrash shart emas. Ushbu sahifada tugma qayerdaligi, uni bosgandan keyin nima boʻlishi va aynan nimalar oʻchirilishi tushuntirilgan.",
+      where: {
+        title: "Tugma qayerda",
+        ios: {
+          label: "iPhone va iPad.",
+          text: "Dicta ilovasini oching, «Sozlamalar»ga oʻting va pastga suring — «Hisobni oʻchirish».",
+        },
+        android: {
+          label: "Android.",
+          text: "Dicta ilovasini oching, «Sozlamalar»ga oʻting va pastga suring — «Hisobni oʻchirish».",
+        },
+        web: {
+          label: "Veb-versiya.",
+          text: "meet.dicta.uz saytiga kiring, «Sozlamalar»ni oching va pastga suring — «Hisobni oʻchirish».",
+        },
+      },
+      confirm: {
+        title: "Nimani tasdiqlashingiz kerak",
+        typeDelete:
+          "Tasdiqlash uchun DELETE soʻzini katta harflarda yozing — tugma tasodifan bosilmaganiga ishonch hosil qilamiz.",
+        reauth:
+          "Bu haqiqatan siz ekaningizni tasdiqlang. Hisobingizda parol boʻlsa, uni kiritasiz. Agar faqat Google yoki Apple orqali kirgan boʻlsangiz, pochtangizga bir martalik kod yuboramiz.",
+        blockers:
+          "Agar siz egasi boʻlgan ish maydonida boshqa aʼzolar qolgan boʻlsa, avval egalikni boshqa odamga topshirishingiz soʻraladi — shunda ularning uchrashuvlari sizning hisobingiz bilan birga yoʻqolmaydi. Ilova bu bosqichlarni koʻrsatib boradi.",
+      },
+      immediate: {
+        title: "Darhol nima boʻladi",
+        body: "Tasdiqlagan zahotingiz hisobingiz qulflanadi. Barcha qurilmalardan tizimdan chiqarilasiz va Dicta siz uchun ishlashdan toʻxtaydi — uchrashuvlar ham, yozuvlar ham, transkriptlar ham. Ammo hali hech narsa oʻchirilmaydi.",
+      },
+      grace: {
+        title: "Bekor qilish uchun 30 kun",
+        body: "Biror narsani oʻchirishdan oldin 30 kun kutamiz. Bu kechikish ataylab qoʻyilgan: u sizni tasodifiy bosishdan, jahl ustida qabul qilingan qarordan yoki hisobingizga begona kirishidan himoya qiladi.",
+        restore:
+          "Oʻchirishni bekor qilish uchun shu 30 kun ichida qaytadan tizimga kiring va «Tiklash» tugmasini bosing. Hammasi qanday boʻlsa, shundayligicha qaytadi. 30 kun oʻtgach, oʻchirish yakuniy boʻladi va uni ortga qaytarib boʻlmaydi.",
+      },
+      deleted: {
+        title: "30 kundan keyin butunlay oʻchiriladigan maʼlumotlar",
+        meetings:
+          "Siz oʻtkazgan barcha uchrashuvlar — ishtirokchilar roʻyxati, chat va eslatmalari bilan birga.",
+        recordings:
+          "Oʻsha uchrashuvlarning barcha video va audio yozuvlari — xotiramizdan butunlay oʻchiriladi.",
+        transcripts: "Oʻsha uchrashuvlardan olingan barcha transkriptlar.",
+        summaries:
+          "Ular asosida yaratilgan barcha AI xulosalar, qarorlar roʻyxati va vazifalar.",
+        voices:
+          "Ovoz profillaringiz — sizni soʻzlovchi sifatida tanish uchun ishlatilgan ovoz izlari, jumladan boshqa odamlarning uchrashuvlarida saqlangan ovoz namunalari ham.",
+        workspaces:
+          "Siz egasi boʻlgan har qanday ish maydoni — sozlamalari va tarkibi bilan birga.",
+        account:
+          "Hisobingizning oʻzi: elektron pochta manzili, ism va profil rasmi. Yashirin nusxa saqlamaymiz.",
+      },
+      anonymized: {
+        title: "Oʻchirilmasdan anonimlashtiriladigan maʼlumotlar",
+        body: "Boshqa odamlar oʻtkazgan uchrashuvlar — bu ularning yozuvlari, sizniki emas. Siz ketganingiz uchun birovning uchrashuvini oʻchira olmaymiz. Shuning uchun ularni oʻchirmaymiz, balki ulardan sizni olib tashlaymiz: ismingiz, pochtangiz va rasmingiz siz uchragan hamma joyda — ishtirokchilar roʻyxatida, chat xabarlarida, taklifnomalarda — «Deleted user» bilan almashtiriladi.",
+        note: "Bitta halol izoh: AI xulosa — bu bogʻlangan matn va unda ismingiz uchrab qolishi mumkin. Uni qayta yozish birovning oʻz uchrashuvi haqidagi yozuvini buzgan boʻlardi, shuning uchun bunday matnlarga tegmaymiz.",
+      },
+      payments: {
+        title: "Toʻlov yozuvlari",
+        body: "Agar Dicta uchun toʻlov qilgan boʻlsangiz, buxgalteriya va soliq qonunchiligi bizdan toʻlov haqidagi yozuvni saqlashni talab qiladi. Biz faqat summa, sana, valyuta va tarifni qoldiramiz — shaxsingizdan ajratilgan holda, ismingiz, pochtangiz va karta maʼlumotlaringizsiz. Bunday yozuvni endi siz bilan bogʻlab boʻlmaydi.",
+      },
+      contact: {
+        title: "Yordam kerakmi?",
+        bodyBefore:
+          "Agar tugmaga yeta olmasangiz yoki biror narsa notoʻgʻri ketsa, quyidagi manzilga yozing: ",
+        bodyAfter: " — hisobni siz uchun oʻchirib beramiz.",
       },
     },
     terms: {

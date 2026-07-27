@@ -18,6 +18,9 @@ const year = new Date().getFullYear();
       <a href={`${home === "/" ? "" : home}/#pricing`} data-analytics-event="nav_clicked" data-analytics-item="pricing" class="hover:text-foreground transition-colors">{d.pricing.navLabel}</a>
       <a href={localePath("/privacy", locale)} data-analytics-event="nav_clicked" data-analytics-item="privacy" class="hover:text-foreground transition-colors">{d.nav.privacy}</a>
       <a href={localePath("/terms", locale)} data-analytics-event="nav_clicked" data-analytics-item="terms" class="hover:text-foreground transition-colors">{d.nav.terms}</a>
+      {/* Google Play Data Safety + Apple review both want a public, linkable
+          account-deletion page. Keep it in the footer on every page. */}
+      <a href={localePath("/delete-account", locale)} data-analytics-event="nav_clicked" data-analytics-item="delete_account" class="hover:text-foreground transition-colors">{d.nav.deleteAccount}</a>
       {/* "Developed by Norlas" — the same attribution pill the meet.dicta.uz app uses. */}
       <a
         href="https://norlas.com"

@@ -1,0 +1,81 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { t } from "../../i18n/utils";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+// Public, indexable description of the account-deletion route. Google Play's
+// Data Safety form requires a web-accessible page like this, and Apple review
+// looks for one too — so it must stay reachable and in sync with the apps.
+// Route is /delete-account, NOT /account/delete: public/_redirects 301s
+// /account/* to meet.dicta.uz, which would make the latter unreachable.
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const L = t(locale).legal;
+const d = L.deleteAccount;
+const email = "support@dicta.uz";
+const prose =
+  "max-w-3xl w-full mx-auto px-6 py-16 space-y-6 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h2]:mt-8 [&_h2]:mb-2 [&_p]:text-muted [&_p]:leading-relaxed [&_a]:text-accent [&_a]:hover:text-accent-strong [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-muted [&_ul]:space-y-1.5 [&_li]:leading-relaxed [&_strong]:text-foreground";
+---
+
+<Layout
+  title={`${L.deleteAccountTitle} — Dicta`}
+  description={d.intro}
+  locale={locale}
+  path="/delete-account"
+  noindex={false}
+>
+  <Header locale={locale} path="/delete-account" />
+  <article class={prose}>
+    <h1 class="font-display text-4xl font-semibold text-foreground">{L.deleteAccountTitle}</h1>
+    <p class="!text-sm">{L.deleteAccountUpdated}</p>
+
+    <p>{d.intro}</p>
+
+    <h2>{d.where.title}</h2>
+    <ul>
+      <li><strong>{d.where.ios.label}</strong> {d.where.ios.text}</li>
+      <li><strong>{d.where.android.label}</strong> {d.where.android.text}</li>
+      <li><strong>{d.where.web.label}</strong> {d.where.web.text}</li>
+    </ul>
+
+    <h2>{d.confirm.title}</h2>
+    <ul>
+      <li>{d.confirm.typeDelete}</li>
+      <li>{d.confirm.reauth}</li>
+      <li>{d.confirm.blockers}</li>
+    </ul>
+
+    <h2>{d.immediate.title}</h2>
+    <p>{d.immediate.body}</p>
+
+    <h2>{d.grace.title}</h2>
+    <p>{d.grace.body}</p>
+    <p><strong>{d.grace.restore}</strong></p>
+
+    <h2>{d.deleted.title}</h2>
+    <ul>
+      <li>{d.deleted.meetings}</li>
+      <li>{d.deleted.recordings}</li>
+      <li>{d.deleted.transcripts}</li>
+      <li>{d.deleted.summaries}</li>
+      <li>{d.deleted.voices}</li>
+      <li>{d.deleted.workspaces}</li>
+      <li>{d.deleted.account}</li>
+    </ul>
+
+    <h2>{d.anonymized.title}</h2>
+    <p>{d.anonymized.body}</p>
+    <p>{d.anonymized.note}</p>
+
+    <h2>{d.payments.title}</h2>
+    <p>{d.payments.body}</p>
+
+    <h2>{d.contact.title}</h2>
+    <p>{d.contact.bodyBefore}<a href={`mailto:${email}`}>{email}</a>{d.contact.bodyAfter}</p>
+  </article>
+  <Footer locale={locale} />
+</Layout>
