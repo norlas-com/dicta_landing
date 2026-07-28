@@ -348,11 +348,9 @@ const en = {
         stirLabel: "Taxpayer ID (STIR):",
         stirValue: "312444263",
         addressLabel: "Legal address:",
-        addressValue: "{{LEGAL_ADDRESS}}",
-        bankLabel: "Bank details:",
-        bankValue: "{{BANK_DETAILS}}",
+        addressValue: "Yangidarxon MFY, Navro'z street, 13, apt. 96, Republic of Uzbekistan",
         directorLabel: "Director:",
-        directorValue: "{{DIRECTOR_NAME}}",
+        directorValue: "Behruz Mahmudov",
         siteLabel: "Website:",
         siteValue: "dicta.uz",
         supportLabel: "Support:",
@@ -380,7 +378,7 @@ const en = {
       vat: {
         title: "6. Value added tax",
         body: "The Seller is a resident of the Technological Park of Software Products and Information Technologies (IT Park) of the Republic of Uzbekistan and is exempt from value added tax. All prices are shown without VAT, and no VAT is added to them at checkout.",
-        certificate: "IT Park resident certificate: {{ITPARK_CERTIFICATE}}.",
+        certificate: "IT Park resident certificate: No. 6513, entered in the Unified Register of Technopark residents on 17 July 2026 (decision No. 14/24 of 17 July 2026).",
       },
       payment: {
         title: "7. Payment methods and currency",
@@ -492,7 +490,7 @@ const en = {
           "The parties will seek to settle disputes through negotiation. A written claim is sent to ",
         claimsAfter: " and is considered within the period established by law.",
         court:
-          "If agreement is not reached, the dispute is referred to {{COURT_VENUE}} and settled in accordance with the legislation of the Republic of Uzbekistan.",
+          "If agreement is not reached, the dispute is referred to the competent economic court at the Seller's registered address and settled in accordance with the legislation of the Republic of Uzbekistan.",
         languages:
           "This offer is published in Uzbek, Russian and English. In the event of a discrepancy between the texts, the Uzbek text prevails.",
       },
@@ -836,11 +834,9 @@ const ru: typeof en = {
         stirLabel: "ИНН (СТИР):",
         stirValue: "312444263",
         addressLabel: "Юридический адрес:",
-        addressValue: "{{LEGAL_ADDRESS}}",
-        bankLabel: "Банковские реквизиты:",
-        bankValue: "{{BANK_DETAILS}}",
+        addressValue: "махалля Янгидархон, ул. Навруз, д. 13, кв. 96, Республика Узбекистан",
         directorLabel: "Директор:",
-        directorValue: "{{DIRECTOR_NAME}}",
+        directorValue: "Бехруз Махмудов",
         siteLabel: "Сайт:",
         siteValue: "dicta.uz",
         supportLabel: "Поддержка:",
@@ -868,7 +864,7 @@ const ru: typeof en = {
       vat: {
         title: "6. Налог на добавленную стоимость",
         body: "Продавец является резидентом Технологического парка программных продуктов и информационных технологий (IT Park) Республики Узбекистан и освобождён от налога на добавленную стоимость. Все цены указаны без НДС; НДС к ним при оплате не добавляется.",
-        certificate: "Свидетельство резидента IT Park: {{ITPARK_CERTIFICATE}}.",
+        certificate: "Свидетельство резидента IT Park: № 6513, внесено в Единый реестр резидентов Технопарка 17 июля 2026 года (решение № 14/24 от 17 июля 2026 года).",
       },
       payment: {
         title: "7. Способы оплаты и валюта",
@@ -980,7 +976,7 @@ const ru: typeof en = {
           "Стороны стремятся разрешать споры путём переговоров. Письменная претензия направляется на ",
         claimsAfter: " и рассматривается в срок, установленный законодательством.",
         court:
-          "Если согласие не достигнуто, спор передаётся на рассмотрение {{COURT_VENUE}} и разрешается в соответствии с законодательством Республики Узбекистан.",
+          "Если согласие не достигнуто, спор передаётся на рассмотрение компетентный экономический суд по месту регистрации Продавца и разрешается в соответствии с законодательством Республики Узбекистан.",
         languages:
           "Настоящая оферта опубликована на узбекском, русском и английском языках. При расхождении текстов преимущественную силу имеет текст на узбекском языке.",
       },
@@ -1323,11 +1319,9 @@ const uz: typeof en = {
         stirLabel: "STIR:",
         stirValue: "312444263",
         addressLabel: "Yuridik manzil:",
-        addressValue: "{{LEGAL_ADDRESS}}",
-        bankLabel: "Bank rekvizitlari:",
-        bankValue: "{{BANK_DETAILS}}",
+        addressValue: "Yangidarxon MFY, Navroʻz koʻchasi, 13-uy, 96-xonadon, Oʻzbekiston Respublikasi",
         directorLabel: "Direktor:",
-        directorValue: "{{DIRECTOR_NAME}}",
+        directorValue: "Behruz Mahmudov",
         siteLabel: "Sayt:",
         siteValue: "dicta.uz",
         supportLabel: "Qoʻllab-quvvatlash:",
@@ -1355,7 +1349,7 @@ const uz: typeof en = {
       vat: {
         title: "6. Qoʻshilgan qiymat soligʻi",
         body: "Sotuvchi Oʻzbekiston Respublikasi Dasturiy mahsulotlar va axborot texnologiyalari texnoparki (IT Park) rezidenti boʻlib, qoʻshilgan qiymat soligʻidan ozod qilingan. Barcha narxlar QQSsiz koʻrsatilgan; toʻlov paytida ularga QQS qoʻshilmaydi.",
-        certificate: "IT Park rezidenti guvohnomasi: {{ITPARK_CERTIFICATE}}.",
+        certificate: "IT Park rezidenti guvohnomasi: № 6513, Texnopark rezidentlarining Yagona reestriga 2026-yil 17-iyulda kiritilgan (2026-yil 17-iyuldagi 14/24-son qaror).",
       },
       payment: {
         title: "7. Toʻlov usullari va valyuta",
@@ -1468,7 +1462,7 @@ const uz: typeof en = {
         claimsAfter:
           " manziliga yuboriladi va qonunchilikda belgilangan muddatda koʻrib chiqiladi.",
         court:
-          "Kelishuvga erishilmagan taqdirda nizo Oʻzbekiston Respublikasi qonunchiligiga muvofiq {{COURT_VENUE}} tomonidan koʻrib chiqiladi.",
+          "Kelishuvga erishilmagan taqdirda nizo Oʻzbekiston Respublikasi qonunchiligiga muvofiq Sotuvchining roʻyxatdan oʻtgan manzili boʻyicha vakolatli iqtisodiy sud tomonidan koʻrib chiqiladi.",
         languages:
           "Ushbu oferta oʻzbek, rus va ingliz tillarida eʼlon qilingan. Matnlar oʻrtasida tafovut boʻlsa, oʻzbek tilidagi matn ustuvor hisoblanadi.",
       },
