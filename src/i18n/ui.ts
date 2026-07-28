@@ -18,6 +18,7 @@ const en = {
   nav: {
     privacy: "Privacy",
     terms: "Terms",
+    offer: "Offer",
     deleteAccount: "Delete account",
     download: "Download for Mac",
     downloadWin: "Download for Windows",
@@ -149,7 +150,9 @@ const en = {
     privacyTitle: "Privacy Policy",
     privacyUpdated: "Last updated: May 1, 2026",
     termsTitle: "Terms of Service",
-    termsUpdated: "Last updated: May 1, 2026",
+    termsUpdated: "Last updated: July 28, 2026",
+    offerTitle: "Public Offer",
+    offerUpdated: "Last updated: July 28, 2026",
     deleteAccountTitle: "How to delete your Dicta account",
     deleteAccountUpdated: "Last updated: July 27, 2026",
     privacy: {
@@ -290,6 +293,25 @@ const en = {
         title: "Your content",
         body: "You retain ownership of meetings, transcripts, and recordings you create. You grant us a limited license to process and store this content as necessary to provide the service.",
       },
+      payment: {
+        title: "Payment and subscription",
+        body: "Dicta has a free plan and paid plans. Paid plans are sold in Uzbek sum (UZS) and paid online — by bank card or from an Uzbek e-wallet (Payme, Click, Uzum, Alif, Anorbank, Xazna) through the Multicard gateway. We never see or store your card details. A paid plan is activated as soon as the payment is confirmed and runs for the period you paid for; the limits of that plan — minutes, storage and history — apply for that period.",
+      },
+      renewal: {
+        title: "Renewal",
+        body: "Renewal is manual. We do not store your card and we never charge you automatically — there is no auto-renewal. When the paid period ends, the plan simply stops and your account returns to the free plan. There is nothing to cancel. To continue, you pay for the next period yourself. We send a reminder to your email before the period runs out.",
+      },
+      refunds: {
+        title: "Refunds",
+        bodyBefore:
+          "We do not refund payments for a service that has already been provided, including the unused part of a period if you stop using Dicta early. The free plan lets you evaluate the service in full before you pay. A refund is made only for a duplicate or erroneous charge, or where a plan was paid for but never activated. The procedure for requesting one is set out in the ",
+        linkLabel: "Public Offer",
+        bodyAfter: ".",
+      },
+      taxes: {
+        title: "Taxes and receipts",
+        body: 'Prices are shown without value added tax: "NORLAS IT SOLUTIONS" LLC is a resident of IT Park of the Republic of Uzbekistan and is exempt from VAT, so no VAT is added at checkout. A fiscal receipt is issued for every payment through a fiscal data operator: it is sent to your email address and a link to it is kept in your payment history in the app.',
+      },
       termination: {
         title: "Termination",
         bodyBefore: "We may suspend accounts that violate these terms. You may close your account at any time by emailing ",
@@ -301,6 +323,180 @@ const en = {
       },
       contact: { title: "Contact", legalLabel: "Legal: " },
     },
+    offer: {
+      intro:
+        'This document is a public offer by "NORLAS IT SOLUTIONS" LLC (the "Seller") addressed to any individual or legal entity (the "Customer") to conclude an agreement for paid access to the Dicta service on the terms set out below. Please read it in full before you pay: payment means acceptance of every clause of this offer.',
+      subject: {
+        title: "1. Subject of the offer",
+        body: "The Seller grants the Customer paid access to Dicta — an online service for holding meetings and for recording them, transcribing speech into text and preparing summaries automatically — within the limits of the chosen plan and for the period paid for. Dicta is provided as a service over the internet; no copy of the software is handed over to the Customer and no exclusive rights to it are transferred.",
+        scope:
+          "Access is granted to the Customer's account. Where the Customer is a legal entity, access extends to the users the Customer adds to its workspace, within the limits of the chosen plan.",
+      },
+      acceptance: {
+        title: "2. Acceptance of the offer",
+        body: "This offer is accepted by payment. Choosing a plan and paying for it in full is the Customer's complete and unconditional acceptance of the terms of this offer, and constitutes an acceptance within the meaning of the Civil Code of the Republic of Uzbekistan.",
+        effectBefore:
+          "From the moment the payment is received, the agreement is treated as concluded in writing on the terms of this offer and has the force of a document signed by both parties. A separate paper contract is not required; if the Customer needs one, it can be requested at ",
+        effectAfter: ".",
+        version:
+          "A payment is governed by the version of the offer published on this page at the moment that payment is made.",
+      },
+      seller: {
+        title: "3. Details of the Seller",
+        nameLabel: "Full name:",
+        nameValue: '"NORLAS IT SOLUTIONS" Limited Liability Company',
+        stirLabel: "Taxpayer ID (STIR):",
+        stirValue: "312444263",
+        addressLabel: "Legal address:",
+        addressValue: "{{LEGAL_ADDRESS}}",
+        bankLabel: "Bank details:",
+        bankValue: "{{BANK_DETAILS}}",
+        directorLabel: "Director:",
+        directorValue: "{{DIRECTOR_NAME}}",
+        siteLabel: "Website:",
+        siteValue: "dicta.uz",
+        supportLabel: "Support:",
+        legalLabel: "Legal matters:",
+      },
+      service: {
+        title: "4. What the service includes",
+        body: "Dicta is software provided as a service: in a browser at meet.dicta.uz and in the Dicta applications for macOS, Windows, iOS and Android. Within the limits of the plan paid for, the service provides:",
+        item1: "video meetings by link, with nothing for guests to install;",
+        item2: "recording of meetings and storage of the recordings;",
+        item3: "automatic transcription of speech in Uzbek, Russian and English;",
+        item4: "summaries, decision lists and action items generated by AI from the transcript;",
+        item5: "search across past meetings, sharing of the results, and export to connected services.",
+        limits:
+          "The specific limits — minutes per month, storage volume, how long history is kept and the number of workspace members — are set by the plan the Customer has paid for.",
+      },
+      plans: {
+        title: "5. Plans and prices",
+        bodyBefore: "The current plans, their limits and their prices are published on the ",
+        linkLabel: "pricing page",
+        bodyAfter:
+          " and form an integral part of this offer. Prices are stated per plan and per billing period (a month or a year).",
+        free: "Dicta also has a permanently free plan. The Customer can evaluate the service in full before paying: no card is required to register, and none is required to keep using the free plan.",
+      },
+      vat: {
+        title: "6. Value added tax",
+        body: "The Seller is a resident of the Technological Park of Software Products and Information Technologies (IT Park) of the Republic of Uzbekistan and is exempt from value added tax. All prices are shown without VAT, and no VAT is added to them at checkout.",
+        certificate: "IT Park resident certificate: {{ITPARK_CERTIFICATE}}.",
+      },
+      payment: {
+        title: "7. Payment methods and currency",
+        body: "All settlements are made in the national currency of the Republic of Uzbekistan — the Uzbek sum (UZS).",
+        methods:
+          "Payment is made online through the Multicard payment gateway: by bank card, or from the Payme, Click, Uzum, Alif, Anorbank and Xazna e-wallets.",
+        noCard:
+          "The Seller does not receive, process or store the full card number, its expiry date or its CVV — that data is entered on the side of the payment gateway and the bank.",
+        moment:
+          "The payment obligation is treated as performed at the moment the funds are credited to the Seller's account and the payment gateway confirms a successful payment.",
+      },
+      activation: {
+        title: "8. When access is opened",
+        body: "The plan paid for is activated automatically once the payment gateway confirms the payment — as a rule, within a few minutes. The paid period runs from the moment of activation.",
+        failureBefore:
+          "If the money has been debited but the plan has not appeared in the account, the Customer should write to ",
+        failureAfter:
+          ", stating the date, the amount and the receipt of the payment. We will either open the access or return the payment.",
+      },
+      term: {
+        title: "9. Term of the subscription and renewal",
+        body: "A plan that has been paid for is valid for the period paid for — a month or a year, according to the plan chosen — starting from the moment of activation.",
+        manual:
+          "Renewal is manual. Dicta does not store the Customer's card and never charges it automatically. There is no auto-renewal.",
+        expiry:
+          "When the paid period ends, the plan simply stops and the account returns to the free plan. Nothing has to be cancelled and no notice of cancellation has to be given. To continue on a paid plan, the Customer pays for the next period themselves, whenever they choose to.",
+        reminder:
+          "Before the paid period ends we send a reminder to the email address on the account, so that the expiry does not come as a surprise.",
+      },
+      refunds: {
+        title: "10. Refunds",
+        body: "Money paid for a service that has actually been rendered is not refunded. Access is granted for the whole paid period from the moment of payment, and the free plan makes it possible to evaluate the service in full before paying anything.",
+        earlyStop:
+          "If the Customer stops using Dicta before the paid period ends, or deletes the account, the unused part of the period is not refunded and is not carried over.",
+        exceptionsIntro: "A refund is made in two cases only:",
+        exception1:
+          "a duplicate or erroneous charge — the same payment was taken twice, or an amount was debited that does not correspond to the price of the chosen plan;",
+        exception2:
+          "the service was paid for but not provided — the plan paid for was not activated and it proved impossible to activate it.",
+        howBefore: "A refund request is sent to ",
+        howAfter:
+          " stating the date, the amount and the receipt of the payment. Where the request is justified, the money is returned through the same payment gateway to the card or wallet the payment was made from; how soon it appears depends on the issuing bank.",
+        consumer:
+          "This section does not limit the rights granted to individuals by the legislation of the Republic of Uzbekistan on the protection of consumer rights.",
+      },
+      receipt: {
+        title: "11. Fiscal receipt",
+        body: "A fiscal receipt is generated for every payment through a fiscal data operator (OFD), as required by the legislation of the Republic of Uzbekistan.",
+        delivery:
+          "The receipt is sent to the email address on the Customer's account, and a link to it is kept in the payment history inside the app. The receipt is the document confirming payment.",
+        missingBefore: "If the receipt has not arrived, check the spam folder and then write to ",
+        missingAfter: " — we will send it again.",
+      },
+      customerObligations: {
+        title: "12. The Customer's obligations",
+        intro: "The Customer undertakes to:",
+        item1: "provide accurate registration details and a working email address and keep them up to date — the receipt, the reminders and service notices are sent there;",
+        item2: "keep the sign-in credentials secret and not pass access to third parties;",
+        item3: "use Dicta in accordance with the Terms of Service and the legislation of the Republic of Uzbekistan;",
+        item4: "obtain the consent of all meeting participants to recording and transcription where the law requires it;",
+        item5: "not resell, sublicense or otherwise give access to the paid plan to persons outside the Customer's own workspace;",
+        item6: "pay for the chosen plan in the amount and by the method set out in this offer.",
+      },
+      sellerObligations: {
+        title: "13. The Seller's obligations",
+        intro: "The Seller undertakes to:",
+        item1: "provide access to the plan paid for throughout the whole paid period;",
+        item2: "keep the service running and take reasonable technical measures for its availability and security;",
+        item3: "generate and deliver a fiscal receipt for every payment;",
+        item4: "process personal data in accordance with the Privacy Policy;",
+        item5: "provide support on the matters covered by the chosen plan, at the contacts given in section 3.",
+        availability:
+          "The Seller does not guarantee uninterrupted, error-free operation of the service. Access may be suspended temporarily for maintenance, security work, updates or capacity reasons, as well as for reasons beyond the Seller's control — failures of communication channels, of the Customer's equipment or of third-party services. Short interruptions of this kind do not count as a failure to provide the service and are not grounds for a refund.",
+      },
+      liability: {
+        title: "14. Limitation of liability",
+        body: 'The service is provided "as is". To the fullest extent permitted by law, the Seller is not liable for indirect, incidental or consequential losses, for lost profit or for loss of data arising from the use of, or the inability to use, the service.',
+        ai: "Transcripts, summaries, decision lists and action items are generated automatically by machine-learning models and may contain inaccuracies. They are an aid, not a legally significant document. The Customer must check them before relying on them in decisions, in accounting or in dealings with third parties.",
+        cap: "In any event the Seller's aggregate liability is limited to the amount actually paid by the Customer for the paid period in which the event giving rise to the liability occurred.",
+        force:
+          "Neither party is liable for a failure to perform caused by circumstances of force majeure, including acts of state bodies, natural disasters, hostilities, or mass failures of communications or electricity supply.",
+      },
+      personalData: {
+        title: "15. Personal data",
+        bodyBefore:
+          "Personal data is processed in accordance with the legislation of the Republic of Uzbekistan on personal data and with the ",
+        linkLabel: "Privacy Policy",
+        bodyAfter:
+          ", which explains what data is collected, why, how long it is kept, and how the Customer can delete their account and their data. Acceptance of this offer also constitutes consent to the processing of personal data on those terms.",
+      },
+      termination: {
+        title: "16. Term of the agreement and its termination",
+        body: "The agreement enters into force at the moment the offer is accepted (payment) and is valid until the end of the paid period, or until the parties have performed their obligations in full.",
+        customer:
+          "The Customer may stop using Dicta at any time and delete the account directly in the app. Deletion of the account terminates the agreement; the unused part of the paid period is not refunded.",
+        seller:
+          "The Seller may suspend or terminate access in the event of a breach of the Terms of Service or of the legislation of the Republic of Uzbekistan, including use of the service for unlawful purposes or actions that disrupt its operation.",
+      },
+      amendments: {
+        title: "17. Amendments to the offer",
+        body: "The Seller may amend this offer and the prices unilaterally. A new version enters into force from the moment it is published on this page with the date updated.",
+        priceLock:
+          "A change of price does not apply to a period already paid for: the plan paid for continues on the terms and at the price in force at the moment of payment. Continuing to use the service after the changes are published, as well as any subsequent payment, constitutes acceptance of the new version.",
+      },
+      law: {
+        title: "18. Governing law and settlement of disputes",
+        body: "This offer, and the relations arising out of it, are governed by the law of the Republic of Uzbekistan.",
+        claimsBefore:
+          "The parties will seek to settle disputes through negotiation. A written claim is sent to ",
+        claimsAfter: " and is considered within the period established by law.",
+        court:
+          "If agreement is not reached, the dispute is referred to {{COURT_VENUE}} and settled in accordance with the legislation of the Republic of Uzbekistan.",
+        languages:
+          "This offer is published in Uzbek, Russian and English. In the event of a discrepancy between the texts, the Uzbek text prevails.",
+      },
+    },
   },
 };
 
@@ -309,6 +505,7 @@ const ru: typeof en = {
   nav: {
     privacy: "Конфиденциальность",
     terms: "Условия",
+    offer: "Оферта",
     deleteAccount: "Удаление аккаунта",
     download: "Скачать для Mac",
     downloadWin: "Скачать для Windows",
@@ -440,7 +637,9 @@ const ru: typeof en = {
     privacyTitle: "Политика конфиденциальности",
     privacyUpdated: "Последнее обновление: 1 мая 2026 г.",
     termsTitle: "Условия использования",
-    termsUpdated: "Последнее обновление: 1 мая 2026 г.",
+    termsUpdated: "Последнее обновление: 28 июля 2026 г.",
+    offerTitle: "Публичная оферта",
+    offerUpdated: "Последнее обновление: 28 июля 2026 г.",
     deleteAccountTitle: "Как удалить аккаунт Dicta",
     deleteAccountUpdated: "Последнее обновление: 27 июля 2026 г.",
     privacy: {
@@ -581,6 +780,25 @@ const ru: typeof en = {
         title: "Ваш контент",
         body: "Вы сохраняете права на создаваемые вами встречи, транскрипты и записи. Вы предоставляете нам ограниченную лицензию на обработку и хранение этого контента в объёме, необходимом для оказания услуги.",
       },
+      payment: {
+        title: "Оплата и подписка",
+        body: "У Dicta есть бесплатный тариф и платные тарифы. Платные тарифы продаются в узбекских сумах (UZS) и оплачиваются онлайн — банковской картой или из узбекского электронного кошелька (Payme, Click, Uzum, Alif, Anorbank, Xazna) через шлюз Multicard. Мы не видим и не храним данные вашей карты. Платный тариф активируется сразу после подтверждения платежа и действует в течение оплаченного периода; ограничения тарифа — минуты, объём хранилища и срок хранения истории — применяются на этот период.",
+      },
+      renewal: {
+        title: "Продление",
+        body: "Продление производится только вручную. Мы не храним вашу карту и никогда не списываем средства автоматически — автопродления нет. По окончании оплаченного периода тариф просто прекращает действовать, и аккаунт возвращается на бесплатный. Отменять ничего не нужно. Чтобы продолжить, вы сами оплачиваете следующий период. Перед окончанием срока мы отправляем напоминание на вашу электронную почту.",
+      },
+      refunds: {
+        title: "Возврат средств",
+        bodyBefore:
+          "Мы не возвращаем деньги за уже оказанную услугу, в том числе за неиспользованную часть периода, если вы прекращаете пользоваться Dicta раньше срока. Бесплатный тариф позволяет полноценно оценить сервис до оплаты. Возврат производится только при повторном или ошибочном списании, а также если тариф был оплачен, но так и не активирован. Порядок обращения описан в ",
+        linkLabel: "Публичной оферте",
+        bodyAfter: ".",
+      },
+      taxes: {
+        title: "Налоги и чеки",
+        body: "Цены указаны без НДС: ООО «NORLAS IT SOLUTIONS» является резидентом IT Park Республики Узбекистан и освобождено от налога на добавленную стоимость, поэтому НДС при оплате не добавляется. По каждому платежу через оператора фискальных данных формируется фискальный чек: он приходит на вашу электронную почту, а ссылка на него сохраняется в истории платежей в приложении.",
+      },
       termination: {
         title: "Прекращение использования",
         bodyBefore: "Мы можем приостановить аккаунты, нарушающие настоящие условия. Вы можете закрыть свой аккаунт в любой момент, написав на ",
@@ -592,6 +810,181 @@ const ru: typeof en = {
       },
       contact: { title: "Контакты", legalLabel: "Юридические вопросы: " },
     },
+    offer: {
+      intro:
+        "Настоящий документ является публичной офертой ООО «NORLAS IT SOLUTIONS» (далее — «Продавец»), адресованной любому физическому или юридическому лицу (далее — «Покупатель»), заключить договор возмездного оказания услуг по предоставлению доступа к сервису Dicta на изложенных ниже условиях. Пожалуйста, прочитайте её полностью до оплаты: оплата означает согласие со всеми условиями настоящей оферты.",
+      subject: {
+        title: "1. Предмет оферты",
+        body: "Продавец предоставляет Покупателю платный доступ к Dicta — онлайн-сервису для проведения встреч, их записи, расшифровки речи в текст и автоматической подготовки кратких изложений — в объёме выбранного тарифа и на оплаченный срок. Dicta предоставляется как услуга через интернет; экземпляр программы Покупателю не передаётся, исключительные права на неё не отчуждаются.",
+        scope:
+          "Доступ предоставляется к аккаунту Покупателя. Если Покупатель является юридическим лицом, доступ распространяется на пользователей, добавленных им в своё рабочее пространство, в пределах ограничений выбранного тарифа.",
+      },
+      acceptance: {
+        title: "2. Акцепт оферты",
+        body: "Оферта акцептуется оплатой. Выбор тарифа и его полная оплата являются полным и безоговорочным принятием условий настоящей оферты и признаются акцептом в значении Гражданского кодекса Республики Узбекистан.",
+        effectBefore:
+          "С момента поступления оплаты договор считается заключённым в письменной форме на условиях настоящей оферты и имеет силу документа, подписанного обеими сторонами. Отдельный договор на бумаге не требуется; если он необходим Покупателю, его можно запросить по адресу ",
+        effectAfter: ".",
+        version:
+          "К платежу применяется та редакция оферты, которая опубликована на этой странице на момент совершения платежа.",
+      },
+      seller: {
+        title: "3. Реквизиты Продавца",
+        nameLabel: "Полное наименование:",
+        nameValue:
+          "Общество с ограниченной ответственностью «NORLAS IT SOLUTIONS»",
+        stirLabel: "ИНН (СТИР):",
+        stirValue: "312444263",
+        addressLabel: "Юридический адрес:",
+        addressValue: "{{LEGAL_ADDRESS}}",
+        bankLabel: "Банковские реквизиты:",
+        bankValue: "{{BANK_DETAILS}}",
+        directorLabel: "Директор:",
+        directorValue: "{{DIRECTOR_NAME}}",
+        siteLabel: "Сайт:",
+        siteValue: "dicta.uz",
+        supportLabel: "Поддержка:",
+        legalLabel: "Юридические вопросы:",
+      },
+      service: {
+        title: "4. Что входит в услугу",
+        body: "Dicta — программное обеспечение, предоставляемое как услуга: в браузере по адресу meet.dicta.uz и в приложениях Dicta для macOS, Windows, iOS и Android. В пределах оплаченного тарифа сервис обеспечивает:",
+        item1: "видеовстречи по ссылке, без установки чего-либо гостями;",
+        item2: "запись встреч и хранение записей;",
+        item3: "автоматическую расшифровку речи на узбекском, русском и английском языках;",
+        item4: "краткие изложения, списки решений и задач, подготовленные ИИ на основе расшифровки;",
+        item5: "поиск по прошедшим встречам, обмен результатами и экспорт в подключённые сервисы.",
+        limits:
+          "Конкретные ограничения — количество минут в месяц, объём хранилища, срок хранения истории и число участников рабочего пространства — определяются оплаченным тарифом.",
+      },
+      plans: {
+        title: "5. Тарифы и цены",
+        bodyBefore: "Действующие тарифы, их ограничения и стоимость опубликованы в разделе ",
+        linkLabel: "«Цены»",
+        bodyAfter:
+          " и являются неотъемлемой частью настоящей оферты. Цена указывается за тариф и за расчётный период (месяц или год).",
+        free: "У Dicta есть постоянно бесплатный тариф. Покупатель может полноценно оценить сервис до оплаты: карта не требуется ни для регистрации, ни для дальнейшего использования бесплатного тарифа.",
+      },
+      vat: {
+        title: "6. Налог на добавленную стоимость",
+        body: "Продавец является резидентом Технологического парка программных продуктов и информационных технологий (IT Park) Республики Узбекистан и освобождён от налога на добавленную стоимость. Все цены указаны без НДС; НДС к ним при оплате не добавляется.",
+        certificate: "Свидетельство резидента IT Park: {{ITPARK_CERTIFICATE}}.",
+      },
+      payment: {
+        title: "7. Способы оплаты и валюта",
+        body: "Все расчёты производятся в национальной валюте Республики Узбекистан — узбекских сумах (UZS).",
+        methods:
+          "Оплата производится онлайн через платёжный шлюз Multicard: банковской картой либо из электронных кошельков Payme, Click, Uzum, Alif, Anorbank и Xazna.",
+        noCard:
+          "Продавец не получает, не обрабатывает и не хранит полный номер карты, срок её действия и CVV — эти данные вводятся на стороне платёжного шлюза и банка.",
+        moment:
+          "Обязанность по оплате считается исполненной в момент зачисления денежных средств на счёт Продавца и подтверждения успешного платежа платёжным шлюзом.",
+      },
+      activation: {
+        title: "8. Момент предоставления доступа",
+        body: "Оплаченный тариф активируется автоматически после подтверждения платежа платёжным шлюзом — как правило, в течение нескольких минут. Оплаченный период исчисляется с момента активации.",
+        failureBefore:
+          "Если денежные средства списаны, а тариф в аккаунте не появился, Покупателю следует написать на ",
+        failureAfter:
+          ", указав дату, сумму и чек платежа. Мы либо откроем доступ, либо вернём платёж.",
+      },
+      term: {
+        title: "9. Срок подписки и продление",
+        body: "Оплаченный тариф действует в течение оплаченного периода — месяц или год в соответствии с выбранным тарифом — начиная с момента активации.",
+        manual:
+          "Продление производится только вручную. Dicta не сохраняет карту Покупателя и никогда не списывает средства автоматически. Автопродления нет.",
+        expiry:
+          "По окончании оплаченного периода тариф просто прекращает действовать, и аккаунт возвращается на бесплатный тариф. Ничего отменять не нужно, уведомление об отказе от подписки направлять не требуется. Чтобы продолжить пользоваться платным тарифом, Покупатель самостоятельно оплачивает следующий период — тогда, когда сочтёт нужным.",
+        reminder:
+          "Перед окончанием оплаченного периода мы направляем напоминание на электронную почту, указанную в аккаунте, чтобы окончание срока не стало неожиданностью.",
+      },
+      refunds: {
+        title: "10. Возврат денежных средств",
+        body: "Денежные средства за фактически оказанную услугу не возвращаются. Доступ предоставляется на весь оплаченный период с момента оплаты, а бесплатный тариф позволяет полноценно оценить сервис до какой-либо оплаты.",
+        earlyStop:
+          "Если Покупатель прекращает пользоваться Dicta до окончания оплаченного периода или удаляет аккаунт, неиспользованная часть периода не возвращается и не переносится.",
+        exceptionsIntro: "Возврат производится только в двух случаях:",
+        exception1:
+          "повторное или ошибочное списание — один и тот же платёж списан дважды либо списана сумма, не соответствующая стоимости выбранного тарифа;",
+        exception2:
+          "услуга оплачена, но не оказана — оплаченный тариф не был активирован и активировать его не удалось.",
+        howBefore: "Заявление на возврат направляется на ",
+        howAfter:
+          " с указанием даты, суммы и чека платежа. При обоснованности требования денежные средства возвращаются через тот же платёжный шлюз на карту или кошелёк, с которых был совершён платёж; срок зачисления зависит от банка-эмитента.",
+        consumer:
+          "Настоящий раздел не ограничивает права, предоставленные физическим лицам законодательством Республики Узбекистан о защите прав потребителей.",
+      },
+      receipt: {
+        title: "11. Фискальный чек",
+        body: "По каждому платежу через оператора фискальных данных (ОФД) формируется фискальный чек, как того требует законодательство Республики Узбекистан.",
+        delivery:
+          "Чек направляется на электронную почту, указанную в аккаунте Покупателя, а ссылка на него сохраняется в истории платежей в приложении. Чек является документом, подтверждающим оплату.",
+        missingBefore: "Если чек не пришёл, проверьте папку «Спам», а затем напишите на ",
+        missingAfter: " — мы направим его повторно.",
+      },
+      customerObligations: {
+        title: "12. Обязанности Покупателя",
+        intro: "Покупатель обязуется:",
+        item1: "предоставить достоверные регистрационные данные и действующий адрес электронной почты и поддерживать их в актуальном состоянии — на этот адрес направляются чек, напоминания и служебные уведомления;",
+        item2: "хранить данные для входа в тайне и не передавать доступ третьим лицам;",
+        item3: "использовать Dicta в соответствии с Условиями использования и законодательством Республики Узбекистан;",
+        item4: "получать согласие всех участников встречи на запись и расшифровку, когда этого требует закон;",
+        item5: "не перепродавать, не сублицензировать и иным образом не предоставлять доступ к оплаченному тарифу лицам за пределами своего рабочего пространства;",
+        item6: "оплачивать выбранный тариф в размере и способом, установленными настоящей офертой.",
+      },
+      sellerObligations: {
+        title: "13. Обязанности Продавца",
+        intro: "Продавец обязуется:",
+        item1: "предоставлять доступ к оплаченному тарифу в течение всего оплаченного периода;",
+        item2: "поддерживать работоспособность сервиса и принимать разумные технические меры для его доступности и безопасности;",
+        item3: "формировать и направлять фискальный чек по каждому платежу;",
+        item4: "обрабатывать персональные данные в соответствии с Политикой конфиденциальности;",
+        item5: "оказывать поддержку по вопросам, входящим в выбранный тариф, по контактам, указанным в разделе 3.",
+        availability:
+          "Продавец не гарантирует бесперебойную и безошибочную работу сервиса. Доступ может быть временно приостановлен для технического обслуживания, работ по безопасности, обновлений или по причинам нагрузки, а также по независящим от Продавца причинам — сбои каналов связи, оборудования Покупателя или сторонних сервисов. Кратковременные перерывы такого рода не считаются неоказанием услуги и не являются основанием для возврата денежных средств.",
+      },
+      liability: {
+        title: "14. Ограничение ответственности",
+        body: "Сервис предоставляется «как есть». В максимальной степени, разрешённой законом, Продавец не несёт ответственности за косвенные, случайные или сопутствующие убытки, упущенную выгоду и утрату данных, возникшие в связи с использованием или невозможностью использования сервиса.",
+        ai: "Расшифровки, краткие изложения, списки решений и задач формируются автоматически моделями машинного обучения и могут содержать неточности. Они являются вспомогательным материалом, а не юридически значимым документом. Покупатель обязан проверять их, прежде чем полагаться на них при принятии решений, в учёте или в отношениях с третьими лицами.",
+        cap: "В любом случае совокупная ответственность Продавца ограничивается суммой, фактически уплаченной Покупателем за тот оплаченный период, в котором произошло событие, послужившее основанием ответственности.",
+        force:
+          "Стороны не несут ответственности за неисполнение обязательств, вызванное обстоятельствами непреодолимой силы, включая акты государственных органов, стихийные бедствия, военные действия, массовые сбои связи или электроснабжения.",
+      },
+      personalData: {
+        title: "15. Персональные данные",
+        bodyBefore:
+          "Персональные данные обрабатываются в соответствии с законодательством Республики Узбекистан о персональных данных и ",
+        linkLabel: "Политикой конфиденциальности",
+        bodyAfter:
+          ", в которой описано, какие данные собираются, для чего, как долго хранятся и как Покупатель может удалить аккаунт и свои данные. Акцепт настоящей оферты одновременно означает согласие на обработку персональных данных на указанных условиях.",
+      },
+      termination: {
+        title: "16. Срок действия договора и его прекращение",
+        body: "Договор вступает в силу с момента акцепта оферты (оплаты) и действует до окончания оплаченного периода либо до полного исполнения сторонами своих обязательств.",
+        customer:
+          "Покупатель вправе в любой момент прекратить пользование Dicta и удалить аккаунт непосредственно в приложении. Удаление аккаунта прекращает действие договора; неиспользованная часть оплаченного периода не возвращается.",
+        seller:
+          "Продавец вправе приостановить или прекратить доступ при нарушении Условий использования или законодательства Республики Узбекистан, в том числе при использовании сервиса в противоправных целях либо при действиях, нарушающих его работу.",
+      },
+      amendments: {
+        title: "17. Изменение оферты",
+        body: "Продавец вправе в одностороннем порядке изменять настоящую оферту и цены. Новая редакция вступает в силу с момента её опубликования на этой странице с обновлением даты.",
+        priceLock:
+          "Изменение цены не распространяется на уже оплаченный период: оплаченный тариф продолжает действовать на условиях и по цене, действовавшим на момент оплаты. Продолжение использования сервиса после опубликования изменений, равно как и последующая оплата, означают согласие с новой редакцией.",
+      },
+      law: {
+        title: "18. Применимое право и разрешение споров",
+        body: "К настоящей оферте и к отношениям, возникающим на её основании, применяется право Республики Узбекистан.",
+        claimsBefore:
+          "Стороны стремятся разрешать споры путём переговоров. Письменная претензия направляется на ",
+        claimsAfter: " и рассматривается в срок, установленный законодательством.",
+        court:
+          "Если согласие не достигнуто, спор передаётся на рассмотрение {{COURT_VENUE}} и разрешается в соответствии с законодательством Республики Узбекистан.",
+        languages:
+          "Настоящая оферта опубликована на узбекском, русском и английском языках. При расхождении текстов преимущественную силу имеет текст на узбекском языке.",
+      },
+    },
   },
 };
 
@@ -600,6 +993,7 @@ const uz: typeof en = {
   nav: {
     privacy: "Maxfiylik",
     terms: "Foydalanish shartlari",
+    offer: "Oferta",
     deleteAccount: "Hisobni oʻchirish",
     download: "Mac uchun yuklab olish",
     downloadWin: "Windows uchun yuklab olish",
@@ -731,7 +1125,9 @@ const uz: typeof en = {
     privacyTitle: "Maxfiylik siyosati",
     privacyUpdated: "Oxirgi yangilangan: 2026-yil 1-may",
     termsTitle: "Foydalanish shartlari",
-    termsUpdated: "Oxirgi yangilangan: 2026-yil 1-may",
+    termsUpdated: "Oxirgi yangilangan: 2026-yil 28-iyul",
+    offerTitle: "Ommaviy oferta",
+    offerUpdated: "Oxirgi yangilangan: 2026-yil 28-iyul",
     deleteAccountTitle: "Dicta hisobini qanday oʻchirish mumkin",
     deleteAccountUpdated: "Oxirgi yangilangan: 2026-yil 27-iyul",
     privacy: {
@@ -872,6 +1268,25 @@ const uz: typeof en = {
         title: "Sizning kontentingiz",
         body: "Siz yaratgan uchrashuvlar, transkriptlar va yozuvlar sizga tegishli boʻlib qoladi. Siz bizga ushbu kontentni xizmatni taʼminlash uchun zarur boʻlgan darajada qayta ishlash va saqlash uchun cheklangan litsenziya berasiz.",
       },
+      payment: {
+        title: "Toʻlov va obuna",
+        body: "Dicta-da bepul tarif va pullik tariflar mavjud. Pullik tariflar oʻzbek soʻmida (UZS) sotiladi va onlayn toʻlanadi — bank kartasi bilan yoki oʻzbek elektron hamyonlaridan (Payme, Click, Uzum, Alif, Anorbank, Xazna) Multicard shlyuzi orqali. Biz karta maʼlumotlaringizni koʻrmaymiz va saqlamaymiz. Pullik tarif toʻlov tasdiqlangan zahoti faollashadi va siz toʻlagan muddat davomida amal qiladi; tarif cheklovlari — daqiqalar, xotira va tarix — oʻsha muddatga tatbiq etiladi.",
+      },
+      renewal: {
+        title: "Uzaytirish",
+        body: "Uzaytirish faqat qoʻlda amalga oshiriladi. Biz kartangizni saqlamaymiz va hech qachon avtomatik pul yechmaymiz — avtomatik uzaytirish yoʻq. Toʻlangan muddat tugagach, tarif shunchaki amal qilishdan toʻxtaydi va hisobingiz bepul tarifga qaytadi. Bekor qiladigan narsa yoʻq. Davom ettirish uchun keyingi muddatni oʻzingiz toʻlaysiz. Muddat tugashidan oldin elektron pochtangizga eslatma yuboramiz.",
+      },
+      refunds: {
+        title: "Pulni qaytarish",
+        bodyBefore:
+          "Amalda koʻrsatilgan xizmat uchun toʻlangan pulni qaytarmaymiz — shu jumladan Dicta-dan muddatidan oldin voz kechsangiz, muddatning ishlatilmagan qismini ham. Bepul tarif toʻlovdan oldin xizmatni toʻliq baholash imkonini beradi. Pul faqat takroriy yoki xato yechib olinganda hamda tarif toʻlangan boʻlsa-yu faollashtirilmagan boʻlsa qaytariladi. Murojaat tartibi ",
+        linkLabel: "Ommaviy ofertada",
+        bodyAfter: " keltirilgan.",
+      },
+      taxes: {
+        title: "Soliqlar va cheklar",
+        body: "Narxlar QQSsiz koʻrsatilgan: «NORLAS IT SOLUTIONS» MChJ Oʻzbekiston Respublikasi IT Park rezidenti boʻlib, qoʻshilgan qiymat soligʻidan ozod, shu sababli toʻlovda QQS qoʻshilmaydi. Har bir toʻlov boʻyicha fiskal maʼlumotlar operatori orqali fiskal chek shakllantiriladi: u elektron pochtangizga yuboriladi, unga havola esa ilovadagi toʻlovlar tarixida saqlanadi.",
+      },
       termination: {
         title: "Foydalanishni tugatish",
         bodyBefore: "Ushbu shartlarni buzgan akkauntlarni toʻxtatib qoʻyishimiz mumkin. Siz hisobingizni istalgan paytda quyidagi manzilga xat yozib yopishingiz mumkin: ",
@@ -882,6 +1297,181 @@ const uz: typeof en = {
         body: "Xizmat «boricha» taqdim etiladi. Qonun ruxsat bergan maksimal darajada Dicta xizmatdan foydalanish bilan bogʻliq bilvosita, tasodifiy yoki ergashuvchi zararlar uchun javobgar emas.",
       },
       contact: { title: "Aloqa", legalLabel: "Yuridik masalalar: " },
+    },
+    offer: {
+      intro:
+        "Ushbu hujjat «NORLAS IT SOLUTIONS» masʼuliyati cheklangan jamiyatining (keyingi oʻrinlarda — «Sotuvchi») har qanday jismoniy yoki yuridik shaxsga (keyingi oʻrinlarda — «Xaridor») qaratilgan ommaviy ofertasi boʻlib, quyidagi shartlar asosida Dicta xizmatidan pullik foydalanish boʻyicha shartnoma tuzishni taklif etadi. Iltimos, toʻlovdan oldin uni toʻliq oʻqib chiqing: toʻlov ushbu ofertaning barcha shartlariga rozilik bildirish demakdir.",
+      subject: {
+        title: "1. Ofertaning predmeti",
+        body: "Sotuvchi Xaridorga Dicta xizmatidan — uchrashuvlar oʻtkazish, ularni yozib olish, nutqni matnga aylantirish va sunʼiy intellekt yordamida qisqa xulosalar tayyorlash uchun moʻljallangan onlayn xizmatdan — tanlangan tarif doirasida va toʻlangan muddat davomida pullik foydalanish imkonini beradi. Dicta internet orqali xizmat sifatida taqdim etiladi; dasturning nusxasi Xaridorga topshirilmaydi va unga boʻlgan mutlaq huquqlar oʻtkazilmaydi.",
+        scope:
+          "Foydalanish huquqi Xaridorning hisobiga beriladi. Agar Xaridor yuridik shaxs boʻlsa, bu huquq u oʻz ish maydoniga qoʻshgan foydalanuvchilarga — tanlangan tarif cheklovlari doirasida — tatbiq etiladi.",
+      },
+      acceptance: {
+        title: "2. Ofertani qabul qilish (aksept)",
+        body: "Oferta toʻlov orqali qabul qilinadi. Tarifni tanlash va uni toʻliq toʻlash ushbu oferta shartlarini toʻliq va soʻzsiz qabul qilish hisoblanadi hamda Oʻzbekiston Respublikasi Fuqarolik kodeksi maʼnosidagi aksept deb eʼtirof etiladi.",
+        effectBefore:
+          "Toʻlov kelib tushgan paytdan boshlab shartnoma ushbu oferta shartlarida yozma shaklda tuzilgan hisoblanadi va ikkala tomon imzolagan hujjat kuchiga ega boʻladi. Alohida qogʻoz shartnoma talab etilmaydi; agar u Xaridorga zarur boʻlsa, quyidagi manzil orqali soʻrash mumkin: ",
+        effectAfter: ".",
+        version:
+          "Toʻlovga ushbu sahifada toʻlov amalga oshirilgan paytda eʼlon qilingan tahrir qoʻllaniladi.",
+      },
+      seller: {
+        title: "3. Sotuvchining rekvizitlari",
+        nameLabel: "Toʻliq nomi:",
+        nameValue: "«NORLAS IT SOLUTIONS» masʼuliyati cheklangan jamiyati",
+        stirLabel: "STIR:",
+        stirValue: "312444263",
+        addressLabel: "Yuridik manzil:",
+        addressValue: "{{LEGAL_ADDRESS}}",
+        bankLabel: "Bank rekvizitlari:",
+        bankValue: "{{BANK_DETAILS}}",
+        directorLabel: "Direktor:",
+        directorValue: "{{DIRECTOR_NAME}}",
+        siteLabel: "Sayt:",
+        siteValue: "dicta.uz",
+        supportLabel: "Qoʻllab-quvvatlash:",
+        legalLabel: "Yuridik masalalar:",
+      },
+      service: {
+        title: "4. Xizmat tarkibiga nimalar kiradi",
+        body: "Dicta — xizmat sifatida taqdim etiladigan dasturiy taʼminot: brauzerda meet.dicta.uz manzilida hamda macOS, Windows, iOS va Android uchun Dicta ilovalarida. Toʻlangan tarif doirasida xizmat quyidagilarni taʼminlaydi:",
+        item1: "havola orqali videouchrashuvlar — mehmonlar hech narsa oʻrnatmasdan qoʻshiladi;",
+        item2: "uchrashuvlarni yozib olish va yozuvlarni saqlash;",
+        item3: "nutqni oʻzbek, rus va ingliz tillarida avtomatik transkripsiya qilish;",
+        item4: "transkripsiya asosida sunʼiy intellekt tayyorlagan qisqa xulosalar, qarorlar va vazifalar roʻyxati;",
+        item5: "oʻtgan uchrashuvlar boʻyicha qidiruv, natijalarni ulashish va ulangan xizmatlarga eksport qilish.",
+        limits:
+          "Aniq cheklovlar — oyiga necha daqiqa, xotira hajmi, tarix saqlanish muddati va ish maydoni aʼzolari soni — toʻlangan tarif bilan belgilanadi.",
+      },
+      plans: {
+        title: "5. Tariflar va narxlar",
+        bodyBefore: "Amaldagi tariflar, ularning cheklovlari va narxlari ",
+        linkLabel: "«Narxlar» boʻlimida",
+        bodyAfter:
+          " eʼlon qilinadi va ushbu ofertaning ajralmas qismi hisoblanadi. Narx har bir tarif va hisob-kitob davri (oy yoki yil) uchun koʻrsatiladi.",
+        free: "Dicta-da doimiy bepul tarif ham bor. Xaridor toʻlovdan oldin xizmatni toʻliq sinab koʻrishi mumkin: roʻyxatdan oʻtish uchun ham, bepul tarifdan foydalanishda davom etish uchun ham karta talab qilinmaydi.",
+      },
+      vat: {
+        title: "6. Qoʻshilgan qiymat soligʻi",
+        body: "Sotuvchi Oʻzbekiston Respublikasi Dasturiy mahsulotlar va axborot texnologiyalari texnoparki (IT Park) rezidenti boʻlib, qoʻshilgan qiymat soligʻidan ozod qilingan. Barcha narxlar QQSsiz koʻrsatilgan; toʻlov paytida ularga QQS qoʻshilmaydi.",
+        certificate: "IT Park rezidenti guvohnomasi: {{ITPARK_CERTIFICATE}}.",
+      },
+      payment: {
+        title: "7. Toʻlov usullari va valyuta",
+        body: "Barcha hisob-kitoblar Oʻzbekiston Respublikasining milliy valyutasida — oʻzbek soʻmida (UZS) amalga oshiriladi.",
+        methods:
+          "Toʻlov Multicard toʻlov shlyuzi orqali onlayn amalga oshiriladi: bank kartasi bilan yoki Payme, Click, Uzum, Alif, Anorbank va Xazna elektron hamyonlaridan.",
+        noCard:
+          "Sotuvchi karta raqamini, uning amal qilish muddatini va CVV kodini olmaydi, qayta ishlamaydi va saqlamaydi — bu maʼlumotlar toʻlov shlyuzi va bank tomonida kiritiladi.",
+        moment:
+          "Toʻlov majburiyati mablagʻ Sotuvchining hisobiga tushgan va toʻlov shlyuzi toʻlovni muvaffaqiyatli deb tasdiqlagan paytda bajarilgan hisoblanadi.",
+      },
+      activation: {
+        title: "8. Foydalanish qachon ochiladi",
+        body: "Toʻlangan tarif toʻlov shlyuzi toʻlovni tasdiqlagach avtomatik faollashadi — odatda bir necha daqiqa ichida. Toʻlangan muddat faollashtirilgan paytdan boshlab hisoblanadi.",
+        failureBefore:
+          "Agar mablagʻ yechib olingan boʻlsa-yu, tarif hisobda paydo boʻlmasa, Xaridor quyidagi manzilga yozishi lozim: ",
+        failureAfter:
+          " — toʻlov sanasi, summasi va chekini koʻrsatgan holda. Biz yo foydalanishni ochamiz, yo toʻlovni qaytaramiz.",
+      },
+      term: {
+        title: "9. Obuna muddati va uni uzaytirish",
+        body: "Toʻlangan tarif toʻlangan muddat davomida — tanlangan tarifga koʻra bir oy yoki bir yil — faollashtirilgan paytdan boshlab amal qiladi.",
+        manual:
+          "Uzaytirish faqat qoʻlda amalga oshiriladi. Dicta Xaridorning kartasini saqlamaydi va hech qachon avtomatik pul yechmaydi. Avtomatik uzaytirish yoʻq.",
+        expiry:
+          "Toʻlangan muddat tugagach, tarif shunchaki amal qilishdan toʻxtaydi va hisob bepul tarifga qaytadi. Hech narsani bekor qilish shart emas, obunadan voz kechish haqida xabar berish ham talab etilmaydi. Pullik tarifdan foydalanishni davom ettirish uchun Xaridor keyingi muddatni oʻzi — istagan paytda — toʻlaydi.",
+        reminder:
+          "Toʻlangan muddat tugashidan oldin hisobda koʻrsatilgan elektron pochtaga eslatma yuboramiz, toki muddatning tugashi kutilmagan hol boʻlmasin.",
+      },
+      refunds: {
+        title: "10. Pul mablagʻlarini qaytarish",
+        body: "Amalda koʻrsatilgan xizmat uchun toʻlangan pul qaytarilmaydi. Foydalanish huquqi toʻlov paytidan boshlab butun toʻlangan muddatga beriladi, bepul tarif esa har qanday toʻlovdan oldin xizmatni toʻliq baholash imkonini beradi.",
+        earlyStop:
+          "Agar Xaridor toʻlangan muddat tugashidan oldin Dicta-dan foydalanishni toʻxtatsa yoki hisobini oʻchirsa, muddatning ishlatilmagan qismi qaytarilmaydi va keyingi muddatga oʻtkazilmaydi.",
+        exceptionsIntro: "Pul faqat ikki holatda qaytariladi:",
+        exception1:
+          "takroriy yoki xato yechib olish — bitta toʻlov ikki marta yechilgan yoki tanlangan tarif narxiga mos kelmaydigan summa yechilgan boʻlsa;",
+        exception2:
+          "xizmat toʻlangan, ammo koʻrsatilmagan — toʻlangan tarif faollashtirilmagan va uni faollashtirishning iloji boʻlmagan boʻlsa.",
+        howBefore: "Pulni qaytarish boʻyicha ariza quyidagi manzilga yuboriladi: ",
+        howAfter:
+          " — toʻlov sanasi, summasi va cheki koʻrsatilgan holda. Talab asosli boʻlsa, mablagʻ oʻsha toʻlov shlyuzi orqali toʻlov amalga oshirilgan kartaga yoki hamyonga qaytariladi; qachon tushishi kartani chiqargan bankka bogʻliq.",
+        consumer:
+          "Ushbu boʻlim Oʻzbekiston Respublikasining isteʼmolchilar huquqlarini himoya qilish toʻgʻrisidagi qonunchiligi jismoniy shaxslarga bergan huquqlarni cheklamaydi.",
+      },
+      receipt: {
+        title: "11. Fiskal chek",
+        body: "Har bir toʻlov boʻyicha Oʻzbekiston Respublikasi qonunchiligi talabiga muvofiq fiskal maʼlumotlar operatori (OFD) orqali fiskal chek shakllantiriladi.",
+        delivery:
+          "Chek Xaridorning hisobida koʻrsatilgan elektron pochtaga yuboriladi, unga havola esa ilovadagi toʻlovlar tarixida saqlanadi. Chek toʻlovni tasdiqlovchi hujjat hisoblanadi.",
+        missingBefore: "Agar chek kelmasa, «Spam» papkasini tekshiring va soʻng quyidagi manzilga yozing: ",
+        missingAfter: " — biz uni qayta yuboramiz.",
+      },
+      customerObligations: {
+        title: "12. Xaridorning majburiyatlari",
+        intro: "Xaridor quyidagilarni oʻz zimmasiga oladi:",
+        item1: "roʻyxatdan oʻtishda haqiqiy maʼlumotlarni va ishlaydigan elektron pochta manzilini koʻrsatish hamda ularni dolzarb holatda saqlash — chek, eslatmalar va xizmat bildirishnomalari shu manzilga yuboriladi;",
+        item2: "hisobga kirish maʼlumotlarini sir saqlash va foydalanish huquqini uchinchi shaxslarga bermaslik;",
+        item3: "Dicta-dan Foydalanish shartlari va Oʻzbekiston Respublikasi qonunchiligiga muvofiq foydalanish;",
+        item4: "qonun talab qilgan hollarda uchrashuvning barcha ishtirokchilaridan yozib olish va transkripsiya qilishga rozilik olish;",
+        item5: "toʻlangan tarifdan foydalanish huquqini oʻz ish maydonidan tashqaridagi shaxslarga qayta sotmaslik, sublitsenziya bermaslik va boshqa yoʻl bilan taqdim etmaslik;",
+        item6: "tanlangan tarifni ushbu ofertada belgilangan miqdorda va usulda toʻlash.",
+      },
+      sellerObligations: {
+        title: "13. Sotuvchining majburiyatlari",
+        intro: "Sotuvchi quyidagilarni oʻz zimmasiga oladi:",
+        item1: "toʻlangan tarifdan foydalanishni butun toʻlangan muddat davomida taʼminlash;",
+        item2: "xizmatning ishlashini qoʻllab-quvvatlash hamda uning ochiqligi va xavfsizligi uchun oqilona texnik choralar koʻrish;",
+        item3: "har bir toʻlov boʻyicha fiskal chek shakllantirish va yuborish;",
+        item4: "shaxsiy maʼlumotlarni Maxfiylik siyosatiga muvofiq qayta ishlash;",
+        item5: "tanlangan tarifga kiradigan masalalar boʻyicha 3-boʻlimda koʻrsatilgan manzillar orqali qoʻllab-quvvatlash koʻrsatish.",
+        availability:
+          "Sotuvchi xizmatning uzluksiz va xatosiz ishlashini kafolatlamaydi. Foydalanish texnik xizmat koʻrsatish, xavfsizlik ishlari, yangilanishlar yoki yuklama sabablari boʻyicha, shuningdek Sotuvchiga bogʻliq boʻlmagan sabablarga koʻra — aloqa kanallari, Xaridor uskunasi yoki uchinchi tomon xizmatlaridagi uzilishlar tufayli — vaqtincha toʻxtatilishi mumkin. Bunday qisqa muddatli uzilishlar xizmat koʻrsatilmagani hisoblanmaydi va pulni qaytarish uchun asos boʻlmaydi.",
+      },
+      liability: {
+        title: "14. Javobgarlikning cheklanishi",
+        body: "Xizmat «boricha» taqdim etiladi. Qonun ruxsat bergan maksimal darajada Sotuvchi xizmatdan foydalanish yoki undan foydalana olmaslik bilan bogʻliq bilvosita, tasodifiy yoki ergashuvchi zararlar, boy berilgan foyda va maʼlumotlarning yoʻqolishi uchun javobgar emas.",
+        ai: "Transkriptlar, qisqa xulosalar, qarorlar va vazifalar roʻyxati mashinali oʻrganish modellari tomonidan avtomatik shakllantiriladi va noaniqliklarni oʻz ichiga olishi mumkin. Ular yordamchi material boʻlib, yuridik ahamiyatga ega hujjat emas. Xaridor ularga qaror qabul qilishda, hisob-kitobda yoki uchinchi shaxslar bilan munosabatlarda tayanishdan oldin tekshirib chiqishi shart.",
+        cap: "Har qanday holatda Sotuvchining umumiy javobgarligi javobgarlikka asos boʻlgan voqea sodir boʻlgan toʻlangan muddat uchun Xaridor tomonidan haqiqatda toʻlangan summa bilan cheklanadi.",
+        force:
+          "Tomonlar yengib boʻlmas kuch holatlari — davlat organlarining hujjatlari, tabiiy ofatlar, harbiy harakatlar, aloqa yoki elektr taʼminotidagi ommaviy uzilishlar — tufayli majburiyatlar bajarilmagani uchun javobgar boʻlmaydi.",
+      },
+      personalData: {
+        title: "15. Shaxsiy maʼlumotlar",
+        bodyBefore:
+          "Shaxsiy maʼlumotlar Oʻzbekiston Respublikasining shaxsga doir maʼlumotlar toʻgʻrisidagi qonunchiligiga hamda ",
+        linkLabel: "Maxfiylik siyosatiga",
+        bodyAfter:
+          " muvofiq qayta ishlanadi; unda qanday maʼlumotlar va nima uchun toʻplanishi, qancha saqlanishi hamda Xaridor hisobini va maʼlumotlarini qanday oʻchirishi mumkinligi tushuntirilgan. Ushbu ofertani qabul qilish ayni paytda shaxsiy maʼlumotlarni koʻrsatilgan shartlarda qayta ishlashga rozilik berishni anglatadi.",
+      },
+      termination: {
+        title: "16. Shartnomaning amal qilish muddati va bekor qilinishi",
+        body: "Shartnoma oferta qabul qilingan (toʻlov amalga oshirilgan) paytdan kuchga kiradi va toʻlangan muddat tugagunga qadar yoxud tomonlar oʻz majburiyatlarini toʻliq bajargunga qadar amal qiladi.",
+        customer:
+          "Xaridor istalgan paytda Dicta-dan foydalanishni toʻxtatishi va hisobini bevosita ilovada oʻchirishi mumkin. Hisobning oʻchirilishi shartnomani bekor qiladi; toʻlangan muddatning ishlatilmagan qismi qaytarilmaydi.",
+        seller:
+          "Sotuvchi Foydalanish shartlari yoki Oʻzbekiston Respublikasi qonunchiligi buzilganda, jumladan xizmatdan noqonuniy maqsadlarda foydalanilganda yoki uning ishini buzuvchi harakatlar sodir etilganda, foydalanishni toʻxtatib qoʻyishi yoki bekor qilishi mumkin.",
+      },
+      amendments: {
+        title: "17. Ofertaga oʻzgartirish kiritish",
+        body: "Sotuvchi ushbu ofertaga va narxlarga bir tomonlama tartibda oʻzgartirish kiritishga haqli. Yangi tahrir ushbu sahifada eʼlon qilingan va sanasi yangilangan paytdan kuchga kiradi.",
+        priceLock:
+          "Narxning oʻzgarishi allaqachon toʻlangan muddatga tatbiq etilmaydi: toʻlangan tarif toʻlov paytida amalda boʻlgan shartlar va narx boʻyicha davom etadi. Oʻzgarishlar eʼlon qilingandan keyin xizmatdan foydalanishda davom etish, shuningdek keyingi toʻlov yangi tahrirga rozilik bildirish hisoblanadi.",
+      },
+      law: {
+        title: "18. Qoʻllaniladigan huquq va nizolarni hal etish",
+        body: "Ushbu ofertaga va uning asosida yuzaga keladigan munosabatlarga Oʻzbekiston Respublikasining huquqi qoʻllaniladi.",
+        claimsBefore:
+          "Tomonlar nizolarni muzokaralar yoʻli bilan hal etishga intiladi. Yozma daʼvo ",
+        claimsAfter:
+          " manziliga yuboriladi va qonunchilikda belgilangan muddatda koʻrib chiqiladi.",
+        court:
+          "Kelishuvga erishilmagan taqdirda nizo Oʻzbekiston Respublikasi qonunchiligiga muvofiq {{COURT_VENUE}} tomonidan koʻrib chiqiladi.",
+        languages:
+          "Ushbu oferta oʻzbek, rus va ingliz tillarida eʼlon qilingan. Matnlar oʻrtasida tafovut boʻlsa, oʻzbek tilidagi matn ustuvor hisoblanadi.",
+      },
     },
   },
 };

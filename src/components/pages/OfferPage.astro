@@ -1,0 +1,157 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { t, localePath } from "../../i18n/utils";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const L = t(locale).legal;
+const o = L.offer;
+const support = "support@dicta.uz";
+const legal = "legal@dicta.uz";
+// Prices live on the landing page's #pricing section — link there rather than
+// hardcoding amounts into the offer, so the two can never drift apart.
+const home = localePath("/", locale);
+const pricingHref = `${home === "/" ? "" : home}/#pricing`;
+const privacyHref = localePath("/privacy", locale);
+const prose =
+  "max-w-3xl w-full mx-auto px-6 py-16 space-y-6 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h2]:mt-8 [&_h2]:mb-2 [&_p]:text-muted [&_p]:leading-relaxed [&_a]:text-accent [&_a]:hover:text-accent-strong [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-muted [&_ul]:space-y-1.5 [&_li]:leading-relaxed [&_strong]:text-foreground";
+---
+
+<Layout
+  title={`${L.offerTitle} — Dicta`}
+  description={o.intro}
+  locale={locale}
+  path="/offer"
+>
+  <Header locale={locale} path="/offer" />
+  <article class={prose}>
+    <h1 class="font-display text-4xl font-semibold text-foreground">{L.offerTitle}</h1>
+    <p class="!text-sm">{L.offerUpdated}</p>
+
+    <p>{o.intro}</p>
+
+    <h2>{o.subject.title}</h2>
+    <p>{o.subject.body}</p>
+    <p>{o.subject.scope}</p>
+
+    <h2>{o.acceptance.title}</h2>
+    <p>{o.acceptance.body}</p>
+    <p>{o.acceptance.effectBefore}<a href={`mailto:${legal}`}>{legal}</a>{o.acceptance.effectAfter}</p>
+    <p>{o.acceptance.version}</p>
+
+    <h2>{o.seller.title}</h2>
+    <ul>
+      <li><strong>{o.seller.nameLabel}</strong> {o.seller.nameValue}</li>
+      <li><strong>{o.seller.stirLabel}</strong> {o.seller.stirValue}</li>
+      <li><strong>{o.seller.addressLabel}</strong> {o.seller.addressValue}</li>
+      <li><strong>{o.seller.bankLabel}</strong> {o.seller.bankValue}</li>
+      <li><strong>{o.seller.directorLabel}</strong> {o.seller.directorValue}</li>
+      <li><strong>{o.seller.siteLabel}</strong> {o.seller.siteValue}</li>
+      <li><strong>{o.seller.supportLabel}</strong> <a href={`mailto:${support}`}>{support}</a></li>
+      <li><strong>{o.seller.legalLabel}</strong> <a href={`mailto:${legal}`}>{legal}</a></li>
+    </ul>
+
+    <h2>{o.service.title}</h2>
+    <p>{o.service.body}</p>
+    <ul>
+      <li>{o.service.item1}</li>
+      <li>{o.service.item2}</li>
+      <li>{o.service.item3}</li>
+      <li>{o.service.item4}</li>
+      <li>{o.service.item5}</li>
+    </ul>
+    <p>{o.service.limits}</p>
+
+    <h2>{o.plans.title}</h2>
+    <p>{o.plans.bodyBefore}<a href={pricingHref}>{o.plans.linkLabel}</a>{o.plans.bodyAfter}</p>
+    <p>{o.plans.free}</p>
+
+    <h2>{o.vat.title}</h2>
+    <p><strong>{o.vat.body}</strong></p>
+    <p>{o.vat.certificate}</p>
+
+    <h2>{o.payment.title}</h2>
+    <p>{o.payment.body}</p>
+    <p>{o.payment.methods}</p>
+    <p>{o.payment.noCard}</p>
+    <p>{o.payment.moment}</p>
+
+    <h2>{o.activation.title}</h2>
+    <p>{o.activation.body}</p>
+    <p>{o.activation.failureBefore}<a href={`mailto:${support}`}>{support}</a>{o.activation.failureAfter}</p>
+
+    <h2>{o.term.title}</h2>
+    <p>{o.term.body}</p>
+    <p><strong>{o.term.manual}</strong></p>
+    <p>{o.term.expiry}</p>
+    <p>{o.term.reminder}</p>
+
+    <h2>{o.refunds.title}</h2>
+    <p>{o.refunds.body}</p>
+    <p>{o.refunds.earlyStop}</p>
+    <p>{o.refunds.exceptionsIntro}</p>
+    <ul>
+      <li>{o.refunds.exception1}</li>
+      <li>{o.refunds.exception2}</li>
+    </ul>
+    <p>{o.refunds.howBefore}<a href={`mailto:${support}`}>{support}</a>{o.refunds.howAfter}</p>
+    <p>{o.refunds.consumer}</p>
+
+    <h2>{o.receipt.title}</h2>
+    <p>{o.receipt.body}</p>
+    <p>{o.receipt.delivery}</p>
+    <p>{o.receipt.missingBefore}<a href={`mailto:${support}`}>{support}</a>{o.receipt.missingAfter}</p>
+
+    <h2>{o.customerObligations.title}</h2>
+    <p>{o.customerObligations.intro}</p>
+    <ul>
+      <li>{o.customerObligations.item1}</li>
+      <li>{o.customerObligations.item2}</li>
+      <li>{o.customerObligations.item3}</li>
+      <li>{o.customerObligations.item4}</li>
+      <li>{o.customerObligations.item5}</li>
+      <li>{o.customerObligations.item6}</li>
+    </ul>
+
+    <h2>{o.sellerObligations.title}</h2>
+    <p>{o.sellerObligations.intro}</p>
+    <ul>
+      <li>{o.sellerObligations.item1}</li>
+      <li>{o.sellerObligations.item2}</li>
+      <li>{o.sellerObligations.item3}</li>
+      <li>{o.sellerObligations.item4}</li>
+      <li>{o.sellerObligations.item5}</li>
+    </ul>
+    <p>{o.sellerObligations.availability}</p>
+
+    <h2>{o.liability.title}</h2>
+    <p>{o.liability.body}</p>
+    <p>{o.liability.ai}</p>
+    <p>{o.liability.cap}</p>
+    <p>{o.liability.force}</p>
+
+    <h2>{o.personalData.title}</h2>
+    <p>{o.personalData.bodyBefore}<a href={privacyHref}>{o.personalData.linkLabel}</a>{o.personalData.bodyAfter}</p>
+
+    <h2>{o.termination.title}</h2>
+    <p>{o.termination.body}</p>
+    <p>{o.termination.customer}</p>
+    <p>{o.termination.seller}</p>
+
+    <h2>{o.amendments.title}</h2>
+    <p>{o.amendments.body}</p>
+    <p>{o.amendments.priceLock}</p>
+
+    <h2>{o.law.title}</h2>
+    <p>{o.law.body}</p>
+    <p>{o.law.claimsBefore}<a href={`mailto:${legal}`}>{legal}</a>{o.law.claimsAfter}</p>
+    <p>{o.law.court}</p>
+    <p>{o.law.languages}</p>
+  </article>
+  <Footer locale={locale} />
+</Layout>
