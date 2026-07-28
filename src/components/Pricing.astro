@@ -190,6 +190,9 @@ const packsUSD = packsLineFor("USD");
         )
       }
       <p class="text-sm text-foreground-soft font-medium">{p.reassurance}</p>
+      {/* The tax basis belongs next to the price, not only in the offer: this
+          is where most people first see what Dicta costs. */}
+      <p class="text-xs text-muted-soft mt-2">{p.vatNote}</p>
     </div>
   </div>
 </section>

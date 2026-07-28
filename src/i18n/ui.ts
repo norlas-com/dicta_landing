@@ -127,6 +127,7 @@ const en = {
     cta: "Get started free",
     packsLine: "Need more? One-time minute packs from {price} — they never expire.",
     reassurance: "Every plan starts free. No card required.",
+    vatNote: "Prices are VAT-exempt — the seller is an IT Park resident.",
   },
   notetaker: { steps: { recording: "Recording" } },
   download: {
@@ -612,6 +613,7 @@ const ru: typeof en = {
     cta: "Начать бесплатно",
     packsLine: "Нужно больше? Разовые пакеты минут от {price} — они не сгорают.",
     reassurance: "Любой тариф начинается бесплатно. Карта не нужна.",
+    vatNote: "Цены не облагаются НДС — продавец является резидентом IT Park.",
   },
   notetaker: { steps: { recording: "Recording" } },
   download: {
@@ -1098,6 +1100,7 @@ const uz: typeof en = {
     cta: "Bepul boshlash",
     packsLine: "Koʻproq kerakmi? Bir martalik daqiqa paketlari {price} dan — ular hech qachon eskirmaydi.",
     reassurance: "Har bir reja bepul boshlanadi. Karta talab qilinmaydi.",
+    vatNote: "Narxlarga QQS solinmaydi — sotuvchi IT Park rezidenti.",
   },
   notetaker: { steps: { recording: "Recording" } },
   download: {
