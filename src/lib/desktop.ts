@@ -12,7 +12,10 @@ export interface DesktopRelease {
   winUrl: string; // Windows NSIS installer (.exe)
 }
 
-const FALLBACK = "0.1.1";
+// Only used when a feed fetch fails at build time. Keep it at the current
+// release: 0.1.1's Windows installer is already gone from R2 (404), so a stale
+// fallback ships dead download links rather than merely old ones.
+const FALLBACK = "0.1.27";
 
 async function versionFrom(url: string): Promise<string | null> {
   try {
