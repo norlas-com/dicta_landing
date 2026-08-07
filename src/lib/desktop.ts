@@ -12,10 +12,16 @@ export interface DesktopRelease {
   winUrl: string; // Windows NSIS installer (.exe)
 }
 
-// Only used when a feed fetch fails at build time. Keep it at the current
-// release: 0.1.1's Windows installer is already gone from R2 (404), so a stale
-// fallback ships dead download links rather than merely old ones.
-const FALLBACK = "0.1.27";
+// Last resort, only reached when BOTH feeds fail at build time. Keep it at the
+// current release: old installers get pruned from R2 (0.1.1's Windows .exe is
+// already a 404), so a stale fallback ships dead download links rather than
+// merely old ones — and nothing here would tell you.
+//
+// It went stale once already (sat at 0.1.27 through the 0.1.28 release), so the
+// two guards below exist to make that cheap rather than silent: the feeds cover
+// for each other, and using this constant logs loudly enough to see in the CF
+// Pages build output.
+const FALLBACK = "0.1.28";
 
 async function versionFrom(url: string): Promise<string | null> {
   try {
@@ -34,8 +40,18 @@ export async function fetchDesktopRelease(): Promise<DesktopRelease> {
     versionFrom(`${DOWNLOADS_BASE}/latest-mac.yml`),
     versionFrom(`${DOWNLOADS_BASE}/latest.yml`),
   ]);
-  const version = mac ?? FALLBACK;
+  // The two feeds are published by the same release job in the same step, so
+  // they always carry the same version. Letting them cover for each other means
+  // one flaky fetch no longer reaches FALLBACK.
+  const version = mac ?? win ?? FALLBACK;
   const winVersion = win ?? version;
+  if (!mac && !win) {
+    console.warn(
+      `[desktop] both update feeds unreachable under ${DOWNLOADS_BASE}; ` +
+        `falling back to hardcoded v${FALLBACK}. If a newer release has shipped, ` +
+        `these download links 404 — bump FALLBACK in src/lib/desktop.ts.`,
+    );
+  }
   return {
     version,
     arm64Url: `${DOWNLOADS_BASE}/Dicta-${version}-arm64.pkg`,
