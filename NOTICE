@@ -1,0 +1,33 @@
+# NOTICE
+
+Dicta marketing site
+Copyright (c) 2026 "NORLAS IT SOLUTIONS" Limited Liability Company
+
+The MIT License in `LICENSE` applies to the **source code** of this repository —
+the Astro components, the i18n plumbing, the build-time data loaders, the
+Tailwind configuration, the Cloudflare Pages routing rules, and the build
+tooling. You are free to read it, learn from it, and reuse the code in your own
+projects under the terms of that license.
+
+## Not covered by the MIT license
+
+The following are proprietary to "NORLAS IT SOLUTIONS" LLC and are published
+here only so that this repository builds and renders as it does in production.
+They are **not** licensed for reuse, redistribution, or derivative works:
+
+- **The Dicta name, the Dicta logo and wordmark**, and the NORLAS name and logo
+  — including `public/logo.svg`, `public/logo-mark.png`, `public/norlas.svg`,
+  `public/favicon*`, `public/apple-touch-icon.png`,
+  `public/android-chrome-*.png`, and `public/og/*`. These are trademarks;
+  nothing in the MIT license grants any trademark rights.
+- **Product and marketing imagery** in `src/assets/landing/`.
+- **Marketing, help and legal copy** — the string dictionaries in
+  `src/i18n/ui.ts` and the page bodies rendered from them, including the
+  Privacy Policy, the Terms of Service, and the Public Offer Agreement. These
+  are legal instruments binding on a specific company; do not copy them.
+
+Third-party fonts (Lora and Urbanist, vendored via `@fontsource`) are licensed
+by their respective authors under the SIL Open Font License.
+
+If you want to reuse the design system or the layout code, replace the brand
+assets and the copy with your own.

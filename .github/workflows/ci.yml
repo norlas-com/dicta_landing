@@ -1,0 +1,41 @@
+name: CI
+
+# Build check only. Deployment is owned by Cloudflare Pages via its Git
+# integration on `main` — nothing here ships anything.
+#
+# Do NOT add a `pull_request_target` trigger to this workflow: this is a public
+# repository, and that trigger would run fork-authored code with repository
+# write scope.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck (astro check)
+        run: npx astro check
+
+      # The build fetches the public billing catalog and the desktop update
+      # feeds. Both loaders degrade to null / a pinned fallback on failure, so a
+      # network hiccup can't turn CI red on its own.
+      - name: Build
+        run: npm run build
