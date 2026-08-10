@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.norlas.dicta.android",
       "sha256_cert_fingerprints": [
-        "68:4C:25:73:28:80:0D:05:E1:2B:CF:45:25:EF:A1:1A:68:16:30:74:0A:CE:4D:CD:97:A4:4C:E4:81:CC:FA:F5"
+        "68:4C:25:73:28:80:0D:05:E1:2B:CF:45:25:EF:A1:1A:68:16:30:74:0A:CE:4D:CD:97:A4:4C:E4:81:CC:FA:F5",
+        "4C:A0:C8:DC:85:9D:80:CE:30:69:20:91:D4:93:AC:A5:09:D8:3F:FC:00:EE:B4:95:F4:ED:5F:E3:5A:DF:0C:F5"
       ]
     }
   }
