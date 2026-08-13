@@ -46,7 +46,7 @@ const en = {
         problem:
           "Zoom, Google Meet and Teams keep your conversations on servers far away. For many teams here, that's a risk they can't accept.",
         solution:
-          "Dicta Meet works better than Zoom, Google Meet and Teams. Our meeting servers live in the TAS-IX network — your data never leaves Uzbekistan.",
+          "Dicta Meet works better than Zoom, Google Meet and Teams. Our meeting servers live in the TAS-IX network, so your live conversation doesn't travel around the world and back — it stays here, which is why calls are faster.",
         alt: "A video call participant giving a thumbs up on screen",
       },
       f2: {
@@ -149,7 +149,7 @@ const en = {
   language: "Language",
   legal: {
     privacyTitle: "Privacy Policy",
-    privacyUpdated: "Last updated: May 1, 2026",
+    privacyUpdated: "Last updated: August 13, 2026",
     termsTitle: "Terms of Service",
     termsUpdated: "Last updated: July 28, 2026",
     offerTitle: "Public Offer",
@@ -158,44 +158,145 @@ const en = {
     deleteAccountUpdated: "Last updated: July 27, 2026",
     privacy: {
       intro:
-        'Dicta ("we", "our") operates the meeting service at dicta.uz. This page explains what we collect and why.',
+        'Dicta ("we", "our") operates the meeting service at dicta.uz. This page explains what we collect, how we collect it, what we use it for, and every third party we share it with.',
       dataCollect: {
         title: "Data we collect",
         accountInfo: {
           label: "Account info.",
-          text: "Email address, full name, and (when you sign in with Google) the Google profile picture URL.",
+          text: "Email address, full name, and (when you sign in with Google) the Google profile picture URL. Collected when you create an account.",
         },
         meetings: {
           label: "Meetings.",
-          text: "Meeting titles, participants, timestamps, and short codes you generate.",
+          text: "Meeting titles, participants, timestamps, and short codes you generate. Collected as you use the service.",
         },
         transcripts: {
-          label: "Transcripts.",
-          text: "When the host enables transcription, audio is processed by our servers and Google Gemini to produce text transcripts. Audio buffers are not stored long-term — only the resulting text is kept.",
+          label: "Audio and transcripts.",
+          text: "When transcription is enabled, your meeting audio is captured by the app and sent to the AI providers listed below to produce a transcript, a summary, decisions and action items. The audio itself is not retained by us after processing unless recording is also on — only the resulting text is kept.",
         },
         recordings: {
           label: "Recordings.",
-          text: "When the host starts recording, video and audio are uploaded to our private object store and accessible only to the host. We do not share recordings.",
+          text: "When the host starts recording, video and audio are uploaded to our private object store and accessible only to the host. We do not sell or publish recordings.",
+        },
+        voiceprints: {
+          label: "Voiceprints (optional).",
+          text: "If you opt in to voice enrollment, we derive a mathematical signature of your voice from a short sample and store it on our own servers so we can label you automatically in transcripts. This is optional, is asked for separately, and can be deleted at any time.",
+        },
+        location: {
+          label: "Location (optional).",
+          text: "If you allow it, an offline recording is tagged once, at the moment it starts, with the place you made it. Declining leaves recordings unlabelled and changes nothing else.",
         },
         logs: {
-          label: "Operational logs.",
-          text: "IP, user agent, and request timing for debugging and abuse prevention.",
+          label: "Operational logs and diagnostics.",
+          text: "IP address, user agent, request timing and crash reports, for debugging and abuse prevention.",
         },
+      },
+      howCollected: {
+        title: "How we collect it",
+        body: "Directly from you when you create an account or type into the app; automatically from your device when you record or join a meeting (microphone and, if you turn it on, camera and location); and from our servers as you use the service (logs and diagnostics). We do not buy personal data and we do not track you across other companies' apps or websites.",
       },
       howWeUse: {
         title: "How we use it",
-        body: "To run the service, generate AI summaries, support hosts after a meeting, and prevent abuse. We do not sell your data, and we do not show advertising.",
+        body: "To run the service, produce transcripts and AI summaries, support hosts after a meeting, process payments, and prevent abuse. We do not sell your data, we do not show advertising, and we do not use your meetings to train AI models.",
+      },
+      ai: {
+        title: "AI processing and your consent",
+        body: "Turning a meeting into a transcript and a summary requires sending your data to AI processing providers outside Dicta. Specifically: your meeting audio goes to Google (Gemini API) to convert speech into text, and to RunPod or Replicate to determine who spoke when; the resulting transcript, meeting title and participant names go to Google (Gemini API) to generate summaries, decisions and action items and to answer your questions in AI chat.",
+        consent:
+          "We ask for your permission before any of this happens. In the Dicta apps the disclosure appears before you can record, upload or transcribe anything, and you can withdraw consent at any time under Settings → Data & AI. Without consent you can still sign in, create and join meetings and hold audio/video calls — recording, transcription and AI features stay off.",
       },
       thirdParties: {
-        title: "Third parties",
-        googleSignIn: "Google Sign-In (authentication).",
-        gemini: "Google Gemini API (transcription + summaries).",
-        r2: "Cloudflare R2 (encrypted recording storage).",
-        livekit: "LiveKit (real-time media).",
+        title: "Third parties we share data with",
+        intro:
+          "We share personal data only with the providers below, only for the purpose named, and only to deliver the service. Each is bound by a contract that requires them to protect your data to a standard equivalent to this policy, to process it solely on our instructions, and not to use it to train their own models or for their own purposes.",
+        items: [
+          {
+            name: "Google (Gemini API)",
+            purpose:
+              "Speech-to-text transcription, summaries, decisions, action items, AI chat answers and search indexing. Receives meeting audio, transcript text, meeting titles and participant display names.",
+          },
+          {
+            name: "RunPod",
+            purpose:
+              "GPU capacity for speaker separation, running software we build and control. Receives a short-lived link to the meeting audio, and nothing else — no names, titles or account data.",
+          },
+          {
+            name: "Replicate",
+            purpose:
+              "Backup speaker separation and voiceprint processing, used when our own service is unavailable. Receives a short-lived link to the meeting audio, or the voice-enrollment clip.",
+          },
+          {
+            name: "Recall.ai",
+            purpose:
+              "Only if you send the Dicta notetaker into an external Zoom, Google Meet or Microsoft Teams call. Receives that meeting's link, and returns its audio, video and attendee names. Processed in the European Union.",
+          },
+          {
+            name: "Google (Sign-In) and Apple (Sign in with Apple)",
+            purpose: "Authentication, if you choose those sign-in methods.",
+          },
+          {
+            name: "LiveKit",
+            purpose:
+              "Real-time audio and video during a call. Runs on our own servers in Uzbekistan.",
+          },
+          {
+            name: "Cloudflare",
+            purpose:
+              "Encrypted storage of recordings, content delivery, and sending transactional email.",
+          },
+          {
+            name: "Sentry",
+            purpose:
+              "Crash and error diagnostics, which may include your account identifier and request details.",
+          },
+          {
+            name: "Firebase and Google Analytics",
+            purpose:
+              "Product usage analytics. You can switch this off in Settings; it is never used for advertising.",
+          },
+          {
+            name: "Apple Push Notification service and Firebase Cloud Messaging",
+            purpose: "Delivering push notifications, which may contain meeting titles.",
+          },
+          {
+            name: "OpenStreetMap (Nominatim)",
+            purpose:
+              "Turning the coordinates of an offline recording into a place name, if you enabled location.",
+          },
+          {
+            name: "Telegram",
+            purpose:
+              "Sending you meeting summaries, if you link your Telegram account.",
+          },
+          {
+            name: "Multicard and RevenueCat",
+            purpose: "Processing payments and subscriptions.",
+          },
+          {
+            name: "Trello, Jira, ClickUp, Asana and Hisobot",
+            purpose:
+              "Only if you connect them. Receives the meeting title, action items, decisions, a summary excerpt and a recap link. Anyone holding that link can open the recap, so connect these only to boards your participants would accept.",
+          },
+        ],
+      },
+      retention: {
+        title: "How long we keep it",
+        body: "Account data is kept while your account exists. Transcripts, summaries and recordings are kept until you delete them or delete your account. Voiceprints are kept until you remove them or turn voice enrollment off. Operational logs and diagnostics are kept for up to 90 days. After you delete your account we remove your account, transcripts and recordings within 30 days.",
+      },
+      transfers: {
+        title: "Where your data is processed",
+        body: "Our meeting servers are in Uzbekistan, on the TAS-IX network, and live call traffic stays on them. The AI providers listed above process data outside Uzbekistan — Google, RunPod and Replicate in their own regions, and Recall.ai in the European Union. Where data leaves Uzbekistan we rely on contractual protections equivalent to this policy.",
+      },
+      security: {
+        title: "Security",
+        body: "Traffic is encrypted in transit. Recordings are stored in a private object store that is not publicly listable, and are reachable only through short-lived signed links. Access to production systems is limited to staff who need it. No system is perfectly secure, so we also give you the tools to delete your data yourself.",
+      },
+      children: {
+        title: "Children",
+        body: "Dicta is not directed at children under 13, and we do not knowingly collect their personal data. If you believe a child has given us data, write to us and we will delete it.",
       },
       yourRights: {
         title: "Your rights",
-        bodyBefore: "You can delete your account at any time by emailing ",
+        bodyBefore: "You can access, correct, export or delete your data, and withdraw consent to AI processing at any time. You can delete your account by emailing ",
         bodyAfter: ". We will remove your account, transcripts, and recordings within 30 days.",
         selfServeBefore:
           "You can also do it yourself, from inside the app, without contacting us — see ",
@@ -532,7 +633,7 @@ const ru: typeof en = {
         problem:
           "Zoom, Google Meet и Teams хранят ваши разговоры на далёких серверах. Для многих команд это неприемлемый риск.",
         solution:
-          "Dicta Meet работает лучше Zoom, Google Meet и Teams. Наши серверы встреч находятся в сети TAS-IX — ваши данные никогда не покидают Узбекистан.",
+          "Dicta Meet работает лучше Zoom, Google Meet и Teams. Наши серверы встреч находятся в сети TAS-IX, поэтому ваш живой разговор не путешествует через полмира и обратно — он остаётся здесь, и звонки идут быстрее.",
         alt: "Участник видеозвонка показывает большой палец вверх",
       },
       f2: {
@@ -635,7 +736,7 @@ const ru: typeof en = {
   language: "Язык",
   legal: {
     privacyTitle: "Политика конфиденциальности",
-    privacyUpdated: "Последнее обновление: 1 мая 2026 г.",
+    privacyUpdated: "Последнее обновление: 13 августа 2026 г.",
     termsTitle: "Условия использования",
     termsUpdated: "Последнее обновление: 28 июля 2026 г.",
     offerTitle: "Публичная оферта",
@@ -644,44 +745,145 @@ const ru: typeof en = {
     deleteAccountUpdated: "Последнее обновление: 27 июля 2026 г.",
     privacy: {
       intro:
-        "Dicta («мы», «наш») управляет сервисом видеовстреч на dicta.uz. На этой странице описано, какие данные мы собираем и для чего.",
+        "Dicta («мы», «наш») управляет сервисом видеовстреч на dicta.uz. На этой странице описано, какие данные мы собираем, как мы их собираем, для чего используем и каким третьим лицам передаём.",
       dataCollect: {
         title: "Какие данные мы собираем",
         accountInfo: {
           label: "Данные аккаунта.",
-          text: "Адрес электронной почты, полное имя и (при входе через Google) URL фотографии профиля Google.",
+          text: "Адрес электронной почты, полное имя и (при входе через Google) URL фотографии профиля Google. Собираются при создании аккаунта.",
         },
         meetings: {
           label: "Встречи.",
-          text: "Названия встреч, участники, временные метки и короткие коды, которые вы создаёте.",
+          text: "Названия встреч, участники, временные метки и короткие коды, которые вы создаёте. Собираются по мере использования сервиса.",
         },
         transcripts: {
-          label: "Транскрипты.",
-          text: "Когда организатор включает транскрипцию, аудио обрабатывается нашими серверами и Google Gemini для получения текстовой расшифровки. Аудиобуферы не хранятся долговременно — сохраняется только итоговый текст.",
+          label: "Аудио и расшифровки.",
+          text: "Когда транскрипция включена, приложение записывает аудио встречи и передаёт его перечисленным ниже AI-провайдерам, чтобы получить расшифровку, резюме, решения и задачи. Само аудио после обработки у нас не сохраняется, если не включена запись, — остаётся только итоговый текст.",
         },
         recordings: {
           label: "Записи.",
-          text: "Когда организатор начинает запись, видео и аудио загружаются в наше приватное объектное хранилище и доступны только организатору. Мы не передаём записи третьим лицам.",
+          text: "Когда организатор начинает запись, видео и аудио загружаются в наше приватное объектное хранилище и доступны только организатору. Мы не продаём и не публикуем записи.",
+        },
+        voiceprints: {
+          label: "Голосовой отпечаток (по желанию).",
+          text: "Если вы включите распознавание голоса, мы создадим из короткого образца математическое описание вашего голоса и сохраним его на наших серверах, чтобы автоматически подписывать вас в расшифровках. Это необязательно, запрашивается отдельно и может быть удалено в любой момент.",
+        },
+        location: {
+          label: "Местоположение (по желанию).",
+          text: "Если вы разрешите, офлайн-запись один раз, в момент старта, отмечается местом, где вы её сделали. Отказ оставит записи без метки и ни на что больше не повлияет.",
         },
         logs: {
-          label: "Служебные логи.",
-          text: "IP-адрес, user agent и время запросов — для отладки и предотвращения злоупотреблений.",
+          label: "Служебные логи и диагностика.",
+          text: "IP-адрес, user agent, время запросов и отчёты о сбоях — для отладки и предотвращения злоупотреблений.",
         },
+      },
+      howCollected: {
+        title: "Как мы их собираем",
+        body: "Напрямую от вас, когда вы создаёте аккаунт или вводите данные в приложении; автоматически с вашего устройства, когда вы записываете или присоединяетесь к встрече (микрофон, а также камера и местоположение, если вы их включили); и с наших серверов по мере использования сервиса (логи и диагностика). Мы не покупаем персональные данные и не отслеживаем вас в приложениях и на сайтах других компаний.",
       },
       howWeUse: {
         title: "Как мы используем эти данные",
-        body: "Для работы сервиса, генерации AI-кратких изложений, поддержки организаторов после встречи и предотвращения злоупотреблений. Мы не продаём ваши данные и не показываем рекламу.",
+        body: "Для работы сервиса, создания расшифровок и AI-резюме, поддержки организаторов после встречи, обработки платежей и предотвращения злоупотреблений. Мы не продаём ваши данные, не показываем рекламу и не используем ваши встречи для обучения AI-моделей.",
+      },
+      ai: {
+        title: "AI-обработка и ваше согласие",
+        body: "Чтобы превратить встречу в расшифровку и резюме, данные необходимо передать AI-провайдерам за пределами Dicta. А именно: аудио вашей встречи передаётся в Google (Gemini API) для перевода речи в текст и в RunPod или Replicate, чтобы определить, кто и когда говорил; полученная расшифровка, название встречи и имена участников передаются в Google (Gemini API), чтобы создать резюме, решения и задачи и отвечать на ваши вопросы в ИИ-чате.",
+        consent:
+          "Мы спрашиваем вашего разрешения до того, как что-либо из этого произойдёт. В приложениях Dicta уведомление показывается раньше, чем вы сможете что-либо записать, загрузить или расшифровать, и согласие можно отозвать в любой момент в разделе «Настройки → Данные и ИИ». Без согласия вы по-прежнему можете входить, создавать встречи, присоединяться к ним и вести аудио- и видеозвонки — запись, расшифровка и функции ИИ остаются отключёнными.",
       },
       thirdParties: {
-        title: "Сторонние сервисы",
-        googleSignIn: "Google Sign-In (аутентификация).",
-        gemini: "Google Gemini API (транскрипция и краткие изложения).",
-        r2: "Cloudflare R2 (шифрованное хранилище записей).",
-        livekit: "LiveKit (передача медиа в реальном времени).",
+        title: "Третьи лица, которым мы передаём данные",
+        intro:
+          "Мы передаём персональные данные только перечисленным ниже провайдерам, только для указанной цели и только для работы сервиса. С каждым заключён договор, обязывающий защищать ваши данные на уровне, эквивалентном этой политике, обрабатывать их исключительно по нашему поручению и не использовать их для обучения собственных моделей или в своих целях.",
+        items: [
+          {
+            name: "Google (Gemini API)",
+            purpose:
+              "Перевод речи в текст, резюме, решения, задачи, ответы в ИИ-чате и индексация для поиска. Получает аудио встречи, текст расшифровки, названия встреч и отображаемые имена участников.",
+          },
+          {
+            name: "RunPod",
+            purpose:
+              "Мощности GPU для разделения говорящих; выполняется наше собственное программное обеспечение. Получает только временную ссылку на аудио встречи — без имён, названий и данных аккаунта.",
+          },
+          {
+            name: "Replicate",
+            purpose:
+              "Резервное разделение говорящих и обработка голосового отпечатка — используется, когда наш собственный сервис недоступен. Получает временную ссылку на аудио встречи либо образец голоса.",
+          },
+          {
+            name: "Recall.ai",
+            purpose:
+              "Только если вы отправляете бота Dicta во внешний звонок Zoom, Google Meet или Microsoft Teams. Получает ссылку на эту встречу и возвращает её аудио, видео и имена участников. Обработка происходит в Европейском союзе.",
+          },
+          {
+            name: "Google (Sign-In) и Apple (Sign in with Apple)",
+            purpose: "Аутентификация, если вы выбираете эти способы входа.",
+          },
+          {
+            name: "LiveKit",
+            purpose:
+              "Передача аудио и видео в реальном времени во время звонка. Работает на наших собственных серверах в Узбекистане.",
+          },
+          {
+            name: "Cloudflare",
+            purpose:
+              "Шифрованное хранение записей, доставка контента и отправка сервисных писем.",
+          },
+          {
+            name: "Sentry",
+            purpose:
+              "Диагностика сбоев и ошибок; может включать идентификатор вашего аккаунта и детали запроса.",
+          },
+          {
+            name: "Firebase и Google Analytics",
+            purpose:
+              "Аналитика использования продукта. Её можно отключить в настройках; она никогда не используется для рекламы.",
+          },
+          {
+            name: "Apple Push Notification service и Firebase Cloud Messaging",
+            purpose: "Доставка push-уведомлений, которые могут содержать названия встреч.",
+          },
+          {
+            name: "OpenStreetMap (Nominatim)",
+            purpose:
+              "Преобразование координат офлайн-записи в название места, если вы включили местоположение.",
+          },
+          {
+            name: "Telegram",
+            purpose:
+              "Отправка вам резюме встреч, если вы привязали аккаунт Telegram.",
+          },
+          {
+            name: "Multicard и RevenueCat",
+            purpose: "Обработка платежей и подписок.",
+          },
+          {
+            name: "Trello, Jira, ClickUp, Asana и Hisobot",
+            purpose:
+              "Только если вы их подключите. Получают название встречи, задачи, решения, фрагмент резюме и ссылку на итоги. Открыть эти итоги может любой, у кого есть ссылка, поэтому подключайте такие сервисы только к доскам, приемлемым для ваших участников.",
+          },
+        ],
+      },
+      retention: {
+        title: "Сколько мы храним данные",
+        body: "Данные аккаунта хранятся, пока существует аккаунт. Расшифровки, резюме и записи хранятся, пока вы их не удалите или не удалите аккаунт. Голосовые отпечатки хранятся, пока вы их не удалите или не отключите распознавание голоса. Служебные логи и диагностика хранятся до 90 дней. После удаления аккаунта мы удаляем аккаунт, расшифровки и записи в течение 30 дней.",
+      },
+      transfers: {
+        title: "Где обрабатываются ваши данные",
+        body: "Наши серверы встреч находятся в Узбекистане, в сети TAS-IX, и трафик живых звонков остаётся на них. Перечисленные выше AI-провайдеры обрабатывают данные за пределами Узбекистана: Google, RunPod и Replicate — в своих регионах, Recall.ai — в Европейском союзе. Там, где данные покидают Узбекистан, мы полагаемся на договорные гарантии, эквивалентные этой политике.",
+      },
+      security: {
+        title: "Безопасность",
+        body: "Трафик шифруется при передаче. Записи хранятся в приватном объектном хранилище без публичного листинга и доступны только по временным подписанным ссылкам. Доступ к продакшн-системам имеют только сотрудники, которым он необходим. Идеально защищённых систем не бывает, поэтому мы также даём вам возможность удалить свои данные самостоятельно.",
+      },
+      children: {
+        title: "Дети",
+        body: "Dicta не предназначена для детей младше 13 лет, и мы сознательно не собираем их персональные данные. Если вы полагаете, что ребёнок передал нам данные, напишите нам, и мы их удалим.",
       },
       yourRights: {
         title: "Ваши права",
-        bodyBefore: "Вы можете удалить свой аккаунт в любое время, написав на ",
+        bodyBefore: "Вы можете получить доступ к своим данным, исправить, экспортировать или удалить их, а также в любой момент отозвать согласие на AI-обработку. Удалить аккаунт можно, написав на ",
         bodyAfter: ". Мы удалим ваш аккаунт, транскрипты и записи в течение 30 дней.",
         selfServeBefore:
           "Это также можно сделать самостоятельно, прямо в приложении, не обращаясь к нам — см. ",
@@ -1019,7 +1221,7 @@ const uz: typeof en = {
         problem:
           "Zoom, Google Meet va Teams suhbatlaringizni uzoqdagi serverlarda saqlaydi. Koʻp jamoalar uchun bu qabul qilib boʻlmas xavf.",
         solution:
-          "Dicta Meet Zoom, Google Meet va Teams'dan yaxshiroq ishlaydi. Uchrashuv serverlarimiz TAS-IX tarmogʻida joylashgan — maʼlumotlaringiz hech qachon Oʻzbekistondan chiqmaydi.",
+          "Dicta Meet Zoom, Google Meet va Teams'dan yaxshiroq ishlaydi. Uchrashuv serverlarimiz TAS-IX tarmogʻida joylashgan, shuning uchun jonli suhbatingiz dunyoni aylanib chiqmaydi — u shu yerda qoladi va qoʻngʻiroqlar tezroq ishlaydi.",
         alt: "Videoqoʻngʻiroq ishtirokchisi ekranda bosh barmogʻini koʻrsatmoqda",
       },
       f2: {
@@ -1122,7 +1324,7 @@ const uz: typeof en = {
   language: "Til",
   legal: {
     privacyTitle: "Maxfiylik siyosati",
-    privacyUpdated: "Oxirgi yangilangan: 2026-yil 1-may",
+    privacyUpdated: "Oxirgi yangilangan: 2026-yil 13-avgust",
     termsTitle: "Foydalanish shartlari",
     termsUpdated: "Oxirgi yangilangan: 2026-yil 28-iyul",
     offerTitle: "Ommaviy oferta",
@@ -1131,44 +1333,145 @@ const uz: typeof en = {
     deleteAccountUpdated: "Oxirgi yangilangan: 2026-yil 27-iyul",
     privacy: {
       intro:
-        "«Dicta» («biz», «bizning») dicta.uz manzilidagi videouchrashuvlar xizmatini boshqaradi. Ushbu sahifada qanday maʼlumotlarni va nima uchun toʻplashimiz tushuntirilgan.",
+        "«Dicta» («biz», «bizning») dicta.uz manzilidagi videouchrashuvlar xizmatini boshqaradi. Ushbu sahifada qanday maʼlumotlarni toʻplashimiz, ularni qanday yigʻishimiz, nima uchun ishlatishimiz va qaysi uchinchi tomonlarga uzatishimiz tushuntirilgan.",
       dataCollect: {
         title: "Toʻplaydigan maʼlumotlar",
         accountInfo: {
           label: "Akkaunt maʼlumotlari.",
-          text: "Elektron pochta manzili, toʻliq ism va (Google orqali kirganda) Google profil rasmining URL manzili.",
+          text: "Elektron pochta manzili, toʻliq ism va (Google orqali kirganda) Google profil rasmining URL manzili. Akkaunt yaratilganda toʻplanadi.",
         },
         meetings: {
           label: "Uchrashuvlar.",
-          text: "Uchrashuv nomlari, ishtirokchilar, vaqt belgilari va siz yaratgan qisqa kodlar.",
+          text: "Uchrashuv nomlari, ishtirokchilar, vaqt belgilari va siz yaratgan qisqa kodlar. Xizmatdan foydalanish davomida toʻplanadi.",
         },
         transcripts: {
-          label: "Transkriptlar.",
-          text: "Mezbon transkripsiyani yoqqanida audio bizning serverlarimiz va Google Gemini tomonidan matn transkriptiga aylantiriladi. Audio buferlar uzoq muddatga saqlanmaydi — faqat yakuniy matn saqlanadi.",
+          label: "Audio va transkriptlar.",
+          text: "Transkripsiya yoqilganda ilova uchrashuv audiosini yozib oladi va transkript, xulosa, qarorlar va vazifalar tayyorlash uchun uni quyida sanab oʻtilgan AI provayderlariga yuboradi. Yozib olish yoqilmagan boʻlsa, audioning oʻzi qayta ishlangandan soʻng bizda saqlanmaydi — faqat yakuniy matn qoladi.",
         },
         recordings: {
           label: "Yozuvlar.",
-          text: "Mezbon yozuvni boshlaganida video va audio bizning shaxsiy obyekt xotiramizga yuklanadi va faqat mezbonga ochiq boʻladi. Biz yozuvlarni hech kim bilan ulashmaymiz.",
+          text: "Mezbon yozuvni boshlaganida video va audio bizning shaxsiy obyekt xotiramizga yuklanadi va faqat mezbonga ochiq boʻladi. Biz yozuvlarni sotmaymiz va eʼlon qilmaymiz.",
+        },
+        voiceprints: {
+          label: "Ovoz izi (ixtiyoriy).",
+          text: "Ovozni tanishni yoqsangiz, qisqa namunadan ovozingizning matematik tavsifini yaratamiz va transkriptlarda sizni avtomatik belgilash uchun uni oʻz serverlarimizda saqlaymiz. Bu ixtiyoriy, alohida soʻraladi va istalgan vaqtda oʻchirilishi mumkin.",
+        },
+        location: {
+          label: "Joylashuv (ixtiyoriy).",
+          text: "Ruxsat bersangiz, oflayn yozuv boshlangan paytda bir marta siz uni qayerda yozganingiz bilan belgilanadi. Rad etsangiz, yozuvlar belgisiz qoladi va boshqa hech narsa oʻzgarmaydi.",
         },
         logs: {
-          label: "Texnik jurnallar.",
-          text: "Nosozliklarni bartaraf etish va suiisteʼmolning oldini olish uchun IP manzil, foydalanuvchi agenti va soʻrov vaqti.",
+          label: "Texnik jurnallar va diagnostika.",
+          text: "Nosozliklarni bartaraf etish va suiisteʼmolning oldini olish uchun IP manzil, foydalanuvchi agenti, soʻrov vaqti va nosozlik hisobotlari.",
         },
+      },
+      howCollected: {
+        title: "Ularni qanday yigʻamiz",
+        body: "Bevosita sizdan — akkaunt yaratganingizda yoki ilovaga maʼlumot kiritganingizda; qurilmangizdan avtomatik — uchrashuvni yozganingizda yoki unga qoʻshilganingizda (mikrofon, shuningdek yoqsangiz, kamera va joylashuv); va serverlarimizdan — xizmatdan foydalanish davomida (jurnallar va diagnostika). Biz shaxsiy maʼlumotlarni sotib olmaymiz va sizni boshqa kompaniyalarning ilovalari va saytlarida kuzatmaymiz.",
       },
       howWeUse: {
         title: "Maʼlumotlardan qanday foydalanamiz",
-        body: "Xizmatni ishlatish, AI yordamida qisqa xulosalar tayyorlash, uchrashuvdan keyin mezbonlarni qoʻllab-quvvatlash va suiisteʼmolning oldini olish uchun. Biz maʼlumotlaringizni sotmaymiz va reklama koʻrsatmaymiz.",
+        body: "Xizmatni ishlatish, transkript va AI xulosalarini tayyorlash, uchrashuvdan keyin mezbonlarni qoʻllab-quvvatlash, toʻlovlarni qayta ishlash va suiisteʼmolning oldini olish uchun. Biz maʼlumotlaringizni sotmaymiz, reklama koʻrsatmaymiz va uchrashuvlaringizdan AI modellarini oʻqitishda foydalanmaymiz.",
+      },
+      ai: {
+        title: "AI qayta ishlash va sizning roziligingiz",
+        body: "Uchrashuvni transkript va xulosaga aylantirish uchun maʼlumotlarni Dictadan tashqaridagi AI provayderlariga yuborish zarur. Aniqrogʻi: uchrashuv audiosi nutqni matnga aylantirish uchun Google (Gemini API)ga, kim qachon gapirganini aniqlash uchun RunPod yoki Replicate'ga yuboriladi; hosil boʻlgan transkript, uchrashuv nomi va ishtirokchilar ismlari xulosa, qaror va vazifalar yaratish hamda AI chatdagi savollaringizga javob berish uchun Google (Gemini API)ga yuboriladi.",
+        consent:
+          "Bularning barchasi sodir boʻlishidan oldin sizdan ruxsat soʻraymiz. Dicta ilovalarida bu maʼlumot siz biror narsani yozib olish, yuklash yoki transkripsiya qilishingizdan oldin koʻrsatiladi va rozilikni istalgan vaqtda «Sozlamalar → Maʼlumotlar va AI» boʻlimida qaytarib olishingiz mumkin. Roziliksiz ham tizimga kirish, uchrashuv yaratish, unga qoʻshilish va audio/video qoʻngʻiroqlar qilish mumkin — yozib olish, transkripsiya va AI funksiyalari oʻchiq qoladi.",
       },
       thirdParties: {
-        title: "Uchinchi tomon xizmatlari",
-        googleSignIn: "Google Sign-In (autentifikatsiya).",
-        gemini: "Google Gemini API (transkripsiya va qisqa xulosalar).",
-        r2: "Cloudflare R2 (shifrlangan yozuvlar saqlovi).",
-        livekit: "LiveKit (real vaqtdagi media).",
+        title: "Maʼlumot uzatiladigan uchinchi tomonlar",
+        intro:
+          "Biz shaxsiy maʼlumotlarni faqat quyidagi provayderlarga, faqat koʻrsatilgan maqsadda va faqat xizmatni taqdim etish uchun uzatamiz. Ularning har biri shartnoma bilan maʼlumotlaringizni ushbu siyosatga teng darajada himoya qilishga, ularni faqat bizning koʻrsatmamiz boʻyicha qayta ishlashga hamda oʻz modellarini oʻqitish yoki oʻz maqsadlarida foydalanmaslikka majbur.",
+        items: [
+          {
+            name: "Google (Gemini API)",
+            purpose:
+              "Nutqni matnga aylantirish, xulosalar, qarorlar, vazifalar, AI chat javoblari va qidiruv indeksatsiyasi. Uchrashuv audiosi, transkript matni, uchrashuv nomlari va ishtirokchilarning koʻrsatiladigan ismlarini oladi.",
+          },
+          {
+            name: "RunPod",
+            purpose:
+              "Soʻzlovchilarni ajratish uchun GPU quvvati; bizning oʻzimiz yaratgan dasturiy taʼminot ishlaydi. Faqat uchrashuv audiosiga qisqa muddatli havolani oladi — ism, nom va akkaunt maʼlumotlarisiz.",
+          },
+          {
+            name: "Replicate",
+            purpose:
+              "Zaxira sifatida soʻzlovchilarni ajratish va ovoz izini qayta ishlash — oʻz xizmatimiz ishlamay qolganda ishlatiladi. Uchrashuv audiosiga qisqa muddatli havolani yoki ovoz namunasini oladi.",
+          },
+          {
+            name: "Recall.ai",
+            purpose:
+              "Faqat Dicta botini tashqi Zoom, Google Meet yoki Microsoft Teams qoʻngʻirogʻiga yuborsangiz. Oʻsha uchrashuv havolasini oladi va uning audiosi, videosi hamda ishtirokchilar ismlarini qaytaradi. Yevropa Ittifoqida qayta ishlanadi.",
+          },
+          {
+            name: "Google (Sign-In) va Apple (Sign in with Apple)",
+            purpose: "Ushbu kirish usullarini tanlasangiz — autentifikatsiya.",
+          },
+          {
+            name: "LiveKit",
+            purpose:
+              "Qoʻngʻiroq davomida real vaqtda audio va video uzatish. Oʻzbekistondagi oʻz serverlarimizda ishlaydi.",
+          },
+          {
+            name: "Cloudflare",
+            purpose:
+              "Yozuvlarni shifrlangan holda saqlash, kontent yetkazib berish va xizmat xatlarini yuborish.",
+          },
+          {
+            name: "Sentry",
+            purpose:
+              "Nosozlik va xatoliklar diagnostikasi; akkaunt identifikatoringiz va soʻrov tafsilotlarini oʻz ichiga olishi mumkin.",
+          },
+          {
+            name: "Firebase va Google Analytics",
+            purpose:
+              "Mahsulotdan foydalanish tahlili. Uni sozlamalarda oʻchirish mumkin; hech qachon reklama uchun ishlatilmaydi.",
+          },
+          {
+            name: "Apple Push Notification service va Firebase Cloud Messaging",
+            purpose: "Push-bildirishnomalarni yetkazish; ular uchrashuv nomlarini oʻz ichiga olishi mumkin.",
+          },
+          {
+            name: "OpenStreetMap (Nominatim)",
+            purpose:
+              "Joylashuvni yoqqan boʻlsangiz, oflayn yozuv koordinatalarini joy nomiga aylantirish.",
+          },
+          {
+            name: "Telegram",
+            purpose:
+              "Telegram akkauntingizni bogʻlagan boʻlsangiz, sizga uchrashuv xulosalarini yuborish.",
+          },
+          {
+            name: "Multicard va RevenueCat",
+            purpose: "Toʻlovlar va obunalarni qayta ishlash.",
+          },
+          {
+            name: "Trello, Jira, ClickUp, Asana va Hisobot",
+            purpose:
+              "Faqat siz ularni ulasangiz. Uchrashuv nomi, vazifalar, qarorlar, xulosa parchasi va yakun havolasini oladi. Bu havolaga ega har qanday kishi yakunni ocha oladi, shuning uchun bunday xizmatlarni faqat ishtirokchilaringiz roziligiga mos doskalarga ulang.",
+          },
+        ],
+      },
+      retention: {
+        title: "Maʼlumotlarni qancha saqlaymiz",
+        body: "Akkaunt maʼlumotlari akkaunt mavjud boʻlgunicha saqlanadi. Transkriptlar, xulosalar va yozuvlar siz ularni yoki akkauntingizni oʻchirmaguningizcha saqlanadi. Ovoz izlari siz ularni oʻchirmaguningizcha yoki ovozni tanishni oʻchirmaguningizcha saqlanadi. Texnik jurnallar va diagnostika 90 kungacha saqlanadi. Akkauntni oʻchirganingizdan soʻng hisobingizni, transkriptlaringizni va yozuvlaringizni 30 kun ichida oʻchiramiz.",
+      },
+      transfers: {
+        title: "Maʼlumotlaringiz qayerda qayta ishlanadi",
+        body: "Uchrashuv serverlarimiz Oʻzbekistonda, TAS-IX tarmogʻida joylashgan va jonli qoʻngʻiroq trafigi shu yerda qoladi. Yuqorida sanab oʻtilgan AI provayderlari maʼlumotlarni Oʻzbekistondan tashqarida qayta ishlaydi: Google, RunPod va Replicate — oʻz mintaqalarida, Recall.ai — Yevropa Ittifoqida. Maʼlumot Oʻzbekistondan chiqqan hollarda biz ushbu siyosatga teng shartnomaviy kafolatlarga tayanamiz.",
+      },
+      security: {
+        title: "Xavfsizlik",
+        body: "Trafik uzatish vaqtida shifrlanadi. Yozuvlar ommaviy roʻyxatga olinmaydigan shaxsiy obyekt xotirasida saqlanadi va faqat qisqa muddatli imzolangan havolalar orqali ochiladi. Ishlab chiqarish tizimlariga faqat zarur xodimlar kira oladi. Mutlaqo xavfsiz tizim boʻlmaydi, shuning uchun sizga maʼlumotlaringizni mustaqil oʻchirish imkonini ham beramiz.",
+      },
+      children: {
+        title: "Bolalar",
+        body: "Dicta 13 yoshgacha boʻlgan bolalar uchun moʻljallanmagan va biz ularning shaxsiy maʼlumotlarini bila turib toʻplamaymiz. Agar bola bizga maʼlumot bergan deb hisoblasangiz, bizga yozing — biz uni oʻchiramiz.",
       },
       yourRights: {
         title: "Sizning huquqlaringiz",
-        bodyBefore: "Hisobingizni istalgan paytda quyidagi manzilga xat yozib oʻchirishingiz mumkin: ",
+        bodyBefore: "Maʼlumotlaringizni koʻrish, tuzatish, eksport qilish yoki oʻchirish, shuningdek AI qayta ishlashga rozilikni istalgan vaqtda qaytarib olish mumkin. Hisobingizni quyidagi manzilga xat yozib oʻchirishingiz mumkin: ",
         bodyAfter: ". Biz hisobingizni, transkriptlaringizni va yozuvlaringizni 30 kun ichida oʻchirib tashlaymiz.",
         selfServeBefore:
           "Buni bizga murojaat qilmasdan, ilovaning oʻzida mustaqil ham bajarishingiz mumkin — qarang: ",

@@ -36,19 +36,43 @@ const prose =
       <li><strong>{p.dataCollect.meetings.label}</strong> {p.dataCollect.meetings.text}</li>
       <li><strong>{p.dataCollect.transcripts.label}</strong> {p.dataCollect.transcripts.text}</li>
       <li><strong>{p.dataCollect.recordings.label}</strong> {p.dataCollect.recordings.text}</li>
+      <li><strong>{p.dataCollect.voiceprints.label}</strong> {p.dataCollect.voiceprints.text}</li>
+      <li><strong>{p.dataCollect.location.label}</strong> {p.dataCollect.location.text}</li>
       <li><strong>{p.dataCollect.logs.label}</strong> {p.dataCollect.logs.text}</li>
     </ul>
+
+    <h2>{p.howCollected.title}</h2>
+    <p>{p.howCollected.body}</p>
 
     <h2>{p.howWeUse.title}</h2>
     <p>{p.howWeUse.body}</p>
 
+    <h2>{p.ai.title}</h2>
+    <p>{p.ai.body}</p>
+    <p>{p.ai.consent}</p>
+
+    {/* Rendered from an array, not fixed keys: the old four-<li> markup meant
+        naming a new processor took an edit in four places across two repos,
+        which is how the list fell behind what the backend actually calls. */}
     <h2>{p.thirdParties.title}</h2>
+    <p>{p.thirdParties.intro}</p>
     <ul>
-      <li>{p.thirdParties.googleSignIn}</li>
-      <li>{p.thirdParties.gemini}</li>
-      <li>{p.thirdParties.r2}</li>
-      <li>{p.thirdParties.livekit}</li>
+      {p.thirdParties.items.map((party) => (
+        <li><strong>{party.name}.</strong> {party.purpose}</li>
+      ))}
     </ul>
+
+    <h2>{p.retention.title}</h2>
+    <p>{p.retention.body}</p>
+
+    <h2>{p.transfers.title}</h2>
+    <p>{p.transfers.body}</p>
+
+    <h2>{p.security.title}</h2>
+    <p>{p.security.body}</p>
+
+    <h2>{p.children.title}</h2>
+    <p>{p.children.body}</p>
 
     <h2>{p.yourRights.title}</h2>
     <p>{p.yourRights.bodyBefore}<a href={`mailto:${email}`}>{email}</a>{p.yourRights.bodyAfter}</p>
