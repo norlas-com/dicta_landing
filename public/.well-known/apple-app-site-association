@@ -4,17 +4,11 @@
       {
         "appIDs": ["84V6USUP54.com.norlas.dicta.ios"],
         "components": [
-          { "/": "/", "exclude": true },
-          { "/": "/login", "exclude": true },
-          { "/": "/signup", "exclude": true },
-          { "/": "/dashboard", "exclude": true },
-          { "/": "/meetings", "exclude": true },
-          { "/": "/api/*", "exclude": true },
-          { "/": "/_next/*", "exclude": true },
-          { "/": "/meetings/*/summary", "comment": "Meeting summary -> iOS Detail sheet" },
           { "/": "/recap/*", "comment": "Share-token recap -> iOS RecapScreen" },
-          { "/": "/dm/*", "comment": "Distributed meeting -> iOS distributed join" },
-          { "/": "/*", "comment": "Join code -> iOS PreJoin sheet" }
+          { "/": "/dm/*", "comment": "Roundtable meeting -> iOS distributed join" },
+          { "/": "/meetings/*", "comment": "Meeting summary -> iOS Detail sheet" },
+          { "/": "/???-????-???", "caseSensitive": false, "comment": "Online code xxx-xxxx-xxx -> iOS PreJoin sheet" },
+          { "/": "/????-????", "caseSensitive": false, "comment": "Roundtable code xxxx-xxxx -> iOS distributed join" }
         ]
       }
     ]
