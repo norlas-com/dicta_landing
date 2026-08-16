@@ -1,0 +1,78 @@
+---
+// App Store / Google Play badges, ported from the app repo's
+// web/components/StoreBadges.tsx so the marketing site and the Roundtable
+// install gate look like the same product.
+//
+// Self-contained inline SVG rather than the official badge PNGs: no hotlinked
+// images, no extra request on mobile data, and the labels localize. The pill is
+// black in both themes on purpose — that IS the badge, and a theme-tinted one
+// stops reading as a store badge.
+//
+// `supertext` must stay SHORT. The viewBox is 120 units wide and anything past
+// roughly 22 characters is clipped mid-word — which is exactly what happened
+// when callers passed the full "App Store'dan yuklab olish" phrase here. The
+// full phrase belongs in `ariaLabel`; the wordmark below already says the store
+// name, so the supertext must not repeat it.
+import type { Locale } from "../i18n/ui";
+import { t } from "../i18n/utils";
+import { APP_STORE_URL, PLAY_STORE_URL } from "../lib/appLinks";
+
+interface Props {
+  locale: Locale;
+  /** Puts the visitor's own store first. Omit when order doesn't matter. */
+  first?: "ios" | "android";
+  class?: string;
+  /** Reported as data-analytics-location on both badges. */
+  location?: string;
+}
+const { locale, first, class: className = "", location = "na" } = Astro.props;
+const a = t(locale).appBadges;
+
+const PILL =
+  "inline-flex items-center justify-center rounded-xl bg-black text-white " +
+  "h-[52px] w-[180px] max-w-full ring-1 ring-white/15 hover:ring-white/30 " +
+  "transition-shadow duration-150 ease-out-expo shadow-card";
+---
+
+<div class={`flex flex-wrap items-center gap-3 ${className}`}>
+  <a
+    href={APP_STORE_URL}
+    aria-label={a.appStore}
+    target="_blank"
+    rel="noopener noreferrer"
+    data-analytics-event="download_app_clicked"
+    data-analytics-os="ios"
+    data-analytics-location={location}
+    class={`${PILL} ${first === "android" ? "order-2" : "order-1"}`}
+  >
+    <svg viewBox="0 0 120 40" role="img" aria-hidden="true" class="h-[44px] w-auto">
+      <g transform="translate(14, 8)" fill="#ffffff">
+        <path d="M11.2 6.05c.72-.9 1.2-2.1 1.07-3.32-1.03.05-2.3.7-3.05 1.58-.67.78-1.26 2.03-1.1 3.22 1.16.1 2.34-.59 3.08-1.48Zm1.05 1.68c-1.7-.1-3.14.96-3.95.96-.82 0-2.06-.91-3.4-.89-1.75.03-3.36 1.02-4.26 2.59-1.82 3.15-.47 7.82 1.3 10.38.86 1.25 1.89 2.66 3.24 2.61 1.3-.05 1.79-.84 3.36-.84s2.01.84 3.39.81c1.4-.02 2.29-1.27 3.15-2.53.99-1.45 1.4-2.85 1.42-2.93-.03-.01-2.72-1.04-2.75-4.14-.02-2.59 2.12-3.83 2.22-3.89-1.21-1.79-3.1-1.99-3.76-2.04Z" />
+      </g>
+      <text x="40" y="15" fill="#ffffff" font-size="7" font-family="-apple-system, Helvetica, Arial, sans-serif">{a.appStoreSuper}</text>
+      <text x="40" y="30" fill="#ffffff" font-size="15" font-weight="600" font-family="-apple-system, Helvetica, Arial, sans-serif">App Store</text>
+    </svg>
+  </a>
+
+  <a
+    href={PLAY_STORE_URL}
+    aria-label={a.googlePlay}
+    target="_blank"
+    rel="noopener noreferrer"
+    data-analytics-event="download_app_clicked"
+    data-analytics-os="android"
+    data-analytics-location={location}
+    class={`${PILL} ${first === "android" ? "order-1" : "order-2"}`}
+  >
+    <svg viewBox="0 0 120 40" role="img" aria-hidden="true" class="h-[44px] w-auto">
+      <g transform="translate(13, 9)">
+        <path d="M0 1.2v19.6c0 .68.36 1.27.9 1.6L11.9 11 .9-.4C.36-.07 0 .52 0 1.2Z" fill="#00D3FF" />
+        <path d="M16.1 6.8 11.9 11l4.2 4.2 4.86-2.77c.66-.38.66-1.52 0-1.9L16.1 6.8Z" fill="#FFCE00" />
+        <path d="M.9 22.4c.4.25.92.27 1.4 0l13.8-7.86L11.9 11 .9 22.4Z" fill="#FF3D44" />
+        <path d="M.9-.4 11.9 11l4.2-4.2L2.3-.66C1.82-.93 1.3-.91.9-.4Z" fill="#00F076" />
+      </g>
+      <text x="40" y="15" fill="#ffffff" font-size="6.5" letter-spacing="1.5" font-family="Roboto, Arial, sans-serif">{a.googlePlaySuper}</text>
+      <text x="40" y="31" fill="#ffffff" font-size="15" font-weight="500" font-family="Roboto, Arial, sans-serif">Google Play</text>
+    </svg>
+  </a>
+</div>

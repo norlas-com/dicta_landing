@@ -5,6 +5,9 @@ import { fetchDesktopRelease } from "../../lib/desktop";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
+import StoreBadges from "../StoreBadges.astro";
+import { APP_STORE_URL, PLAY_STORE_URL, SMART_APP_URL } from "../../lib/appLinks";
+import { qrSvg } from "../../lib/qr";
 
 interface Props {
   locale: Locale;
@@ -13,9 +16,37 @@ const { locale } = Astro.props;
 const d = t(locale);
 const dl = d.download;
 const rel = await fetchDesktopRelease();
+
+// QR of the UA-sniffing smart link, so one code serves both platforms. Built at
+// build time — the page is static and the URL never varies.
+const qr = qrSvg(`https://dicta.uz${SMART_APP_URL}`, 132);
+
+// Structured data for both mobile listings. The home page already declares the
+// web/desktop SoftwareApplication; this page is where the store listings live,
+// so the downloadUrls belong here.
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: "Dicta",
+    operatingSystem: "iOS",
+    applicationCategory: "BusinessApplication",
+    downloadUrl: APP_STORE_URL,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "UZS" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: "Dicta",
+    operatingSystem: "Android",
+    applicationCategory: "BusinessApplication",
+    downloadUrl: PLAY_STORE_URL,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "UZS" },
+  },
+];
 ---
 
-<Layout title={`${dl.title} — Dicta`} description={dl.sub} locale={locale} path="/download">
+<Layout title={`${dl.title} — Dicta`} description={dl.sub} locale={locale} path="/download" jsonLd={jsonLd}>
   <Header locale={locale} path="/download" />
 
   <section class="relative overflow-hidden flex-1">
@@ -27,7 +58,42 @@ const rel = await fetchDesktopRelease();
       </h1>
       <p class="text-base sm:text-lg text-muted mt-5 max-w-[52ch] mx-auto leading-relaxed">{dl.sub}</p>
 
-      <div class="mt-12 grid gap-5 sm:grid-cols-2 text-left" data-download data-arm={rel.arm64Url} data-intel={rel.intelUrl} data-win={rel.winUrl}>
+      {/* Two platform groups. Desktop leads by default — that's the right
+          answer for the visitor most likely to be here, and the one a no-JS
+          visitor gets. The script at the bottom flips the flex order for phone
+          visitors: a phone can't run a .pkg, so opening with macOS/Windows
+          installers is the wrong first thing to show them. Ordering via flex
+          `order` rather than moving nodes keeps one cacheable static page. */}
+      <div data-platforms class="mt-12 flex flex-col gap-12">
+
+      <section data-group="mobile" class="order-2 text-left">
+        <div class="flex items-baseline gap-3 mb-4">
+          <h2 class="font-display text-lg font-semibold tracking-tight text-foreground">{dl.mobileHeading}</h2>
+          <span class="flex-1 h-px bg-border/70" aria-hidden="true"></span>
+        </div>
+        <div class="rounded-panel border border-border bg-surface/70 backdrop-blur-sm p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+            <div class="min-w-0 flex-1">
+              <p class="text-sm text-muted leading-relaxed max-w-[46ch]">{dl.mobileSub}</p>
+              <StoreBadges locale={locale} class="mt-5" location="download_page" />
+            </div>
+            {/* Desktop-only: a phone visitor is already holding the device. */}
+            <div data-mobile-qr class="hidden sm:flex shrink-0 flex-col items-center gap-2">
+              <div class="rounded-2xl bg-white p-2.5 shadow-card ring-1 ring-border" set:html={qr} />
+              <p class="text-2xs text-muted max-w-[16ch] text-center leading-snug">{dl.mobileScan}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-group="desktop" class="order-1 text-left">
+        <div class="flex items-baseline gap-3 mb-4">
+          <h2 class="font-display text-lg font-semibold tracking-tight text-foreground">{dl.desktopHeading}</h2>
+          <span class="flex-1 h-px bg-border/70" aria-hidden="true"></span>
+        </div>
+        <p class="text-sm text-muted leading-relaxed max-w-[52ch] mb-5">{dl.desktopSub}</p>
+
+      <div class="grid gap-5 sm:grid-cols-2 text-left" data-download data-arm={rel.arm64Url} data-intel={rel.intelUrl} data-win={rel.winUrl}>
         <!-- macOS -->
         <div data-os-card="mac" class="rounded-panel border border-border bg-surface/70 backdrop-blur-sm p-6 transition-shadow">
           <div class="flex items-center gap-3">
@@ -81,6 +147,9 @@ const rel = await fetchDesktopRelease();
           <p class="mt-3 text-xs text-muted leading-snug">{dl.smartscreen}</p>
         </div>
       </div>
+      </section>
+
+      </div>
 
       <p class="mt-8 text-sm text-foreground-soft font-medium">{dl.note}</p>
       <a href={localePath("/", locale)} class="mt-4 inline-flex text-sm text-muted hover:text-foreground transition-colors">← {dl.back}</a>
@@ -89,6 +158,35 @@ const rel = await fetchDesktopRelease();
 
   <Footer locale={locale} />
 </Layout>
+
+<script>
+  // Phone visitors: lead with the stores, not with .pkg/.exe files they can't
+  // run. Done client-side rather than by rendering per user-agent so the page
+  // stays ONE static artifact the edge can cache for everyone — a UA-varying
+  // render would need `Vary: User-Agent` and give up edge caching for a change
+  // this small. Desktop-first is the served default, so a no-JS visitor still
+  // gets a coherent page.
+  (() => {
+    const wrap = document.querySelector("[data-platforms]");
+    if (!wrap) return;
+    const ua = navigator.userAgent || "";
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    if (!isIOS && !isAndroid) return;
+
+    wrap.querySelector('[data-group="mobile"]')?.classList.replace("order-2", "order-1");
+    wrap.querySelector('[data-group="desktop"]')?.classList.replace("order-1", "order-2");
+
+    // Put the visitor's own store first within the badge row.
+    if (isAndroid) {
+      wrap.querySelector('a[data-analytics-os="android"]')?.classList.replace("order-2", "order-1");
+      wrap.querySelector('a[data-analytics-os="ios"]')?.classList.replace("order-1", "order-2");
+    }
+
+    // The QR only makes sense on a device that isn't the phone.
+    wrap.querySelector("[data-mobile-qr]")?.remove();
+  })();
+</script>
 
 <script define:vars={{ intelHint: dl.intelHint, macHint: dl.macHint, intelLabel: dl.intel, armLabel: dl.appleSilicon, apiLatest: "https://api.dicta.uz/v1/desktop/latest" }}>
   document.querySelectorAll("[data-download]").forEach((root) => {

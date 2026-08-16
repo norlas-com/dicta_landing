@@ -20,7 +20,7 @@ const en = {
     terms: "Terms",
     offer: "Offer",
     deleteAccount: "Delete account",
-    download: "Download for Mac",
+    download: "Download",
     downloadWin: "Download for Windows",
   },
   landing: {
@@ -41,6 +41,7 @@ const en = {
       prevLabel: "Previous section",
       nextLabel: "Next section",
       f6cta: "Download the desktop app",
+      f7cta: "Get the mobile app",
       f1: {
         title: "Uzbekistan's own meeting platform",
         problem:
@@ -130,9 +131,25 @@ const en = {
     vatNote: "Prices are VAT-exempt — the seller is an IT Park resident.",
   },
   notetaker: { steps: { recording: "Recording" } },
+  // Badge labels. `*Super` is the short line printed INSIDE the badge SVG and
+  // must stay under ~22 characters or it clips; the unsuffixed key is the full
+  // phrase used as the link's aria-label.
+  appBadges: {
+    appStore: "Download on the App Store",
+    googlePlay: "Get it on Google Play",
+    appStoreSuper: "Download on the",
+    googlePlaySuper: "GET IT ON",
+  },
   download: {
-    title: "Dicta for desktop",
-    sub: "Runs in the background, auto-detects your meetings, and captures them locally — no bot joins the call.",
+    title: "Get Dicta",
+    sub: "Dicta runs everywhere your meetings do — on your phone, on your computer, and in the browser.",
+    desktopHeading: "For your computer",
+    desktopSub:
+      "Runs in the background, auto-detects your meetings, and captures them locally — no bot joins the call.",
+    mobileHeading: "For your phone",
+    mobileSub:
+      "Record in-person meetings, read summaries on the move, and run roundtable meetings — where everyone's phone records at once. Roundtable works in the app only.",
+    mobileScan: "Scan to install on your phone",
     mac: "Download for macOS",
     windows: "Download for Windows",
     intel: "Intel Mac",
@@ -607,7 +624,7 @@ const ru: typeof en = {
     terms: "Условия",
     offer: "Оферта",
     deleteAccount: "Удаление аккаунта",
-    download: "Скачать для Mac",
+    download: "Скачать",
     downloadWin: "Скачать для Windows",
   },
   landing: {
@@ -628,6 +645,7 @@ const ru: typeof en = {
       prevLabel: "Предыдущий раздел",
       nextLabel: "Следующий раздел",
       f6cta: "Скачать приложение для компьютера",
+      f7cta: "Установить приложение",
       f1: {
         title: "Собственная платформа встреч Узбекистана",
         problem:
@@ -717,9 +735,22 @@ const ru: typeof en = {
     vatNote: "Цены не облагаются НДС — продавец является резидентом IT Park.",
   },
   notetaker: { steps: { recording: "Recording" } },
+  appBadges: {
+    appStore: "Загрузить в App Store",
+    googlePlay: "Доступно в Google Play",
+    appStoreSuper: "Загрузите в",
+    googlePlaySuper: "ДОСТУПНО В",
+  },
   download: {
-    title: "Dicta для компьютера",
-    sub: "В фоновом режиме автоматически определяет ваши встречи и записывает их — бот не подключается к звонку.",
+    title: "Установите Dicta",
+    sub: "Dicta работает везде, где проходят ваши встречи — на телефоне, на компьютере и в браузере.",
+    desktopHeading: "Для компьютера",
+    desktopSub:
+      "В фоновом режиме автоматически определяет ваши встречи и записывает их — бот не подключается к звонку.",
+    mobileHeading: "Для телефона",
+    mobileSub:
+      "Записывайте очные встречи, читайте итоги в дороге и проводите круглые столы — когда пишут телефоны всех участников сразу. Круглый стол работает только в приложении.",
+    mobileScan: "Отсканируйте, чтобы установить на телефон",
     mac: "Скачать для macOS",
     windows: "Скачать для Windows",
     intel: "Intel Mac",
@@ -1195,7 +1226,7 @@ const uz: typeof en = {
     terms: "Foydalanish shartlari",
     offer: "Oferta",
     deleteAccount: "Hisobni oʻchirish",
-    download: "Mac uchun yuklab olish",
+    download: "Yuklab olish",
     downloadWin: "Windows uchun yuklab olish",
   },
   landing: {
@@ -1216,6 +1247,7 @@ const uz: typeof en = {
       prevLabel: "Oldingi boʻlim",
       nextLabel: "Keyingi boʻlim",
       f6cta: "Kompyuter ilovasini yuklab olish",
+      f7cta: "Mobil ilovani olish",
       f1: {
         title: "Oʻzbekistonning oʻz uchrashuv platformasi",
         problem:
@@ -1305,9 +1337,22 @@ const uz: typeof en = {
     vatNote: "Narxlarga QQS solinmaydi — sotuvchi IT Park rezidenti.",
   },
   notetaker: { steps: { recording: "Recording" } },
+  appBadges: {
+    appStore: "App Store’dan yuklab olish",
+    googlePlay: "Google Play’dan olish",
+    appStoreSuper: "Yuklab oling",
+    googlePlaySuper: "YUKLAB OLING",
+  },
   download: {
-    title: "Dicta kompyuter uchun",
-    sub: "Fon rejimida uchrashuvlaringizni avtomatik aniqlaydi va yozib oladi — qoʻngʻiroqqa hech qanday bot qoʻshilmaydi.",
+    title: "Dictani oʻrnating",
+    sub: "Dicta uchrashuvlaringiz qayerda boʻlsa — telefoningizda, kompyuteringizda va brauzerda ishlaydi.",
+    desktopHeading: "Kompyuter uchun",
+    desktopSub:
+      "Fon rejimida uchrashuvlaringizni avtomatik aniqlaydi va yozib oladi — qoʻngʻiroqqa hech qanday bot qoʻshilmaydi.",
+    mobileHeading: "Telefon uchun",
+    mobileSub:
+      "Yuzma-yuz uchrashuvlarni yozib oling, xulosalarni yoʻlda oʻqing va davra suhbatlarini oʻtkazing — bunda hamma qatnashchining telefoni bir vaqtda yozadi. Davra suhbati faqat ilovada ishlaydi.",
+    mobileScan: "Telefoningizga oʻrnatish uchun skanerlang",
     mac: "macOS uchun yuklab olish",
     windows: "Windows uchun yuklab olish",
     intel: "Intel Mac",

@@ -30,6 +30,18 @@ const home = localePath("/", locale);
         {d.pricing.navLabel}
       </a>
 
+      {/* /download now covers phone AND computer, so it earns a permanent nav
+          slot. Hidden on the narrowest screens for the same reason Pricing is —
+          the row runs out of width before the Login pill. */}
+      <a
+        href={localePath("/download", locale)}
+        data-analytics-event="nav_clicked"
+        data-analytics-item="download"
+        class="hidden sm:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
+      >
+        {d.nav.download}
+      </a>
+
       <LanguageSwitcher locale={locale} path={path} />
       <ThemeToggle />
 

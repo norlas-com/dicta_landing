@@ -16,6 +16,10 @@ const year = new Date().getFullYear();
     <p>© {year} Dicta. {d.landing.footerRights}</p>
     <div class="flex flex-wrap items-center gap-4">
       <a href={`${home === "/" ? "" : home}/#pricing`} data-analytics-event="nav_clicked" data-analytics-item="pricing" class="hover:text-foreground transition-colors">{d.pricing.navLabel}</a>
+      {/* The apps are the only way to use some features (roundtable records on
+          everyone's phone and has no browser path), so the download link
+          belongs on every page, not just in the header. */}
+      <a href={localePath("/download", locale)} data-analytics-event="nav_clicked" data-analytics-item="download" class="hover:text-foreground transition-colors">{d.nav.download}</a>
       <a href={localePath("/privacy", locale)} data-analytics-event="nav_clicked" data-analytics-item="privacy" class="hover:text-foreground transition-colors">{d.nav.privacy}</a>
       <a href={localePath("/terms", locale)} data-analytics-event="nav_clicked" data-analytics-item="terms" class="hover:text-foreground transition-colors">{d.nav.terms}</a>
       {/* The public offer (ommaviy oferta) is the contract a paying customer

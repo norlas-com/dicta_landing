@@ -80,6 +80,25 @@ const dotLabels = [...screens.map((s) => s.title), `${f.closer.titlePre} ${f.clo
             <span data-download-text>{f.f6cta}</span>
           </a>
         )}
+        {/* f7 is the mobile-app screen. It described the apps for months with
+            nothing to tap — this is the one place on the page where a reader
+            has just been told what the phone app does. */}
+        {i === 6 && (
+          <a
+            slot="cta"
+            href={localePath("/download", locale)}
+            data-analytics-event="download_app_clicked"
+            data-analytics-os="mobile"
+            data-analytics-arch="na"
+            class="inline-flex items-center gap-2 h-12 px-7 rounded-pill bg-accent text-accent-fg font-medium hover:bg-accent-strong transition-colors duration-150 ease-out-expo"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+            {f.f7cta}
+          </a>
+        )}
       </FeatureScreen>
     ))
   }

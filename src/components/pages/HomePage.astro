@@ -2,6 +2,7 @@
 import type { Locale } from "../../i18n/ui";
 import { t } from "../../i18n/utils";
 import { fetchCatalog } from "../../lib/catalog";
+import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/appLinks";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Hero from "../Hero.astro";
@@ -32,8 +33,12 @@ const jsonLd = [
     "@type": "SoftwareApplication",
     name: "Dicta",
     applicationCategory: "BusinessApplication",
-    operatingSystem: "Web, macOS, Windows",
+    operatingSystem: "Web, macOS, Windows, iOS, Android",
     description,
+    // Store listings, so search engines can associate the apps with the brand.
+    // The per-platform MobileApplication entries with downloadUrl live on
+    // /download, which is the page that actually links them.
+    sameAs: [APP_STORE_URL, PLAY_STORE_URL],
     offers: {
       "@type": "Offer",
       price: "0",

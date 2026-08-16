@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { Locale } from "../i18n/ui";
 import { t, appUrl } from "../i18n/utils";
 import heroPhoto from "../assets/landing/hero.jpg";
+import StoreBadges from "./StoreBadges.astro";
 
 interface Props {
   locale: Locale;
@@ -69,6 +70,10 @@ const d = t(locale);
                 {d.common.login}
               </a>
             </div>
+
+            {/* Badges under the primary CTAs, not beside them: signing up is
+                still the main action, and the apps require an account anyway. */}
+            <StoreBadges locale={locale} location="hero" />
 
             <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-muted">
               {[d.landing.heroPoint1, d.landing.heroPoint2].map((pt) => (
