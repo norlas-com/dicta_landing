@@ -32,10 +32,13 @@ export async function onRequestGet(context) {
   // iPadOS 13+ reports a desktop Safari UA, so some iPads fall through to
   // /download. That page shows both badges, so they still get there — better
   // than misrouting a Mac to the App Store on a bad heuristic.
+  // Trailing slash is deliberate: the site is built with Astro's default
+  // trailing-slash routing, so "/download" itself answers 308 → "/download/".
+  // Without it a desktop visitor pays three round trips (302 → 308 → 200).
   let target;
   if (/iPhone|iPad|iPod/i.test(ua)) target = APP_STORE_URL;
   else if (/Android/i.test(ua)) target = PLAY_STORE_URL;
-  else target = new URL("/download", context.request.url).toString();
+  else target = new URL("/download/", context.request.url).toString();
 
   return new Response(null, {
     status: 302,
