@@ -12,6 +12,12 @@
 @import "@fontsource/lora/cyrillic-500.css";
 @import "@fontsource/lora/cyrillic-600.css";
 @import "@fontsource/lora/cyrillic-700.css";
+/* Arabic script. Neither Urbanist nor Lora carries Arabic glyphs, so without
+ * this an Arabic page falls back to whatever the OS supplies — a mismatched,
+ * usually much heavier face. Appended AFTER the Latin faces in the Tailwind
+ * stacks below, so the browser resolves per-glyph and Latin text inside an
+ * Arabic page still renders in Urbanist. */
+@import "@fontsource-variable/noto-sans-arabic";
 
 @tailwind base;
 @tailwind components;
@@ -20,6 +26,7 @@
 :root {
   --font-urbanist: "Urbanist Variable", "Urbanist";
   --font-serif: "Lora";
+  --font-arabic: "Noto Sans Arabic Variable", "Noto Sans Arabic";
 }
 
 /* Theme tokens — ported from the app (web/app/globals.css). Default = dark;

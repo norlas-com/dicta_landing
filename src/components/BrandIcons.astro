@@ -47,7 +47,7 @@ const chips = brands.map((b) => ALL[b]).filter(Boolean);
 <div class="flex flex-wrap items-center gap-2">
   {
     chips.map((c) => (
-      <span class="inline-flex items-center gap-1.5 h-8 pl-2 pr-2.5 rounded-pill border border-border bg-surface/80 text-xs font-medium text-foreground-soft">
+      <span class="inline-flex items-center gap-1.5 h-8 ps-2 pe-2.5 rounded-pill border border-border bg-surface/80 text-xs font-medium text-foreground-soft">
         <Fragment set:html={c.svg} />
         {c.label}
       </span>

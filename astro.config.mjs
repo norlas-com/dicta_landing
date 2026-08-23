@@ -14,7 +14,7 @@ export default defineConfig({
   server: { port: Number(process.env.PORT) || 4321, host: true },
   i18n: {
     defaultLocale: "uz",
-    locales: ["uz", "ru", "en"],
+    locales: ["uz", "ru", "en", "ar"],
     routing: { prefixDefaultLocale: false },
   },
   integrations: [
@@ -24,7 +24,7 @@ export default defineConfig({
     sitemap({
       i18n: {
         defaultLocale: "uz",
-        locales: { uz: "uz-UZ", ru: "ru-RU", en: "en-US" },
+        locales: { uz: "uz-UZ", ru: "ru-RU", en: "en-US", ar: "ar" },
       },
     }),
   ],

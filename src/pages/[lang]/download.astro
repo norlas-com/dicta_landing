@@ -1,12 +1,15 @@
 ---
 import type { GetStaticPaths } from "astro";
 import DownloadPage from "../../components/pages/DownloadPage.astro";
-import type { Locale } from "../../i18n/ui";
+import { PREFIXED_LOCALES, type Locale } from "../../i18n/locales";
 
-export const getStaticPaths = (() => [
-  { params: { lang: "ru" } },
-  { params: { lang: "en" } },
-]) satisfies GetStaticPaths;
+// Derived from PREFIXED_LOCALES so a new language cannot be forgotten on
+// one page. NOTE: the `.map` has to be inline here — Astro evaluates
+// getStaticPaths in an isolated scope where an imported *function* call
+// resolves to undefined and the route silently generates zero paths.
+// An imported array is fine.
+export const getStaticPaths = (() =>
+  PREFIXED_LOCALES.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
 ---

@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { LOCALES, type Locale } from "../i18n/ui";
+import { LOCALES, dirFor, type Locale } from "../i18n/ui";
 import { localePath, switchLocalePath } from "../i18n/utils";
 
 interface Props {
@@ -32,6 +32,9 @@ const htmlLangMap: Record<Locale, string> = {
   uz: "uz-UZ",
   ru: "ru-RU",
   en: "en-US",
+  // Region-neutral on purpose: this site targets the whole Arabic-speaking
+  // market, and an `ar-SA` here would tell search engines otherwise.
+  ar: "ar",
 };
 
 // GA4 "Landing" data stream (property dicta-4e39f / 535205407). The measurement
@@ -42,7 +45,10 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
 ---
 
 <!doctype html>
-<html lang={htmlLangMap[locale]} class="dark">
+<!-- `dir` matters as much as `lang`: without it an Arabic page renders
+     Arabic text in a left-to-right layout, and every logical CSS property
+     silently behaves as its physical twin. -->
+<html lang={htmlLangMap[locale]} dir={dirFor(locale)} class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
