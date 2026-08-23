@@ -59,8 +59,12 @@ export default {
       },
 
       fontFamily: {
+        // The Arabic face sits AFTER the Latin one in every stack, which is
+        // all the conditional logic RTL needs: Urbanist and Lora have no
+        // Arabic glyphs, so the browser falls through per-glyph.
         sans: [
           "var(--font-urbanist)",
+          "var(--font-arabic)",
           "Urbanist",
           "ui-sans-serif",
           "system-ui",
@@ -71,6 +75,7 @@ export default {
         ],
         display: [
           "var(--font-serif)",
+          "var(--font-arabic)",
           "Lora",
           "ui-serif",
           "Georgia",
@@ -78,7 +83,7 @@ export default {
           "Times New Roman",
           "serif",
         ],
-        serif: ["var(--font-serif)", "Lora", "ui-serif", "Georgia", "serif"],
+        serif: ["var(--font-serif)", "var(--font-arabic)", "Lora", "ui-serif", "Georgia", "serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
 
