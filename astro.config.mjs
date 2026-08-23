@@ -2,19 +2,28 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import { SITE } from "./site.config.mjs";
 
-// Static marketing site for dicta.uz (Cloudflare Pages). The functional app
-// lives separately at meet.dicta.uz. Tri-lingual: uz (default, unprefixed),
-// ru, en. Design system ported from the Next.js app (Lora + Urbanist, indigo
-// accent, violet→indigo→cyan brand gradient).
+// Region-neutral `ar`: the global site targets the whole Arabic-speaking
+// market, and an ar-SA here would tell search engines otherwise.
+/** @type {Record<string, string>} */
+const HREFLANG = { uz: "uz-UZ", ru: "ru-RU", en: "en-US", ar: "ar" };
+
+// Static marketing site (Cloudflare Pages). The functional app lives separately
+// at meet.dicta.*. Built once per domain — see site.config.mjs — so canonical
+// URLs, hreflang and the sitemap match the host they are served from. The
+// default locale is unprefixed; the rest are path-prefixed. Design system
+// ported from the Next.js app (Lora + Urbanist, indigo accent).
 export default defineConfig({
-  site: "https://dicta.uz",
+  // Baked into canonical URLs, hreflang alternates and the sitemap, so it must
+  // match the domain this build is served from. See site.config.mjs.
+  site: SITE.url,
   trailingSlash: "ignore",
   // Honor a harness-assigned port (preview tooling) while defaulting to 4321.
   server: { port: Number(process.env.PORT) || 4321, host: true },
   i18n: {
-    defaultLocale: "uz",
-    locales: ["uz", "ru", "en", "ar"],
+    defaultLocale: SITE.defaultLocale,
+    locales: [...SITE.locales],
     routing: { prefixDefaultLocale: false },
   },
   integrations: [
@@ -22,9 +31,15 @@ export default defineConfig({
     // (theme tokens, resets) rather than Tailwind's Preflight-only defaults.
     tailwind({ applyBaseStyles: false }),
     sitemap({
+      // A redirect stub is not a page. Without this the global sitemap would
+      // still advertise /offer, which is exactly what the redirect exists to
+      // prevent.
+      filter: (page) => SITE.publicOffer || !page.includes("/offer"),
       i18n: {
-        defaultLocale: "uz",
-        locales: { uz: "uz-UZ", ru: "ru-RU", en: "en-US", ar: "ar" },
+        defaultLocale: SITE.defaultLocale,
+        locales: Object.fromEntries(
+          SITE.locales.map((/** @type {string} */ l) => [l, HREFLANG[l]]),
+        ),
       },
     }),
   ],

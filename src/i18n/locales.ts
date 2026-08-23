@@ -9,10 +9,21 @@
 //
 // ui.ts re-exports these, so there is still one source of truth.
 
-export const LOCALES = ["uz", "ru", "en", "ar"] as const;
-export type Locale = (typeof LOCALES)[number];
+import { SITE } from "../../site.config.mjs";
 
-export const DEFAULT_LOCALE: Locale = "uz";
+/** Every locale the dictionary carries copy for, across both sites. */
+export const ALL_LOCALES = ["uz", "ru", "en", "ar"] as const;
+export type Locale = (typeof ALL_LOCALES)[number];
+
+/**
+ * The locales THIS build ships, from site.config.mjs — dicta.uz publishes
+ * uz/ru/en and dicta.live publishes en/ar/ru. Routes, hreflang and the language
+ * switcher all derive from this, so a build never emits a page in a language
+ * that site does not offer.
+ */
+export const LOCALES = SITE.locales as readonly Locale[];
+
+export const DEFAULT_LOCALE = SITE.defaultLocale as Locale;
 
 /** Locales that get a URL prefix — everything except the unprefixed default. */
 export const PREFIXED_LOCALES = LOCALES.filter((l) => l !== DEFAULT_LOCALE);

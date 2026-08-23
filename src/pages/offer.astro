@@ -1,5 +1,16 @@
 ---
+import { DEFAULT_LOCALE } from "../i18n/locales";
+import { localePath } from "../i18n/utils";
+import { SITE } from "../../site.config.mjs";
 import OfferPage from "../components/pages/OfferPage.astro";
+
+// The Uzbek public offer is a UZ legal instrument (UZ courts, UZS, the IT Park
+// VAT exemption). On the global build it is not merely unlinked — it redirects
+// to the generic terms, so a direct link cannot present a Gulf visitor with
+// terms that do not govern their purchase.
+if (!SITE.publicOffer) {
+  return Astro.redirect(localePath("/terms", DEFAULT_LOCALE));
+}
 ---
 
-<OfferPage locale="uz" />
+<OfferPage locale={DEFAULT_LOCALE} />

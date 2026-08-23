@@ -2,6 +2,8 @@
 import type { GetStaticPaths } from "astro";
 import OfferPage from "../../components/pages/OfferPage.astro";
 import { PREFIXED_LOCALES, type Locale } from "../../i18n/locales";
+import { localePath } from "../../i18n/utils";
+import { SITE } from "../../../site.config.mjs";
 
 // Derived from PREFIXED_LOCALES so a new language cannot be forgotten on
 // one page. NOTE: the `.map` has to be inline here — Astro evaluates
@@ -12,6 +14,14 @@ export const getStaticPaths = (() =>
   PREFIXED_LOCALES.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
+
+// The Uzbek public offer is a UZ legal instrument (UZ courts, UZS, the IT Park
+// VAT exemption). On the global build it is not merely unlinked — it redirects
+// to the generic terms, so a direct link cannot present a Gulf visitor with
+// terms that do not govern their purchase.
+if (!SITE.publicOffer) {
+  return Astro.redirect(localePath("/terms", lang as Locale));
+}
 ---
 
 <OfferPage locale={lang as Locale} />

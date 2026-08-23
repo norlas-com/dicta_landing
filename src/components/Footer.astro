@@ -1,6 +1,7 @@
 ---
 import type { Locale } from "../i18n/ui";
 import { t, localePath } from "../i18n/utils";
+import { SITE } from "../../site.config.mjs";
 
 interface Props {
   locale: Locale;
@@ -24,7 +25,12 @@ const year = new Date().getFullYear();
       <a href={localePath("/terms", locale)} data-analytics-event="nav_clicked" data-analytics-item="terms" class="hover:text-foreground transition-colors">{d.nav.terms}</a>
       {/* The public offer (ommaviy oferta) is the contract a paying customer
           accepts — payment gateways and UZ law want it publicly linkable. */}
-      <a href={localePath("/offer", locale)} data-analytics-event="nav_clicked" data-analytics-item="offer" class="hover:text-foreground transition-colors">{d.nav.offer}</a>
+      {/* The public offer is an Uzbek legal instrument — UZ courts, UZS, the
+          IT Park VAT exemption. Linking it from the global site would
+          misrepresent which terms a buyer there is agreeing to. */}
+      {SITE.publicOffer && (
+        <a href={localePath("/offer", locale)} data-analytics-event="nav_clicked" data-analytics-item="offer" class="hover:text-foreground transition-colors">{d.nav.offer}</a>
+      )}
       {/* Google Play Data Safety + Apple review both want a public, linkable
           account-deletion page. Keep it in the footer on every page. */}
       <a href={localePath("/delete-account", locale)} data-analytics-event="nav_clicked" data-analytics-item="delete_account" class="hover:text-foreground transition-colors">{d.nav.deleteAccount}</a>
