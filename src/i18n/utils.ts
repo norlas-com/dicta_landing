@@ -1,8 +1,14 @@
 import { ui, DEFAULT_LOCALE, LOCALES, type Locale } from "./ui";
+import { SITE_COPY, type CopyOverride } from "./site-copy";
+import { SITE } from "../../site.config.mjs";
 
 // The functional app's home after the split (see migration plan). Marketing is
 // static and never knows login state — every CTA is an unconditional link here.
-export const APP_URL = "https://meet.dicta.uz";
+//
+// Per site: dicta.uz points at meet.dicta.uz, dicta.live at meet.dicta.live.
+// It was pinned to meet.dicta.uz, which would have sent every dicta.live
+// visitor to the Uzbek app — where their session does not exist.
+export const APP_URL = `https://${SITE.appHost}`;
 export const DOWNLOADS_BASE = "https://downloads.dicta.uz/desktop";
 
 /** Derive the active locale from an Astro URL pathname (/ru/... , /en/... , else uz). */
@@ -13,9 +19,41 @@ export function localeFromUrl(url: URL): Locale {
     : DEFAULT_LOCALE;
 }
 
-/** The dictionary for a locale. */
+/**
+ * Deep-merge a partial override onto the base dictionary. Strings and arrays
+ * replace wholesale; plain objects merge key by key. Build-time only.
+ */
+function merge<T>(base: T, over: unknown): T {
+  if (over === undefined) return base;
+  if (
+    typeof base !== "object" ||
+    base === null ||
+    Array.isArray(base) ||
+    typeof over !== "object" ||
+    over === null ||
+    Array.isArray(over)
+  ) {
+    return over as T;
+  }
+  const out: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+  for (const [k, v] of Object.entries(over as Record<string, unknown>)) {
+    out[k] = merge((base as Record<string, unknown>)[k], v);
+  }
+  return out as T;
+}
+
+// Merged once per locale at module load rather than per call: this runs inside
+// every component render during the build.
+const DICTS = Object.fromEntries(
+  (LOCALES as readonly Locale[]).map((l) => [
+    l,
+    merge(ui[l], (SITE_COPY[SITE.id] as Record<string, CopyOverride> | undefined)?.[l]),
+  ]),
+) as Record<Locale, (typeof ui)[Locale]>;
+
+/** The dictionary for a locale, with this site's copy overrides applied. */
 export function t(locale: Locale) {
-  return ui[locale];
+  return DICTS[locale];
 }
 
 /**
