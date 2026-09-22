@@ -7,6 +7,7 @@
           { "/": "/recap/*", "comment": "Share-token recap -> iOS RecapScreen" },
           { "/": "/dm/*", "comment": "Roundtable meeting -> iOS distributed join" },
           { "/": "/meetings/*", "comment": "Meeting summary -> iOS Detail sheet" },
+          { "/": "/promo/*", "comment": "Promo code -> iOS promo redeem screen" },
           { "/": "/???-????-???", "caseSensitive": false, "comment": "Online code xxx-xxxx-xxx -> iOS PreJoin sheet" },
           { "/": "/????-????", "caseSensitive": false, "comment": "Roundtable code xxxx-xxxx -> iOS distributed join" }
         ]
