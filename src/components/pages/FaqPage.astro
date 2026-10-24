@@ -1,0 +1,37 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { t } from "../../i18n/utils";
+import { fetchCatalog } from "../../lib/catalog";
+import { faqItems, faqJsonLd } from "../../lib/faq";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+import Faq from "../Faq.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const f = t(locale).faq;
+const items = faqItems(locale, await fetchCatalog());
+---
+
+<Layout
+  title={`${f.pageTitle} — Dicta`}
+  description={f.pageSub}
+  locale={locale}
+  path="/faq"
+  jsonLd={[faqJsonLd(items)]}
+>
+  <Header locale={locale} path="/faq" />
+  <div class="relative flex-1">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-16 pb-10">
+      <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance">
+        {f.pageTitle}
+      </h1>
+      <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{f.pageSub}</p>
+    </div>
+    <Faq locale={locale} items={items} />
+  </div>
+  <Footer locale={locale} />
+</Layout>

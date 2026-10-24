@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { LOCALES, DEFAULT_LOCALE, dirFor } from "../i18n/ui";
+import { t, localePath, appUrl } from "../i18n/utils";
+
+// Cloudflare Pages serves dist/404.html with a real 404 status for every
+// unknown URL. Without this file it falls back to single-page-app behaviour
+// and answers the homepage with 200 — a soft 404 that search engines index.
+//
+// One static file has to serve every locale, so it carries all of them and the
+// script below reveals the block matching the URL prefix (/ru/nope -> ru).
+// The default locale is what shows without JS.
+const blocks = LOCALES.map((l) => {
+  const d = t(l);
+  return {
+    locale: l,
+    dir: dirFor(l),
+    nf: d.notFound,
+    login: d.common.login,
+    home: localePath("/", l),
+    download: localePath("/download", l),
+  };
+});
+const fallback = t(DEFAULT_LOCALE).notFound;
+---
+
+<Layout
+  title={`${fallback.title} — Dicta`}
+  description={fallback.sub}
+  locale={DEFAULT_LOCALE}
+  path="/404"
+  noindex
+>
+  <div class="relative flex-1 overflow-hidden flex items-center">
+    <div
+      aria-hidden="true"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[620px] pointer-events-none opacity-[0.18] dark:opacity-25 blur-[90px] bg-brand-gradient bg-[length:200%_200%] animate-gradient-shimmer"
+    >
+    </div>
+
+    <div class="relative w-full max-w-3xl mx-auto px-6 lg:px-10 py-20 text-center">
+      <a href={localePath("/", DEFAULT_LOCALE)} class="inline-flex items-baseline gap-2 group mb-10">
+        <span class="font-display text-2xl font-semibold tracking-tight group-hover:text-accent transition-colors">Dicta</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+      </a>
+
+      {
+        blocks.map((b) => (
+          <div data-nf-locale={b.locale} data-nf-dir={b.dir} hidden={b.locale !== DEFAULT_LOCALE}>
+            <p class="font-display text-[5rem] sm:text-[7rem] font-semibold leading-none tracking-[-0.02em] text-accent" dir="ltr">404</p>
+            <h1 class="font-display text-[2rem] sm:text-[2.6rem] font-semibold tracking-[-0.018em] leading-[1.12] text-foreground text-balance mt-4">
+              {b.nf.title}
+            </h1>
+            <p class="text-base sm:text-lg text-muted mt-4 max-w-[48ch] mx-auto leading-relaxed">{b.nf.sub}</p>
+
+            <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={b.home}
+                class="group relative inline-flex items-center justify-center h-12 px-7 rounded-pill font-medium text-white overflow-hidden bg-brand-gradient bg-[length:160%_160%] shadow-glow transition-[background-position,transform] duration-500 ease-out-expo hover:bg-[position:100%_50%] active:scale-[0.98]"
+              >
+                {b.nf.home}
+              </a>
+              <a
+                href={b.download}
+                class="inline-flex items-center justify-center h-12 bg-surface/70 backdrop-blur-sm text-foreground border border-border-strong rounded-pill px-7 font-medium hover:bg-surface-2 transition-colors duration-150 ease-out-expo"
+              >
+                {b.nf.download}
+              </a>
+              <a
+                href={appUrl("/sign-in")}
+                class="inline-flex items-center justify-center h-12 text-muted hover:text-foreground rounded-pill px-5 font-medium transition-colors duration-150 ease-out-expo"
+              >
+                {b.login}
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Show the block for the locale in the URL prefix and flip lang/dir to match.
+  const seg = location.pathname.split("/").filter(Boolean)[0];
+  const blocks = [...document.querySelectorAll<HTMLElement>("[data-nf-locale]")];
+  const match = blocks.find((b) => b.dataset.nfLocale === seg);
+  if (match) {
+    for (const b of blocks) b.hidden = b !== match;
+    document.documentElement.lang = match.dataset.nfLocale!;
+    document.documentElement.dir = match.dataset.nfDir ?? "ltr";
+  }
+</script>

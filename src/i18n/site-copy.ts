@@ -12,6 +12,7 @@
 //     one language a MENA visitor is looking for.
 //   * The IT Park VAT note, which describes an Uzbek tax status that does not
 //     apply to a USD sale.
+//   * The FAQ's payment answer, which names the Uzbek gateway and e-wallets.
 //
 // Only these differ. Everything else — the product, the features, the tone —
 // is shared, so this stays a thin override rather than a second dictionary that
@@ -53,6 +54,14 @@ export const SITE_COPY: Record<string, Partial<Record<Locale, CopyOverride>>> = 
       pricing: {
         vatNote: "Prices are shown in US dollars and exclude any local taxes.",
       },
+      // The Uzbek gateway, e-wallets and offer do not describe a global sale.
+      faq: {
+        q: {
+          pay: {
+            a: "Paid plans are paid online. Renewal is manual, with no auto-renewal: Dicta never charges you automatically, and when the paid period ends the account returns to the free plan. We email a reminder first.",
+          },
+        },
+      },
     },
 
     ru: {
@@ -70,6 +79,13 @@ export const SITE_COPY: Record<string, Partial<Record<Locale, CopyOverride>>> = 
       },
       pricing: {
         vatNote: "Цены указаны в долларах США и не включают местные налоги.",
+      },
+      faq: {
+        q: {
+          pay: {
+            a: "Платные тарифы оплачиваются онлайн. Продление ручное, автопродления нет: Dicta никогда не списывает деньги автоматически, а когда оплаченный период заканчивается, аккаунт возвращается на бесплатный тариф. Перед этим мы отправляем напоминание по почте.",
+          },
+        },
       },
     },
 

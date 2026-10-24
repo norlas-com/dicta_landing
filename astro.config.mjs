@@ -33,8 +33,9 @@ export default defineConfig({
     sitemap({
       // A redirect stub is not a page. Without this the global sitemap would
       // still advertise /offer, which is exactly what the redirect exists to
-      // prevent.
-      filter: (page) => SITE.publicOffer || !page.includes("/offer"),
+      // prevent. The 404 page is not a page either (and is noindex).
+      filter: (page) =>
+        !/\/404\/?$/.test(page) && (SITE.publicOffer || !page.includes("/offer")),
       i18n: {
         defaultLocale: SITE.defaultLocale,
         locales: Object.fromEntries(

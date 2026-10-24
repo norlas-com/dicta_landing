@@ -35,6 +35,8 @@ const en = {
     deleteAccount: "Delete account",
     download: "Download",
     downloadWin: "Download for Windows",
+    faq: "FAQ",
+    contact: "Contact",
   },
   landing: {
     h1Pre: "All-in-one",
@@ -142,6 +144,111 @@ const en = {
     packsLine: "Need more? One-time minute packs from {price} — they never expire.",
     reassurance: "Every plan starts free. No card required.",
     vatNote: "Prices are VAT-exempt — the seller is an IT Park resident.",
+  },
+  // Customer proof strip (dicta.uz build only — see Trust.astro).
+  trust: {
+    eyebrow: "Trusted by",
+    lead: "Premier records all of its online and offline meetings with Dicta.",
+    linkLabel: "Visit premier.uz",
+  },
+  // FAQ. The answers restate claims made elsewhere on the site (feature story,
+  // pricing, Terms, Privacy Policy) — do not add a claim here that those pages
+  // do not already make. `limits` carries {free} and {paid}, filled from the
+  // billing catalog at build time; `limitsNoCatalog` is the fallback.
+  faq: {
+    eyebrow: "FAQ",
+    headingPre: "Questions,",
+    headingAccent: "answered.",
+    sub: "What teams and executives ask before they put Dicta in front of their meetings.",
+    allLabel: "See all questions",
+    pageTitle: "Frequently asked questions",
+    pageSub: "How Dicta works for online and in-person meetings, what it costs, and how your data is handled.",
+    moreLabels: {
+      pricing: "See pricing",
+      privacy: "Read the Privacy Policy",
+      download: "Get the apps",
+      contact: "Contact us",
+    },
+    q: {
+      what: {
+        q: "What is Dicta?",
+        a: "Dicta is an all-in-one meeting platform. You host the call and Dicta records it, transcribes it, and writes the summary: decisions, tasks and topics. Guests join by link, with no guest accounts and nothing to install.",
+      },
+      rooms: {
+        q: "Does Dicta work for both online and in-person meetings?",
+        a: "Yes. Online calls can be held in Dicta itself or recorded in Zoom, Google Meet and Microsoft Teams. For face-to-face meetings, tap one button in the mobile app and Dicta records the room, detecting the different speakers automatically.",
+      },
+      bot: {
+        q: "Can Dicta join Zoom, Google Meet or Teams calls?",
+        a: "Yes. Send a Dicta bot on your behalf. It joins Zoom, Google Meet and Microsoft Teams meetings, and you still get the full transcription and AI summary, even when you cannot attend.",
+      },
+      desktop: {
+        q: "Can we record without a visible bot in the call?",
+        a: "Yes. The Dicta desktop app detects when you join a call and records it for you, with no bot in the meeting. At the end you get the recording and the AI summary. Recording requires the consent of all participants where the law demands it, and you are responsible for obtaining it.",
+      },
+      languages: {
+        q: "Which languages does Dicta support?",
+        a: "Dicta transcribes meetings in any language with high accuracy, including Uzbek, Russian and English, and attributes every person's words to the right speaker.",
+      },
+      speakers: {
+        q: "Can Dicta tell who said what?",
+        a: "Yes. Every person's words are attributed to the right speaker. In the mobile app, Dicta detects the different speakers of an in-person meeting and can identify who is talking by their voice. Voice recognition is optional: it is asked for separately and your voiceprint can be deleted at any time.",
+      },
+      summary: {
+        q: "What do we get after a meeting?",
+        a: "A full AI summary of decisions, tasks and topics that takes about 2 minutes to read, and a transcript you can search to jump to the exact moment of the recording. Tasks are created automatically and assigned to the right person, and they work with Jira, Trello, Asana, ClickUp or your own task platform.",
+      },
+      limits: {
+        q: "How do free minutes and limits work?",
+        a: "Every team starts on the Free plan: {free} minutes per month, no card required. Paid plans raise the limit: {paid}. Plans also set storage and how long history is kept. Need more minutes? One-time minute packs never expire.",
+      },
+      limitsNoCatalog:
+        "Every plan starts free, with no card required. Paid plans raise the monthly minutes, storage and history. Need more minutes? One-time minute packs never expire.",
+      pay: {
+        q: "How do we pay, and does it renew automatically?",
+        a: "Paid plans are paid online in Uzbek sum (UZS), by bank card or from an Uzbek e-wallet (Payme, Click, Uzum, Alif, Anorbank, Xazna) through the Multicard gateway. Dicta never sees or stores your card details, and a fiscal receipt is issued for every payment. Renewal is manual, with no auto-renewal: when the paid period ends the account returns to the free plan, and we email a reminder first. If your company needs a separate contract, request it at legal@dicta.uz.",
+      },
+      privacy: {
+        q: "How is our data handled?",
+        a: "We do not sell your data, show advertising, or use your meetings to train AI models. Recordings sit in a private object store and are accessible only to the host. Producing a transcript and summary needs AI processing providers, so we ask for your permission before any of it happens; without consent, recording, transcription and AI features stay off. You can delete your data and account yourself, and we remove your account, transcripts and recordings within 30 days.",
+      },
+      apps: {
+        q: "Which apps are available?",
+        a: "Dicta works in the browser, as a desktop app for macOS and Windows, and as mobile apps for iOS and Android.",
+      },
+      sales: {
+        q: "How do I contact sales?",
+        a: "Use the contact form on this site: leave your name and phone number and our team will contact you. You can also write to support@dicta.uz.",
+      },
+    },
+  },
+  // Sales contact form -> /api/contact -> Telegram (functions/api/contact.js).
+  contact: {
+    eyebrow: "Contact",
+    headingPre: "Contact sales,",
+    headingAccent: "we reply personally.",
+    sub: "Leave your details and our team will contact you. Or write to support@dicta.uz.",
+    name: "Name",
+    phone: "Phone",
+    company: "Company",
+    message: "Message",
+    optional: "optional",
+    messagePlaceholder: "What would you like to use Dicta for?",
+    submit: "Send request",
+    sending: "Sending…",
+    successTitle: "Thank you, request received.",
+    successBody: "Our team will contact you soon.",
+    errorInvalid: "Please enter your name and a valid phone number.",
+    errorGeneric: "Something went wrong. Please try again or write to support@dicta.uz.",
+    note: "We will use these details to contact you about your request.",
+  },
+  // 404 page. One static file serves every locale, so the page carries all of
+  // them and a script reveals the one matching the URL prefix.
+  notFound: {
+    title: "Page not found",
+    sub: "This page does not exist or has moved.",
+    home: "Back to home",
+    download: "Download",
   },
   notetaker: { steps: { recording: "Recording" } },
   // Badge labels. `*Super` is the short line printed INSIDE the badge SVG and
@@ -639,6 +746,8 @@ const ru: typeof en = {
     deleteAccount: "Удаление аккаунта",
     download: "Скачать",
     downloadWin: "Скачать для Windows",
+    faq: "FAQ",
+    contact: "Контакты",
   },
   landing: {
     h1Pre: "Универсальная платформа",
@@ -746,6 +855,104 @@ const ru: typeof en = {
     packsLine: "Нужно больше? Разовые пакеты минут от {price} — они не сгорают.",
     reassurance: "Любой тариф начинается бесплатно. Карта не нужна.",
     vatNote: "Цены не облагаются НДС — продавец является резидентом IT Park.",
+  },
+  // Customer proof strip (dicta.uz build only — see Trust.astro).
+  trust: {
+    eyebrow: "Нам доверяют",
+    lead: "Premier записывает все свои онлайн- и офлайн-встречи в Dicta.",
+    linkLabel: "Перейти на premier.uz",
+  },
+  faq: {
+    eyebrow: "FAQ",
+    headingPre: "Вопросы",
+    headingAccent: "и ответы.",
+    sub: "О чём спрашивают команды и руководители, прежде чем подключить Dicta к своим встречам.",
+    allLabel: "Все вопросы",
+    pageTitle: "Часто задаваемые вопросы",
+    pageSub: "Как Dicta работает на онлайн- и офлайн-встречах, сколько это стоит и как обрабатываются ваши данные.",
+    moreLabels: {
+      pricing: "Посмотреть цены",
+      privacy: "Прочитать политику конфиденциальности",
+      download: "Скачать приложения",
+      contact: "Связаться с нами",
+    },
+    q: {
+      what: {
+        q: "Что такое Dicta?",
+        a: "Dicta — универсальная платформа для встреч. Вы проводите звонок, а Dicta записывает его, расшифровывает и пишет резюме: решения, задачи и темы. Гости заходят по ссылке — без гостевых аккаунтов и установки.",
+      },
+      rooms: {
+        q: "Работает ли Dicta и для онлайн-, и для офлайн-встреч?",
+        a: "Да. Онлайн-звонки можно проводить в самой Dicta или записывать в Zoom, Google Meet и Microsoft Teams. Для встреч лицом к лицу нажмите одну кнопку в мобильном приложении — Dicta запишет встречу и сама определит разных говорящих.",
+      },
+      bot: {
+        q: "Может ли Dicta заходить в звонки Zoom, Google Meet и Teams?",
+        a: "Да. Отправьте бота Dicta вместо себя. Он заходит на встречи в Zoom, Google Meet и Microsoft Teams, а вы всё равно получаете полную расшифровку и AI-резюме, даже если не смогли присутствовать.",
+      },
+      desktop: {
+        q: "Можно ли записывать без видимого бота в звонке?",
+        a: "Да. Приложение Dicta для компьютера определяет, что вы зашли в звонок, и записывает его за вас — без бота во встрече. В конце вы получаете запись и AI-резюме. Где этого требует закон, для записи нужно согласие всех участников, и получить его должны вы.",
+      },
+      languages: {
+        q: "Какие языки поддерживает Dicta?",
+        a: "Dicta расшифровывает встречи на любом языке с высокой точностью, включая узбекский, русский и английский, и относит слова каждого человека к нужному говорящему.",
+      },
+      speakers: {
+        q: "Определяет ли Dicta, кто что сказал?",
+        a: "Да. Слова каждого человека относятся к нужному говорящему. В мобильном приложении Dicta различает говорящих на очной встрече и может определить по голосу, кто говорит. Распознавание по голосу необязательно: согласие запрашивается отдельно, а голосовой отпечаток можно удалить в любой момент.",
+      },
+      summary: {
+        q: "Что мы получаем после встречи?",
+        a: "Полное AI-резюме с решениями, задачами и темами, которое читается примерно за 2 минуты, и расшифровку, по которой можно искать и переходить к нужному моменту записи. Задачи создаются автоматически и назначаются нужному человеку, а работают они с Jira, Trello, Asana, ClickUp или вашей собственной платформой задач.",
+      },
+      limits: {
+        q: "Как работают бесплатные минуты и лимиты?",
+        a: "Каждая команда начинает с тарифа Free: {free} минут в месяц, карта не нужна. Платные тарифы увеличивают лимит: {paid}. Тарифы также определяют объём хранилища и срок хранения истории. Нужно больше минут? Разовые пакеты минут не сгорают.",
+      },
+      limitsNoCatalog:
+        "Любой тариф начинается бесплатно, карта не нужна. Платные тарифы увеличивают месячные минуты, хранилище и историю. Нужно больше минут? Разовые пакеты минут не сгорают.",
+      pay: {
+        q: "Как оплатить и продлевается ли подписка автоматически?",
+        a: "Платные тарифы оплачиваются онлайн в узбекских сумах (UZS) банковской картой или из узбекского электронного кошелька (Payme, Click, Uzum, Alif, Anorbank, Xazna) через платёжный шлюз Multicard. Dicta не видит и не хранит данные вашей карты, а за каждый платёж выдаётся фискальный чек. Продление ручное, автопродления нет: когда оплаченный период заканчивается, аккаунт возвращается на бесплатный тариф, а перед этим мы отправляем напоминание по почте. Если вашей компании нужен отдельный договор, запросите его по адресу legal@dicta.uz.",
+      },
+      privacy: {
+        q: "Как обрабатываются наши данные?",
+        a: "Мы не продаём ваши данные, не показываем рекламу и не обучаем AI-модели на ваших встречах. Записи хранятся в закрытом объектном хранилище и доступны только организатору. Для расшифровки и резюме нужны внешние AI-провайдеры, поэтому мы спрашиваем разрешение до того, как что-либо произойдёт; без согласия запись, расшифровка и AI-функции остаются выключенными. Данные и аккаунт можно удалить самостоятельно, а мы удаляем аккаунт, расшифровки и записи в течение 30 дней.",
+      },
+      apps: {
+        q: "Какие приложения доступны?",
+        a: "Dicta работает в браузере, как приложение для компьютера (macOS и Windows) и как мобильные приложения для iOS и Android.",
+      },
+      sales: {
+        q: "Как связаться с отделом продаж?",
+        a: "Воспользуйтесь формой на этом сайте: оставьте имя и номер телефона, и наша команда свяжется с вами. Можно также написать на support@dicta.uz.",
+      },
+    },
+  },
+  contact: {
+    eyebrow: "Контакты",
+    headingPre: "Свяжитесь с отделом продаж,",
+    headingAccent: "мы отвечаем лично.",
+    sub: "Оставьте свои данные, и наша команда свяжется с вами. Или напишите на support@dicta.uz.",
+    name: "Имя",
+    phone: "Телефон",
+    company: "Компания",
+    message: "Сообщение",
+    optional: "необязательно",
+    messagePlaceholder: "Для чего вы хотите использовать Dicta?",
+    submit: "Отправить заявку",
+    sending: "Отправляем…",
+    successTitle: "Спасибо, заявка получена.",
+    successBody: "Наша команда скоро свяжется с вами.",
+    errorInvalid: "Укажите имя и корректный номер телефона.",
+    errorGeneric: "Что-то пошло не так. Попробуйте ещё раз или напишите на support@dicta.uz.",
+    note: "Мы используем эти данные, чтобы связаться с вами по вашей заявке.",
+  },
+  notFound: {
+    title: "Страница не найдена",
+    sub: "Такой страницы нет, или она переехала.",
+    home: "На главную",
+    download: "Скачать",
   },
   notetaker: { steps: { recording: "Recording" } },
   appBadges: {
@@ -1241,6 +1448,8 @@ const uz: typeof en = {
     deleteAccount: "Hisobni oʻchirish",
     download: "Yuklab olish",
     downloadWin: "Windows uchun yuklab olish",
+    faq: "FAQ",
+    contact: "Aloqa",
   },
   landing: {
     h1Pre: "Uchrashuvlar uchun",
@@ -1348,6 +1557,104 @@ const uz: typeof en = {
     packsLine: "Koʻproq kerakmi? Bir martalik daqiqa paketlari {price} dan — ular hech qachon eskirmaydi.",
     reassurance: "Har bir reja bepul boshlanadi. Karta talab qilinmaydi.",
     vatNote: "Narxlarga QQS solinmaydi — sotuvchi IT Park rezidenti.",
+  },
+  // Customer proof strip (dicta.uz build only — see Trust.astro).
+  trust: {
+    eyebrow: "Bizga ishonishadi",
+    lead: "Premier barcha onlayn va oflayn uchrashuvlarini Dicta bilan yozib boradi.",
+    linkLabel: "premier.uz saytiga oʻtish",
+  },
+  faq: {
+    eyebrow: "FAQ",
+    headingPre: "Savollar",
+    headingAccent: "va javoblar.",
+    sub: "Jamoalar va rahbarlar Dictani uchrashuvlariga ulashdan oldin nimalarni soʻraydi.",
+    allLabel: "Barcha savollar",
+    pageTitle: "Koʻp beriladigan savollar",
+    pageSub: "Dicta onlayn va oflayn uchrashuvlarda qanday ishlaydi, narxi qancha va maʼlumotlaringiz bilan qanday ishlanadi.",
+    moreLabels: {
+      pricing: "Narxlarni koʻrish",
+      privacy: "Maxfiylik siyosatini oʻqish",
+      download: "Ilovalarni yuklab olish",
+      contact: "Biz bilan bogʻlanish",
+    },
+    q: {
+      what: {
+        q: "Dicta nima?",
+        a: "Dicta — uchrashuvlar uchun yagona platforma. Siz qoʻngʻiroqni oʻtkazasiz, Dicta esa uni yozib oladi, transkripsiya qiladi va xulosa yozadi: qarorlar, vazifalar va mavzular. Mehmonlar havola orqali qoʻshiladi — mehmon akkauntlarisiz va oʻrnatishsiz.",
+      },
+      rooms: {
+        q: "Dicta onlayn ham, oflayn uchrashuvlar uchun ham ishlaydimi?",
+        a: "Ha. Onlayn qoʻngʻiroqlarni Dictaning oʻzida oʻtkazish yoki Zoom, Google Meet va Microsoft Teams'da yozib olish mumkin. Yuzma-yuz uchrashuvlar uchun mobil ilovada bitta tugmani bosing — Dicta uchrashuvni yozib oladi va turli soʻzlovchilarni avtomatik ajratadi.",
+      },
+      bot: {
+        q: "Dicta Zoom, Google Meet yoki Teams qoʻngʻiroqlariga qoʻshila oladimi?",
+        a: "Ha. Oʻzingiz oʻrniga Dicta botini yuboring. U Zoom, Google Meet va Microsoft Teams uchrashuvlariga qoʻshiladi, siz esa qatnasha olmagan boʻlsangiz ham toʻliq transkripsiya va AI xulosani olasiz.",
+      },
+      desktop: {
+        q: "Qoʻngʻiroqda koʻrinib turadigan botsiz yozib olish mumkinmi?",
+        a: "Ha. Dicta kompyuter ilovasi qoʻngʻiroqqa qoʻshilganingizni oʻzi aniqlab, siz uchun yozib boradi — uchrashuvda bot yoʻq. Yakunida yozuv va AI xulosa sizda. Qonun talab qiladigan hollarda yozib olish uchun barcha ishtirokchilarning roziligi kerak va uni olish sizning zimmangizda.",
+      },
+      languages: {
+        q: "Dicta qaysi tillarni qoʻllab-quvvatlaydi?",
+        a: "Dicta uchrashuvlarni istalgan tilda yuqori aniqlikda transkripsiya qiladi, jumladan oʻzbek, rus va ingliz tillarida, va har bir kishining soʻzlarini toʻgʻri soʻzlovchiga biriktiradi.",
+      },
+      speakers: {
+        q: "Dicta kim nima degani aniqlay oladimi?",
+        a: "Ha. Har bir kishining soʻzlari toʻgʻri soʻzlovchiga biriktiriladi. Mobil ilovada Dicta jonli uchrashuvdagi turli soʻzlovchilarni ajratadi va ovozidan kim gapirayotganini aniqlay oladi. Ovozni tanish ixtiyoriy: u alohida soʻraladi va ovoz izingizni istalgan vaqt oʻchirib tashlash mumkin.",
+      },
+      summary: {
+        q: "Uchrashuvdan keyin nima olamiz?",
+        a: "Qarorlar, vazifalar va mavzularning toʻliq AI xulosasi (uni oʻqish taxminan 2 daqiqa oladi) hamda matn orqali qidirib, yozuvning kerakli lahzasiga oʻtish mumkin boʻlgan transkripsiya. Vazifalar avtomatik yaratilib, toʻgʻri kishiga biriktiriladi va Jira, Trello, Asana, ClickUp yoki oʻzingizning vazifalar platformangiz bilan ishlaydi.",
+      },
+      limits: {
+        q: "Bepul daqiqalar va limitlar qanday ishlaydi?",
+        a: "Har bir jamoa Free rejadan boshlaydi: oyiga {free} daqiqa, karta shart emas. Pullik rejalar limitni oshiradi: {paid}. Rejalar xotira hajmini va tarix qancha saqlanishini ham belgilaydi. Koʻproq daqiqa kerakmi? Bir martalik daqiqa paketlari hech qachon eskirmaydi.",
+      },
+      limitsNoCatalog:
+        "Har bir reja bepul boshlanadi, karta shart emas. Pullik rejalar oylik daqiqalar, xotira va tarixni oshiradi. Koʻproq daqiqa kerakmi? Bir martalik daqiqa paketlari hech qachon eskirmaydi.",
+      pay: {
+        q: "Qanday toʻlanadi va obuna avtomatik yangilanadimi?",
+        a: "Pullik rejalar onlayn, oʻzbek soʻmida (UZS), bank kartasi yoki oʻzbek elektron hamyoni (Payme, Click, Uzum, Alif, Anorbank, Xazna) orqali Multicard shlyuzi bilan toʻlanadi. Dicta karta maʼlumotlaringizni koʻrmaydi va saqlamaydi, har bir toʻlov uchun fiskal chek beriladi. Yangilash qoʻlda, avtomatik yangilanish yoʻq: toʻlangan davr tugagach hisob bepul rejaga qaytadi, bundan oldin esa pochtaga eslatma yuboramiz. Kompaniyangizga alohida shartnoma kerak boʻlsa, uni legal@dicta.uz manzilidan soʻrang.",
+      },
+      privacy: {
+        q: "Maʼlumotlarimiz bilan qanday ishlanadi?",
+        a: "Biz maʼlumotlaringizni sotmaymiz, reklama koʻrsatmaymiz va uchrashuvlaringiz asosida AI modellarni oʻqitmaymiz. Yozuvlar yopiq obyekt omborida saqlanadi va faqat tashkilotchiga ochiq. Transkripsiya va xulosa uchun AI xizmat koʻrsatuvchilari kerak, shuning uchun bularning birortasi sodir boʻlishidan oldin ruxsatingizni soʻraymiz; rozilik boʻlmasa, yozib olish, transkripsiya va AI funksiyalari oʻchiq qoladi. Maʼlumotlaringiz va hisobingizni oʻzingiz oʻchirishingiz mumkin, biz hisob, transkripsiya va yozuvlarni 30 kun ichida olib tashlaymiz.",
+      },
+      apps: {
+        q: "Qanday ilovalar mavjud?",
+        a: "Dicta brauzerda, macOS va Windows uchun kompyuter ilovasi sifatida hamda iOS va Android uchun mobil ilovalar sifatida ishlaydi.",
+      },
+      sales: {
+        q: "Sotuv boʻlimi bilan qanday bogʻlanaman?",
+        a: "Shu saytdagi aloqa formasidan foydalaning: ismingiz va telefon raqamingizni qoldiring, jamoamiz siz bilan bogʻlanadi. Shuningdek, support@dicta.uz manziliga yozishingiz mumkin.",
+      },
+    },
+  },
+  contact: {
+    eyebrow: "Aloqa",
+    headingPre: "Sotuv boʻlimi bilan bogʻlaning,",
+    headingAccent: "shaxsan javob beramiz.",
+    sub: "Maʼlumotlaringizni qoldiring, jamoamiz siz bilan bogʻlanadi. Yoki support@dicta.uz manziliga yozing.",
+    name: "Ism",
+    phone: "Telefon",
+    company: "Kompaniya",
+    message: "Xabar",
+    optional: "ixtiyoriy",
+    messagePlaceholder: "Dictadan nima uchun foydalanmoqchisiz?",
+    submit: "Soʻrov yuborish",
+    sending: "Yuborilmoqda…",
+    successTitle: "Rahmat, soʻrovingiz qabul qilindi.",
+    successBody: "Jamoamiz tez orada siz bilan bogʻlanadi.",
+    errorInvalid: "Ismingiz va toʻgʻri telefon raqamingizni kiriting.",
+    errorGeneric: "Xatolik yuz berdi. Qayta urinib koʻring yoki support@dicta.uz manziliga yozing.",
+    note: "Bu maʼlumotlardan soʻrovingiz yuzasidan siz bilan bogʻlanish uchun foydalanamiz.",
+  },
+  notFound: {
+    title: "Sahifa topilmadi",
+    sub: "Bunday sahifa mavjud emas yoki koʻchirilgan.",
+    home: "Bosh sahifaga",
+    download: "Yuklab olish",
   },
   notetaker: { steps: { recording: "Recording" } },
   appBadges: {
@@ -1848,6 +2155,8 @@ const ar: typeof en = {
     deleteAccount: "حذف الحساب",
     download: "تنزيل",
     downloadWin: "التنزيل لـ Windows",
+    faq: "الأسئلة الشائعة",
+    contact: "تواصل",
   },
   landing: {
     h1Pre: "متكاملة",
@@ -1955,6 +2264,104 @@ const ar: typeof en = {
     packsLine: "تحتاج المزيد؟ باقات دقائق لمرة واحدة ابتداءً من {price}، ولا تنتهي صلاحيتها.",
     reassurance: "كل باقة تبدأ مجانًا. ولا حاجة إلى بطاقة.",
     vatNote: "الأسعار معفاة من ضريبة القيمة المضافة، فالبائع مقيم في IT Park.",
+  },
+  // Customer proof strip (dicta.uz build only — see Trust.astro).
+  trust: {
+    eyebrow: "يثق بنا",
+    lead: "تسجّل Premier جميع اجتماعاتها عبر الإنترنت والحضورية باستخدام Dicta.",
+    linkLabel: "زيارة premier.uz",
+  },
+  faq: {
+    eyebrow: "الأسئلة الشائعة",
+    headingPre: "أسئلة",
+    headingAccent: "وأجوبتها.",
+    sub: "ما تسأل عنه الفرق والمديرون قبل أن يعتمدوا Dicta في اجتماعاتهم.",
+    allLabel: "عرض كل الأسئلة",
+    pageTitle: "الأسئلة الشائعة",
+    pageSub: "كيف تعمل Dicta في الاجتماعات عبر الإنترنت والحضورية، وكم تكلّف، وكيف تُعالَج بياناتك.",
+    moreLabels: {
+      pricing: "عرض الأسعار",
+      privacy: "قراءة سياسة الخصوصية",
+      download: "تنزيل التطبيقات",
+      contact: "تواصل معنا",
+    },
+    q: {
+      what: {
+        q: "ما هي Dicta؟",
+        a: "Dicta منصة اجتماعات متكاملة. تستضيف أنت المكالمة وتتولى Dicta تسجيلها وتفريغها نصيًا وكتابة الملخص: القرارات والمهام والمواضيع. ينضم الضيوف عبر رابط، بلا حسابات للضيوف وبلا تثبيت.",
+      },
+      rooms: {
+        q: "هل تعمل Dicta في الاجتماعات عبر الإنترنت والحضورية معًا؟",
+        a: "نعم. يمكن إجراء المكالمات عبر الإنترنت في Dicta نفسها أو تسجيلها في Zoom وGoogle Meet وMicrosoft Teams. وللاجتماعات وجهًا لوجه، اضغط زرًّا واحدًا في تطبيق الجوال فتسجّل Dicta الاجتماع وتميّز المتحدثين المختلفين تلقائيًا.",
+      },
+      bot: {
+        q: "هل تستطيع Dicta الانضمام إلى مكالمات Zoom وGoogle Meet وTeams؟",
+        a: "نعم. أرسل روبوت Dicta نيابةً عنك. ينضم إلى اجتماعات Zoom وGoogle Meet وMicrosoft Teams، وتحصل مع ذلك على التفريغ النصي الكامل وملخص الذكاء الاصطناعي حتى إن لم تتمكن من الحضور.",
+      },
+      desktop: {
+        q: "هل يمكن التسجيل دون روبوت ظاهر في المكالمة؟",
+        a: "نعم. يكتشف تطبيق Dicta لسطح المكتب انضمامك إلى مكالمة ويسجّلها لك، دون أي روبوت في الاجتماع. وفي النهاية تحصل على التسجيل وملخص الذكاء الاصطناعي. يتطلب التسجيل موافقة جميع المشاركين حيث يشترط القانون ذلك، وأنت المسؤول عن الحصول عليها.",
+      },
+      languages: {
+        q: "ما اللغات التي تدعمها Dicta؟",
+        a: "تفرّغ Dicta الاجتماعات نصيًا بأي لغة وبدقة عالية، ومنها الأوزبكية والروسية والإنجليزية، وتنسب كلام كل شخص إلى المتحدث الصحيح.",
+      },
+      speakers: {
+        q: "هل تستطيع Dicta معرفة من قال ماذا؟",
+        a: "نعم. يُنسب كلام كل شخص إلى المتحدث الصحيح. وفي تطبيق الجوال تميّز Dicta بين المتحدثين في الاجتماع الحضوري ويمكنها تحديد من يتكلم من صوته. التعرّف على الصوت اختياري: يُطلب بشكل منفصل ويمكن حذف بصمتك الصوتية في أي وقت.",
+      },
+      summary: {
+        q: "ماذا نحصل عليه بعد الاجتماع؟",
+        a: "ملخص كامل بالذكاء الاصطناعي للقرارات والمهام والمواضيع تقرؤه في نحو دقيقتين، ونص تفريغ يمكنك البحث فيه للانتقال إلى اللحظة المطلوبة من التسجيل. تُنشأ المهام تلقائيًا وتُسند إلى الشخص المناسب، وتعمل مع Jira وTrello وAsana وClickUp أو منصة المهام الخاصة بك.",
+      },
+      limits: {
+        q: "كيف تعمل الدقائق المجانية والحدود؟",
+        a: "يبدأ كل فريق بالباقة المجانية Free: {free} دقيقة شهريًا دون الحاجة إلى بطاقة. وترفع الباقات المدفوعة الحد: {paid}. كما تحدد الباقات مساحة التخزين ومدة الاحتفاظ بالسجل. تحتاج دقائق أكثر؟ باقات الدقائق لمرة واحدة لا تنتهي صلاحيتها.",
+      },
+      limitsNoCatalog:
+        "كل باقة تبدأ مجانًا دون الحاجة إلى بطاقة. وترفع الباقات المدفوعة الدقائق الشهرية والتخزين والسجل. تحتاج دقائق أكثر؟ باقات الدقائق لمرة واحدة لا تنتهي صلاحيتها.",
+      pay: {
+        q: "كيف ندفع، وهل يتجدد الاشتراك تلقائيًا؟",
+        a: "تُدفع الباقات المدفوعة عبر الإنترنت. التجديد يدوي ولا يوجد تجديد تلقائي: عندما تنتهي الفترة المدفوعة يعود الحساب إلى الباقة المجانية، ونرسل تذكيرًا بالبريد الإلكتروني قبل ذلك.",
+      },
+      privacy: {
+        q: "كيف تُعالَج بياناتنا؟",
+        a: "لا نبيع بياناتك ولا نعرض إعلانات ولا نستخدم اجتماعاتك لتدريب نماذج الذكاء الاصطناعي. تُحفظ التسجيلات في مخزن كائنات خاص ولا يصل إليها سوى المضيف. يتطلب إنتاج النص والملخص مزوّدي معالجة بالذكاء الاصطناعي، لذا نطلب إذنك قبل حدوث أي شيء من ذلك؛ وبدون الموافقة تبقى ميزات التسجيل والتفريغ والذكاء الاصطناعي متوقفة. يمكنك حذف بياناتك وحسابك بنفسك، ونزيل حسابك ونصوصك وتسجيلاتك خلال 30 يومًا.",
+      },
+      apps: {
+        q: "ما التطبيقات المتاحة؟",
+        a: "تعمل Dicta في المتصفح، وكتطبيق لسطح المكتب على macOS وWindows، وكتطبيقات جوال على iOS وAndroid.",
+      },
+      sales: {
+        q: "كيف أتواصل مع فريق المبيعات؟",
+        a: "استخدم نموذج التواصل في هذا الموقع: اترك اسمك ورقم هاتفك وسيتواصل معك فريقنا. ويمكنك أيضًا المراسلة على support@dicta.uz.",
+      },
+    },
+  },
+  contact: {
+    eyebrow: "تواصل",
+    headingPre: "تواصل مع فريق المبيعات،",
+    headingAccent: "نردّ عليك شخصيًا.",
+    sub: "اترك بياناتك وسيتواصل معك فريقنا. أو راسلنا على support@dicta.uz.",
+    name: "الاسم",
+    phone: "الهاتف",
+    company: "الشركة",
+    message: "الرسالة",
+    optional: "اختياري",
+    messagePlaceholder: "فيمَ تريد استخدام Dicta؟",
+    submit: "إرسال الطلب",
+    sending: "جارٍ الإرسال…",
+    successTitle: "شكرًا لك، تم استلام طلبك.",
+    successBody: "سيتواصل معك فريقنا قريبًا.",
+    errorInvalid: "يرجى إدخال اسمك ورقم هاتف صحيح.",
+    errorGeneric: "حدث خطأ ما. أعد المحاولة أو راسلنا على support@dicta.uz.",
+    note: "سنستخدم هذه البيانات للتواصل معك بشأن طلبك.",
+  },
+  notFound: {
+    title: "الصفحة غير موجودة",
+    sub: "هذه الصفحة غير موجودة أو تم نقلها.",
+    home: "العودة إلى الرئيسية",
+    download: "تنزيل",
   },
   notetaker: { steps: { recording: "جارٍ التسجيل" } },
   // Badge labels. `*Super` is the short line printed INSIDE the badge SVG and

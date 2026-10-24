@@ -8,6 +8,11 @@
 /.well-known/assetlinks.json
   Content-Type: application/json
 
+# llms.txt is generated per site by src/pages/llms.txt.ts. Pin the type so it is
+# never sniffed or downloaded as an octet-stream.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
 # Baseline security headers for the marketing site.
 /*
   X-Content-Type-Options: nosniff

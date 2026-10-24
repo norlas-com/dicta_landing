@@ -1,0 +1,179 @@
+---
+import type { Locale } from "../i18n/ui";
+import { t } from "../i18n/utils";
+import { SITE } from "../../site.config.mjs";
+
+/**
+ * "Contact sales" form. Posts JSON to the Pages Function at /api/contact
+ * (functions/api/contact.js), which relays the lead to Telegram.
+ *
+ * Without JS the <form> still posts (urlencoded) and the function answers with
+ * a redirect back to #contact-sent, which CSS reveals via :target. The spam
+ * guards are a honeypot field and a render timestamp; the timestamp is set by
+ * the script on load because the page itself is static, so only the JS path
+ * gets the "too fast" check.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = t(locale).contact;
+const phonePlaceholder = SITE.id === "uz" ? "+998 90 123 45 67" : "+971 50 123 4567";
+
+const field =
+  "w-full rounded-control border border-border-strong bg-surface text-foreground placeholder:text-muted-soft px-4 transition-colors duration-150 ease-out-expo hover:border-accent/60 focus:border-accent";
+const label = "block text-sm font-medium text-foreground-soft mb-1.5";
+---
+
+<section id="contact" class="relative scroll-mt-20">
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+    <div class="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
+      <div class="reveal max-w-xl">
+        <span class="inline-flex items-center h-7 px-3 rounded-pill border border-border bg-surface/60 backdrop-blur-sm text-2xs uppercase tracking-[0.18em] text-foreground-soft mb-6">
+          {c.eyebrow}
+        </span>
+        <h2 class="font-display text-[2.1rem] sm:text-[2.8rem] font-semibold tracking-[-0.018em] leading-[1.12] text-foreground text-balance">
+          <span class="block">{c.headingPre}</span>
+          <span class="block text-accent">{c.headingAccent}</span>
+        </h2>
+        <p class="text-base sm:text-lg text-muted mt-5 leading-relaxed">{c.sub}</p>
+      </div>
+
+      <div class="reveal relative rounded-panel border border-border bg-surface shadow-card p-6 sm:p-8" style="--rd:.1s">
+        <form
+          data-contact-form
+          method="post"
+          action="/api/contact"
+          novalidate
+          class="space-y-5"
+          data-error-invalid={c.errorInvalid}
+          data-error-generic={c.errorGeneric}
+          data-sending={c.sending}
+        >
+          <div>
+            <label for="contact-name" class={label}>{c.name}</label>
+            <input id="contact-name" name="name" type="text" required maxlength="100" autocomplete="name" class:list={[field, "h-11"]} />
+          </div>
+          <div>
+            <label for="contact-phone" class={label}>{c.phone}</label>
+            <input id="contact-phone" name="phone" type="tel" inputmode="tel" required minlength="7" maxlength="32" autocomplete="tel" placeholder={phonePlaceholder} dir="ltr" class:list={[field, "h-11 text-start"]} />
+          </div>
+          <div>
+            <label for="contact-company" class={label}>
+              {c.company} <span class="text-muted-soft font-normal">({c.optional})</span>
+            </label>
+            <input id="contact-company" name="company" type="text" maxlength="120" autocomplete="organization" class:list={[field, "h-11"]} />
+          </div>
+          <div>
+            <label for="contact-message" class={label}>
+              {c.message} <span class="text-muted-soft font-normal">({c.optional})</span>
+            </label>
+            <textarea id="contact-message" name="message" rows="4" maxlength="2000" placeholder={c.messagePlaceholder} class:list={[field, "py-3 resize-y"]}></textarea>
+          </div>
+
+          {/* Honeypot: invisible and unreachable for people, tempting for bots.
+              Moved off-screen rather than display:none, which some bots skip. */}
+          <div aria-hidden="true" class="absolute -start-[9999px] top-auto w-px h-px overflow-hidden">
+            <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <input type="hidden" name="ts" value="" />
+          <input type="hidden" name="site" value={SITE.id} />
+          <input type="hidden" name="locale" value={locale} />
+          <input type="hidden" name="path" value="" />
+
+          <p data-contact-error role="alert" hidden class="text-sm text-danger"></p>
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+            <button
+              type="submit"
+              data-contact-submit
+              class="group relative shrink-0 whitespace-nowrap inline-flex items-center justify-center h-12 px-8 rounded-pill font-medium text-white overflow-hidden bg-brand-gradient bg-[length:160%_160%] shadow-glow transition-[background-position,transform,opacity] duration-500 ease-out-expo hover:bg-[position:100%_50%] active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+            >
+              {c.submit}
+            </button>
+            <p class="text-xs text-muted-soft">{c.note}</p>
+          </div>
+        </form>
+
+        {/* Shown by the script after a successful send, or by :target after a
+            no-JS post. role=status so it is announced when it appears. */}
+        <div id="contact-sent" data-contact-success role="status" hidden class="text-center py-6">
+          <div class="mx-auto mb-4 grid place-items-center w-12 h-12 rounded-full bg-accent-soft text-accent">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold text-foreground">{c.successTitle}</h3>
+          <p class="text-muted mt-2">{c.successBody}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* No-JS: the function redirects to #contact-sent; show the thanks and hide
+     the form (:has is progressive — without it both show, which is harmless). */
+  #contact-sent:target {
+    display: block;
+  }
+  [data-contact-form]:has(~ #contact-sent:target) {
+    display: none;
+  }
+</style>
+
+<script>
+  import { track } from "../lib/analytics";
+
+  document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
+    const submit = form.querySelector<HTMLButtonElement>("[data-contact-submit]")!;
+    const errorEl = form.querySelector<HTMLElement>("[data-contact-error]")!;
+    const success = form.parentElement!.querySelector<HTMLElement>("[data-contact-success]")!;
+    const idleLabel = submit.textContent ?? "";
+    const el = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
+
+    // Render time, for the server's "submitted too fast" check.
+    el("ts").value = String(Date.now());
+    el("path").value = location.pathname;
+
+    const showError = (msg: string) => {
+      errorEl.textContent = msg;
+      errorEl.hidden = false;
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+      if (!form.checkValidity() || !el("name").value.trim() || !el("phone").value.trim()) {
+        showError(form.dataset.errorInvalid ?? "");
+        form.querySelector<HTMLElement>(":invalid")?.focus();
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = form.dataset.sending ?? idleLabel;
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        if (res.status === 400) {
+          showError(form.dataset.errorInvalid ?? "");
+        } else if (!res.ok) {
+          showError(form.dataset.errorGeneric ?? "");
+        } else {
+          form.hidden = true;
+          success.hidden = false;
+          success.focus?.();
+          track("contact_submitted", { locale: el("locale").value, site: el("site").value });
+          return;
+        }
+      } catch {
+        showError(form.dataset.errorGeneric ?? "");
+      }
+      submit.disabled = false;
+      submit.textContent = idleLabel;
+    });
+  });
+</script>

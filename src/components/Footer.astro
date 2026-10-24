@@ -17,6 +17,8 @@ const year = new Date().getFullYear();
     <p>© {year} Dicta. {d.landing.footerRights}</p>
     <div class="flex flex-wrap items-center gap-4">
       <a href={`${home === "/" ? "" : home}/#pricing`} data-analytics-event="nav_clicked" data-analytics-item="pricing" class="hover:text-foreground transition-colors">{d.pricing.navLabel}</a>
+      <a href={localePath("/faq", locale)} data-analytics-event="nav_clicked" data-analytics-item="faq" class="hover:text-foreground transition-colors">{d.nav.faq}</a>
+      <a href={`${home === "/" ? "" : home}/#contact`} data-analytics-event="nav_clicked" data-analytics-item="contact" class="hover:text-foreground transition-colors">{d.nav.contact}</a>
       {/* The apps are the only way to use some features (roundtable records on
           everyone's phone and has no browser path), so the download link
           belongs on every page, not just in the header. */}

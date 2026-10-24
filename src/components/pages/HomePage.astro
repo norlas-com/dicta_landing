@@ -2,12 +2,17 @@
 import type { Locale } from "../../i18n/ui";
 import { t } from "../../i18n/utils";
 import { fetchCatalog } from "../../lib/catalog";
+import { faqItems, faqJsonLd, FAQ_HOME_KEYS } from "../../lib/faq";
+import { SITE } from "../../../site.config.mjs";
 import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/appLinks";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Hero from "../Hero.astro";
 import FeatureStory from "../FeatureStory.astro";
 import Pricing from "../Pricing.astro";
+import Trust from "../Trust.astro";
+import Faq from "../Faq.astro";
+import Contact from "../Contact.astro";
 import Footer from "../Footer.astro";
 
 interface Props {
@@ -16,6 +21,7 @@ interface Props {
 const { locale } = Astro.props;
 const d = t(locale);
 const catalog = await fetchCatalog();
+const faq = faqItems(locale, catalog, FAQ_HOME_KEYS);
 
 const title = "Dicta — " + d.landing.h1Pre + " " + d.landing.h1Accent;
 const description = d.landing.sub;
@@ -45,6 +51,7 @@ const jsonLd = [
       priceCurrency: "UZS",
     },
   },
+  faqJsonLd(faq),
 ];
 ---
 
@@ -54,10 +61,15 @@ const jsonLd = [
   <div data-snap-free>
     <Header locale={locale} path="/" />
     <Hero locale={locale} />
+    {/* Customer proof is dicta.uz-only: Premier is a dicta.uz customer and
+        means nothing to the global audience. */}
+    {SITE.id === "uz" && <Trust locale={locale} />}
   </div>
   <FeatureStory locale={locale} />
   <div data-snap-free>
     {catalog && <Pricing locale={locale} catalog={catalog} />}
+    <Faq locale={locale} items={faq} home />
+    <Contact locale={locale} />
     <Footer locale={locale} />
   </div>
 </Layout>

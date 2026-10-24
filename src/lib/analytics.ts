@@ -18,7 +18,9 @@ export type LandingEvent =
   | "feature_section_viewed"
   | "feature_nav_clicked"
   | "nav_clicked"
-  | "outbound_click";
+  | "outbound_click"
+  | "faq_opened"
+  | "contact_submitted";
 
 export function track(event: LandingEvent | (string & {}), params: AnalyticsParams = {}): void {
   const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
