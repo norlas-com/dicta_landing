@@ -24,10 +24,8 @@ const f = t(locale).faq;
     {
       home && (
         <div class="reveal max-w-2xl">
-          <span class="inline-flex items-center h-7 px-3 rounded-pill border border-border bg-surface/60 backdrop-blur-sm text-2xs uppercase tracking-[0.18em] text-foreground-soft mb-6">
-            {f.eyebrow}
-          </span>
-          <h2 class="font-display text-[2.1rem] sm:text-[2.8rem] font-semibold tracking-[-0.018em] leading-[1.12] text-foreground text-balance">
+          <p class="text-sm font-medium text-accent mb-4">{f.eyebrow}</p>
+          <h2 class="font-display text-[2.2rem] sm:text-[3rem] font-semibold tracking-[-0.025em] leading-[1.08] text-foreground text-balance">
             <span class="block">{f.headingPre}</span>
             <span class="block text-accent">{f.headingAccent}</span>
           </h2>
@@ -39,7 +37,7 @@ const f = t(locale).faq;
     <div class:list={["space-y-3", home && "mt-10"]}>
       {
         items.map((item) => (
-          <details class="group rounded-card border border-border bg-surface/70 backdrop-blur-sm open:bg-surface transition-colors duration-150 ease-out-expo">
+          <details class="group rounded-card border border-border bg-surface open:shadow-card transition-colors duration-150 ease-out-expo">
             <summary
               class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-card px-5 py-4 text-start font-medium text-foreground hover:text-accent transition-colors duration-150 ease-out-expo [&::-webkit-details-marker]:hidden"
               data-analytics-event="faq_opened"

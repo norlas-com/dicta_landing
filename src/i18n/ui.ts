@@ -39,84 +39,98 @@ const en = {
     contact: "Contact",
   },
   landing: {
-    h1Pre: "All-in-one",
-    h1Accent: "meeting platform.",
-    sub: "Host the call and Dicta records it, transcribes it, and writes the summary in Uzbek, Russian, or English. No guest accounts, no installs, no time limits.",
-    signupCta: "Sign up, it's free",
-    heroPoint1: "No credit card required",
-    heroPoint2: "Set up in under a minute",
-    heroPhotoAlt: "A team video call with a grid of smiling participants",
-    scrollCue: "Scroll",
     footerRights: "All rights reserved.",
     developedBy: "Developed by",
+  },
+  home: {
+    startFree: "Start free",
+    hero: {
+      eyebrow: "Records, transcribes, summarizes",
+      titlePre: "Meetings that write",
+      titleAccent: "their own notes.",
+      sub: "Dicta records your calls and in-person meetings, transcribes them in Uzbek, Russian and English, and hands you the decisions and tasks minutes after you hang up.",
+      ctaSecondary: "Talk to sales",
+      note: "Free plan, no card. Ready in under a minute.",
+      shotAlt: "A Dicta meeting summary with key decisions and action items",
+      liveLabel: "Live transcript",
+      live: [
+        {
+          who: "Dilnoza",
+          text: "Let's move the warehouse launch to the 15th.",
+        },
+        {
+          who: "Rustam",
+          text: "Then I'll have the contracts signed by Friday.",
+        },
+        {
+          who: "Dilnoza",
+          text: "Agreed. Aziz, can you let the client know?",
+        },
+      ],
+    },
+    customers: {
+      eyebrow: "Who records with Dicta",
+      businessTag: "Business",
+      premierLead: "Premier records all of its online and offline meetings with Dicta.",
+      premierLink: "Visit premier.uz",
+      peopleTag: "Individuals",
+      peopleLeadPre: "And people who spend their day in meetings: ",
+      roles: ["managers", "founders", "HR teams", "teachers", "freelancers", "sales people"],
+      and: "and",
+      peopleLeadPost: ".",
+      usesLabel: "What people record with Dicta",
+      uses: ["Team meetings", "Client calls", "Interviews", "Lectures", "Personal notes", "In-person meetings"],
+    },
+    stats: {
+      eyebrow: "So far",
+      pre: "Dicta has turned ",
+      hours: "one:hour|other:hours",
+      sep1: " of conversation into notes, across ",
+      meetings: "one:meeting|other:meetings",
+      sep2: ", for ",
+      users: "one:person|other:people",
+      post: ".",
+      updated: "As of {date}",
+      footnote: "Counted from Dicta's own database, not estimated.",
+    },
     features: {
-      problemLabel: "The problem",
-      solutionLabel: "Our solution",
-      dotsLabel: "Sections",
-      prevLabel: "Previous section",
-      nextLabel: "Next section",
-      f6cta: "Download the desktop app",
-      f7cta: "Get the mobile app",
-      f1: {
-        title: "Uzbekistan's own meeting platform",
-        problem:
-          "Zoom, Google Meet and Teams keep your conversations on servers far away. For many teams here, that's a risk they can't accept.",
-        solution:
-          "Dicta Meet works better than Zoom, Google Meet and Teams. Our meeting servers live in the TAS-IX network, so your live conversation doesn't travel around the world and back — it stays here, which is why calls are faster.",
-        alt: "A video call participant giving a thumbs up on screen",
+      titlePre: "From the first word",
+      titleAccent: "to the last task.",
+      sub: "Every meeting goes through the same three steps, and none of them needs you.",
+      capture: {
+        kicker: "Record",
+        title: "Wherever the meeting happens",
+        body: "Host the call in Dicta, send a bot into Zoom, Google Meet or Teams, record a room on your phone, or upload a file.",
+        points: ["Guests join by link, with no account or install", "A bot joins the calls you can't attend", "The desktop app records without a bot in the call"],
+        alt: "The Dicta meetings list with recorded calls from Dicta, Zoom and Google Meet",
       },
-      f2: {
-        title: "Transcription in any language",
-        problem:
-          "Taking notes during a meeting means you either listen or write — never both well.",
-        solution:
-          "Dicta transcribes meetings in any language with high accuracy. Every person's words are captured and attributed to the right speaker.",
-        alt: "Handwritten meeting notes in a paper notebook",
+      transcript: {
+        kicker: "Transcribe",
+        title: "Every word, and who said it",
+        body: "Accurate transcripts in Uzbek, Russian and English, even when people switch languages mid-sentence. Search any word and jump to that moment of the recording.",
+        points: ["Speakers labeled automatically", "Searchable, timestamped text", "Recording and transcript side by side"],
+        alt: "A Dicta transcript in Uzbek with speaker names and timestamps",
       },
-      f3: {
-        title: "A 1-hour meeting, read in 2 minutes",
-        problem:
-          "Hours of meetings every week — and from half of them you only needed the conclusions.",
-        solution:
-          "Dicta prepares a full AI summary of every meeting: decisions, tasks and topics. Read it in 2 minutes — and search the recording by text to jump to the exact video moment.",
-        alt: "A calm one-on-one video call on a laptop",
+      summary: {
+        kicker: "Act",
+        title: "Decisions and tasks, minutes after the call",
+        body: "An AI summary you read in two minutes: what was decided and who does what. Tasks land in one list and work with the tools you already use.",
+        points: ["Key decisions and topics", "Action items with an owner", "Works with Jira, Trello, Asana and ClickUp"],
+        alt: "Dicta tasks created from meetings, each with an owner",
       },
-      f4: {
-        title: "Tasks create themselves",
-        problem:
-          "After the meeting, someone still has to write down every task and assign it by hand. It's slow, and things get lost.",
-        solution:
-          "Dicta creates tasks from the meeting automatically and assigns them to the right person. Works with Jira, Trello, Asana, ClickUp — or your own task platform.",
-        alt: "A kanban board with task cards on a screen",
+      apps: {
+        kicker: "Everywhere you work",
+        title: "In the browser, on your desktop, in your pocket",
+        body: "Web, macOS and Windows, iOS and Android. Record on one, read the notes on another.",
+        desktop: "Download for desktop",
+        alt: "The Dicta mobile app showing a meeting summary",
       },
-      f5: {
-        title: "Send a bot instead of yourself",
-        problem: "Two meetings at the same time? No time to attend at all?",
-        solution:
-          "Send a Dicta bot on your behalf. It joins Zoom, Google Meet and Teams meetings — and you still get the full transcription and AI summary.",
-        alt: "A large video call grid with many participants",
-      },
-      f6: {
-        title: "Dicta Desktop — no bots in the call",
-        problem: "Don't want a visible bot sitting in your meetings?",
-        solution:
-          "The Dicta desktop app detects when you join a call and records it for you. At the end you get the recording and the AI summary — and no one knows the meeting was recorded.",
-        alt: "A laptop on a desk showing a dark dashboard",
-      },
-      f7: {
-        title: "A mobile app for face-to-face meetings",
-        problem:
-          "Great ideas are born in face-to-face meetings — and get lost there too.",
-        solution:
-          "Tap one button and Dicta records your in-person meeting. The app automatically detects different speakers and can identify who is talking by their voice.",
-        alt: "Colleagues talking around a flipchart in a meeting room",
-      },
-      closer: {
-        titlePre: "All of this —",
-        titleAccent: "at the lowest price on the market",
-        sub: "Compare us with any competitor: accuracy, speed and privacy at the lowest price in the AI era. Try it — it's free, no card required.",
-        cta: "Try it out",
-      },
+    },
+    finalCta: {
+      titlePre: "Your next meeting",
+      titleAccent: "can take its own notes.",
+      sub: "Start on the free plan today. No card, no install, no time limit on calls.",
+      secondary: "Download the apps",
     },
   },
   pricing: {
@@ -144,12 +158,6 @@ const en = {
     packsLine: "Need more? One-time minute packs from {price} — they never expire.",
     reassurance: "Every plan starts free. No card required.",
     vatNote: "Prices are VAT-exempt — the seller is an IT Park resident.",
-  },
-  // Customer proof strip (dicta.uz build only — see Trust.astro).
-  trust: {
-    eyebrow: "Trusted by",
-    lead: "Premier records all of its online and offline meetings with Dicta.",
-    linkLabel: "Visit premier.uz",
   },
   // FAQ. The answers restate claims made elsewhere on the site (feature story,
   // pricing, Terms, Privacy Policy) — do not add a claim here that those pages
@@ -218,27 +226,29 @@ const en = {
       },
       sales: {
         q: "How do I contact sales?",
-        a: "Use the contact form on this site: leave your name and phone number and our team will contact you. You can also write to support@dicta.uz.",
+        a: "Use the contact form on this site: leave a phone number or an email and our team will contact you. You can also write to support@dicta.uz.",
       },
     },
   },
   // Sales contact form -> /api/contact -> Telegram (functions/api/contact.js).
   contact: {
     eyebrow: "Contact",
-    headingPre: "Contact sales,",
-    headingAccent: "we reply personally.",
-    sub: "Leave your details and our team will contact you. Or write to support@dicta.uz.",
+    headingPre: "Talk to us,",
+    headingAccent: "a real person replies.",
+    sub: "Tell us how to reach you and our team will get back to you shortly.",
     name: "Name",
     phone: "Phone",
+    reachHint: "A phone number or an email is enough, whichever you prefer. Everything else is optional.",
+    email: "Email",
     company: "Company",
     message: "Message",
     optional: "optional",
     messagePlaceholder: "What would you like to use Dicta for?",
-    submit: "Send request",
+    submit: "Send",
     sending: "Sending…",
     successTitle: "Thank you, request received.",
     successBody: "Our team will contact you soon.",
-    errorInvalid: "Please enter your name and a valid phone number.",
+    errorInvalid: "Please leave a valid phone number or email so we can reach you.",
     errorGeneric: "Something went wrong. Please try again or write to support@dicta.uz.",
     note: "We will use these details to contact you about your request.",
   },
@@ -750,84 +760,98 @@ const ru: typeof en = {
     contact: "Контакты",
   },
   landing: {
-    h1Pre: "Универсальная платформа",
-    h1Accent: "для встреч.",
-    sub: "Проведите встречу, а Dicta запишет её, расшифрует и напишет резюме на узбекском, русском или английском. Без гостевых аккаунтов, установки и лимитов по времени.",
-    signupCta: "Зарегистрироваться, бесплатно",
-    heroPoint1: "Карта не требуется",
-    heroPoint2: "Настройка меньше чем за минуту",
-    heroPhotoAlt: "Командный видеозвонок с сеткой улыбающихся участников",
-    scrollCue: "Листайте",
     footerRights: "Все права защищены.",
     developedBy: "Разработано",
+  },
+  home: {
+    startFree: "Начать бесплатно",
+    hero: {
+      eyebrow: "Записывает, расшифровывает, подводит итоги",
+      titlePre: "Встречи, которые",
+      titleAccent: "сами ведут протокол.",
+      sub: "Dicta записывает созвоны и живые встречи, расшифровывает их на узбекском, русском и английском и через несколько минут после звонка выдаёт решения и задачи.",
+      ctaSecondary: "Связаться с продажами",
+      note: "Бесплатный тариф, без карты. Готово меньше чем за минуту.",
+      shotAlt: "Итоги встречи в Dicta: ключевые решения и задачи",
+      liveLabel: "Расшифровка в эфире",
+      live: [
+        {
+          who: "Дильноза",
+          text: "Давайте перенесём запуск склада на 15-е.",
+        },
+        {
+          who: "Рустам",
+          text: "Тогда договоры подпишу к пятнице.",
+        },
+        {
+          who: "Дильноза",
+          text: "Договорились. Азиз, предупредишь клиента?",
+        },
+      ],
+    },
+    customers: {
+      eyebrow: "Кто записывает встречи в Dicta",
+      businessTag: "Бизнес",
+      premierLead: "Premier записывает все свои онлайн- и офлайн-встречи в Dicta.",
+      premierLink: "Перейти на premier.uz",
+      peopleTag: "Частные пользователи",
+      peopleLeadPre: "И люди, у которых весь день во встречах: ",
+      roles: ["руководители", "основатели", "HR-команды", "преподаватели", "фрилансеры", "продавцы"],
+      and: "и",
+      peopleLeadPost: ".",
+      usesLabel: "Что записывают в Dicta",
+      uses: ["Командные встречи", "Звонки с клиентами", "Собеседования", "Лекции", "Личные заметки", "Офлайн-встречи"],
+    },
+    stats: {
+      eyebrow: "На сегодня",
+      pre: "Dicta превратила в заметки ",
+      hours: "one:час|few:часа|many:часов|other:часа",
+      sep1: " разговоров: это ",
+      meetings: "one:встреча|few:встречи|many:встреч|other:встречи",
+      sep2: " для ",
+      users: "one:человека|few:человек|many:человек|other:человека",
+      post: ".",
+      updated: "Данные на {date}",
+      footnote: "Посчитано по базе данных Dicta, а не оценка.",
+    },
     features: {
-      problemLabel: "Проблема",
-      solutionLabel: "Наше решение",
-      dotsLabel: "Разделы",
-      prevLabel: "Предыдущий раздел",
-      nextLabel: "Следующий раздел",
-      f6cta: "Скачать приложение для компьютера",
-      f7cta: "Установить приложение",
-      f1: {
-        title: "Собственная платформа встреч Узбекистана",
-        problem:
-          "Zoom, Google Meet и Teams хранят ваши разговоры на далёких серверах. Для многих команд это неприемлемый риск.",
-        solution:
-          "Dicta Meet работает лучше Zoom, Google Meet и Teams. Наши серверы встреч находятся в сети TAS-IX, поэтому ваш живой разговор не путешествует через полмира и обратно — он остаётся здесь, и звонки идут быстрее.",
-        alt: "Участник видеозвонка показывает большой палец вверх",
+      titlePre: "От первого слова",
+      titleAccent: "до последней задачи.",
+      sub: "Каждая встреча проходит три одинаковых шага, и ни один из них не требует вашего участия.",
+      capture: {
+        kicker: "Запись",
+        title: "Где бы ни проходила встреча",
+        body: "Проведите звонок в Dicta, отправьте бота в Zoom, Google Meet или Teams, запишите переговорную на телефон или загрузите файл.",
+        points: ["Гости заходят по ссылке, без аккаунта и установки", "Бот подключится к звонку, на который вы не успеваете", "Десктоп-приложение пишет без бота в звонке"],
+        alt: "Список встреч в Dicta: записи из Dicta, Zoom и Google Meet",
       },
-      f2: {
-        title: "Транскрипция на любом языке",
-        problem:
-          "Вести заметки на встрече — значит либо слушать, либо писать. Хорошо делать и то и другое не получится.",
-        solution:
-          "Dicta расшифровывает встречи на любом языке с высокой точностью. Слова каждого участника фиксируются и привязываются к нужному спикеру.",
-        alt: "Рукописные заметки со встречи в бумажном блокноте",
+      transcript: {
+        kicker: "Расшифровка",
+        title: "Каждое слово и кто его сказал",
+        body: "Точная расшифровка на узбекском, русском и английском, даже если собеседники переходят с языка на язык посреди фразы. Найдите любое слово и перейдите к этому моменту записи.",
+        points: ["Спикеры размечаются автоматически", "Текст с таймкодами и поиском", "Запись и расшифровка рядом"],
+        alt: "Расшифровка встречи на узбекском в Dicta с именами спикеров и таймкодами",
       },
-      f3: {
-        title: "Часовая встреча — за 2 минуты",
-        problem:
-          "Часы встреч каждую неделю — а от половины вам нужны были только выводы.",
-        solution:
-          "Dicta готовит полное AI-резюме каждой встречи: решения, задачи и темы. Прочитайте его за 2 минуты — и ищите по тексту записи, чтобы перейти к нужному моменту видео.",
-        alt: "Спокойный видеозвонок один на один на ноутбуке",
+      summary: {
+        kicker: "Итоги",
+        title: "Решения и задачи через несколько минут после звонка",
+        body: "ИИ-резюме, которое читается за две минуты: что решили и кто что делает. Задачи собираются в один список и работают с вашими инструментами.",
+        points: ["Ключевые решения и темы", "Задачи с ответственными", "Работает с Jira, Trello, Asana и ClickUp"],
+        alt: "Задачи из встреч в Dicta, у каждой есть ответственный",
       },
-      f4: {
-        title: "Задачи создаются сами",
-        problem:
-          "После встречи кто-то всё равно должен записать каждую задачу и назначить её вручную. Это медленно, и что-то обязательно теряется.",
-        solution:
-          "Dicta автоматически создаёт задачи по итогам встречи и назначает их нужному человеку. Работает с Jira, Trello, Asana, ClickUp — или вашей собственной платформой.",
-        alt: "Канбан-доска с карточками задач на экране",
+      apps: {
+        kicker: "Везде, где вы работаете",
+        title: "В браузере, на компьютере и в кармане",
+        body: "Веб, macOS и Windows, iOS и Android. Записывайте на одном устройстве, читайте итоги на другом.",
+        desktop: "Скачать для компьютера",
+        alt: "Мобильное приложение Dicta с итогами встречи",
       },
-      f5: {
-        title: "Отправьте бота вместо себя",
-        problem: "Две встречи одновременно? Совсем нет времени участвовать?",
-        solution:
-          "Отправьте бота Dicta от своего имени. Он подключается к встречам в Zoom, Google Meet и Teams — а вы получаете полную расшифровку и AI-резюме.",
-        alt: "Большая сетка видеозвонка со множеством участников",
-      },
-      f6: {
-        title: "Dicta Desktop — никаких ботов в звонке",
-        problem: "Не хотите, чтобы во встрече сидел заметный бот?",
-        solution:
-          "Приложение Dicta для компьютера само определяет, что вы в звонке, и записывает его для вас. В конце у вас запись и AI-резюме — и никто не знает, что встреча записывалась.",
-        alt: "Ноутбук на столе с тёмной информационной панелью",
-      },
-      f7: {
-        title: "Мобильное приложение для живых встреч",
-        problem:
-          "Отличные идеи рождаются на живых встречах — и там же теряются.",
-        solution:
-          "Нажмите одну кнопку — и Dicta запишет вашу очную встречу. Приложение автоматически различает говорящих и может определить по голосу, кто говорит.",
-        alt: "Коллеги обсуждают идеи у флипчарта в переговорной",
-      },
-      closer: {
-        titlePre: "Всё это —",
-        titleAccent: "по самой низкой цене на рынке",
-        sub: "Сравните нас с любым конкурентом: точность, скорость и приватность по самой низкой цене в эпоху AI. Попробуйте — это бесплатно, карта не нужна.",
-        cta: "Попробовать",
-      },
+    },
+    finalCta: {
+      titlePre: "Ваша следующая встреча",
+      titleAccent: "запишет себя сама.",
+      sub: "Начните с бесплатного тарифа сегодня. Без карты, без установки, без ограничения по времени звонка.",
+      secondary: "Скачать приложения",
     },
   },
   pricing: {
@@ -855,12 +879,6 @@ const ru: typeof en = {
     packsLine: "Нужно больше? Разовые пакеты минут от {price} — они не сгорают.",
     reassurance: "Любой тариф начинается бесплатно. Карта не нужна.",
     vatNote: "Цены не облагаются НДС — продавец является резидентом IT Park.",
-  },
-  // Customer proof strip (dicta.uz build only — see Trust.astro).
-  trust: {
-    eyebrow: "Нам доверяют",
-    lead: "Premier записывает все свои онлайн- и офлайн-встречи в Dicta.",
-    linkLabel: "Перейти на premier.uz",
   },
   faq: {
     eyebrow: "FAQ",
@@ -925,26 +943,28 @@ const ru: typeof en = {
       },
       sales: {
         q: "Как связаться с отделом продаж?",
-        a: "Воспользуйтесь формой на этом сайте: оставьте имя и номер телефона, и наша команда свяжется с вами. Можно также написать на support@dicta.uz.",
+        a: "Воспользуйтесь формой на этом сайте: оставьте телефон или email, и наша команда свяжется с вами. Можно также написать на support@dicta.uz.",
       },
     },
   },
   contact: {
     eyebrow: "Контакты",
-    headingPre: "Свяжитесь с отделом продаж,",
-    headingAccent: "мы отвечаем лично.",
-    sub: "Оставьте свои данные, и наша команда свяжется с вами. Или напишите на support@dicta.uz.",
+    headingPre: "Напишите нам,",
+    headingAccent: "ответит живой человек.",
+    sub: "Оставьте способ связи, и наша команда скоро ответит.",
     name: "Имя",
     phone: "Телефон",
+    reachHint: "Достаточно телефона или email, как вам удобнее. Остальное по желанию.",
+    email: "Email",
     company: "Компания",
     message: "Сообщение",
     optional: "необязательно",
     messagePlaceholder: "Для чего вы хотите использовать Dicta?",
-    submit: "Отправить заявку",
+    submit: "Отправить",
     sending: "Отправляем…",
     successTitle: "Спасибо, заявка получена.",
     successBody: "Наша команда скоро свяжется с вами.",
-    errorInvalid: "Укажите имя и корректный номер телефона.",
+    errorInvalid: "Оставьте корректный телефон или email, чтобы мы могли связаться с вами.",
     errorGeneric: "Что-то пошло не так. Попробуйте ещё раз или напишите на support@dicta.uz.",
     note: "Мы используем эти данные, чтобы связаться с вами по вашей заявке.",
   },
@@ -1452,84 +1472,98 @@ const uz: typeof en = {
     contact: "Aloqa",
   },
   landing: {
-    h1Pre: "Uchrashuvlar uchun",
-    h1Accent: "yagona platforma.",
-    sub: "Uchrashuvni oʻtkazing, Dicta esa uni yozib oladi, transkripsiya qiladi va oʻzbek, rus yoki ingliz tilida xulosa yozadi. Mehmon akkauntlarisiz, oʻrnatishsiz, vaqt cheklovisiz.",
-    signupCta: "Roʻyxatdan oʻtish, bepul",
-    heroPoint1: "Karta talab qilinmaydi",
-    heroPoint2: "Bir daqiqada sozlanadi",
-    heroPhotoAlt: "Katakli koʻrinishdagi tabassumli ishtirokchilar bilan jamoaviy videoqoʻngʻiroq",
-    scrollCue: "Pastga suring",
     footerRights: "Barcha huquqlar himoyalangan.",
     developedBy: "Ishlab chiquvchi",
+  },
+  home: {
+    startFree: "Bepul boshlash",
+    hero: {
+      eyebrow: "Yozib oladi, matnga oʻgiradi, xulosa qiladi",
+      titlePre: "Bayonnomani oʻzi yozadigan",
+      titleAccent: "uchrashuvlar.",
+      sub: "Dicta qoʻngʻiroqlar va jonli uchrashuvlarni yozib oladi, oʻzbek, rus va ingliz tilida matnga oʻgiradi va qoʻngʻiroqdan bir necha daqiqa oʻtib qarorlar va vazifalarni qoʻlingizga beradi.",
+      ctaSecondary: "Sotuv boʻlimi bilan bogʻlanish",
+      note: "Bepul tarif, karta shart emas. Bir daqiqada tayyor.",
+      shotAlt: "Dicta’dagi uchrashuv xulosasi: asosiy qarorlar va vazifalar",
+      liveLabel: "Jonli transkripsiya",
+      live: [
+        {
+          who: "Dilnoza",
+          text: "Ombor ochilishini 15-sanaga koʻchiramiz.",
+        },
+        {
+          who: "Rustam",
+          text: "Unda shartnomalarni jumagacha imzolatib qoʻyaman.",
+        },
+        {
+          who: "Dilnoza",
+          text: "Kelishdik. Aziz, mijozga xabar berasizmi?",
+        },
+      ],
+    },
+    customers: {
+      eyebrow: "Dicta bilan kimlar yozib boradi",
+      businessTag: "Biznes",
+      premierLead: "Premier barcha onlayn va oflayn uchrashuvlarini Dicta bilan yozib boradi.",
+      premierLink: "premier.uz saytiga oʻtish",
+      peopleTag: "Jismoniy shaxslar",
+      peopleLeadPre: "Kuni uchrashuvlarda oʻtadigan insonlar ham: ",
+      roles: ["rahbarlar", "asoschilar", "HR jamoalar", "oʻqituvchilar", "frilanserlar", "sotuvchilar"],
+      and: "va",
+      peopleLeadPost: ".",
+      usesLabel: "Dicta bilan nimalar yoziladi",
+      uses: ["Jamoa yigʻilishlari", "Mijozlar bilan qoʻngʻiroqlar", "Suhbatlar", "Maʼruzalar", "Shaxsiy qaydlar", "Oflayn uchrashuvlar"],
+    },
+    stats: {
+      eyebrow: "Hozirgacha",
+      pre: "Dicta ",
+      hours: "soatlik",
+      sep1: " suhbatni qaydlarga aylantirdi: bu ",
+      meetings: "ta uchrashuv",
+      sep2: " va ",
+      users: "ta foydalanuvchi",
+      post: ".",
+      updated: "{date} holatiga",
+      footnote: "Taxmin emas, Dicta maʼlumotlar bazasidan hisoblangan.",
+    },
     features: {
-      problemLabel: "Muammo",
-      solutionLabel: "Bizning yechim",
-      dotsLabel: "Boʻlimlar",
-      prevLabel: "Oldingi boʻlim",
-      nextLabel: "Keyingi boʻlim",
-      f6cta: "Kompyuter ilovasini yuklab olish",
-      f7cta: "Mobil ilovani olish",
-      f1: {
-        title: "Oʻzbekistonning oʻz uchrashuv platformasi",
-        problem:
-          "Zoom, Google Meet va Teams suhbatlaringizni uzoqdagi serverlarda saqlaydi. Koʻp jamoalar uchun bu qabul qilib boʻlmas xavf.",
-        solution:
-          "Dicta Meet Zoom, Google Meet va Teams'dan yaxshiroq ishlaydi. Uchrashuv serverlarimiz TAS-IX tarmogʻida joylashgan, shuning uchun jonli suhbatingiz dunyoni aylanib chiqmaydi — u shu yerda qoladi va qoʻngʻiroqlar tezroq ishlaydi.",
-        alt: "Videoqoʻngʻiroq ishtirokchisi ekranda bosh barmogʻini koʻrsatmoqda",
+      titlePre: "Birinchi soʻzdan",
+      titleAccent: "oxirgi vazifagacha.",
+      sub: "Har bir uchrashuv bir xil uch bosqichdan oʻtadi va ularning hech biri sizdan harakat talab qilmaydi.",
+      capture: {
+        kicker: "Yozib olish",
+        title: "Uchrashuv qayerda boʻlmasin",
+        body: "Qoʻngʻiroqni Dicta’da oʻtkazing, Zoom, Google Meet yoki Teams’ga bot yuboring, xonadagi uchrashuvni telefonda yozib oling yoki faylni yuklang.",
+        points: ["Mehmonlar havola orqali kiradi, akkaunt va oʻrnatish shart emas", "Ulgurmagan qoʻngʻiroqlaringizga bot qoʻshiladi", "Desktop ilova qoʻngʻiroqni botsiz yozib oladi"],
+        alt: "Dicta’dagi uchrashuvlar roʻyxati: Dicta, Zoom va Google Meet yozuvlari",
       },
-      f2: {
-        title: "Istalgan tilda transkripsiya",
-        problem:
-          "Uchrashuv paytida yozib borish — yo tinglaysiz, yo yozasiz. Ikkalasini birga qilib boʻlmaydi.",
-        solution:
-          "Dicta uchrashuvlarni istalgan tilda yuqori aniqlikda transkripsiya qiladi. Har bir ishtirokchining soʻzlari aniq yozib olinadi va toʻgʻri kishiga biriktiriladi.",
-        alt: "Qogʻoz daftarga qoʻlda yozilgan uchrashuv qaydlari",
+      transcript: {
+        kicker: "Transkripsiya",
+        title: "Har bir soʻz va uni kim aytgani",
+        body: "Oʻzbek, rus va ingliz tilida aniq transkripsiya, hatto suhbatdoshlar gap orasida tilni almashtirsa ham. Istalgan soʻzni qidiring va yozuvning aynan shu joyiga oʻting.",
+        points: ["Soʻzlovchilar avtomatik belgilanadi", "Vaqt belgili, qidiriladigan matn", "Yozuv va matn yonma-yon"],
+        alt: "Dicta’dagi oʻzbekcha transkripsiya: soʻzlovchilar ismi va vaqt belgilari",
       },
-      f3: {
-        title: "1 soatlik uchrashuv — 2 daqiqada",
-        problem:
-          "Har hafta soatlab uchrashuvlar — yarmidan sizga faqat xulosalar kerak edi, xolos.",
-        solution:
-          "Dicta har bir uchrashuvning toʻliq AI xulosasini tayyorlaydi: qarorlar, vazifalar va mavzular. Uni 2 daqiqada oʻqing — matn orqali yozuvdan qidirib, videoning kerakli lahzasiga oʻting.",
-        alt: "Noutbukda xotirjam yakkama-yakka videoqoʻngʻiroq",
+      summary: {
+        kicker: "Natija",
+        title: "Qoʻngʻiroqdan bir necha daqiqa oʻtib qarorlar va vazifalar",
+        body: "Ikki daqiqada oʻqiladigan AI xulosa: nima hal qilindi va kim nima qiladi. Vazifalar bitta roʻyxatga tushadi va siz ishlatadigan vositalar bilan ishlaydi.",
+        points: ["Asosiy qarorlar va mavzular", "Masʼuli belgilangan vazifalar", "Jira, Trello, Asana va ClickUp bilan ishlaydi"],
+        alt: "Dicta’da uchrashuvlardan yaratilgan vazifalar, har birining masʼuli bor",
       },
-      f4: {
-        title: "Vazifalar oʻzi yaratiladi",
-        problem:
-          "Uchrashuvdan keyin kimdir baribir har bir vazifani yozib, qoʻlda biriktirib chiqishi kerak. Bu sekin, va nimadir albatta yoʻqoladi.",
-        solution:
-          "Dicta uchrashuvdagi vazifalarni avtomatik yaratadi va toʻgʻri kishiga biriktiradi. Jira, Trello, Asana, ClickUp — yoki oʻzingizning platformangiz bilan ishlaydi.",
-        alt: "Ekrandagi vazifa kartochkalari joylashgan kanban doskasi",
+      apps: {
+        kicker: "Qayerda ishlasangiz ham",
+        title: "Brauzerda, kompyuterda va choʻntagingizda",
+        body: "Veb, macOS va Windows, iOS va Android. Bittasida yozib oling, boshqasida oʻqing.",
+        desktop: "Kompyuter uchun yuklab olish",
+        alt: "Dicta mobil ilovasida uchrashuv xulosasi",
       },
-      f5: {
-        title: "Oʻzingiz oʻrniga bot yuboring",
-        problem: "Bir vaqtda ikkita uchrashuvmi? Umuman borishga vaqt yoʻqmi?",
-        solution:
-          "Oʻzingiz oʻrniga Dicta botini yuboring. U Zoom, Google Meet va Teams uchrashuvlariga qoʻshiladi — siz esa toʻliq transkripsiya va AI xulosani olasiz.",
-        alt: "Koʻp ishtirokchili katta katakli videoqoʻngʻiroq",
-      },
-      f6: {
-        title: "Dicta Desktop — qoʻngʻiroqda hech qanday bot yoʻq",
-        problem: "Uchrashuvlaringizda koʻrinib turadigan bot boʻlishini istamaysizmi?",
-        solution:
-          "Dicta kompyuter ilovasi qoʻngʻiroqqa qoʻshilganingizni oʻzi aniqlab, siz uchun yozib boradi. Yakunida yozuv va AI xulosa sizda — uchrashuv yozilganini esa hech kim bilmaydi.",
-        alt: "Stol ustidagi noutbukda qora fondagi boshqaruv paneli",
-      },
-      f7: {
-        title: "Jonli uchrashuvlar uchun mobil ilova",
-        problem:
-          "Zoʻr gʻoyalar jonli uchrashuvlarda tugʻiladi — va oʻsha yerda yoʻqoladi ham.",
-        solution:
-          "Bitta tugmani bosing — Dicta jonli uchrashuvingizni yozib oladi. Ilova soʻzlovchilarni avtomatik ajratadi va ovozidan kim gapirayotganini aniqlay oladi.",
-        alt: "Majlis xonasida flipchart atrofida suhbatlashayotgan hamkasblar",
-      },
-      closer: {
-        titlePre: "Bularning barchasi —",
-        titleAccent: "bozordagi eng arzon narxda",
-        sub: "Bizni istalgan raqobatchi bilan solishtiring: AI davrida aniqlik, tezlik va maxfiylik — eng arzon narxda. Sinab koʻring — bepul, karta shart emas.",
-        cta: "Sinab koʻring",
-      },
+    },
+    finalCta: {
+      titlePre: "Keyingi uchrashuvingiz",
+      titleAccent: "bayonnomani oʻzi yozadi.",
+      sub: "Bugun bepul tarifdan boshlang. Karta, oʻrnatish va qoʻngʻiroq vaqtiga cheklov yoʻq.",
+      secondary: "Ilovalarni yuklab olish",
     },
   },
   pricing: {
@@ -1557,12 +1591,6 @@ const uz: typeof en = {
     packsLine: "Koʻproq kerakmi? Bir martalik daqiqa paketlari {price} dan — ular hech qachon eskirmaydi.",
     reassurance: "Har bir reja bepul boshlanadi. Karta talab qilinmaydi.",
     vatNote: "Narxlarga QQS solinmaydi — sotuvchi IT Park rezidenti.",
-  },
-  // Customer proof strip (dicta.uz build only — see Trust.astro).
-  trust: {
-    eyebrow: "Bizga ishonishadi",
-    lead: "Premier barcha onlayn va oflayn uchrashuvlarini Dicta bilan yozib boradi.",
-    linkLabel: "premier.uz saytiga oʻtish",
   },
   faq: {
     eyebrow: "FAQ",
@@ -1627,26 +1655,28 @@ const uz: typeof en = {
       },
       sales: {
         q: "Sotuv boʻlimi bilan qanday bogʻlanaman?",
-        a: "Shu saytdagi aloqa formasidan foydalaning: ismingiz va telefon raqamingizni qoldiring, jamoamiz siz bilan bogʻlanadi. Shuningdek, support@dicta.uz manziliga yozishingiz mumkin.",
+        a: "Shu saytdagi aloqa formasidan foydalaning: telefon raqamingiz yoki emailingizni qoldiring, jamoamiz siz bilan bogʻlanadi. Shuningdek, support@dicta.uz manziliga yozishingiz mumkin.",
       },
     },
   },
   contact: {
     eyebrow: "Aloqa",
-    headingPre: "Sotuv boʻlimi bilan bogʻlaning,",
-    headingAccent: "shaxsan javob beramiz.",
-    sub: "Maʼlumotlaringizni qoldiring, jamoamiz siz bilan bogʻlanadi. Yoki support@dicta.uz manziliga yozing.",
+    headingPre: "Bizga yozing,",
+    headingAccent: "jonli inson javob beradi.",
+    sub: "Siz bilan qanday bogʻlanishni qoldiring, jamoamiz tez orada javob beradi.",
     name: "Ism",
     phone: "Telefon",
+    reachHint: "Telefon yoki email kifoya, qaysi biri qulay boʻlsa. Qolgani ixtiyoriy.",
+    email: "Email",
     company: "Kompaniya",
     message: "Xabar",
     optional: "ixtiyoriy",
     messagePlaceholder: "Dictadan nima uchun foydalanmoqchisiz?",
-    submit: "Soʻrov yuborish",
+    submit: "Yuborish",
     sending: "Yuborilmoqda…",
     successTitle: "Rahmat, soʻrovingiz qabul qilindi.",
     successBody: "Jamoamiz tez orada siz bilan bogʻlanadi.",
-    errorInvalid: "Ismingiz va toʻgʻri telefon raqamingizni kiriting.",
+    errorInvalid: "Siz bilan bogʻlanishimiz uchun toʻgʻri telefon yoki email qoldiring.",
     errorGeneric: "Xatolik yuz berdi. Qayta urinib koʻring yoki support@dicta.uz manziliga yozing.",
     note: "Bu maʼlumotlardan soʻrovingiz yuzasidan siz bilan bogʻlanish uchun foydalanamiz.",
   },
@@ -2159,84 +2189,98 @@ const ar: typeof en = {
     contact: "تواصل",
   },
   landing: {
-    h1Pre: "متكاملة",
-    h1Accent: "منصة اجتماعات.",
-    sub: "استضف المكالمة ويتولى Dicta تسجيلها وتفريغها نصيًا وكتابة الملخص بالأوزبكية أو الروسية أو الإنجليزية. بلا حسابات للضيوف، وبلا تثبيت، وبلا حدود زمنية.",
-    signupCta: "أنشئ حسابًا، إنه مجاني",
-    heroPoint1: "لا حاجة إلى بطاقة ائتمان",
-    heroPoint2: "الإعداد في أقل من دقيقة",
-    heroPhotoAlt: "مكالمة فيديو لفريق تظهر فيها شبكة من المشاركين المبتسمين",
-    scrollCue: "مرّر",
     footerRights: "جميع الحقوق محفوظة.",
     developedBy: "تطوير",
+  },
+  home: {
+    startFree: "ابدأ مجانًا",
+    hero: {
+      eyebrow: "يسجّل ويفرّغ ويلخّص",
+      titlePre: "اجتماعات تكتب",
+      titleAccent: "محاضرها بنفسها.",
+      sub: "تسجّل Dicta مكالماتك واجتماعاتك الحضورية، وتفرّغها نصيًّا، وتسلّمك القرارات والمهام بعد دقائق من انتهاء المكالمة.",
+      ctaSecondary: "تواصل مع المبيعات",
+      note: "خطة مجانية، بلا بطاقة. جاهز في أقل من دقيقة.",
+      shotAlt: "ملخّص اجتماع في Dicta مع القرارات الرئيسية والمهام",
+      liveLabel: "تفريغ مباشر",
+      live: [
+        {
+          who: "ليلى",
+          text: "لنؤجّل افتتاح المستودع إلى يوم 15.",
+        },
+        {
+          who: "عمر",
+          text: "إذن سأنهي توقيع العقود قبل الجمعة.",
+        },
+        {
+          who: "ليلى",
+          text: "اتفقنا. سامي، هل تُبلغ العميل؟",
+        },
+      ],
+    },
+    customers: {
+      eyebrow: "من يسجّل اجتماعاته مع Dicta",
+      businessTag: "الشركات",
+      premierLead: "تسجّل Premier جميع اجتماعاتها عبر الإنترنت والحضورية مع Dicta.",
+      premierLink: "زيارة premier.uz",
+      peopleTag: "الأفراد",
+      peopleLeadPre: "وأشخاص يقضون يومهم في الاجتماعات: ",
+      roles: ["المديرون", "المؤسسون", "فرق الموارد البشرية", "المعلّمون", "المستقلّون", "مندوبو المبيعات"],
+      and: "و",
+      peopleLeadPost: ".",
+      usesLabel: "ما يسجّله الناس مع Dicta",
+      uses: ["اجتماعات الفريق", "مكالمات العملاء", "المقابلات", "المحاضرات", "الملاحظات الشخصية", "الاجتماعات الحضورية"],
+    },
+    stats: {
+      eyebrow: "حتى الآن",
+      pre: "حوّلت Dicta ",
+      hours: "ساعة",
+      sep1: " من المحادثات إلى ملاحظات، في ",
+      meetings: "اجتماعًا",
+      sep2: " لـ ",
+      users: "شخصًا",
+      post: ".",
+      updated: "حتى {date}",
+      footnote: "محسوبة من قاعدة بيانات Dicta، وليست تقديرًا.",
+    },
     features: {
-      problemLabel: "المشكلة",
-      solutionLabel: "الحل الذي نقدمه",
-      dotsLabel: "الأقسام",
-      prevLabel: "القسم السابق",
-      nextLabel: "القسم التالي",
-      f6cta: "تنزيل تطبيق سطح المكتب",
-      f7cta: "احصل على تطبيق الهاتف",
-      f1: {
-        title: "منصة الاجتماعات الأوزبكية",
-        problem:
-          "تحتفظ Zoom وGoogle Meet وTeams بمحادثاتك على خوادم بعيدة. وهذه مخاطرة لا تستطيع كثير من الفرق هنا قبولها.",
-        solution:
-          "يعمل Dicta Meet بكفاءة أعلى من Zoom وGoogle Meet وTeams. فخوادم اجتماعاتنا داخل شبكة TAS-IX، ومن ثم لا تسافر محادثتك المباشرة حول العالم ذهابًا وإيابًا، بل تبقى هنا، ولهذا تكون المكالمات أسرع.",
-        alt: "مشارك في مكالمة فيديو يرفع إبهامه على الشاشة",
+      titlePre: "من الكلمة الأولى",
+      titleAccent: "إلى آخر مهمة.",
+      sub: "يمرّ كل اجتماع بالخطوات الثلاث نفسها، ولا تحتاج أيٌّ منها إلى تدخّلك.",
+      capture: {
+        kicker: "التسجيل",
+        title: "أينما كان الاجتماع",
+        body: "استضف المكالمة في Dicta، أو أرسل روبوتًا إلى Zoom أو Google Meet أو Teams، أو سجّل الغرفة بهاتفك، أو ارفع ملفًا.",
+        points: ["ينضم الضيوف برابط، دون حساب أو تثبيت", "ينضم الروبوت إلى المكالمات التي لا تستطيع حضورها", "تطبيق سطح المكتب يسجّل دون روبوت في المكالمة"],
+        alt: "قائمة الاجتماعات في Dicta مع تسجيلات من Dicta وZoom وGoogle Meet",
       },
-      f2: {
-        title: "تفريغ نصي بأي لغة",
-        problem:
-          "تدوين الملاحظات أثناء الاجتماع يعني أن تستمع أو تكتب، ولا يمكنك إتقان الأمرين معًا.",
-        solution:
-          "يفرّغ Dicta الاجتماعات نصيًا بأي لغة وبدقة عالية، ويسجل كلام كل شخص وينسبه إلى المتحدث الصحيح.",
-        alt: "ملاحظات اجتماع مكتوبة بخط اليد في دفتر ورقي",
+      transcript: {
+        kicker: "التفريغ",
+        title: "كل كلمة، ومن قالها",
+        body: "تفريغ نصي دقيق بأي لغة، حتى عندما ينتقل المتحدثون بين اللغات في منتصف الجملة. ابحث عن أي كلمة وانتقل إلى تلك اللحظة من التسجيل.",
+        points: ["تمييز المتحدثين تلقائيًا", "نص قابل للبحث مع طوابع زمنية", "التسجيل والنص جنبًا إلى جنب"],
+        alt: "تفريغ نصي لاجتماع في Dicta مع أسماء المتحدثين والطوابع الزمنية",
       },
-      f3: {
-        title: "اجتماع من ساعة تقرأه في دقيقتين",
-        problem:
-          "ساعات من الاجتماعات كل أسبوع، ونصفها لم تكن تحتاج منه سوى الخلاصات.",
-        solution:
-          "يعدّ Dicta ملخصًا كاملًا بالذكاء الاصطناعي لكل اجتماع: القرارات والمهام والمواضيع. اقرأه في دقيقتين، وابحث في التسجيل نصيًا للانتقال إلى اللحظة المطلوبة في الفيديو.",
-        alt: "مكالمة فيديو ثنائية هادئة على حاسوب محمول",
+      summary: {
+        kicker: "النتيجة",
+        title: "القرارات والمهام بعد دقائق من المكالمة",
+        body: "ملخّص بالذكاء الاصطناعي تقرؤه في دقيقتين: ما الذي تقرّر ومن يفعل ماذا. تُجمع المهام في قائمة واحدة وتعمل مع الأدوات التي تستخدمها.",
+        points: ["القرارات والمواضيع الرئيسية", "مهام لكلٍّ منها مسؤول", "يعمل مع Jira وTrello وAsana وClickUp"],
+        alt: "مهام أنشأتها Dicta من الاجتماعات، لكلٍّ منها مسؤول",
       },
-      f4: {
-        title: "المهام تُنشئ نفسها",
-        problem:
-          "بعد الاجتماع، لا بد أن يدوّن أحدهم كل مهمة ويسندها يدويًا. أمر بطيء وكثيرًا ما تضيع فيه التفاصيل.",
-        solution:
-          "ينشئ Dicta المهام من الاجتماع تلقائيًا ويسندها إلى الشخص المناسب. ويتكامل مع Jira وTrello وAsana وClickUp، أو مع منصة المهام الخاصة بك.",
-        alt: "لوحة كانبان تعرض بطاقات مهام على الشاشة",
+      apps: {
+        kicker: "أينما تعمل",
+        title: "في المتصفح، وعلى حاسوبك، وفي جيبك",
+        body: "الويب وmacOS وWindows وiOS وAndroid. سجّل على جهاز واقرأ الملاحظات على آخر.",
+        desktop: "تنزيل لسطح المكتب",
+        alt: "تطبيق Dicta للهاتف يعرض ملخّص اجتماع",
       },
-      f5: {
-        title: "أرسل روبوتًا بدلًا منك",
-        problem: "اجتماعان في الوقت نفسه؟ أو لا وقت لديك للحضور أصلًا؟",
-        solution:
-          "أرسل روبوت Dicta نيابةً عنك. ينضم إلى اجتماعات Zoom وGoogle Meet وTeams، وتحصل أنت على التفريغ النصي الكامل وملخص الذكاء الاصطناعي.",
-        alt: "شبكة مكالمة فيديو كبيرة تضم مشاركين كثيرين",
-      },
-      f6: {
-        title: "Dicta Desktop — بلا روبوتات في المكالمة",
-        problem: "ألا ترغب في وجود روبوت ظاهر داخل اجتماعاتك؟",
-        solution:
-          "يكتشف تطبيق Dicta لسطح المكتب انضمامك إلى مكالمة ويسجلها لك. وفي النهاية تحصل على التسجيل وملخص الذكاء الاصطناعي، دون أن يعلم أحد أن الاجتماع سُجّل.",
-        alt: "حاسوب محمول على مكتب يعرض لوحة تحكم داكنة",
-      },
-      f7: {
-        title: "تطبيق للاجتماعات الحضورية",
-        problem:
-          "الأفكار الجيدة تولد في الاجتماعات الحضورية، وفيها تضيع أيضًا.",
-        solution:
-          "اضغط زرًا واحدًا ليسجل Dicta اجتماعك الحضوري. يميز التطبيق المتحدثين تلقائيًا ويستطيع التعرف على المتحدث من صوته.",
-        alt: "زملاء يتحدثون حول لوحة ورقية في غرفة اجتماعات",
-      },
-      closer: {
-        titlePre: "كل هذا —",
-        titleAccent: "بأقل سعر في السوق",
-        sub: "قارنّا بأي منافس: دقة وسرعة وخصوصية بأقل سعر في عصر الذكاء الاصطناعي. جرّبه — إنه مجاني ولا يتطلب بطاقة.",
-        cta: "جرّبه",
-      },
+    },
+    finalCta: {
+      titlePre: "اجتماعك القادم",
+      titleAccent: "سيدوّن ملاحظاته بنفسه.",
+      sub: "ابدأ بالخطة المجانية اليوم. بلا بطاقة، وبلا تثبيت، وبلا حدّ زمني للمكالمات.",
+      secondary: "تنزيل التطبيقات",
     },
   },
   pricing: {
@@ -2264,12 +2308,6 @@ const ar: typeof en = {
     packsLine: "تحتاج المزيد؟ باقات دقائق لمرة واحدة ابتداءً من {price}، ولا تنتهي صلاحيتها.",
     reassurance: "كل باقة تبدأ مجانًا. ولا حاجة إلى بطاقة.",
     vatNote: "الأسعار معفاة من ضريبة القيمة المضافة، فالبائع مقيم في IT Park.",
-  },
-  // Customer proof strip (dicta.uz build only — see Trust.astro).
-  trust: {
-    eyebrow: "يثق بنا",
-    lead: "تسجّل Premier جميع اجتماعاتها عبر الإنترنت والحضورية باستخدام Dicta.",
-    linkLabel: "زيارة premier.uz",
   },
   faq: {
     eyebrow: "الأسئلة الشائعة",
@@ -2334,26 +2372,28 @@ const ar: typeof en = {
       },
       sales: {
         q: "كيف أتواصل مع فريق المبيعات؟",
-        a: "استخدم نموذج التواصل في هذا الموقع: اترك اسمك ورقم هاتفك وسيتواصل معك فريقنا. ويمكنك أيضًا المراسلة على support@dicta.uz.",
+        a: "استخدم نموذج التواصل في هذا الموقع: اترك رقم هاتفك أو بريدك الإلكتروني وسيتواصل معك فريقنا. ويمكنك أيضًا المراسلة على support@dicta.uz.",
       },
     },
   },
   contact: {
     eyebrow: "تواصل",
-    headingPre: "تواصل مع فريق المبيعات،",
-    headingAccent: "نردّ عليك شخصيًا.",
-    sub: "اترك بياناتك وسيتواصل معك فريقنا. أو راسلنا على support@dicta.uz.",
+    headingPre: "تحدّث إلينا،",
+    headingAccent: "سيردّ عليك شخص حقيقي.",
+    sub: "أخبرنا كيف نتواصل معك وسيعود إليك فريقنا قريبًا.",
     name: "الاسم",
     phone: "الهاتف",
+    reachHint: "يكفي رقم الهاتف أو البريد الإلكتروني، أيهما تفضّل. والباقي اختياري.",
+    email: "البريد الإلكتروني",
     company: "الشركة",
     message: "الرسالة",
     optional: "اختياري",
     messagePlaceholder: "فيمَ تريد استخدام Dicta؟",
-    submit: "إرسال الطلب",
+    submit: "إرسال",
     sending: "جارٍ الإرسال…",
     successTitle: "شكرًا لك، تم استلام طلبك.",
     successBody: "سيتواصل معك فريقنا قريبًا.",
-    errorInvalid: "يرجى إدخال اسمك ورقم هاتف صحيح.",
+    errorInvalid: "يُرجى ترك رقم هاتف أو بريد إلكتروني صالح لنتمكّن من التواصل معك.",
     errorGeneric: "حدث خطأ ما. أعد المحاولة أو راسلنا على support@dicta.uz.",
     note: "سنستخدم هذه البيانات للتواصل معك بشأن طلبك.",
   },

@@ -1,18 +1,21 @@
 ---
+import type { ImageMetadata } from "astro";
 import type { Locale } from "../../i18n/ui";
 import { t } from "../../i18n/utils";
 import { fetchCatalog } from "../../lib/catalog";
+import { fetchStats } from "../../lib/stats";
 import { faqItems, faqJsonLd, FAQ_HOME_KEYS } from "../../lib/faq";
-import { SITE } from "../../../site.config.mjs";
 import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/appLinks";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Hero from "../Hero.astro";
-import FeatureStory from "../FeatureStory.astro";
+import Customers from "../Customers.astro";
+import Stats from "../Stats.astro";
+import Features from "../Features.astro";
 import Pricing from "../Pricing.astro";
-import Trust from "../Trust.astro";
 import Faq from "../Faq.astro";
 import Contact from "../Contact.astro";
+import FinalCta from "../FinalCta.astro";
 import Footer from "../Footer.astro";
 
 interface Props {
@@ -20,11 +23,27 @@ interface Props {
 }
 const { locale } = Astro.props;
 const d = t(locale);
-const catalog = await fetchCatalog();
+const [catalog, stats] = await Promise.all([fetchCatalog(), fetchStats()]);
 const faq = faqItems(locale, catalog, FAQ_HOME_KEYS);
 
-const title = "Dicta — " + d.landing.h1Pre + " " + d.landing.h1Accent;
-const description = d.landing.sub;
+// Real app screenshots (a demo workspace), light + optional dark capture.
+const shotFiles = import.meta.glob<{ default: ImageMetadata }>("../../assets/landing/shots/*.png", { eager: true });
+const img = (name: string) => shotFiles[`../../assets/landing/shots/${name}.png`]?.default;
+const pair = (...names: string[]) => {
+  const name = names.find((n) => img(n));
+  if (!name) throw new Error(`landing: missing screenshot ${names.join(" / ")}`);
+  return { light: img(name)!, dark: img(`${name}-dark`) };
+};
+const hero = pair("recap");
+const shots = {
+  capture: pair("meetings-list"),
+  transcript: pair("transcript"),
+  summary: pair("tasks", "recap"),
+  mobile: pair("mobile-recap", "mobile-meetings"),
+};
+
+const title = `Dicta: ${d.home.hero.titlePre} ${d.home.hero.titleAccent}`;
+const description = d.home.hero.sub;
 
 const jsonLd = [
   {
@@ -56,20 +75,14 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} locale={locale} path="/" jsonLd={jsonLd}>
-  {/* data-snap-free wrappers are snap areas around the story: taller than the
-      viewport they scroll freely under mandatory snap (see global.css). */}
-  <div data-snap-free>
-    <Header locale={locale} path="/" />
-    <Hero locale={locale} />
-    {/* Customer proof is dicta.uz-only: Premier is a dicta.uz customer and
-        means nothing to the global audience. */}
-    {SITE.id === "uz" && <Trust locale={locale} />}
-  </div>
-  <FeatureStory locale={locale} />
-  <div data-snap-free>
-    {catalog && <Pricing locale={locale} catalog={catalog} />}
-    <Faq locale={locale} items={faq} home />
-    <Contact locale={locale} />
-    <Footer locale={locale} />
-  </div>
+  <Header locale={locale} path="/" />
+  <Hero locale={locale} shot={hero.light} shotDark={hero.dark} />
+  <Customers locale={locale} />
+  <Stats locale={locale} stats={stats} />
+  <Features locale={locale} shots={shots} />
+  {catalog && <Pricing locale={locale} catalog={catalog} />}
+  <Faq locale={locale} items={faq} home />
+  <Contact locale={locale} />
+  <FinalCta locale={locale} />
+  <Footer locale={locale} />
 </Layout>

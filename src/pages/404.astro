@@ -32,12 +32,6 @@ const fallback = t(DEFAULT_LOCALE).notFound;
   noindex
 >
   <div class="relative flex-1 overflow-hidden flex items-center">
-    <div
-      aria-hidden="true"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[620px] pointer-events-none opacity-[0.18] dark:opacity-25 blur-[90px] bg-brand-gradient bg-[length:200%_200%] animate-gradient-shimmer"
-    >
-    </div>
-
     <div class="relative w-full max-w-3xl mx-auto px-6 lg:px-10 py-20 text-center">
       <a href={localePath("/", DEFAULT_LOCALE)} class="inline-flex items-baseline gap-2 group mb-10">
         <span class="font-display text-2xl font-semibold tracking-tight group-hover:text-accent transition-colors">Dicta</span>
@@ -56,13 +50,13 @@ const fallback = t(DEFAULT_LOCALE).notFound;
             <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href={b.home}
-                class="group relative inline-flex items-center justify-center h-12 px-7 rounded-pill font-medium text-white overflow-hidden bg-brand-gradient bg-[length:160%_160%] shadow-glow transition-[background-position,transform] duration-500 ease-out-expo hover:bg-[position:100%_50%] active:scale-[0.98]"
+                class="inline-flex items-center justify-center h-12 px-7 rounded-pill font-medium bg-accent text-accent-fg shadow-glow hover:bg-accent-strong active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
               >
                 {b.nf.home}
               </a>
               <a
                 href={b.download}
-                class="inline-flex items-center justify-center h-12 bg-surface/70 backdrop-blur-sm text-foreground border border-border-strong rounded-pill px-7 font-medium hover:bg-surface-2 transition-colors duration-150 ease-out-expo"
+                class="inline-flex items-center justify-center h-12 bg-surface text-foreground border border-border-strong rounded-pill px-7 font-medium hover:bg-surface-2 transition-colors duration-150 ease-out-expo"
               >
                 {b.nf.download}
               </a>

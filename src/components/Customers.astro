@@ -1,0 +1,81 @@
+---
+import type { Locale } from "../i18n/ui";
+import { t } from "../i18n/utils";
+import { SITE } from "../../site.config.mjs";
+
+/**
+ * "Our customers": the business that runs on Dicta, then the individuals.
+ *
+ * Premier is a real B2B customer that records all of its online and offline
+ * meetings with Dicta (dicta.uz only: it means nothing to the global
+ * audience). The individuals' roles and uses are the top answers of the
+ * in-app onboarding survey, not a wish list; keep them that way.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = t(locale).home.customers;
+const showPremier = SITE.id === "uz";
+
+const CUSTOMER_URL = "https://premier.uz/";
+// Premier's own logo, white on transparent. Light mode turns it ink-black
+// with brightness-0; dark mode shows it as supplied.
+const CUSTOMER_LOGO = "/customers/premier.png";
+
+// One half is the list repeated until it is wider than any screen; the track
+// is two identical halves, so translating it by -50% loops seamlessly.
+const half = [...c.uses, ...c.uses, ...c.uses];
+const uses = [...half, ...half];
+---
+
+<section id="customers" aria-labelledby="customers-title" class="relative scroll-mt-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24 pb-14 lg:pb-20">
+    <h2 id="customers-title" class="reveal text-sm font-medium text-muted mb-8">{c.eyebrow}</h2>
+
+    <div class:list={["grid gap-10 lg:gap-16 items-start", showPremier && "lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"]}>
+      {
+        showPremier && (
+          <div class="reveal">
+            <span class="inline-flex items-center h-6 px-2.5 rounded-pill bg-accent-soft text-accent text-2xs font-semibold uppercase tracking-[0.12em]">{c.businessTag}</span>
+            <a
+              href={CUSTOMER_URL}
+              target="_blank"
+              rel="noopener"
+              aria-label={c.premierLink}
+              data-analytics-event="outbound_click"
+              data-analytics-url="premier.uz"
+              class="block mt-6 w-fit transition-opacity duration-150 ease-out-expo hover:opacity-75"
+            >
+              <img src={CUSTOMER_LOGO} alt="Premier" width="1854" height="208" loading="lazy" decoding="async" class="h-9 sm:h-11 w-auto brightness-0 opacity-90 dark:brightness-100 dark:opacity-100" />
+            </a>
+            <p class="font-display text-2xl sm:text-[1.7rem] leading-snug text-foreground mt-6 max-w-[30ch] text-pretty">{c.premierLead}</p>
+          </div>
+        )
+      }
+
+      <div class="reveal" style="--rd:.1s">
+        <span class="inline-flex items-center h-6 px-2.5 rounded-pill bg-surface-2 text-foreground-soft text-2xs font-semibold uppercase tracking-[0.12em]">{c.peopleTag}</span>
+        <p class="font-display text-2xl sm:text-[1.7rem] leading-snug text-foreground mt-6 max-w-[34ch] text-pretty">
+          {/* One line on purpose: a line break between these expressions
+              renders as a space before every comma. */}
+          {c.peopleLeadPre}{c.roles.map((r, i) => (<><span class="text-accent">{r}</span>{i < c.roles.length - 2 ? ", " : i === c.roles.length - 2 ? ` ${c.and} ` : ""}</>))}{c.peopleLeadPost}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* What they record: a slow marquee of the survey's top uses. */}
+  <div class="marquee relative overflow-hidden border-y border-border py-4" aria-label={c.usesLabel} style="-webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);">
+    <ul class="marquee-track flex w-max" role="list">
+      {
+        uses.map((u, i) => (
+          <li aria-hidden={i >= c.uses.length ? "true" : undefined} class="shrink-0 me-3 inline-flex items-center gap-2 h-10 px-4 rounded-pill border border-border bg-surface text-sm text-foreground-soft">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+            {u}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

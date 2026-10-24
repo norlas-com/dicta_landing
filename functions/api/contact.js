@@ -20,7 +20,10 @@ const MIN_FILL_MS = 3000;
 // Telegram rejects sendMessage text over 4096 characters.
 const MAX_MESSAGE_CHARS = 4000;
 
-const LIMITS = { name: 100, phone: 32, company: 120, message: 2000, path: 200 };
+const LIMITS = { name: 100, phone: 32, email: 160, company: 120, message: 2000, path: 200 };
+// Deliberately loose: the browser already checked type=email; this only keeps
+// obvious junk out of the chat.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SITES = new Set(["uz", "global"]);
 const LOCALES = new Set(["uz", "ru", "en", "ar"]);
 // The locale each site serves without a URL prefix (site.config.mjs).
@@ -105,17 +108,20 @@ export async function onRequestPost({ request, env }) {
     return ok();
   }
 
+  // Name, company and message are optional. A lead needs one way to reach
+  // them back: a phone number, an email, or both.
   const name = clean(data.name);
   const phone = clean(data.phone);
+  const email = clean(data.email);
   const company = clean(data.company);
   const message = clean(data.message);
-  const digits = phone.replace(/\D/g, "").length;
+  const phoneOk = !phone || (/^[+\d\s().-]+$/.test(phone) && phone.length <= LIMITS.phone && phone.replace(/\D/g, "").length >= 7);
+  const emailOk = !email || (email.length <= LIMITS.email && EMAIL_RE.test(email));
   if (
-    !name ||
+    (!phone && !email) ||
+    !phoneOk ||
+    !emailOk ||
     name.length > LIMITS.name ||
-    !/^[+\d\s().-]+$/.test(phone) ||
-    phone.length > LIMITS.phone ||
-    digits < 7 ||
     company.length > LIMITS.company ||
     message.length > LIMITS.message
   ) {
@@ -144,8 +150,9 @@ export async function onRequestPost({ request, env }) {
     `Locale: ${locale}`,
     `Page: ${page || "-"}`,
     "",
-    `Name: ${name}`,
-    `Phone: ${phone}`,
+    `Name: ${name || "-"}`,
+    `Phone: ${phone || "-"}`,
+    `Email: ${email || "-"}`,
     `Company: ${company || "-"}`,
     `Message: ${message || "-"}`,
   ]

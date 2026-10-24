@@ -26,7 +26,7 @@ export const GET: APIRoute = async () => {
   const lines: string[] = [
     "# Dicta",
     "",
-    `> ${d.landing.h1Pre} ${d.landing.h1Accent} ${d.landing.sub}`,
+    `> ${d.home.hero.titlePre} ${d.home.hero.titleAccent} ${d.home.hero.sub}`,
     "",
     "## Main pages",
     "",

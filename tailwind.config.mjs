@@ -1,9 +1,9 @@
 /**
- * Dicta design tokens — ported verbatim from the app (web/tailwind.config.ts).
- * Same palette, typography, brand gradient. Accent: indigo (#7A6CFF). Brand
- * gradient: violet (#B56CFF) → indigo (#7A6CFF) → cyan (#34E2E6).
+ * Dicta design tokens, ported from the app (web/tailwind.config.ts and
+ * web/DESIGN.md): warm paper + indigo ink, Literata display over Inter UI.
  * Colors resolve to CSS variables in src/styles/global.css; the `.light` /
- * `.dark` class on <html> drives the theme switch.
+ * `.dark` class on <html> drives the theme switch. No gradients: the old
+ * violet → cyan brand gradient is retired.
  * @type {import('tailwindcss').Config}
  */
 export default {
@@ -30,9 +30,14 @@ export default {
           fg: "var(--color-accent-fg)",
         },
 
-        "brand-violet": "var(--color-brand-violet)",
-        "brand-indigo": "var(--color-brand-indigo)",
-        "brand-cyan": "var(--color-brand-cyan)",
+        ink: {
+          DEFAULT: "var(--color-ink)",
+          2: "var(--color-ink-2)",
+          line: "var(--color-ink-line)",
+          fg: "var(--color-ink-fg)",
+          muted: "var(--color-ink-muted)",
+          accent: "var(--color-ink-accent)",
+        },
 
         live: {
           DEFAULT: "var(--color-live)",
@@ -51,21 +56,14 @@ export default {
         "platform-teams": "var(--color-platform-teams)",
       },
 
-      backgroundImage: {
-        "brand-gradient":
-          "linear-gradient(135deg, #B56CFF 0%, #7A6CFF 50%, #34E2E6 100%)",
-        "brand-gradient-soft":
-          "linear-gradient(135deg, rgba(181,108,255,0.18) 0%, rgba(122,108,255,0.18) 50%, rgba(52,226,230,0.18) 100%)",
-      },
-
       fontFamily: {
         // The Arabic face sits AFTER the Latin one in every stack, which is
-        // all the conditional logic RTL needs: Urbanist and Lora have no
+        // all the conditional logic RTL needs: Inter and Literata have no
         // Arabic glyphs, so the browser falls through per-glyph.
         sans: [
-          "var(--font-urbanist)",
+          "var(--font-sans)",
           "var(--font-arabic)",
-          "Urbanist",
+          "Inter",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -76,14 +74,14 @@ export default {
         display: [
           "var(--font-serif)",
           "var(--font-arabic)",
-          "Lora",
+          "Literata",
           "ui-serif",
           "Georgia",
           "Cambria",
           "Times New Roman",
           "serif",
         ],
-        serif: ["var(--font-serif)", "var(--font-arabic)", "Lora", "ui-serif", "Georgia", "serif"],
+        serif: ["var(--font-serif)", "var(--font-arabic)", "Literata", "ui-serif", "Georgia", "serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
 
@@ -109,9 +107,10 @@ export default {
       },
 
       boxShadow: {
-        card: "0 1px 2px rgba(0,0,0,0.18), 0 4px 16px -8px rgba(0,0,0,0.30)",
-        pop: "0 8px 24px -6px rgba(0,0,0,0.40), 0 2px 8px -2px rgba(0,0,0,0.28)",
-        glow: "0 0 0 1px color-mix(in srgb, var(--color-accent) 30%, transparent), 0 8px 32px -8px var(--color-accent-glow)",
+        card: "var(--shadow-card)",
+        pop: "var(--shadow-pop)",
+        shot: "var(--shadow-shot)",
+        glow: "0 0 0 1px color-mix(in oklch, var(--color-accent) 25%, transparent), 0 8px 28px -10px var(--color-accent-glow)",
       },
 
       keyframes: {
@@ -128,32 +127,16 @@ export default {
           from: { transform: "translateY(8px)", opacity: "0" },
           to: { transform: "translateY(0)", opacity: "1" },
         },
-        gradientShimmer: {
-          "0%, 100%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-        },
         equalize: {
           "0%, 100%": { transform: "scaleY(0.35)" },
           "50%": { transform: "scaleY(1)" },
-        },
-        popularGlow: {
-          "0%, 100%": {
-            boxShadow:
-              "0 10px 30px -12px rgba(99,102,241,0.45), 0 0 0 0 rgba(99,102,241,0.0)",
-          },
-          "50%": {
-            boxShadow:
-              "0 22px 48px -12px rgba(99,102,241,0.65), 0 0 0 6px rgba(99,102,241,0.10)",
-          },
         },
       },
       animation: {
         "float-up": "floatUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         shimmer: "shimmer 1.4s linear infinite",
         "rise-in": "riseIn 320ms cubic-bezier(0.16, 1, 0.3, 1) both",
-        "gradient-shimmer": "gradientShimmer 6s ease-in-out infinite",
         equalize: "equalize 0.9s ease-in-out infinite",
-        "popular-glow": "popularGlow 3.2s ease-in-out infinite",
       },
 
       transitionDuration: {

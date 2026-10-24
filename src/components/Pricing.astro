@@ -61,14 +61,10 @@ const packsUSD = packsLineFor("USD");
 ---
 
 <section id="pricing" class="relative scroll-mt-20" data-pricing data-default-cur={defaultCur}>
-  <div aria-hidden="true" class="absolute inset-x-0 top-0 h-64 pointer-events-none bg-gradient-to-b from-accent/[0.05] to-transparent"></div>
-
   <div class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
     <div class="max-w-2xl reveal">
-      <span class="inline-flex items-center h-7 px-3 rounded-pill border border-border bg-surface/60 backdrop-blur-sm text-2xs uppercase tracking-[0.18em] text-foreground-soft mb-6">
-        {p.eyebrow}
-      </span>
-      <h2 class="font-display text-[2.1rem] sm:text-[2.8rem] font-semibold tracking-[-0.018em] leading-[1.12] text-foreground text-balance">
+      <p class="text-sm font-medium text-accent mb-4">{p.eyebrow}</p>
+      <h2 class="font-display text-[2.2rem] sm:text-[3rem] font-semibold tracking-[-0.025em] leading-[1.08] text-foreground text-balance">
         <span class="block">{p.headingPre}</span>
         <span class="block text-accent">{p.headingAccent}</span>
       </h2>
@@ -77,7 +73,7 @@ const packsUSD = packsLineFor("USD");
 
     <div class="mt-8 flex items-center gap-3">
       <span class="text-xs text-muted-soft uppercase tracking-[0.14em]">{p.currencyLabel}</span>
-      <div role="tablist" aria-label={p.currencyLabel} class="inline-flex items-center p-1 rounded-pill border border-border bg-surface/70 backdrop-blur-sm">
+      <div role="tablist" aria-label={p.currencyLabel} class="inline-flex items-center p-1 rounded-pill border border-border bg-surface">
         {
           currencies.map((c) => (
             <button
@@ -101,18 +97,14 @@ const packsUSD = packsLineFor("USD");
       {
         plans.map((plan, i) => (
           <div class:list={["reveal relative h-full", plan.popular && "sm:-my-1"]} style={`--rd:${i * 0.08}s`}>
-            {plan.popular && (
-              <div aria-hidden="true" class="absolute -inset-px rounded-panel bg-brand-gradient opacity-60 blur-[1.5px]"></div>
-            )}
             <div
               class:list={[
                 "relative h-full flex flex-col rounded-panel overflow-hidden transition-transform duration-200 ease-out-expo",
                 plan.popular
-                  ? "border border-transparent bg-surface shadow-pop animate-popular-glow"
-                  : "border border-border bg-surface/70 backdrop-blur-sm hover:bg-surface hover:-translate-y-0.5",
+                  ? "border border-accent/40 bg-surface shadow-glow"
+                  : "border border-border bg-surface hover:-translate-y-0.5 hover:shadow-card",
               ]}
             >
-              {plan.popular && <div class="h-1 bg-brand-gradient" aria-hidden="true"></div>}
               <div class="flex flex-col flex-1 p-6">
                 <div class="flex items-center justify-between gap-2 min-h-[1.75rem]">
                   <h3 class="text-lg font-semibold text-foreground">{plan.name}</h3>
@@ -165,9 +157,9 @@ const packsUSD = packsLineFor("USD");
                     data-analytics-event="pricing_plan_selected"
                     data-analytics-plan={plan.id}
                     class:list={[
-                      "w-full inline-flex items-center justify-center h-11 rounded-pill font-medium transition-[background-position,background-color,transform] duration-300 ease-out-expo active:scale-[0.98]",
+                      "w-full inline-flex items-center justify-center h-11 rounded-pill font-medium transition-[background-color,transform] duration-200 ease-out-expo active:scale-[0.98]",
                       plan.popular
-                        ? "text-white bg-brand-gradient bg-[length:160%_160%] shadow-glow hover:bg-[position:100%_50%]"
+                        ? "bg-accent text-accent-fg shadow-glow hover:bg-accent-strong"
                         : "text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3",
                     ]}
                   >

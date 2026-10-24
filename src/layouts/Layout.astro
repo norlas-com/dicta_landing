@@ -49,7 +49,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
 <!-- `dir` matters as much as `lang`: without it an Arabic page renders
      Arabic text in a left-to-right layout, and every logical CSS property
      silently behaves as its physical twin. -->
-<html lang={htmlLangMap[locale]} dir={dirFor(locale)} class="dark">
+<html lang={htmlLangMap[locale]} dir={dirFor(locale)} class="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,7 +72,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
           root.classList.toggle("light", choice === "light");
           root.classList.toggle("dark", choice === "dark");
         } catch (e) {
-          document.documentElement.classList.add("dark");
+          document.documentElement.classList.add("light");
         }
       })();
     </script>
@@ -90,7 +90,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
       gaId && !noindex && (
         <Fragment>
           <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
-          <script is:inline define:vars={{ gaId, contentLanguage: htmlLangMap[locale] }}>
+          <script is:inline define:vars={{ gaId, contentLanguage: htmlLangMap[locale], linkerDomains: SITE.gaLinkerDomains }}>
             window.dataLayer = window.dataLayer || [];
             // Assigned to window (not a bare `function`) because Astro's
             // define:vars wraps this script in an IIFE — a local function would
@@ -109,7 +109,9 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
               anonymize_ip: true,
               allow_google_signals: false,
               content_language: contentLanguage,
-              linker: { domains: SITE.gaLinkerDomains },
+              // define:vars, not SITE: this inline script runs in the browser, where
+              // the build-time SITE import does not exist.
+              linker: { domains: linkerDomains },
             });
           </script>
         </Fragment>
@@ -156,8 +158,8 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#0A0A0F" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#FAFAFB" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1A1922" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FAF8F2" media="(prefers-color-scheme: light)" />
 
     {
       jsonLd.map((obj) => (
@@ -175,7 +177,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
 
     <script>
       // Scroll-reveal: elements with .reveal rise in on first intersection.
-      const revealables = document.querySelectorAll(".reveal");
+      const revealables = document.querySelectorAll(".reveal, .reveal-shot");
       if (revealables.length) {
         const io = new IntersectionObserver(
           (entries) => {

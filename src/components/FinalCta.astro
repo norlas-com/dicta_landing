@@ -1,0 +1,47 @@
+---
+import type { Locale } from "../i18n/ui";
+import { t, appUrl, localePath } from "../i18n/utils";
+
+/** The last thing above the footer: one more, plainer way to start. */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+const c = d.home.finalCta;
+---
+
+<section aria-labelledby="final-cta-title" class="relative bg-ink text-ink-fg overflow-hidden">
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 pointer-events-none opacity-60"
+    style="background-image: linear-gradient(var(--color-ink-2) 1px, transparent 1px); background-size: 100% 44px;"
+  ></div>
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28 grid lg:grid-cols-[minmax(0,1fr)_auto] gap-10 items-end">
+    <div>
+      <h2 id="final-cta-title" class="reveal font-display text-[2.4rem] sm:text-[3.4rem] lg:text-[4rem] font-semibold leading-[1.05] tracking-[-0.03em] max-w-[16ch] text-balance">
+        {c.titlePre} <span class="text-ink-accent">{c.titleAccent}</span>
+      </h2>
+      <p class="reveal text-lg text-ink-muted mt-5 max-w-[48ch] leading-relaxed" style="--rd:.08s">{c.sub}</p>
+    </div>
+    <div class="reveal flex flex-col sm:flex-row lg:flex-col gap-3 lg:min-w-[15rem]" style="--rd:.14s">
+      <a
+        href={appUrl("/sign-up")}
+        data-analytics-event="signup_start_click"
+        data-analytics-location="final_cta"
+        class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill bg-ink-fg text-ink text-base font-semibold hover:bg-ink-accent active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
+      >
+        {d.home.startFree}
+      </a>
+      <a
+        href={localePath("/download", locale)}
+        data-analytics-event="download_app_clicked"
+        data-analytics-os="na"
+        data-analytics-arch="na"
+        class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150 ease-out-expo"
+      >
+        {c.secondary}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { SITE } from "../../site.config.mjs";
+
+/**
+ * A real product screenshot in a quiet app-window frame. Light and dark
+ * captures swap with the site theme (the dark one is lazy, so a light-theme
+ * visitor never downloads it: display:none images are not fetched).
+ *
+ * `mobile` frames a phone capture instead of a desktop window.
+ */
+interface Props {
+  light: ImageMetadata;
+  dark?: ImageMetadata;
+  alt: string;
+  sizes: string;
+  eager?: boolean;
+  mobile?: boolean;
+  host?: string;
+  class?: string;
+}
+const { light, dark, alt, sizes, eager = false, mobile = false, host = SITE.appHost, class: className = "" } = Astro.props;
+const widths = mobile ? [320, 480, 780] : [640, 960, 1440, 2000, 2880];
+---
+
+{
+  mobile ? (
+    <div class:list={["relative rounded-[2.2rem] border border-border-strong bg-surface p-2 shadow-shot", className]}>
+      <div class="overflow-hidden rounded-[1.7rem] border border-border">
+        <Image src={light} alt={alt} widths={widths} sizes={sizes} format="webp" loading={eager ? "eager" : "lazy"} class:list={["block w-full h-auto", dark && "dark:hidden"]} />
+        {dark && <Image src={dark} alt={alt} widths={widths} sizes={sizes} format="webp" loading="lazy" class="hidden dark:block w-full h-auto" />}
+      </div>
+    </div>
+  ) : (
+    <figure class:list={["relative overflow-hidden rounded-panel border border-border-strong bg-surface shadow-shot", className]}>
+      <div class="flex items-center gap-3 h-9 px-4 border-b border-border bg-surface-2" aria-hidden="true">
+        <span class="flex gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-border-strong"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-border-strong"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-border-strong"></span>
+        </span>
+        <span class="mx-auto inline-flex items-center gap-1.5 h-6 px-3 rounded-pill bg-surface text-2xs text-muted tabular-nums" dir="ltr">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          {host}
+        </span>
+        <span class="w-[46px]"></span>
+      </div>
+      <Image
+        src={light}
+        alt={alt}
+        widths={widths}
+        sizes={sizes}
+        format="webp"
+        loading={eager ? "eager" : "lazy"}
+        fetchpriority={eager ? "high" : undefined}
+        class:list={["block w-full h-auto", dark && "dark:hidden"]}
+      />
+      {dark && <Image src={dark} alt={alt} widths={widths} sizes={sizes} format="webp" loading="lazy" class="hidden dark:block w-full h-auto" />}
+    </figure>
+  )
+}

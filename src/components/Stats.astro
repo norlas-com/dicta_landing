@@ -1,0 +1,94 @@
+---
+import type { Locale } from "../i18n/ui";
+import { t } from "../i18n/utils";
+import type { UsageStats } from "../lib/stats";
+
+/**
+ * The ink band: real usage so far, said as one sentence rather than a row of
+ * metric tiles. Numbers come from api.dicta.uz/v1/public/stats at build time
+ * (lib/stats.ts) and count up once when the band scrolls into view; the
+ * final value is in the HTML, so no-JS and reduced-motion visitors see it.
+ */
+interface Props {
+  locale: Locale;
+  stats: UsageStats;
+}
+const { locale, stats } = Astro.props;
+const s = t(locale).home.stats;
+
+const intlLocale = locale === "uz" ? "uz-Latn-UZ" : locale;
+const fmt = new Intl.NumberFormat(intlLocale);
+const date = new Intl.DateTimeFormat(intlLocale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
+  new Date(`${stats.asOf}T00:00:00Z`),
+);
+
+// Labels are either a plain word or plural forms keyed by CLDR category,
+// "one:час|few:часа|many:часов|other:часа", so the noun agrees with whatever
+// number the API returns on the next rebuild.
+const plural = new Intl.PluralRules(intlLocale);
+const noun = (label: string, n: number) => {
+  if (!label.includes(":")) return label;
+  const forms = Object.fromEntries(label.split("|").map((f) => f.split(":") as [string, string]));
+  return forms[plural.select(n)] ?? forms.other;
+};
+
+const parts: { n: number; label: string }[] = [
+  { n: stats.hours, label: noun(s.hours, stats.hours) },
+  { n: stats.meetings, label: noun(s.meetings, stats.meetings) },
+  { n: stats.users, label: noun(s.users, stats.users) },
+];
+---
+
+<section aria-labelledby="stats-title" class="relative bg-ink text-ink-fg overflow-hidden">
+  {/* Faint ruled lines, the same notebook motif as the hero, in ink. */}
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 pointer-events-none opacity-60"
+    style="background-image: linear-gradient(var(--color-ink-2) 1px, transparent 1px); background-size: 100% 44px;"
+  ></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+    <h2 id="stats-title" class="reveal text-sm font-medium text-ink-muted">{s.eyebrow}</h2>
+
+    <p class="reveal font-display text-[2rem] leading-[1.25] sm:text-[2.6rem] lg:text-[3.3rem] lg:leading-[1.18] tracking-[-0.02em] mt-6 max-w-[22ch] sm:max-w-[26ch] text-balance" style="--rd:.08s" data-stats>
+      {/* One line on purpose: a line break between these expressions renders
+          as a space before the commas and the final period. */}
+      {s.pre}{parts.map((p, i) => (<><span class="whitespace-nowrap"><span class="font-sans font-semibold tabular-nums text-ink-accent" data-count={p.n}>{fmt.format(p.n)}</span> {p.label}</span>{i === 0 ? s.sep1 : i === 1 ? s.sep2 : ""}</>))}{s.post}
+    </p>
+
+    <div class="reveal mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-ink-muted" style="--rd:.16s">
+      <span class="inline-flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-ink-accent" aria-hidden="true"></span>
+        {s.updated.replace("{date}", date)}
+      </span>
+      <span>{s.footnote}</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Count up once, the first time the sentence is on screen.
+  const el = document.querySelector<HTMLElement>("[data-stats]");
+  if (el && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    const nums = [...el.querySelectorAll<HTMLElement>("[data-count]")];
+    const lang = document.documentElement.lang || undefined;
+    const fmt = new Intl.NumberFormat(lang);
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        io.disconnect();
+        const start = performance.now();
+        const dur = 1600;
+        const tick = (now: number) => {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 4);
+          for (const n of nums) n.textContent = fmt.format(Math.round(Number(n.dataset.count) * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+  }
+</script>
