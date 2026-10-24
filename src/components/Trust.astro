@@ -16,10 +16,10 @@ const tr = t(locale).trust;
 
 const CUSTOMER_URL = "https://premier.uz/";
 
-// LOGO DROP-IN: when we have Premier's logo file, put it in public/ and set the
-// path here (e.g. "/customers/premier.svg"). The text wordmark below is then
-// replaced by the image; nothing else needs to change.
-const CUSTOMER_LOGO: string | null = null;
+// Premier's own logo, set in white on transparent. Light mode turns it black
+// with brightness-0; dark mode shows it as supplied. Set to null to fall back
+// to the text wordmark.
+const CUSTOMER_LOGO: string | null = "/customers/premier.png";
 ---
 
 <section aria-label={tr.eyebrow} class="relative">
@@ -38,7 +38,15 @@ const CUSTOMER_LOGO: string | null = null;
         >
           {
             CUSTOMER_LOGO ? (
-              <img src={CUSTOMER_LOGO} alt="Premier" class="h-8 w-auto" />
+              <img
+                src={CUSTOMER_LOGO}
+                alt="Premier"
+                width="1854"
+                height="208"
+                loading="lazy"
+                decoding="async"
+                class="h-6 sm:h-7 w-auto mt-1 brightness-0 opacity-90 dark:brightness-100 dark:opacity-100"
+              />
             ) : (
               <span class="font-display text-3xl font-semibold tracking-tight text-foreground">Premier</span>
             )
