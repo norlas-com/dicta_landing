@@ -1,0 +1,66 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { blogCopy } from "../../i18n/pages/blog";
+import { postsFor, postPath, readingMinutes, formatDate } from "../../lib/blog";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = blogCopy[locale];
+const posts = await postsFor(locale);
+---
+
+<Layout
+  title={c.indexTitle}
+  description={c.indexDescription}
+  locale={locale}
+  path="/blog"
+  noindex={posts.length === 0}
+>
+  <Header locale={locale} path="/blog" />
+  <div class="relative flex-1">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-16 pb-10">
+      <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance">
+        {c.h1}
+      </h1>
+      <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{c.sub}</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 pb-24">
+      {
+        posts.length === 0 ? (
+          <p class="text-muted border border-border rounded-card bg-surface p-6">{c.empty}</p>
+        ) : (
+          <ul class="space-y-4">
+            {posts.map((p) => (
+              <li>
+                <a
+                  href={postPath(p)}
+                  data-analytics-event="blog_post_clicked"
+                  data-analytics-slug={p.data.slug}
+                  class="block rounded-card border border-border bg-surface p-6 hover:shadow-card hover:border-border-strong transition-[box-shadow,border-color] duration-150"
+                >
+                  <p class="text-sm text-muted">
+                    <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
+                    <span aria-hidden="true"> · </span>
+                    {c.readMin(readingMinutes(p.body, locale))}
+                  </p>
+                  <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] leading-snug text-foreground mt-2 text-balance">
+                    {p.data.title}
+                  </h2>
+                  <p class="text-muted mt-3 leading-relaxed">{p.data.description}</p>
+                  <span class="inline-block mt-4 text-sm font-medium text-accent">{c.readMore}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+  <Footer locale={locale} />
+</Layout>
