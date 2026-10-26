@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from "astro";
+import { PREFIXED_LOCALES, type Locale } from "../../../i18n/locales";
+import { USE_CASE_SLUGS, type UseCaseSlug } from "../../../i18n/pages/use-cases";
+import UseCasePage from "../../../components/pages/UseCasePage.astro";
+
+// Inline `.map` on purpose: see src/pages/[lang]/faq.astro. Imported arrays are fine.
+export const getStaticPaths = (() =>
+  PREFIXED_LOCALES.flatMap((lang) =>
+    USE_CASE_SLUGS.map((slug) => ({ params: { lang, slug } })),
+  )) satisfies GetStaticPaths;
+
+const { lang, slug } = Astro.params;
+---
+
+<UseCasePage locale={lang as Locale} slug={slug as UseCaseSlug} />

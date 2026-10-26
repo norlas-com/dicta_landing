@@ -1,0 +1,13 @@
+---
+import type { GetStaticPaths } from "astro";
+import UseCasesIndexPage from "../../../components/pages/UseCasesIndexPage.astro";
+import { PREFIXED_LOCALES, type Locale } from "../../../i18n/locales";
+
+// Inline `.map` on purpose: see src/pages/[lang]/faq.astro.
+export const getStaticPaths = (() =>
+  PREFIXED_LOCALES.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+---
+
+<UseCasesIndexPage locale={lang as Locale} />
