@@ -296,7 +296,7 @@ const en = {
   language: "Language",
   legal: {
     privacyTitle: "Privacy Policy",
-    privacyUpdated: "Last updated: August 13, 2026",
+    privacyUpdated: "Last updated: October 26, 2026",
     termsTitle: "Terms of Service",
     termsUpdated: "Last updated: July 28, 2026",
     offerTitle: "Public Offer",
@@ -346,10 +346,10 @@ const en = {
         body: "To run the service, produce transcripts and AI summaries, support hosts after a meeting, process payments, and prevent abuse. We do not sell your data, we do not show advertising, and we do not use your meetings to train AI models.",
       },
       ai: {
-        title: "AI processing and your consent",
-        body: "Turning a meeting into a transcript and a summary requires sending your data to AI processing providers outside Dicta. Specifically: your meeting audio goes to Google (Gemini API) to convert speech into text, and to RunPod or Replicate to determine who spoke when; the resulting transcript, meeting title and participant names go to Google (Gemini API) to generate summaries, decisions and action items and to answer your questions in AI chat.",
+        title: "AI processing",
+        body: "Turning a meeting into a transcript and a summary requires sending your data to third-party AI processing providers outside Dicta. Your meeting audio is sent to convert speech into text and to determine who spoke when; the resulting transcript, meeting title and participant names are sent to generate summaries, decisions and action items and to answer your questions in AI chat.",
         consent:
-          "We ask for your permission before any of this happens. In the Dicta apps the disclosure appears before you can record, upload or transcribe anything, and you can withdraw consent at any time under Settings → Data & AI. Without consent you can still sign in, create and join meetings and hold audio/video calls — recording, transcription and AI features stay off.",
+          "This processing happens only when you record, upload or transcribe a meeting. Without these features you can still sign in, create and join meetings and hold audio/video calls, with no AI processing at all.",
       },
       thirdParties: {
         title: "Third parties we share data with",
@@ -357,19 +357,9 @@ const en = {
           "We share personal data only with the providers below, only for the purpose named, and only to deliver the service. Each is bound by a contract that requires them to protect your data to a standard equivalent to this policy, to process it solely on our instructions, and not to use it to train their own models or for their own purposes.",
         items: [
           {
-            name: "Google (Gemini API)",
+            name: "AI processing providers",
             purpose:
-              "Speech-to-text transcription, summaries, decisions, action items, AI chat answers and search indexing. Receives meeting audio, transcript text, meeting titles and participant display names.",
-          },
-          {
-            name: "RunPod",
-            purpose:
-              "GPU capacity for speaker separation, running software we build and control. Receives a short-lived link to the meeting audio, and nothing else — no names, titles or account data.",
-          },
-          {
-            name: "Replicate",
-            purpose:
-              "Backup speaker separation and voiceprint processing, used when our own service is unavailable. Receives a short-lived link to the meeting audio, or the voice-enrollment clip.",
+              "Speech-to-text transcription, speaker separation, voiceprint processing, summaries, decisions, action items, AI chat answers and search indexing. Receive meeting audio, transcript text, meeting titles, participant display names and, if you enroll your voice, the voice-enrollment clip.",
           },
           {
             name: "Recall.ai",
@@ -431,7 +421,7 @@ const en = {
       },
       transfers: {
         title: "Where your data is processed",
-        body: "Our meeting servers are in Uzbekistan, on the TAS-IX network, and live call traffic stays on them. The AI providers listed above process data outside Uzbekistan — Google, RunPod and Replicate in their own regions, and Recall.ai in the European Union. Where data leaves Uzbekistan we rely on contractual protections equivalent to this policy.",
+        body: "Our meeting servers are in Uzbekistan, on the TAS-IX network, and live call traffic stays on them. The AI processing providers listed above process data outside Uzbekistan in their own regions, and Recall.ai in the European Union. Where data leaves Uzbekistan we rely on contractual protections equivalent to this policy.",
       },
       security: {
         title: "Security",
@@ -1007,7 +997,7 @@ const ru: typeof en = {
   language: "Язык",
   legal: {
     privacyTitle: "Политика конфиденциальности",
-    privacyUpdated: "Последнее обновление: 13 августа 2026 г.",
+    privacyUpdated: "Последнее обновление: 26 октября 2026 г.",
     termsTitle: "Условия использования",
     termsUpdated: "Последнее обновление: 28 июля 2026 г.",
     offerTitle: "Публичная оферта",
@@ -1057,10 +1047,10 @@ const ru: typeof en = {
         body: "Для работы сервиса, создания расшифровок и AI-резюме, поддержки организаторов после встречи, обработки платежей и предотвращения злоупотреблений. Мы не продаём ваши данные, не показываем рекламу и не используем ваши встречи для обучения AI-моделей.",
       },
       ai: {
-        title: "AI-обработка и ваше согласие",
-        body: "Чтобы превратить встречу в расшифровку и резюме, данные необходимо передать AI-провайдерам за пределами Dicta. А именно: аудио вашей встречи передаётся в Google (Gemini API) для перевода речи в текст и в RunPod или Replicate, чтобы определить, кто и когда говорил; полученная расшифровка, название встречи и имена участников передаются в Google (Gemini API), чтобы создать резюме, решения и задачи и отвечать на ваши вопросы в ИИ-чате.",
+        title: "AI-обработка",
+        body: "Чтобы превратить встречу в расшифровку и резюме, данные необходимо передать сторонним AI-провайдерам за пределами Dicta. Аудио вашей встречи передаётся для перевода речи в текст и определения, кто и когда говорил; полученная расшифровка, название встречи и имена участников передаются для создания резюме, решений и задач и для ответов на ваши вопросы в ИИ-чате.",
         consent:
-          "Мы спрашиваем вашего разрешения до того, как что-либо из этого произойдёт. В приложениях Dicta уведомление показывается раньше, чем вы сможете что-либо записать, загрузить или расшифровать, и согласие можно отозвать в любой момент в разделе «Настройки → Данные и ИИ». Без согласия вы по-прежнему можете входить, создавать встречи, присоединяться к ним и вести аудио- и видеозвонки — запись, расшифровка и функции ИИ остаются отключёнными.",
+          "Эта обработка происходит, только когда вы записываете, загружаете или расшифровываете встречу. Без этих функций вы по-прежнему можете входить, создавать встречи, присоединяться к ним и проводить аудио/видеозвонки — без какой-либо AI-обработки.",
       },
       thirdParties: {
         title: "Третьи лица, которым мы передаём данные",
@@ -1068,19 +1058,9 @@ const ru: typeof en = {
           "Мы передаём персональные данные только перечисленным ниже провайдерам, только для указанной цели и только для работы сервиса. С каждым заключён договор, обязывающий защищать ваши данные на уровне, эквивалентном этой политике, обрабатывать их исключительно по нашему поручению и не использовать их для обучения собственных моделей или в своих целях.",
         items: [
           {
-            name: "Google (Gemini API)",
+            name: "AI-провайдеры",
             purpose:
-              "Перевод речи в текст, резюме, решения, задачи, ответы в ИИ-чате и индексация для поиска. Получает аудио встречи, текст расшифровки, названия встреч и отображаемые имена участников.",
-          },
-          {
-            name: "RunPod",
-            purpose:
-              "Мощности GPU для разделения говорящих; выполняется наше собственное программное обеспечение. Получает только временную ссылку на аудио встречи — без имён, названий и данных аккаунта.",
-          },
-          {
-            name: "Replicate",
-            purpose:
-              "Резервное разделение говорящих и обработка голосового отпечатка — используется, когда наш собственный сервис недоступен. Получает временную ссылку на аудио встречи либо образец голоса.",
+              "Перевод речи в текст, разделение говорящих, обработка голосового отпечатка, резюме, решения, задачи, ответы в ИИ-чате и индексация для поиска. Получают аудио встречи, текст расшифровки, названия встреч, отображаемые имена участников и, если вы записали образец голоса, этот образец.",
           },
           {
             name: "Recall.ai",
@@ -1142,7 +1122,7 @@ const ru: typeof en = {
       },
       transfers: {
         title: "Где обрабатываются ваши данные",
-        body: "Наши серверы встреч находятся в Узбекистане, в сети TAS-IX, и трафик живых звонков остаётся на них. Перечисленные выше AI-провайдеры обрабатывают данные за пределами Узбекистана: Google, RunPod и Replicate — в своих регионах, Recall.ai — в Европейском союзе. Там, где данные покидают Узбекистан, мы полагаемся на договорные гарантии, эквивалентные этой политике.",
+        body: "Наши серверы встреч находятся в Узбекистане, в сети TAS-IX, и трафик живых звонков остаётся на них. Перечисленные выше AI-провайдеры обрабатывают данные за пределами Узбекистана — в своих регионах, Recall.ai — в Европейском союзе. Там, где данные покидают Узбекистан, мы полагаемся на договорные гарантии, эквивалентные этой политике.",
       },
       security: {
         title: "Безопасность",
@@ -1719,7 +1699,7 @@ const uz: typeof en = {
   language: "Til",
   legal: {
     privacyTitle: "Maxfiylik siyosati",
-    privacyUpdated: "Oxirgi yangilangan: 2026-yil 13-avgust",
+    privacyUpdated: "Oxirgi yangilangan: 2026-yil 26-oktabr",
     termsTitle: "Foydalanish shartlari",
     termsUpdated: "Oxirgi yangilangan: 2026-yil 28-iyul",
     offerTitle: "Ommaviy oferta",
@@ -1769,10 +1749,10 @@ const uz: typeof en = {
         body: "Xizmatni ishlatish, transkript va AI xulosalarini tayyorlash, uchrashuvdan keyin mezbonlarni qoʻllab-quvvatlash, toʻlovlarni qayta ishlash va suiisteʼmolning oldini olish uchun. Biz maʼlumotlaringizni sotmaymiz, reklama koʻrsatmaymiz va uchrashuvlaringizdan AI modellarini oʻqitishda foydalanmaymiz.",
       },
       ai: {
-        title: "AI qayta ishlash va sizning roziligingiz",
-        body: "Uchrashuvni transkript va xulosaga aylantirish uchun maʼlumotlarni Dictadan tashqaridagi AI provayderlariga yuborish zarur. Aniqrogʻi: uchrashuv audiosi nutqni matnga aylantirish uchun Google (Gemini API)ga, kim qachon gapirganini aniqlash uchun RunPod yoki Replicate'ga yuboriladi; hosil boʻlgan transkript, uchrashuv nomi va ishtirokchilar ismlari xulosa, qaror va vazifalar yaratish hamda AI chatdagi savollaringizga javob berish uchun Google (Gemini API)ga yuboriladi.",
+        title: "AI qayta ishlash",
+        body: "Uchrashuvni transkript va xulosaga aylantirish uchun maʼlumotlarni Dictadan tashqaridagi uchinchi tomon AI provayderlariga yuborish zarur. Uchrashuv audiosi nutqni matnga aylantirish va kim qachon gapirganini aniqlash uchun yuboriladi; hosil boʻlgan transkript, uchrashuv nomi va ishtirokchilar ismlari xulosa, qaror va vazifalar yaratish hamda AI chatdagi savollaringizga javob berish uchun yuboriladi.",
         consent:
-          "Bularning barchasi sodir boʻlishidan oldin sizdan ruxsat soʻraymiz. Dicta ilovalarida bu maʼlumot siz biror narsani yozib olish, yuklash yoki transkripsiya qilishingizdan oldin koʻrsatiladi va rozilikni istalgan vaqtda «Sozlamalar → Maʼlumotlar va AI» boʻlimida qaytarib olishingiz mumkin. Roziliksiz ham tizimga kirish, uchrashuv yaratish, unga qoʻshilish va audio/video qoʻngʻiroqlar qilish mumkin — yozib olish, transkripsiya va AI funksiyalari oʻchiq qoladi.",
+          "Bu qayta ishlash faqat siz uchrashuvni yozib olganingizda, yuklaganingizda yoki transkripsiya qilganingizda amalga oshadi. Bu funksiyalarsiz ham tizimga kirish, uchrashuv yaratish, unga qoʻshilish va audio/video qoʻngʻiroqlar qilish mumkin — hech qanday AI qayta ishlashsiz.",
       },
       thirdParties: {
         title: "Maʼlumot uzatiladigan uchinchi tomonlar",
@@ -1780,19 +1760,9 @@ const uz: typeof en = {
           "Biz shaxsiy maʼlumotlarni faqat quyidagi provayderlarga, faqat koʻrsatilgan maqsadda va faqat xizmatni taqdim etish uchun uzatamiz. Ularning har biri shartnoma bilan maʼlumotlaringizni ushbu siyosatga teng darajada himoya qilishga, ularni faqat bizning koʻrsatmamiz boʻyicha qayta ishlashga hamda oʻz modellarini oʻqitish yoki oʻz maqsadlarida foydalanmaslikka majbur.",
         items: [
           {
-            name: "Google (Gemini API)",
+            name: "AI provayderlari",
             purpose:
-              "Nutqni matnga aylantirish, xulosalar, qarorlar, vazifalar, AI chat javoblari va qidiruv indeksatsiyasi. Uchrashuv audiosi, transkript matni, uchrashuv nomlari va ishtirokchilarning koʻrsatiladigan ismlarini oladi.",
-          },
-          {
-            name: "RunPod",
-            purpose:
-              "Soʻzlovchilarni ajratish uchun GPU quvvati; bizning oʻzimiz yaratgan dasturiy taʼminot ishlaydi. Faqat uchrashuv audiosiga qisqa muddatli havolani oladi — ism, nom va akkaunt maʼlumotlarisiz.",
-          },
-          {
-            name: "Replicate",
-            purpose:
-              "Zaxira sifatida soʻzlovchilarni ajratish va ovoz izini qayta ishlash — oʻz xizmatimiz ishlamay qolganda ishlatiladi. Uchrashuv audiosiga qisqa muddatli havolani yoki ovoz namunasini oladi.",
+              "Nutqni matnga aylantirish, soʻzlovchilarni ajratish, ovoz izini qayta ishlash, xulosalar, qarorlar, vazifalar, AI chat javoblari va qidiruv indeksatsiyasi. Uchrashuv audiosi, transkript matni, uchrashuv nomlari, ishtirokchilarning koʻrsatiladigan ismlari va, ovozingizni roʻyxatdan oʻtkazsangiz, ovoz namunasini oladi.",
           },
           {
             name: "Recall.ai",
@@ -1854,7 +1824,7 @@ const uz: typeof en = {
       },
       transfers: {
         title: "Maʼlumotlaringiz qayerda qayta ishlanadi",
-        body: "Uchrashuv serverlarimiz Oʻzbekistonda, TAS-IX tarmogʻida joylashgan va jonli qoʻngʻiroq trafigi shu yerda qoladi. Yuqorida sanab oʻtilgan AI provayderlari maʼlumotlarni Oʻzbekistondan tashqarida qayta ishlaydi: Google, RunPod va Replicate — oʻz mintaqalarida, Recall.ai — Yevropa Ittifoqida. Maʼlumot Oʻzbekistondan chiqqan hollarda biz ushbu siyosatga teng shartnomaviy kafolatlarga tayanamiz.",
+        body: "Uchrashuv serverlarimiz Oʻzbekistonda, TAS-IX tarmogʻida joylashgan va jonli qoʻngʻiroq trafigi shu yerda qoladi. Yuqorida sanab oʻtilgan AI provayderlari maʼlumotlarni Oʻzbekistondan tashqarida — oʻz mintaqalarida, Recall.ai esa Yevropa Ittifoqida qayta ishlaydi. Maʼlumot Oʻzbekistondan chiqqan hollarda biz ushbu siyosatga teng shartnomaviy kafolatlarga tayanamiz.",
       },
       security: {
         title: "Xavfsizlik",
@@ -2439,7 +2409,7 @@ const ar: typeof en = {
   language: "اللغة",
   legal: {
     privacyTitle: "سياسة الخصوصية",
-    privacyUpdated: "آخر تحديث: 13 أغسطس 2026",
+    privacyUpdated: "آخر تحديث: 26 أكتوبر 2026",
     termsTitle: "شروط الخدمة",
     termsUpdated: "آخر تحديث: 28 يوليو 2026",
     offerTitle: "العرض العام",
@@ -2489,10 +2459,10 @@ const ar: typeof en = {
         body: "لتشغيل الخدمة، وإنتاج النصوص وملخصات الذكاء الاصطناعي، ودعم المضيفين بعد الاجتماع، ومعالجة المدفوعات، ومنع إساءة الاستخدام. ولا نبيع بياناتك، ولا نعرض إعلانات، ولا نستخدم اجتماعاتك لتدريب نماذج الذكاء الاصطناعي.",
       },
       ai: {
-        title: "معالجة الذكاء الاصطناعي وموافقتك",
-        body: "يتطلب تحويل الاجتماع إلى نص وملخص إرسال بياناتك إلى مزوّدي معالجة الذكاء الاصطناعي خارج Dicta. وتحديدًا: يذهب صوت اجتماعك إلى Google (واجهة Gemini) لتحويل الكلام إلى نص، وإلى RunPod أو Replicate لتحديد من تحدث ومتى؛ ثم يذهب النص الناتج وعنوان الاجتماع وأسماء المشاركين إلى Google (واجهة Gemini) لإعداد الملخصات والقرارات والمهام وللإجابة عن أسئلتك في دردشة الذكاء الاصطناعي.",
+        title: "معالجة الذكاء الاصطناعي",
+        body: "يتطلب تحويل الاجتماع إلى نص وملخص إرسال بياناتك إلى مزوّدي معالجة ذكاء اصطناعي من أطراف ثالثة خارج Dicta. إذ يُرسل صوت اجتماعك لتحويل الكلام إلى نص ولتحديد من تحدث ومتى؛ ثم يُرسل النص الناتج وعنوان الاجتماع وأسماء المشاركين لإعداد الملخصات والقرارات والمهام وللإجابة عن أسئلتك في دردشة الذكاء الاصطناعي.",
         consent:
-          "نطلب إذنك قبل حدوث أي من ذلك. ففي تطبيقات Dicta يظهر الإفصاح قبل أن تتمكن من التسجيل أو الرفع أو التفريغ النصي، ويمكنك سحب موافقتك في أي وقت من الإعدادات ← البيانات والذكاء الاصطناعي. وبدون الموافقة يمكنك تسجيل الدخول وإنشاء الاجتماعات والانضمام إليها وإجراء مكالمات صوتية ومرئية، لكن التسجيل والتفريغ النصي وميزات الذكاء الاصطناعي تبقى معطّلة.",
+          "لا تتم هذه المعالجة إلا عندما تسجّل اجتماعًا أو ترفعه أو تفرّغه نصيًا. وبدون هذه الميزات يمكنك تسجيل الدخول وإنشاء الاجتماعات والانضمام إليها وإجراء مكالمات صوتية ومرئية دون أي معالجة بالذكاء الاصطناعي.",
       },
       thirdParties: {
         title: "الأطراف الثالثة التي نشارك معها البيانات",
@@ -2500,19 +2470,9 @@ const ar: typeof en = {
           "لا نشارك البيانات الشخصية إلا مع المزوّدين المذكورين أدناه، وللغرض المحدد فقط، ولتقديم الخدمة فقط. وكل منهم ملزم بعقد يوجب عليه حماية بياناتك بمستوى معادل لهذه السياسة، ومعالجتها وفق تعليماتنا وحدها، وعدم استخدامها لتدريب نماذجه أو لأغراضه الخاصة.",
         items: [
           {
-            name: "‏Google (واجهة Gemini)",
+            name: "مزوّدو معالجة الذكاء الاصطناعي",
             purpose:
-              "تحويل الكلام إلى نص، والملخصات والقرارات والمهام وإجابات دردشة الذكاء الاصطناعي وفهرسة البحث. تتلقى صوت الاجتماع ونص التفريغ وعناوين الاجتماعات وأسماء العرض للمشاركين.",
-          },
-          {
-            name: "RunPod",
-            purpose:
-              "قدرة معالجة رسومية لفصل المتحدثين، تشغّل برمجيات نبنيها ونتحكم بها. تتلقى رابطًا قصير الأجل لصوت الاجتماع فقط، دون أي أسماء أو عناوين أو بيانات حساب.",
-          },
-          {
-            name: "Replicate",
-            purpose:
-              "فصل المتحدثين ومعالجة بصمات الصوت احتياطيًا، ويُستخدم عندما تكون خدمتنا الخاصة غير متاحة. يتلقى رابطًا قصير الأجل لصوت الاجتماع أو لمقطع تسجيل بصمة الصوت.",
+              "تحويل الكلام إلى نص، وفصل المتحدثين، ومعالجة بصمات الصوت، والملخصات والقرارات والمهام وإجابات دردشة الذكاء الاصطناعي وفهرسة البحث. يتلقون صوت الاجتماع ونص التفريغ وعناوين الاجتماعات وأسماء العرض للمشاركين، ومقطع بصمة الصوت إن سجّلته.",
           },
           {
             name: "Recall.ai",
@@ -2574,7 +2534,7 @@ const ar: typeof en = {
       },
       transfers: {
         title: "أين تُعالَج بياناتك",
-        body: "خوادم اجتماعاتنا في أوزبكستان على شبكة TAS-IX، وتبقى بيانات المكالمات المباشرة عليها. أما مزوّدو الذكاء الاصطناعي المذكورون أعلاه فيعالجون البيانات خارج أوزبكستان: Google وRunPod وReplicate في مناطقهم، وRecall.ai في الاتحاد الأوروبي. وحيثما تغادر البيانات أوزبكستان نعتمد على حماية تعاقدية معادلة لهذه السياسة.",
+        body: "خوادم اجتماعاتنا في أوزبكستان على شبكة TAS-IX، وتبقى بيانات المكالمات المباشرة عليها. أما مزوّدو الذكاء الاصطناعي المذكورون أعلاه فيعالجون البيانات خارج أوزبكستان في مناطقهم، وRecall.ai في الاتحاد الأوروبي. وحيثما تغادر البيانات أوزبكستان نعتمد على حماية تعاقدية معادلة لهذه السياسة.",
       },
       security: {
         title: "الأمان",
