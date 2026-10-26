@@ -6,6 +6,7 @@ import { fetchCatalog } from "../../lib/catalog";
 import { fetchStats } from "../../lib/stats";
 import { faqItems, faqJsonLd, FAQ_HOME_KEYS } from "../../lib/faq";
 import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/appLinks";
+import { HOME_META } from "../../i18n/pages/home-meta";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Hero from "../Hero.astro";
@@ -42,17 +43,9 @@ const shots = {
   mobile: pair("mobile-recap", "mobile-meetings"),
 };
 
-const title = `Dicta: ${d.home.hero.titlePre} ${d.home.hero.titleAccent}`;
-const description = d.home.hero.sub;
+const { title, description } = HOME_META[locale];
 
 const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Dicta",
-    url: "https://dicta.uz",
-    logo: "https://dicta.uz/apple-touch-icon.png",
-  },
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -64,11 +57,14 @@ const jsonLd = [
     // The per-platform MobileApplication entries with downloadUrl live on
     // /download, which is the page that actually links them.
     sameAs: [APP_STORE_URL, PLAY_STORE_URL],
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "UZS",
-    },
+    offers: catalog
+      ? catalog.plans.map((p) => ({
+          "@type": "Offer",
+          name: p.name,
+          price: String(p.prices.UZS / 100),
+          priceCurrency: "UZS",
+        }))
+      : { "@type": "Offer", price: "0", priceCurrency: "UZS" },
   },
   faqJsonLd(faq),
 ];

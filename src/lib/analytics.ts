@@ -23,11 +23,16 @@ export type LandingEvent =
   | "contact_submitted";
 
 export function track(event: LandingEvent | (string & {}), params: AnalyticsParams = {}): void {
-  const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
-  if (typeof g !== "function") return;
+  const w = window as unknown as {
+    gtag?: (...a: unknown[]) => void;
+    ym?: (...a: unknown[]) => void;
+    __ymId?: number;
+  };
   const clean: Record<string, string | number | boolean> = {};
   for (const [k, v] of Object.entries(params)) {
     if (v !== undefined && v !== null) clean[k] = v;
   }
-  g("event", event, clean);
+  if (typeof w.gtag === "function") w.gtag("event", event, clean);
+  // Yandex Metrica goal (counter id is set by Layout when configured).
+  if (typeof w.ym === "function" && w.__ymId) w.ym(w.__ymId, "reachGoal", event, clean);
 }
