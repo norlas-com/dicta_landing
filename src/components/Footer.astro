@@ -2,6 +2,7 @@
 import type { Locale } from "../i18n/ui";
 import { t, localePath } from "../i18n/utils";
 import { SITE } from "../../site.config.mjs";
+import { navExtra } from "../i18n/nav-extra";
 
 interface Props {
   locale: Locale;
@@ -10,19 +11,47 @@ const { locale } = Astro.props;
 const d = t(locale);
 const home = localePath("/", locale);
 const year = new Date().getFullYear();
+const nx = navExtra[locale];
+const columns = [
+  { title: nx.product, links: [
+    { href: "/features", label: nx.features, item: "features" },
+    { href: "/pricing", label: nx.pricing, item: "pricing" },
+    { href: "/download", label: d.nav.download, item: "download" },
+  ] },
+  { title: nx.useCases, links: [
+    { href: "/use-cases/offline-meetings", label: nx.ucOffline, item: "uc_offline" },
+    { href: "/use-cases/online-meetings", label: nx.ucOnline, item: "uc_online" },
+    { href: "/use-cases/meeting-bot", label: nx.ucBot, item: "uc_bot" },
+    { href: "/use-cases", label: nx.useCases, item: "use_cases" },
+  ] },
+  { title: nx.resources, links: [
+    { href: "/blog", label: nx.blog, item: "blog" },
+    { href: "/faq", label: d.nav.faq, item: "faq" },
+    { href: "/developers", label: nx.developers, item: "developers" },
+  ] },
+];
 ---
 
 <footer class="mt-auto border-t border-border/60">
+  <div class="max-w-6xl mx-auto px-6 pt-10 pb-2 grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+    {columns.map((col) => (
+      <div>
+        <p class="font-medium text-foreground mb-3">{col.title}</p>
+        <ul class="space-y-2">
+          {col.links.map((l) => (
+            <li><a href={localePath(l.href, locale)} data-analytics-event="nav_clicked" data-analytics-item={l.item} class="text-muted hover:text-foreground transition-colors">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
   <div class="max-w-6xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-4 text-xs text-muted">
     <p>© {year} Dicta. {d.landing.footerRights}</p>
     <div class="flex flex-wrap items-center gap-4">
-      <a href={`${home === "/" ? "" : home}/#pricing`} data-analytics-event="nav_clicked" data-analytics-item="pricing" class="hover:text-foreground transition-colors">{d.pricing.navLabel}</a>
-      <a href={localePath("/faq", locale)} data-analytics-event="nav_clicked" data-analytics-item="faq" class="hover:text-foreground transition-colors">{d.nav.faq}</a>
-      <a href={`${home === "/" ? "" : home}/#contact`} data-analytics-event="nav_clicked" data-analytics-item="contact" class="hover:text-foreground transition-colors">{d.nav.contact}</a>
+            <a href={`${home === "/" ? "" : home}/#contact`} data-analytics-event="nav_clicked" data-analytics-item="contact" class="hover:text-foreground transition-colors">{d.nav.contact}</a>
       {/* The apps are the only way to use some features (roundtable records on
           everyone's phone and has no browser path), so the download link
           belongs on every page, not just in the header. */}
-      <a href={localePath("/download", locale)} data-analytics-event="nav_clicked" data-analytics-item="download" class="hover:text-foreground transition-colors">{d.nav.download}</a>
       <a href={localePath("/privacy", locale)} data-analytics-event="nav_clicked" data-analytics-item="privacy" class="hover:text-foreground transition-colors">{d.nav.privacy}</a>
       <a href={localePath("/terms", locale)} data-analytics-event="nav_clicked" data-analytics-item="terms" class="hover:text-foreground transition-colors">{d.nav.terms}</a>
       {/* The public offer (ommaviy oferta) is the contract a paying customer

@@ -3,6 +3,7 @@ import type { Locale } from "../i18n/ui";
 import { t, localePath, appUrl } from "../i18n/utils";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import { navExtra } from "../i18n/nav-extra";
 
 interface Props {
   locale: Locale;
@@ -11,6 +12,7 @@ interface Props {
 const { locale, path } = Astro.props;
 const d = t(locale);
 const home = localePath("/", locale);
+const nx = navExtra[locale];
 ---
 
 <header class="sticky top-0 z-40 w-full border-b border-transparent bg-background/90 supports-[backdrop-filter]:bg-background/75 supports-[backdrop-filter]:backdrop-blur-md transition-colors duration-200 [&.is-stuck]:border-border" data-header>
@@ -22,42 +24,48 @@ const home = localePath("/", locale);
 
     <nav class="flex items-center gap-1 sm:gap-2">
       <a
-        href={`${home === "/" ? "" : home}/#pricing`}
+        href={localePath("/features", locale)}
+        data-analytics-event="nav_clicked"
+        data-analytics-item="features"
+        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
+      >
+        {nx.features}
+      </a>
+
+      <a
+        href={localePath("/use-cases", locale)}
+        data-analytics-event="nav_clicked"
+        data-analytics-item="use_cases"
+        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
+      >
+        {nx.useCases}
+      </a>
+
+      <a
+        href={localePath("/pricing", locale)}
         data-analytics-event="nav_clicked"
         data-analytics-item="pricing"
         class="hidden sm:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
       >
-        {d.pricing.navLabel}
+        {nx.pricing}
       </a>
 
-      {/* /download now covers phone AND computer, so it earns a permanent nav
-          slot. Hidden on the narrowest screens for the same reason Pricing is —
-          the row runs out of width before the Login pill. */}
+      <a
+        href={localePath("/blog", locale)}
+        data-analytics-event="nav_clicked"
+        data-analytics-item="blog"
+        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
+      >
+        {nx.blog}
+      </a>
+
       <a
         href={localePath("/download", locale)}
         data-analytics-event="nav_clicked"
         data-analytics-item="download"
-        class="hidden sm:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
+        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
       >
         {d.nav.download}
-      </a>
-
-      <a
-        href={localePath("/faq", locale)}
-        data-analytics-event="nav_clicked"
-        data-analytics-item="faq"
-        class="hidden md:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
-      >
-        {d.nav.faq}
-      </a>
-
-      <a
-        href={`${home === "/" ? "" : home}/#contact`}
-        data-analytics-event="nav_clicked"
-        data-analytics-item="contact"
-        class="hidden md:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
-      >
-        {d.nav.contact}
       </a>
 
       <LanguageSwitcher locale={locale} path={path} />
