@@ -1,0 +1,13 @@
+---
+import type { GetStaticPaths } from "astro";
+import { DEFAULT_LOCALE } from "../../i18n/locales";
+import { USE_CASE_SLUGS, type UseCaseSlug } from "../../i18n/pages/use-cases";
+import UseCasePage from "../../components/pages/UseCasePage.astro";
+
+export const getStaticPaths = (() =>
+  USE_CASE_SLUGS.map((slug) => ({ params: { slug } }))) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+---
+
+<UseCasePage locale={DEFAULT_LOCALE} slug={slug as UseCaseSlug} />

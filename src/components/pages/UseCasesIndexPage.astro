@@ -1,0 +1,65 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { localePath } from "../../i18n/utils";
+import { USE_CASES, USE_CASE_SLUGS, UI } from "../../i18n/pages/use-cases";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const u = UI[locale];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: u.indexH1,
+    description: u.indexMeta,
+    hasPart: USE_CASE_SLUGS.map((s) => ({
+      "@type": "WebPage",
+      name: USE_CASES[s][locale].name,
+      url: new URL(localePath(`/use-cases/${s}`, locale), "https://dicta.uz").toString(),
+    })),
+  },
+];
+---
+
+<Layout title={`${u.indexTitle} — Dicta`} description={u.indexMeta} locale={locale} path="/use-cases" jsonLd={jsonLd}>
+  <Header locale={locale} path="/use-cases" />
+  <main class="relative flex-1">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 pb-6">
+      <h1 class="font-display text-[2.4rem] sm:text-[3.4rem] font-semibold tracking-[-0.02em] leading-[1.1] text-foreground text-balance max-w-[20ch]">
+        {u.indexH1}
+      </h1>
+      <p class="text-base sm:text-lg text-muted mt-5 max-w-[60ch] leading-relaxed">{u.indexSub}</p>
+    </div>
+    <ul class="max-w-6xl mx-auto px-6 lg:px-10 pt-8 pb-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        USE_CASE_SLUGS.map((s) => {
+          const c = USE_CASES[s][locale];
+          return (
+            <li>
+              <a
+                href={localePath(`/use-cases/${s}`, locale)}
+                data-analytics-event="cta_clicked"
+                data-analytics-location="use_cases_index"
+                data-analytics-target={s}
+                class="group flex h-full flex-col rounded-card border border-border bg-surface p-6 hover:border-border-strong hover:shadow-card transition-[border-color,box-shadow] duration-150 ease-out-expo"
+              >
+                <h2 class="font-display text-xl font-semibold tracking-[-0.01em] text-foreground group-hover:text-accent transition-colors">
+                  {c.name}
+                </h2>
+                <p class="text-muted mt-3 leading-relaxed flex-1">{c.card}</p>
+                <span class="mt-5 text-sm font-medium text-accent">{u.learnMore}<span aria-hidden="true" class="inline-block ms-1 rtl:-scale-x-100">→</span></span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </main>
+  <Footer locale={locale} />
+</Layout>
