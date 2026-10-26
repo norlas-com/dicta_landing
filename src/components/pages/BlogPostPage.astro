@@ -1,0 +1,209 @@
+---
+import { render } from "astro:content";
+import { SITE } from "../../../site.config.mjs";
+import type { Locale } from "../../i18n/ui";
+import { localePath, appUrl } from "../../i18n/utils";
+import { blogCopy } from "../../i18n/pages/blog";
+import {
+  type Post,
+  postPath,
+  readingMinutes,
+  formatDate,
+  relatedPosts,
+  translationsOf,
+} from "../../lib/blog";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const locale = post.data.lang as Locale;
+const c = blogCopy[locale];
+const { Content } = await render(post);
+const minutes = readingMinutes(post.body, locale);
+const translations = await translationsOf(post);
+const related = await relatedPosts(post);
+
+const abs = (path: string) => new URL(path, SITE.url).toString();
+const url = abs(postPath(post));
+const alternates: Partial<Record<Locale, string>> = {};
+for (const [l, p] of Object.entries(translations)) alternates[l as Locale] = postPath(p as Post);
+const others = (Object.entries(translations) as [Locale, Post][]).filter(([l]) => l !== locale);
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.data.title,
+    description: post.data.description,
+    inLanguage: locale,
+    datePublished: post.data.date.toISOString(),
+    dateModified: (post.data.updated ?? post.data.date).toISOString(),
+    mainEntityOfPage: url,
+    url,
+    ...(post.data.cover ? { image: abs(post.data.cover) } : {}),
+    keywords: post.data.tags.join(", "),
+    author: { "@type": "Organization", name: "Dicta", url: SITE.url },
+    publisher: {
+      "@type": "Organization",
+      name: "Dicta",
+      url: SITE.url,
+      logo: { "@type": "ImageObject", url: abs("/logo-mark.png") },
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: c.home, item: abs(localePath("/", locale)) },
+      { "@type": "ListItem", position: 2, name: c.navLabel, item: abs(localePath("/blog", locale)) },
+      { "@type": "ListItem", position: 3, name: post.data.title, item: url },
+    ],
+  },
+];
+---
+
+<Layout
+  title={`${post.data.title} — Dicta`}
+  description={post.data.description}
+  locale={locale}
+  path={`/blog/${post.data.slug}`}
+  alternates={alternates}
+  ogType="article"
+  ogImage={post.data.cover}
+  jsonLd={jsonLd}
+>
+  <Header locale={locale} path="/blog" />
+  <article class="relative flex-1">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-12 pb-6">
+      <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+        <a href={localePath("/", locale)} class="hover:text-foreground">{c.home}</a>
+        <span aria-hidden="true"> / </span>
+        <a href={localePath("/blog", locale)} class="hover:text-foreground">{c.navLabel}</a>
+      </nav>
+      <h1 class="font-display text-[2.1rem] sm:text-[2.9rem] font-semibold tracking-[-0.02em] leading-[1.15] text-foreground text-balance">
+        {post.data.title}
+      </h1>
+      <p class="text-sm text-muted mt-5">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, locale)}</time>
+        <span aria-hidden="true"> · </span>
+        {c.readMin(minutes)}
+        {
+          post.data.updated && (
+            <Fragment>
+              <span aria-hidden="true"> · </span>
+              {c.updated} <time datetime={post.data.updated.toISOString()}>{formatDate(post.data.updated, locale)}</time>
+            </Fragment>
+          )
+        }
+      </p>
+      {
+        others.length > 0 && (
+          <p class="text-sm text-muted mt-3">
+            {c.alsoIn}:
+            {others.map(([l, p], i) => (
+              <Fragment>
+                {i > 0 ? ", " : " "}
+                <a href={postPath(p)} hreflang={l} lang={l} class="text-accent hover:underline">
+                  {c.langName[l]}
+                </a>
+              </Fragment>
+            ))}
+          </p>
+        )
+      }
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 pb-12 blog-prose">
+      <Content />
+    </div>
+
+    <section aria-labelledby="blog-cta" class="max-w-3xl mx-auto px-6 lg:px-10 pb-16">
+      <div class="rounded-card bg-ink text-ink-fg p-8 sm:p-10">
+        <h2 id="blog-cta" class="font-display text-2xl sm:text-3xl font-semibold tracking-[-0.02em] text-balance">
+          {c.ctaTitle}
+        </h2>
+        <p class="text-ink-muted mt-3 max-w-[52ch] leading-relaxed">{c.ctaSub}</p>
+        <div class="flex flex-col sm:flex-row gap-3 mt-6">
+          <a
+            href={appUrl("/sign-up")}
+            data-analytics-event="signup_start_click"
+            data-analytics-location="blog_post"
+            class="inline-flex items-center justify-center h-12 px-7 rounded-pill bg-ink-fg text-ink font-semibold hover:bg-ink-accent transition-colors"
+          >
+            {c.ctaPrimary}
+          </a>
+          <a
+            href={localePath("/download", locale)}
+            data-analytics-event="download_app_clicked"
+            data-analytics-os="na"
+            data-analytics-arch="na"
+            class="inline-flex items-center justify-center h-12 px-7 rounded-pill border border-ink-line text-ink-fg font-medium hover:bg-ink-2 transition-colors"
+          >
+            {c.ctaSecondary}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {
+      related.length > 0 && (
+        <section aria-labelledby="blog-related" class="max-w-3xl mx-auto px-6 lg:px-10 pb-24">
+          <h2 id="blog-related" class="font-display text-2xl font-semibold text-foreground mb-5">{c.related}</h2>
+          <ul class="grid gap-4 sm:grid-cols-2">
+            {related.map((p) => (
+              <li>
+                <a
+                  href={postPath(p)}
+                  class="block h-full rounded-card border border-border bg-surface p-5 hover:shadow-card transition-shadow"
+                >
+                  <p class="text-xs text-muted">{c.readMin(readingMinutes(p.body, locale))}</p>
+                  <p class="font-display text-lg font-semibold leading-snug text-foreground mt-1.5">{p.data.title}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+  <Footer locale={locale} />
+</Layout>
+
+<style is:global>
+  .blog-prose {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-foreground-soft);
+  }
+  .blog-prose > * + * { margin-block-start: 1.15em; }
+  .blog-prose h2 {
+    font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
+    font-size: 1.75rem; line-height: 1.25; font-weight: 600;
+    color: var(--color-foreground); margin-block: 2.2em 0.6em; letter-spacing: -0.015em;
+  }
+  .blog-prose h3 {
+    font-size: 1.25rem; line-height: 1.3; font-weight: 600;
+    color: var(--color-foreground); margin-block: 1.8em 0.4em;
+  }
+  .blog-prose a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .blog-prose ul, .blog-prose ol { padding-inline-start: 1.4em; }
+  .blog-prose ul { list-style: disc; }
+  .blog-prose ol { list-style: decimal; }
+  .blog-prose li + li { margin-block-start: 0.4em; }
+  .blog-prose strong { color: var(--color-foreground); font-weight: 600; }
+  .blog-prose blockquote {
+    border-inline-start: 3px solid var(--color-border-strong);
+    padding-inline-start: 1.1em; color: var(--color-muted);
+  }
+  .blog-prose table { width: 100%; border-collapse: collapse; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .blog-prose th, .blog-prose td {
+    border: 1px solid var(--color-border); padding: 0.55em 0.75em; text-align: start; vertical-align: top;
+  }
+  .blog-prose th { background: var(--color-surface-2); color: var(--color-foreground); }
+  .blog-prose img { max-width: 100%; height: auto; border-radius: 12px; }
+  .blog-prose hr { border: 0; border-top: 1px solid var(--color-border); margin-block: 2em; }
+</style>

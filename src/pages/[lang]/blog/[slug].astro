@@ -1,0 +1,23 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import { PREFIXED_LOCALES } from "../../../i18n/locales";
+import BlogPostPage from "../../../components/pages/BlogPostPage.astro";
+
+// Inline (not an imported helper): getStaticPaths runs in an isolated scope.
+export const getStaticPaths = (async () => {
+  const posts = await getCollection(
+    "blog",
+    (p) =>
+      !p.data.draft && (PREFIXED_LOCALES as readonly string[]).includes(p.data.lang),
+  );
+  return posts.map((post) => ({
+    params: { lang: post.data.lang, slug: post.data.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+---
+
+<BlogPostPage post={post} />
