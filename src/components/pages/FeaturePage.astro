@@ -1,0 +1,169 @@
+---
+import type { ImageMetadata } from "astro";
+import type { Locale } from "../../i18n/ui";
+import { localePath, appUrl } from "../../i18n/utils";
+import { FEATURES, FEATURE_SHOTS, FEATURE_RELATED, type FeatureSlug } from "../../i18n/pages/features";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+import Shot from "../Shot.astro";
+
+interface Props {
+  locale: Locale;
+  slug: FeatureSlug;
+}
+const { locale, slug } = Astro.props;
+const L = FEATURES[locale];
+const ui = L.ui;
+const f = L.features[slug];
+const path = `/features/${slug}`;
+
+const shotFiles = import.meta.glob<{ default: ImageMetadata }>("../../assets/landing/shots/*.png", { eager: true });
+const img = (name: string) => shotFiles[`../../assets/landing/shots/${name}.png`]?.default;
+const shotDef = FEATURE_SHOTS[slug];
+const shot = shotDef && img(shotDef.name) ? { light: img(shotDef.name)!, dark: img(`${shotDef.name}-dark`), mobile: shotDef.mobile } : null;
+
+const related = FEATURE_RELATED[slug];
+const jsonLd: Record<string, unknown>[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: f.faq.map((i) => ({
+      "@type": "Question",
+      name: i.q,
+      acceptedAnswer: { "@type": "Answer", text: i.a },
+    })),
+  },
+];
+---
+
+<Layout title={`${f.metaTitle} — Dicta`} description={f.metaDesc} locale={locale} path={path} jsonLd={jsonLd}>
+  <Header locale={locale} path={path} />
+  <main class="relative flex-1">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-14 lg:pt-20">
+      <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+        <a href={localePath("/features", locale)} class="hover:text-accent transition-colors">{ui.breadcrumbRoot}</a>
+        <span aria-hidden="true" class="mx-2">/</span>
+        <span class="text-foreground-soft">{f.name}</span>
+      </nav>
+      <div class:list={["grid gap-10 lg:gap-14 items-center", shot && "lg:grid-cols-12"]}>
+        <div class:list={[shot && "lg:col-span-6"]}>
+          <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] font-semibold tracking-[-0.02em] leading-[1.1] text-foreground text-balance">{f.h1}</h1>
+          <p class="text-base sm:text-lg text-muted mt-5 max-w-[52ch] leading-relaxed">{f.sub}</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a
+              href={appUrl("/sign-up")}
+              data-analytics-event="cta_clicked"
+              data-analytics-location={`feature_${slug}_hero`}
+              class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill bg-ink text-ink-fg text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-[opacity,transform] duration-200"
+            >
+              {ui.ctaPrimary}
+            </a>
+            {slug === "desktop-app" && (
+              <a
+                href={localePath("/download", locale)}
+                data-analytics-event="download_app_clicked"
+                data-analytics-os="na"
+                data-analytics-arch="na"
+                class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill border border-border-strong text-foreground text-base font-medium hover:bg-surface-2 transition-colors"
+              >
+                {ui.desktopLink}
+              </a>
+            )}
+          </div>
+        </div>
+        {shot && (
+          <div class:list={["lg:col-span-6", shot.mobile && "max-w-[17rem] mx-auto w-full"]}>
+            <Shot light={shot.light} dark={shot.dark} mobile={shot.mobile} alt={f.h1} sizes={shot.mobile ? "17rem" : "(min-width: 1024px) 36rem, calc(100vw - 3rem)"} eager />
+          </div>
+        )}
+      </div>
+    </div>
+
+    <section aria-labelledby="benefits-title" class="max-w-6xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
+      <h2 id="benefits-title" class="font-display text-[1.8rem] sm:text-[2.2rem] font-semibold tracking-[-0.02em] text-foreground">{ui.benefitsTitle}</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        {f.benefits.map((b) => (
+          <div class="rounded-panel border border-border bg-surface-2 p-6">
+            <h3 class="font-display text-xl font-semibold text-foreground">{b.t}</h3>
+            <p class="mt-3 text-muted leading-relaxed">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="how-title" class="max-w-6xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
+      <h2 id="how-title" class="font-display text-[1.8rem] sm:text-[2.2rem] font-semibold tracking-[-0.02em] text-foreground">{ui.howTitle}</h2>
+      <ol class="mt-8 grid md:grid-cols-3 gap-8">
+        {f.steps.map((s, i) => (
+          <li>
+            <span class="font-display text-3xl font-semibold text-accent tabular-nums">0{i + 1}</span>
+            <h3 class="mt-2 text-lg font-semibold text-foreground">{s.t}</h3>
+            <p class="mt-2 text-muted leading-relaxed">{s.d}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section aria-labelledby="faq-title" class="max-w-3xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
+      <h2 id="faq-title" class="font-display text-[1.8rem] sm:text-[2.2rem] font-semibold tracking-[-0.02em] text-foreground">{ui.faqTitle}</h2>
+      <div class="mt-6 divide-y divide-border border-y border-border">
+        {f.faq.map((i) => (
+          <details class="group py-4">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-lg font-medium text-foreground">
+              {i.q}
+              <span aria-hidden="true" class="text-accent transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-muted leading-relaxed">{i.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="related-title" class="max-w-6xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
+      <h2 id="related-title" class="font-display text-[1.8rem] sm:text-[2.2rem] font-semibold tracking-[-0.02em] text-foreground">{ui.relatedTitle}</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        {related.map((r) => (
+          <a href={localePath(`/features/${r}`, locale)} class="group block rounded-panel border border-border p-6 hover:border-border-strong hover:bg-surface-2 transition-colors">
+            <h3 class="font-display text-xl font-semibold text-foreground group-hover:text-accent transition-colors">{L.features[r].name}</h3>
+            <p class="mt-2 text-muted leading-relaxed">{L.features[r].card}</p>
+          </a>
+        ))}
+      </div>
+      <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-base font-medium">
+        <a href={localePath("/features", locale)} class="text-foreground hover:text-accent transition-colors">{ui.allFeatures}</a>
+        <a href={localePath("/use-cases", locale)} class="text-foreground hover:text-accent transition-colors">{ui.useCases}</a>
+        <a href={localePath("/pricing", locale)} class="text-foreground hover:text-accent transition-colors">{ui.pricing}</a>
+      </p>
+    </section>
+
+    <section aria-labelledby="cta-title" class="mt-20 lg:mt-28 bg-ink text-ink-fg">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-16 lg:py-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+        <div>
+          <h2 id="cta-title" class="font-display text-[2rem] sm:text-[2.8rem] font-semibold leading-[1.08] tracking-[-0.025em] max-w-[18ch] text-balance">{ui.ctaTitle}</h2>
+          <p class="text-lg text-ink-muted mt-4 max-w-[48ch] leading-relaxed">{ui.ctaSub}</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href={appUrl("/sign-up")}
+            data-analytics-event="cta_clicked"
+            data-analytics-location={`feature_${slug}_footer`}
+            class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill bg-ink-fg text-ink text-base font-semibold hover:bg-ink-accent transition-colors"
+          >
+            {ui.ctaPrimary}
+          </a>
+          <a
+            href={localePath("/download", locale)}
+            data-analytics-event="download_app_clicked"
+            data-analytics-os="na"
+            data-analytics-arch="na"
+            class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors"
+          >
+            {ui.ctaSecondary}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</Layout>

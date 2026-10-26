@@ -1,0 +1,69 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { localePath, appUrl } from "../../i18n/utils";
+import { FEATURES, FEATURE_SLUGS } from "../../i18n/pages/features";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const L = FEATURES[locale];
+const ui = L.ui;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: FEATURE_SLUGS.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: L.features[s].name,
+      url: localePath(`/features/${s}`, locale),
+    })),
+  },
+];
+---
+
+<Layout title={`${ui.indexMetaTitle} — Dicta`} description={ui.indexMetaDesc} locale={locale} path="/features" jsonLd={jsonLd}>
+  <Header locale={locale} path="/features" />
+  <main class="relative flex-1">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24">
+      <h1 class="font-display text-[2.4rem] sm:text-[3.4rem] font-semibold tracking-[-0.02em] leading-[1.1] text-foreground text-balance max-w-[20ch]">{ui.indexTitle}</h1>
+      <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{ui.indexSub}</p>
+    </div>
+    <section aria-label={ui.breadcrumbRoot} class="max-w-6xl mx-auto px-6 lg:px-10 pt-12 pb-20">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {FEATURE_SLUGS.map((s) => (
+          <a href={localePath(`/features/${s}`, locale)} class="group block rounded-panel border border-border p-6 hover:border-border-strong hover:bg-surface-2 transition-colors">
+            <h2 class="font-display text-xl font-semibold text-foreground group-hover:text-accent transition-colors">{L.features[s].name}</h2>
+            <p class="mt-2 text-muted leading-relaxed">{L.features[s].card}</p>
+            <span class="mt-4 inline-block text-sm font-medium text-accent">{ui.learnMore}</span>
+          </a>
+        ))}
+      </div>
+      <p class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-base font-medium">
+        <a href={localePath("/use-cases", locale)} class="text-foreground hover:text-accent transition-colors">{ui.useCases}</a>
+        <a href={localePath("/pricing", locale)} class="text-foreground hover:text-accent transition-colors">{ui.pricing}</a>
+      </p>
+    </section>
+    <section class="bg-ink text-ink-fg">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div>
+          <h2 class="font-display text-[1.8rem] sm:text-[2.4rem] font-semibold tracking-[-0.02em]">{ui.ctaTitle}</h2>
+          <p class="text-ink-muted mt-2">{ui.ctaSub}</p>
+        </div>
+        <a
+          href={appUrl("/sign-up")}
+          data-analytics-event="cta_clicked"
+          data-analytics-location="features_index"
+          class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill bg-ink-fg text-ink text-base font-semibold hover:bg-ink-accent transition-colors"
+        >
+          {ui.ctaPrimary}
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</Layout>
