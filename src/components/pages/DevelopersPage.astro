@@ -1,0 +1,107 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { localePath, appUrl } from "../../i18n/utils";
+import { developersPage } from "../../i18n/pages/developers";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = developersPage[locale];
+const home = localePath("/", locale);
+const homeBase = home === "/" ? "" : home;
+const origin = "https://dicta.uz";
+const crumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: c.breadcrumbHome, item: `${origin}${home}` },
+    { "@type": "ListItem", position: 2, name: c.integrations.eyebrow, item: `${origin}${localePath("/developers", locale)}` },
+  ],
+};
+---
+
+<Layout title={c.metaTitle} description={c.metaDescription} locale={locale} path="/developers" jsonLd={[crumbLd]}>
+  <Header locale={locale} path="/developers" />
+  <div class="relative flex-1">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-16 pb-10">
+      <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance">
+        {c.h1}
+      </h1>
+      <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{c.intro}</p>
+    </div>
+
+    <section class="relative" aria-labelledby="integrations-title">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 pb-16 lg:pb-24">
+        <p class="text-sm font-medium text-accent mb-4">{c.integrations.eyebrow}</p>
+        <h2 id="integrations-title" class="font-display text-[2rem] sm:text-[2.6rem] font-semibold tracking-[-0.02em] leading-[1.1] text-foreground text-balance">
+          {c.integrations.title}
+        </h2>
+        <p class="text-base text-muted mt-4 max-w-[60ch] leading-relaxed">{c.integrations.sub}</p>
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            c.integrations.items.map((it) => (
+              <div class="rounded-panel border border-border bg-surface p-6">
+                <h3 class="text-lg font-semibold text-foreground">{it.name}</h3>
+                <p class="mt-2 text-sm text-muted leading-relaxed">{it.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="relative" aria-labelledby="api-title">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 pb-24">
+        <div class="rounded-panel border border-border bg-surface shadow-card p-8 sm:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-8 items-start">
+          <div>
+            <p class="text-sm font-medium text-accent mb-3">{c.api.eyebrow}</p>
+            <h2 id="api-title" class="font-display text-[1.7rem] sm:text-[2.1rem] font-semibold tracking-[-0.02em] leading-[1.15] text-foreground text-balance">
+              {c.api.title}
+            </h2>
+            <p class="text-base text-muted mt-3 leading-relaxed">{c.api.body}</p>
+            <ul class="mt-5 space-y-2.5">
+              {
+                c.api.points.map((pt) => (
+                  <li class="flex items-start gap-2.5 text-sm text-foreground-soft">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 mt-0.5 text-accent">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span class="leading-snug">{pt}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="flex flex-col gap-3">
+            <a
+              href={`${homeBase}/#contact`}
+              data-analytics-event="cta_clicked"
+              data-analytics-location="developers_api"
+              class="inline-flex items-center justify-center h-12 px-7 rounded-pill bg-accent text-accent-fg font-medium hover:bg-accent-strong active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
+            >
+              {c.api.cta}
+            </a>
+            <p class="text-sm text-muted-soft leading-relaxed">{c.api.note}</p>
+            <a
+              href={appUrl("/sign-up")}
+              data-analytics-event="signup_start_click"
+              data-analytics-location="developers_page"
+              class="text-accent hover:text-accent-strong font-medium text-sm"
+            >
+              {c.links.signup}
+            </a>
+          </div>
+        </div>
+        <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+          <a href={localePath("/pricing", locale)} class="text-accent hover:text-accent-strong font-medium">{c.links.pricing}</a>
+          <a href={localePath("/faq", locale)} class="text-accent hover:text-accent-strong font-medium">{c.links.faq}</a>
+        </p>
+      </div>
+    </section>
+  </div>
+  <Footer locale={locale} />
+</Layout>
