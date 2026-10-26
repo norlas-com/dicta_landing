@@ -135,7 +135,7 @@ const siteJsonLd =
 
     <link rel="alternate" type="application/rss+xml" title="Dicta blog" href="/blog/rss.xml" />
 
-    {ymNum && !noindex && <script is:inline set:html={ymScript} />}
+    {ymNum > 0 && !noindex && <script is:inline set:html={ymScript} />}
 
     {/* GA4 (gtag.js). Consent Mode v2 defaults granted now so a later cookie
         banner just flips consent. Cross-domain linker stitches the
