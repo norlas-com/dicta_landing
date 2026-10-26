@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from "astro";
+import { DEFAULT_LOCALE } from "../../i18n/locales";
+import { FEATURE_SLUGS, type FeatureSlug } from "../../i18n/pages/features";
+import FeaturePage from "../../components/pages/FeaturePage.astro";
+
+export const getStaticPaths = (() => FEATURE_SLUGS.map((slug) => ({ params: { slug } }))) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+---
+
+<FeaturePage locale={DEFAULT_LOCALE} slug={slug as FeatureSlug} />

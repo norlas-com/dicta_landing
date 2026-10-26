@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from "astro";
+import FeaturePage from "../../../components/pages/FeaturePage.astro";
+import { PREFIXED_LOCALES, type Locale } from "../../../i18n/locales";
+import { FEATURE_SLUGS, type FeatureSlug } from "../../../i18n/pages/features";
+
+// Inline `.flatMap` over imported arrays: see src/pages/[lang]/faq.astro.
+export const getStaticPaths = (() =>
+  PREFIXED_LOCALES.flatMap((lang) =>
+    FEATURE_SLUGS.map((slug) => ({ params: { lang, slug } })),
+  )) satisfies GetStaticPaths;
+
+const { lang, slug } = Astro.params;
+---
+
+<FeaturePage locale={lang as Locale} slug={slug as FeatureSlug} />
