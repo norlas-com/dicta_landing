@@ -38,7 +38,12 @@ const {
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://dicta.uz");
-const canonical = new URL(localePath(path, locale), site).toString();
+// Cloudflare Pages serves every page as a directory and 308s `/pricing` to
+// `/pricing/`, and the sitemap lists the slashed form. Canonical and hreflang
+// must name the URL that actually answers 200, not the one that redirects.
+const pageUrl = (p: string) =>
+  new URL(p.endsWith("/") || /\.[a-z0-9]+$/i.test(p) ? p : `${p}/`, site).toString();
+const canonical = pageUrl(localePath(path, locale));
 const ogImageAbs = new URL(ogImage, site).toString();
 const htmlLangMap: Record<Locale, string> = {
   uz: "uz-UZ",
@@ -179,7 +184,7 @@ const siteJsonLd =
           <link
             rel="alternate"
             hreflang={htmlLangMap[l]}
-            href={new URL(alternates ? alternates[l]! : switchLocalePath(path, l), site).toString()}
+            href={pageUrl(alternates ? alternates[l]! : switchLocalePath(path, l))}
           />
         ))
     }
@@ -188,7 +193,7 @@ const siteJsonLd =
         <link
           rel="alternate"
           hreflang="x-default"
-          href={new URL(alternates ? alternates[DEFAULT_LOCALE]! : switchLocalePath(path, DEFAULT_LOCALE), site).toString()}
+          href={pageUrl(alternates ? alternates[DEFAULT_LOCALE]! : switchLocalePath(path, DEFAULT_LOCALE))}
         />
       )
     }
