@@ -2,10 +2,31 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import { copyFile, access } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import { SITE } from "./site.config.mjs";
 
 // Region-neutral `ar`: the global site targets the whole Arabic-speaking
 // market, and an ar-SA here would tell search engines otherwise.
+/**
+ * @astrojs/sitemap only writes sitemap-index.xml + sitemap-0.xml, but
+ * /sitemap.xml is where people, SEO tools and Yandex look first, and it
+ * 404'd. Publish the single URL chunk there too (same urlset, all pages).
+ * @type {import("astro").AstroIntegration}
+ */
+const flatSitemap = {
+  name: "flat-sitemap",
+  hooks: {
+    "astro:build:done": async ({ dir }) => {
+      const out = fileURLToPath(dir);
+      // A second chunk means sitemap-0 is no longer the whole site.
+      const split = await access(out + "sitemap-1.xml").then(() => true, () => false);
+      if (split) throw new Error("sitemap split into chunks; /sitemap.xml would be partial");
+      await copyFile(out + "sitemap-0.xml", out + "sitemap.xml");
+    },
+  },
+};
+
 /** @type {Record<string, string>} */
 const HREFLANG = { uz: "uz-UZ", ru: "ru-RU", en: "en-US", ar: "ar" };
 
@@ -34,6 +55,8 @@ export default defineConfig({
     // (theme tokens, resets) rather than Tailwind's Preflight-only defaults.
     tailwind({ applyBaseStyles: false }),
     sitemap({
+      // Build time: every deploy is a full rebuild of the static site.
+      lastmod: new Date(),
       // A redirect stub is not a page. Without this the global sitemap would
       // still advertise /offer, which is exactly what the redirect exists to
       // prevent. The 404 page is not a page either (and is noindex).
@@ -46,5 +69,7 @@ export default defineConfig({
         ),
       },
     }),
+    // After sitemap(), so sitemap-0.xml exists when this runs.
+    flatSitemap,
   ],
 });
