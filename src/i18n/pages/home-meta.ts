@@ -6,7 +6,7 @@ export const HOME_META: Record<Locale, { title: string; description: string }> =
   uz: {
     title: "Dicta: oflayn va onlayn uchrashuvlar, Zoom va Meet uchun bot",
     description:
-      "Dicta uchrashuvni yozib oladi, o'zbek tilida matnga aylantiradi, bayonnoma tuzadi. Oflayn majlis, onlayn uchrashuv va Zoom, Meet uchun bot.",
+      "Dicta uchrashuvni yozib oladi, o'zbek tilida matnga aylantiradi, xulosa tuzadi. Oflayn majlis, onlayn uchrashuv va Zoom, Meet uchun bot.",
   },
   ru: {
     title: "Dicta: протокол офлайн и онлайн встреч, бот для Zoom и Meet",

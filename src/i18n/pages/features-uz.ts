@@ -3,7 +3,7 @@ import type { FeaturesLocale } from "./features-types";
 export const uz: FeaturesLocale = {
   ui: {
     indexTitle: "Dicta uchrashuvlaringiz bilan nima qiladi",
-    indexMetaTitle: "Imkoniyatlar: AI bayonnoma, transkripsiya va yozuv boti",
+    indexMetaTitle: "Imkoniyatlar: AI xulosa, transkripsiya va yozuv boti",
     indexMetaDesc:
       "Dicta imkoniyatlari: spikerlar bilan ovozni matnga aylantirish, AI xulosa, Zoom, Google Meet va Teams uchun bot, oflayn yozuv, vebinarlar, AI chat va vazifalar. Oʻzbek, rus, ingliz va arab tillarida.",
     indexSub:
@@ -99,10 +99,10 @@ export const uz: FeaturesLocale = {
     },
     "meeting-room": {
       name: "Uchrashuv xonasi",
-      metaTitle: "Onlayn uchrashuv: brauzer va ilovada, AI bayonnoma bilan",
+      metaTitle: "Onlayn uchrashuv: brauzer va ilovada, AI xulosa bilan",
       metaDesc:
         "Onlayn uchrashuvlarni Dicta xonasida oʻtkazing: darhol yoki rejalashtirilgan, kod orqali brauzer va ilovalardan kiring. Har bir uchrashuv yozib olinadi, matnga aylantiriladi va xulosa qilinadi.",
-      h1: "Bayonnomasi ichiga qurilgan onlayn uchrashuvlar",
+      h1: "Xulosasi ichiga qurilgan onlayn uchrashuvlar",
       sub: "Uchrashuvni darhol boshlang, rejalashtiring yoki brauzer, iOS, Android va kompyuter ilovasidan kod bilan kiring. Yozuv va xulosani Dicta oʻzi qiladi.",
       card: "Brauzer va ilovalarda onlayn uchrashuv, yozuv va xulosa bilan.",
       benefits: [
@@ -130,14 +130,14 @@ export const uz: FeaturesLocale = {
       sub: "Telefonni stolga qoʻying. Dicta ovozlarni ajratadi va yigʻilish, maʼruza yoki intervyu transkripsiyasi hamda xulosasini beradi.",
       card: "Spikerlarni ajratadigan telefon yozuvi. Davra suhbati rejimi.",
       benefits: [
-        { t: "Ovozlar ajratiladi", d: "Spikerlarni ajratish bayonnomada kim nima deganini koʻrsatadi." },
+        { t: "Ovozlar ajratiladi", d: "Spikerlarni ajratish xulosada kim nima deganini koʻrsatadi." },
         { t: "Davra suhbati rejimi", d: "Bitta xona, koʻp telefon. Har kim oʻz telefonida yozadi, Dicta treklarni birlashtiradi." },
-        { t: "Yigʻilish va maʼruzalar uchun", d: "Rahbariyat yigʻilishlari, savdo qoʻngʻiroqlari, HR intervyulari, majlis bayonnomasi va talabalar maʼruzalari." },
+        { t: "Yigʻilish va maʼruzalar uchun", d: "Rahbariyat yigʻilishlari, savdo qoʻngʻiroqlari, HR intervyulari, majlis xulosasi va talabalar maʼruzalari." },
       ],
       steps: [
         { t: "Ilovani oching va yozing", d: "iOS yoki Android’da yozuvni yoqing. Davra suhbatida har kim oʻz telefonida yozadi." },
         { t: "Dicta qayta ishlaydi", d: "Spikerlarni ajratadi va bir nechta telefon boʻlsa, treklarni birlashtiradi." },
-        { t: "Bayonnomani oʻqing", d: "Transkripsiya va qaror hamda vazifalar bilan AI xulosani oling." },
+        { t: "Xulosani oʻqing", d: "Transkripsiya va qaror hamda vazifalar bilan AI xulosani oling." },
       ],
       faq: [
         { q: "Zoom yoki Meet qoʻngʻirogʻisiz ishlaydimi?", a: "Ha. Oflayn yozuv jonli uchrashuvlar uchun: telefonda yozib oling, shu kifoya." },

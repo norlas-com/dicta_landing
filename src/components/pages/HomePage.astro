@@ -1,5 +1,4 @@
 ---
-import type { ImageMetadata } from "astro";
 import type { Locale } from "../../i18n/ui";
 import { t } from "../../i18n/utils";
 import { fetchCatalog } from "../../lib/catalog";
@@ -9,14 +8,18 @@ import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/appLinks";
 import { HOME_META } from "../../i18n/pages/home-meta";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
-import Hero from "../Hero.astro";
-import Customers from "../Customers.astro";
+import HeroStage from "../home/HeroStage.astro";
+import ProofBand from "../home/ProofBand.astro";
 import Stats from "../Stats.astro";
-import Features from "../Features.astro";
+import SceneOffline from "../home/SceneOffline.astro";
+import SceneOnline from "../home/SceneOnline.astro";
+import ScenePayoff from "../home/ScenePayoff.astro";
+import SceneLanguages from "../home/SceneLanguages.astro";
+import SceneAudiences from "../home/SceneAudiences.astro";
 import Pricing from "../Pricing.astro";
 import Faq from "../Faq.astro";
 import Contact from "../Contact.astro";
-import FinalCta from "../FinalCta.astro";
+import ClosingStage from "../home/ClosingStage.astro";
 import Footer from "../Footer.astro";
 
 interface Props {
@@ -26,22 +29,6 @@ const { locale } = Astro.props;
 const d = t(locale);
 const [catalog, stats] = await Promise.all([fetchCatalog(), fetchStats()]);
 const faq = faqItems(locale, catalog, FAQ_HOME_KEYS);
-
-// Real app screenshots (a demo workspace), light + optional dark capture.
-const shotFiles = import.meta.glob<{ default: ImageMetadata }>("../../assets/landing/shots/*.png", { eager: true });
-const img = (name: string) => shotFiles[`../../assets/landing/shots/${name}.png`]?.default;
-const pair = (...names: string[]) => {
-  const name = names.find((n) => img(n));
-  if (!name) throw new Error(`landing: missing screenshot ${names.join(" / ")}`);
-  return { light: img(name)!, dark: img(`${name}-dark`) };
-};
-const hero = pair("recap");
-const shots = {
-  capture: pair("meetings-list"),
-  transcript: pair("transcript"),
-  summary: pair("tasks", "recap"),
-  mobile: pair("mobile-recap", "mobile-meetings"),
-};
 
 const { title, description } = HOME_META[locale];
 
@@ -72,13 +59,18 @@ const jsonLd = [
 
 <Layout title={title} description={description} locale={locale} path="/" jsonLd={jsonLd}>
   <Header locale={locale} path="/" />
-  <Hero locale={locale} shot={hero.light} shotDark={hero.dark} />
-  <Customers locale={locale} />
-  <Stats locale={locale} stats={stats} />
-  <Features locale={locale} shots={shots} />
+  <HeroStage locale={locale} />
+  <ProofBand locale={locale}>
+    <Stats locale={locale} stats={stats} />
+  </ProofBand>
+  <SceneOffline locale={locale} />
+  <SceneOnline locale={locale} />
+  <ScenePayoff locale={locale} />
+  <SceneLanguages locale={locale} />
+  <SceneAudiences locale={locale} />
   {catalog && <Pricing locale={locale} catalog={catalog} />}
   <Faq locale={locale} items={faq} home />
   <Contact locale={locale} />
-  <FinalCta locale={locale} />
+  <ClosingStage locale={locale} />
   <Footer locale={locale} />
 </Layout>

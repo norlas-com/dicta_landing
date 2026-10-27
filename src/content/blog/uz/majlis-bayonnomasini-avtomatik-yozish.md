@@ -1,20 +1,20 @@
 ---
-title: "Majlis bayonnomasini avtomatik yozish: to'liq qo'llanma"
-description: "Majlis bayonnomasi nima, uni qo'lda yozish nega qiyin va telefon bilan yozib olib, AI yordamida bir necha daqiqada tayyor qilish yo'li. Qadam-baqadam."
+title: "Majlis xulosasini avtomatik yozish: to'liq qo'llanma"
+description: "Majlis xulosasi nima, uni qo'lda yozish nega qiyin va telefon bilan yozib olib, AI yordamida bir necha daqiqada tayyor qilish yo'li. Qadam-baqadam."
 date: 2026-10-27
 lang: uz
 slug: majlis-bayonnomasini-avtomatik-yozish
 translationKey: meeting-minutes
-tags: [offline, bayonnoma, majlis]
+tags: [offline, xulosa, majlis]
 ---
 
-Majlis tugadi, hamma tarqaldi, endi kimdir o'tirib bayonnoma yozishi kerak. Odatda bu ish kotibga yoki eng "omadsiz" xodimga qoladi. U daftardagi yarim o'qiladigan yozuvlarga qarab, ikki soat davomida kim nima degani va nimaga kelishilganini tiklashga urinadi. Natijada bayonnoma kech chiqadi, unda muhim qarorlar tushib qoladi, topshiriqlar esa kimga tegishli ekani noaniq bo'lib qoladi.
+Majlis tugadi, hamma tarqaldi, endi kimdir o'tirib xulosa yozishi kerak. Odatda bu ish kotibga yoki eng "omadsiz" xodimga qoladi. U daftardagi yarim o'qiladigan yozuvlarga qarab, ikki soat davomida kim nima degani va nimaga kelishilganini tiklashga urinadi. Natijada xulosa kech chiqadi, unda muhim qarorlar tushib qoladi, topshiriqlar esa kimga tegishli ekani noaniq bo'lib qoladi.
 
-Bu qo'llanmada majlis bayonnomasini (yig'ilish protokolini) qanday qilib avtomatik, ya'ni yozib olish va AI yordamida tayyorlashni ko'rib chiqamiz. Maqola rahbarlar, kotiblar, HR mutaxassislari va davlat hamda xususiy tashkilotlarda majlis yuritadigan har bir kishi uchun.
+Bu qo'llanmada majlis xulosasini (yig'ilish protokolini) qanday qilib avtomatik, ya'ni yozib olish va AI yordamida tayyorlashni ko'rib chiqamiz. Maqola rahbarlar, kotiblar, HR mutaxassislari va davlat hamda xususiy tashkilotlarda majlis yuritadigan har bir kishi uchun.
 
-## Bayonnoma nima va u nimadan iborat
+## Xulosa nima va u nimadan iborat
 
-Bayonnoma majlisda nima muhokama qilingani va nima qaror qilingani haqidagi rasmiy yozuv. Yaxshi bayonnomada quyidagilar bo'ladi:
+Xulosa majlisda nima muhokama qilingani va nima qaror qilingani haqidagi rasmiy yozuv. Yaxshi xulosada quyidagilar bo'ladi:
 
 - majlis sanasi, vaqti, o'tkazilgan joyi va qatnashchilar ro'yxati;
 - kun tartibi, ya'ni qaysi masalalar ko'rilgani;
@@ -22,7 +22,7 @@ Bayonnoma majlisda nima muhokama qilingani va nima qaror qilingani haqidagi rasm
 - qabul qilingan qarorlar;
 - topshiriqlar: kim, nima qiladi va qaysi muddatgacha.
 
-Eng muhimi oxirgi ikki band. Aynan ular majlis "gap"dan ish bo'lishini ta'minlaydi. Ko'p tashkilotlarda bayonnoma mana shu joyda sifatsiz bo'ladi, chunki qo'lda yozganda hamma gapni ushlab qolish imkonsiz.
+Eng muhimi oxirgi ikki band. Aynan ular majlis "gap"dan ish bo'lishini ta'minlaydi. Ko'p tashkilotlarda xulosa mana shu joyda sifatsiz bo'ladi, chunki qo'lda yozganda hamma gapni ushlab qolish imkonsiz.
 
 ## Qo'lda yozishning uchta muammosi
 
@@ -30,9 +30,9 @@ Eng muhimi oxirgi ikki band. Aynan ular majlis "gap"dan ish bo'lishini ta'minlay
 
 **2. Kim nima dedi aniq emas.** Besh-o'n kishilik majlisda ovozlarni ajratish qiyin. Keyinroq "buni kim aytgan edi?" degan savol tug'iladi va javob topilmaydi.
 
-**3. Vaqt ketadi.** Bir soatlik majlis uchun bayonnomani tuzish ko'pincha yana bir-ikki soat oladi. Shu vaqtda bayonnoma kechikadi va topshiriqlar muddati allaqachon boshlanib ketadi.
+**3. Vaqt ketadi.** Bir soatlik majlis uchun xulosani tuzish ko'pincha yana bir-ikki soat oladi. Shu vaqtda xulosa kechikadi va topshiriqlar muddati allaqachon boshlanib ketadi.
 
-## Avtomatik bayonnoma qanday ishlaydi
+## Avtomatik xulosa qanday ishlaydi
 
 Zamonaviy yondashuvda jarayon uch bosqichdan iborat: yozib olish, transkripsiya va xulosa.
 
@@ -67,7 +67,7 @@ Audio yoki video fayl bor bo'lsa, uni Dicta'ga yuklang. Transkripsiya va xulosa 
 - **Boshida o'zingizni tanishtiring.** Har bir ishtirokchi qisqa ismini aytsa, so'zlovchilarni nomlash osonlashadi.
 - **Kun tartibini ovoz chiqarib o'qing.** AI xulosa mavzularni to'g'riroq ajratadi.
 - **Oxirida topshiriqlarni takrorlang.** "Xulosa qilsak: Aziz ertaga hisobotni yuboradi, Dilnoza shartnomani juma kuni tasdiqlaydi". Bu odamlar uchun ham, AI uchun ham aniq belgi.
-- **Xulosani har doim tekshiring.** AI vaqtni tejaydi, lekin mas'uliyatni olib tashlamaydi. Rasmiy bayonnomaga imzo qo'yishdan oldin ismlar, raqamlar va muddatlarni o'zingiz ko'zdan kechiring.
+- **Xulosani har doim tekshiring.** AI vaqtni tejaydi, lekin mas'uliyatni olib tashlamaydi. Rasmiy xulosaga imzo qo'yishdan oldin ismlar, raqamlar va muddatlarni o'zingiz ko'zdan kechiring.
 
 ## Maxfiylik haqida
 
@@ -83,4 +83,4 @@ Majlisni yozib olishdan oldin qatnashchilarni ogohlantiring va rozilik oling. Bu
 
 ## Xulosa
 
-Bayonnomani qo'lda yozish vaqtni oladi va xatolarga yo'l qo'yadi. Majlisni yozib olish, transkripsiya va AI xulosa bilan esa kotib ish vaqtini bir necha marta qisqartiradi, qarorlar va topshiriqlar esa yo'qolmaydi. Dicta'ni bepul sinab ko'ring: keyingi majlisingizni telefonda yozib oling va natijani o'zingiz baholang.
+Xulosani qo'lda yozish vaqtni oladi va xatolarga yo'l qo'yadi. Majlisni yozib olish, transkripsiya va AI xulosa bilan esa kotib ish vaqtini bir necha marta qisqartiradi, qarorlar va topshiriqlar esa yo'qolmaydi. Dicta'ni bepul sinab ko'ring: keyingi majlisingizni telefonda yozib oling va natijani o'zingiz baholang.

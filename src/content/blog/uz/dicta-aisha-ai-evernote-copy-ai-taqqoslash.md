@@ -33,13 +33,13 @@ Qaysi imkoniyatlar bor ekani (masalan, ko'p ishtirokchili uchrashuvlar uchun so'
 
 Evernote uchrashuv yozuvchisi emas, qaydlar va bilimlarni saqlash vositasi. Uning kuchi qaydlarni tartibga solish, qidirish, veb-sahifalarni saqlash, hujjat va rasmlarni bir joyga yig'ishda. Ko'p yillardan beri ishlatib kelayotgan odamlar uchun u shaxsiy arxiv sifatida qulay.
 
-Evernote'da audio qayd qo'shish mumkin, lekin uning asosiy vazifasi uchrashuv bayonnomasini yoki so'zlovchilar bo'yicha ajratilgan transkriptni tayyorlash emas. Agar sizga qaydlar kitobi kerak bo'lsa, u yaxshi tanlov. Agar maqsad majlisni yozib, qarorlar va topshiriqlarni olish bo'lsa, ixtisoslashgan vosita bilan birga ishlatish mantiqliroq.
+Evernote'da audio qayd qo'shish mumkin, lekin uning asosiy vazifasi uchrashuv xulosasini yoki so'zlovchilar bo'yicha ajratilgan transkriptni tayyorlash emas. Agar sizga qaydlar kitobi kerak bo'lsa, u yaxshi tanlov. Agar maqsad majlisni yozib, qarorlar va topshiriqlarni olish bo'lsa, ixtisoslashgan vosita bilan birga ishlatish mantiqliroq.
 
 ## Copy AI
 
 Copy AI asosan matn yaratish vositasi: marketing nusxalari, postlar, elektron xatlar va shunga o'xshash kontent uchun mo'ljallangan. U sizga matn yozishda yordam beradi, lekin uchrashuvni yozib olish va transkripsiya qilish uning markaziy vazifasi emas. Uni uchrashuv yozuvlari bilan taqqoslash olma bilan nokni solishtirishga o'xshaydi.
 
-Agar sizga mijozlarga yuboriladigan xat yoki reklama matni kerak bo'lsa, bunday vosita foydali. Lekin majlisdan bayonnoma olish uchun siz uchrashuvga mo'ljallangan vositaga muhtoj bo'lasiz. Ikkalasi ham bir ish jarayonida yonma-yon ishlashi mumkin.
+Agar sizga mijozlarga yuboriladigan xat yoki reklama matni kerak bo'lsa, bunday vosita foydali. Lekin majlisdan xulosa olish uchun siz uchrashuvga mo'ljallangan vositaga muhtoj bo'lasiz. Ikkalasi ham bir ish jarayonida yonma-yon ishlashi mumkin.
 
 ## Dicta
 
@@ -67,7 +67,7 @@ Cheklovlar ham bor: Dicta qaydlar kitobi emas va matn yaratuvchi emas, u uchrash
 
 ## Qanday tanlash kerak
 
-- **Ko'p kishili majlis, bayonnoma, topshiriqlar kerak:** uchrashuvga ixtisoslashgan vosita (Dicta kabi).
+- **Ko'p kishili majlis, xulosa, topshiriqlar kerak:** uchrashuvga ixtisoslashgan vosita (Dicta kabi).
 - **Asosan o'zbekcha ovozni matnga aylantirish yoki mahalliy ovozli yechim:** Aisha AI'ni sinab ko'ring va o'z audioingizda solishtiring.
 - **Shaxsiy qaydlar va hujjatlar arxivi:** Evernote.
 - **Marketing yoki xat matnlari:** Copy AI kabi matn yaratuvchi.

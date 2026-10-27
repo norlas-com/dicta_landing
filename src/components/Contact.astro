@@ -31,9 +31,9 @@ const label = "block text-sm font-medium text-foreground-soft mb-1.5";
     <div class="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
       <div class="reveal max-w-xl">
         <p class="text-sm font-medium text-accent mb-4">{c.eyebrow}</p>
-        <h2 class="font-display text-[2.2rem] sm:text-[3rem] font-semibold tracking-[-0.025em] leading-[1.08] text-foreground text-balance">
+        <h2 class="font-display text-[clamp(2.3rem,4.6vw,3.6rem)] font-medium tracking-[-0.03em] leading-[1.04] text-foreground text-balance">
           <span class="block">{c.headingPre}</span>
-          <span class="block text-accent">{c.headingAccent}</span>
+          <span class="block italic font-normal text-accent">{c.headingAccent}</span>
         </h2>
         <p class="text-base sm:text-lg text-muted mt-5 leading-relaxed max-w-[44ch]">{c.sub}</p>
         <a

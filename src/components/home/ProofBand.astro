@@ -1,0 +1,43 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { HOME_V2 } from "../../i18n/pages/home-v2";
+import { SITE } from "../../../site.config.mjs";
+
+/**
+ * The first turn of the page: paper gives way to ink. A named customer, said
+ * plainly, then the live numbers (Stats renders directly below on the same
+ * ink, slotted inside this sheet, so the two read as one band). Premier is a dicta.uz customer; the
+ * global site opens straight onto the numbers.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = HOME_V2[locale].proof;
+const showPremier = SITE.id === "uz";
+---
+
+<div class="relative mt-12 sm:mt-16 px-3 sm:px-5">
+  <div class="bg-ink text-ink-fg rounded-[2rem] sm:rounded-[3rem] overflow-hidden">
+    {
+      showPremier && (
+        <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28 grid lg:grid-cols-[auto_minmax(0,1fr)] gap-8 lg:gap-16 items-center">
+          <a
+            href="https://premier.uz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="outbound_click"
+            data-analytics-url="premier.uz"
+            class="reveal inline-block"
+          >
+            <img src="/customers/premier.png" alt="Premier" width="1854" height="208" loading="lazy" decoding="async" class="h-10 sm:h-14 w-auto" />
+          </a>
+          <p class="reveal font-display text-2xl sm:text-3xl leading-snug text-ink-fg max-w-[34ch] text-balance" style="--rd:.08s">
+            {c.lead}
+          </p>
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</div>

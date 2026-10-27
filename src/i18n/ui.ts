@@ -1459,7 +1459,7 @@ const uz: typeof en = {
     startFree: "Bepul boshlash",
     hero: {
       eyebrow: "Yozib oladi, matnga oʻgiradi, xulosa qiladi",
-      titlePre: "Bayonnomani oʻzi yozadigan",
+      titlePre: "Xulosani oʻzi yozadigan",
       titleAccent: "uchrashuvlar.",
       sub: "Dicta qoʻngʻiroqlar va jonli uchrashuvlarni yozib oladi, oʻzbek, rus va ingliz tilida matnga oʻgiradi va qoʻngʻiroqdan bir necha daqiqa oʻtib qarorlar va vazifalarni qoʻlingizga beradi.",
       ctaSecondary: "Sotuv boʻlimi bilan bogʻlanish",
@@ -1541,7 +1541,7 @@ const uz: typeof en = {
     },
     finalCta: {
       titlePre: "Keyingi uchrashuvingiz",
-      titleAccent: "bayonnomani oʻzi yozadi.",
+      titleAccent: "xulosani oʻzi yozadi.",
       sub: "Bugun bepul tarifdan boshlang. Karta, oʻrnatish va qoʻngʻiroq vaqtiga cheklov yoʻq.",
       secondary: "Ilovalarni yuklab olish",
     },

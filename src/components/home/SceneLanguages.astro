@@ -1,0 +1,35 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { HOME_V2 } from "../../i18n/pages/home-v2";
+
+/**
+ * Languages: said in type, not in a feature list. The headline names them,
+ * the key word gets the pill, and four real sentences in four scripts sit
+ * underneath as the proof, each the way a transcript line would show it.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = HOME_V2[locale].languages;
+const tags = ["UZ", "RU", "EN", "AR"];
+---
+
+<section class="relative py-24 sm:py-32 lg:py-40 border-t border-border/70" aria-labelledby="scene-languages">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <h2 id="scene-languages" class="reveal font-display text-foreground text-[clamp(2.4rem,6vw,5.2rem)] leading-[1.04] tracking-[-0.035em] font-medium text-balance max-w-[18ch]">
+      {c.title}
+      <span class="block mt-2 italic font-normal"><span class="pill-mark text-accent">{c.titleAccent}</span></span>
+    </h2>
+    <p class="reveal mt-8 text-lg text-muted leading-relaxed max-w-[52ch]" style="--rd:.08s">{c.body}</p>
+
+    <ul class="mt-14 grid sm:grid-cols-2 gap-x-10 gap-y-2" aria-label={c.title}>
+      {c.samples.map((s, i) => (
+        <li class="reveal flex items-baseline gap-4 py-5 border-b border-border" style={`--rd:${0.1 + i * 0.07}s`}>
+          <span class="shrink-0 w-8 text-xs font-semibold text-muted-soft font-sans tabular-nums">{tags[i]}</span>
+          <span class="font-display text-2xl sm:text-[1.7rem] text-foreground" dir={i === 3 ? "rtl" : "ltr"} lang={["uz", "ru", "en", "ar"][i]}>{s}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

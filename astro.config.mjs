@@ -19,6 +19,9 @@ export default defineConfig({
   // match the domain this build is served from. See site.config.mjs.
   site: SITE.url,
   trailingSlash: "ignore",
+  // Home-page photography (src/lib/photos.ts) is fetched and re-encoded at
+  // build time, then served from this site.
+  image: { domains: ["images.unsplash.com"] },
   // Honor a harness-assigned port (preview tooling) while defaulting to 4321.
   server: { port: Number(process.env.PORT) || 4321, host: true },
   i18n: {

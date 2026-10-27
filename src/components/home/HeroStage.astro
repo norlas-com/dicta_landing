@@ -1,0 +1,147 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { t, appUrl, localePath } from "../../i18n/utils";
+import { HOME_V2 } from "../../i18n/pages/home-v2";
+
+/**
+ * The opening stage. One promise in very large type, two verbs, then the
+ * product's whole idea drawn as a ribbon: a meeting's words flow along a
+ * curve, pass through the recorder, and come out the other side as ink on a
+ * band. Speech in, minutes out. The words are this locale's sample meeting.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+const c = HOME_V2[locale].hero;
+
+const line = d.home.hero.live.map((l) => `${l.who}: ${l.text}`).join("   ·   ");
+// Repeated so the ribbon never runs out while it scrolls; the script measures
+// one copy and loops by exactly that length.
+const ribbon = `${line}   ·   `;
+const bars = [0.5, 0.8, 0.35, 1, 0.6, 0.9, 0.4, 0.75, 0.55, 0.95, 0.45, 0.7];
+// The curve the words travel. Wide viewBox, cropped (slice) on narrow
+// screens so type keeps its size instead of shrinking with the drawing.
+const curve = "M -200 150 C 160 40, 420 40, 720 130 S 1240 230, 1640 90";
+---
+
+<section class="relative overflow-hidden">
+  <div class="relative max-w-5xl mx-auto px-6 pt-12 sm:pt-16 lg:pt-20 text-center">
+    <p class="reveal text-sm font-medium text-muted tracking-[0.01em]">{c.eyebrow}</p>
+
+    <h1
+      class="reveal font-display text-foreground mt-6 text-balance text-[clamp(3.2rem,10vw,7.4rem)] leading-[0.95] tracking-[-0.035em] font-medium"
+      style="--rd:.06s"
+    >
+      {c.title}
+      <span class="block italic font-normal text-accent">{c.titleAccent}</span>
+    </h1>
+
+    <p class="reveal mx-auto mt-7 max-w-[52ch] text-lg sm:text-xl text-muted leading-relaxed" style="--rd:.14s">
+      {c.sub}
+    </p>
+
+    <div class="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3" style="--rd:.22s">
+      <a
+        href={appUrl("/sign-up")}
+        data-analytics-event="signup_start_click"
+        data-analytics-location="hero"
+        class="group inline-flex items-center justify-center gap-2 h-14 px-9 rounded-pill bg-accent text-accent-fg text-base font-semibold shadow-glow hover:bg-accent-strong active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
+      >
+        {d.home.startFree}
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5">
+          <path d="M5 12h14M13 6l6 6-6 6"></path>
+        </svg>
+      </a>
+      <a
+        href={localePath("/download", locale)}
+        data-analytics-event="cta_clicked"
+        data-analytics-location="hero_download"
+        class="inline-flex items-center justify-center h-14 px-8 rounded-pill border border-border-strong text-foreground text-base font-medium hover:bg-surface-2 transition-colors duration-150 ease-out-expo"
+      >
+        {c.download}
+      </a>
+    </div>
+    <p class="reveal mt-5 text-sm text-muted-soft" style="--rd:.28s">{c.platforms}</p>
+  </div>
+
+  {/* The ribbon. Decorative: the same sentences are real text elsewhere.
+      Always laid out left to right (speech enters on the left, writing
+      leaves on the right); Arabic words still shape correctly inside it. */}
+  <div class="reveal relative mt-2 sm:mt-4 h-[220px] sm:h-[260px]" style="--rd:.34s" aria-hidden="true" dir="ltr" data-ribbon>
+    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <path id="ribbon-curve" d={curve}></path>
+        {/* Speech before the recorder, writing after it. */}
+        <clipPath id="ribbon-before"><rect x="-400" y="0" width="1120" height="260"></rect></clipPath>
+        <clipPath id="ribbon-after"><rect x="720" y="0" width="1120" height="260"></rect></clipPath>
+      </defs>
+
+      <g clip-path="url(#ribbon-before)">
+        <text class="font-sans fill-muted-soft" font-size="19" letter-spacing="0.2">
+          <textPath href="#ribbon-curve" startOffset="0" data-ribbon-text>{ribbon}{ribbon}{ribbon}</textPath>
+        </text>
+      </g>
+
+      <g clip-path="url(#ribbon-after)">
+        <use href="#ribbon-curve" fill="none" class="stroke-ink" stroke-width="46" stroke-linecap="round"></use>
+        <text class="font-sans fill-ink-fg" font-size="19" font-weight="500" letter-spacing="0.2" dy="6.5">
+          <textPath href="#ribbon-curve" startOffset="0" data-ribbon-text>{ribbon}{ribbon}{ribbon}</textPath>
+        </text>
+      </g>
+    </svg>
+
+    {/* The recorder, sitting where speech becomes writing. */}
+    <div class="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2">
+      <div class="flex items-center gap-3 h-14 ps-4 pe-5 rounded-pill bg-surface border border-border-strong shadow-pop">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-live opacity-60 animate-ping"></span>
+          <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-live"></span>
+        </span>
+        <span class="flex items-center gap-[3px] h-6">
+          {bars.map((h, i) => (
+            <span class="wave-bar block w-[3px] rounded-full bg-foreground" style={`height:${Math.round(h * 24)}px;--wd:${(i * 0.09).toFixed(2)}s`}></span>
+          ))}
+        </span>
+        <span class="text-sm font-medium text-foreground tabular-nums" data-rec-clock>00:42</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Scroll the words along the curve. One copy's length is the loop period,
+  // so the wrap is seamless. Static for reduced motion.
+  const root = document.querySelector<HTMLElement>("[data-ribbon]");
+  const paths = root ? [...root.querySelectorAll<SVGTextPathElement>("[data-ribbon-text]")] : [];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (root && paths.length && !reduce) {
+    const text = paths[0].parentElement as unknown as SVGTextContentElement;
+    const period = text.getComputedTextLength() / 3;
+    let offset = 0;
+    let last = performance.now();
+    let visible = true;
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(root);
+    const tick = (now: number) => {
+      const dt = Math.min(64, now - last);
+      last = now;
+      if (visible && period > 0) {
+        offset = (offset + dt * 0.045) % period;
+        const v = String(-offset);
+        for (const p of paths) p.setAttribute("startOffset", v);
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    // A running clock on the recorder, from 00:42.
+    const clock = root.querySelector<HTMLElement>("[data-rec-clock]");
+    let secs = 42;
+    if (clock)
+      setInterval(() => {
+        secs += 1;
+        clock.textContent = `${String(Math.floor(secs / 60)).padStart(2, "0")}:${String(secs % 60).padStart(2, "0")}`;
+      }, 1000);
+  }
+</script>

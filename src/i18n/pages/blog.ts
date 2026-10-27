@@ -24,11 +24,11 @@ export interface BlogCopy {
 export const blogCopy: Record<Locale, BlogCopy> = {
   uz: {
     navLabel: "Blog",
-    indexTitle: "Blog: majlis bayonnomasi, transkripsiya va AI yordamchi — Dicta",
+    indexTitle: "Blog: majlis xulosasi, transkripsiya va AI yordamchi — Dicta",
     indexDescription:
-      "Uchrashuvlarni yozib olish, ovozni matnga aylantirish va majlis bayonnomasini avtomatlashtirish bo'yicha amaliy qo'llanmalar.",
+      "Uchrashuvlarni yozib olish, ovozni matnga aylantirish va majlis xulosasini avtomatlashtirish bo'yicha amaliy qo'llanmalar.",
     h1: "Dicta blogi",
-    sub: "Uchrashuvlarni yozib olish, ovozni matnga aylantirish va majlis bayonnomalarini avtomatlashtirish bo'yicha amaliy maqolalar.",
+    sub: "Uchrashuvlarni yozib olish, ovozni matnga aylantirish va majlis xulosalarini avtomatlashtirish bo'yicha amaliy maqolalar.",
     empty: "Hozircha bu tilda maqolalar yo'q. Tez orada qo'shamiz.",
     home: "Bosh sahifa",
     readMin: (n) => `${n} daqiqa o'qish`,

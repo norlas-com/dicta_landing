@@ -1,0 +1,165 @@
+---
+import type { Locale } from "../../i18n/ui";
+import { localePath } from "../../i18n/utils";
+import { HOME_V2 } from "../../i18n/pages/home-v2";
+import BrandIcons from "../BrandIcons.astro";
+
+/**
+ * The payoff: what you hold once the meeting ends. On wide screens the four
+ * steps stay pinned on the start side while their cards scroll past; the step
+ * whose card is centred lights up. On phones the steps simply stack, each
+ * label above its card. Cards are drawn in HTML (not screenshots), so they
+ * stay sharp, theme-aware and translated.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = HOME_V2[locale].payoff;
+const tint = ["bg-[oklch(0.62_0.14_200)]", "bg-[oklch(0.64_0.16_45)]", "bg-[oklch(0.58_0.14_150)]"];
+const who = (name: string) => c.tasks.findIndex((t) => t.who === name);
+---
+
+<section class="relative py-24 sm:py-32 lg:py-40" aria-labelledby="scene-payoff" data-payoff>
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <h2 id="scene-payoff" class="reveal font-display text-foreground text-[clamp(2.6rem,6vw,5.2rem)] leading-[1] tracking-[-0.035em] font-medium text-balance max-w-[16ch]">
+      {c.title}
+      <span class="block italic font-normal text-accent">{c.titleAccent}</span>
+    </h2>
+
+    <div class="mt-16 lg:mt-8 grid lg:grid-cols-[17rem_minmax(0,1fr)] gap-x-20">
+      {/* Pinned step list (wide screens). */}
+      <div class="hidden lg:block">
+        <ol class="sticky top-[42vh] space-y-5" aria-hidden="true">
+          {c.steps.map((s, i) => (
+            <li class="payoff-step flex items-baseline gap-3 text-lg text-muted-soft transition-colors duration-300" data-step-label={i}>
+              <span class="payoff-num w-7 h-7 shrink-0 grid place-items-center rounded-full border border-border-strong text-xs font-semibold font-sans tabular-nums transition-colors duration-300">{i + 1}</span>
+              <span class="font-medium">{s.label}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div>
+        {c.steps.map((s, i) => (
+          <div class="lg:min-h-[78vh] flex flex-col justify-center py-10 lg:py-0" data-step={i}>
+            <div class="reveal grid sm:grid-cols-[minmax(0,1fr)_14rem] gap-8 items-center">
+              <div class="rounded-[1.5rem] bg-surface border border-border shadow-shot p-6 sm:p-8">
+                {i === 0 && (
+                  <>
+                    <p class="text-2xs font-semibold uppercase tracking-[0.14em] text-muted-soft">{s.label}</p>
+                    <h3 class="font-display text-2xl text-foreground mt-2">{c.meetingTitle}</h3>
+                    <div class="mt-3 flex items-center gap-3 text-sm text-muted tabular-nums">
+                      <span class="flex -space-x-1.5 rtl:space-x-reverse">
+                        {c.tasks.map((t, k) => (
+                          <span class:list={["w-6 h-6 rounded-full ring-2 ring-surface grid place-items-center text-2xs font-semibold text-ink-fg font-sans", tint[k]]}>{t.who.slice(0, 1)}</span>
+                        ))}
+                      </span>
+                      <span>52:10</span>
+                    </div>
+                    <p class="mt-5 text-base text-foreground-soft leading-relaxed">{c.summary}</p>
+                  </>
+                )}
+                {i === 1 && (
+                  <>
+                    <p class="text-2xs font-semibold uppercase tracking-[0.14em] text-muted-soft">{s.label}</p>
+                    <ul class="mt-4 space-y-3.5">
+                      {c.decisions.map((x) => (
+                        <li class="flex gap-3 text-base text-foreground">
+                          <span class="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-accent-soft text-accent grid place-items-center">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>
+                          </span>
+                          {x}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {i === 2 && (
+                  <>
+                    <div class="flex items-center justify-between gap-3">
+                      <p class="text-2xs font-semibold uppercase tracking-[0.14em] text-muted-soft">{s.label}</p>
+                      <BrandIcons brands={["trello"]} />
+                    </div>
+                    <ul class="mt-4 divide-y divide-border">
+                      {c.tasks.map((x) => (
+                        <li class="flex items-center gap-3 py-3 text-base text-foreground">
+                          <span class="w-5 h-5 shrink-0 rounded-[0.4rem] border-[1.5px] border-border-strong" aria-hidden="true"></span>
+                          <span class="flex-1 min-w-0">{x.text}</span>
+                          <span class="inline-flex items-center gap-1.5 text-sm text-muted">
+                            <span class:list={["w-5 h-5 rounded-full grid place-items-center text-[0.6rem] font-semibold text-ink-fg font-sans", tint[who(x.who)]]}>{x.who.slice(0, 1)}</span>
+                            {x.who}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {i === 3 && (
+                  <>
+                    <p class="text-2xs font-semibold uppercase tracking-[0.14em] text-muted-soft">{c.ask}</p>
+                    <div class="mt-4 flex justify-end">
+                      <p class="max-w-[85%] rounded-[1.1rem] rounded-ee-[0.35rem] bg-accent text-accent-fg px-4 py-2.5 text-base">{c.question}</p>
+                    </div>
+                    <div class="mt-3 flex">
+                      <div class="max-w-[90%] rounded-[1.1rem] rounded-es-[0.35rem] bg-surface-2 px-4 py-3 text-base text-foreground">
+                        {c.answer}
+                        <span class="mt-2 flex items-center gap-1.5 text-xs text-muted tabular-nums">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+                          {c.meetingTitle} · 31:46
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              <div>
+                <p class="lg:hidden text-sm font-semibold text-accent tabular-nums">{i + 1} · {s.label}</p>
+                <p class="mt-1 lg:mt-0 text-base text-muted leading-relaxed">{s.body}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <a
+          href={localePath("/features/ai-summary", locale)}
+          data-analytics-event="cta_clicked"
+          data-analytics-location="scene_payoff"
+          class="reveal group inline-flex items-center gap-2 text-base font-medium text-foreground hover:text-accent transition-colors"
+        >
+          {c.link}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5 rtl:-scale-x-100"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .payoff-step[data-active] {
+    color: var(--color-foreground);
+  }
+  .payoff-step[data-active] .payoff-num {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+</style>
+
+<script>
+  // Light the pinned step whose card is crossing the middle of the screen.
+  const root = document.querySelector<HTMLElement>("[data-payoff]");
+  if (root) {
+    const labels = [...root.querySelectorAll<HTMLElement>("[data-step-label]")];
+    const set = (i: number) => labels.forEach((l, k) => l.toggleAttribute("data-active", k === i));
+    set(0);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) set(Number((e.target as HTMLElement).dataset.step));
+      },
+      { rootMargin: "-45% 0px -45% 0px" },
+    );
+    root.querySelectorAll("[data-step]").forEach((el) => io.observe(el));
+  }
+</script>

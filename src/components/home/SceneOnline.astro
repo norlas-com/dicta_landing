@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import type { Locale } from "../../i18n/ui";
+import { localePath } from "../../i18n/utils";
+import { HOME_V2 } from "../../i18n/pages/home-v2";
+import { PHOTOS } from "../../lib/photos";
+import BrandIcons from "../BrandIcons.astro";
+
+/**
+ * Online meetings: the whole job is one pasted link. The scene sits on its
+ * own sheet (surface-2, inset from the page edge) and mirrors the offline
+ * scene's composition, photo first. Its product moment plays in three beats:
+ * link pasted, bot sent, bot joined.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = HOME_V2[locale].online;
+const p = PHOTOS.laptop;
+---
+
+<section class="px-3 sm:px-5" aria-labelledby="scene-online">
+  <div class="bg-surface-2 rounded-[2rem] sm:rounded-[3rem] py-20 sm:py-28 lg:py-32">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] gap-14 lg:gap-20 items-center">
+      <div class="reveal-shot relative order-2 lg:order-1">
+        <div class="relative overflow-hidden rounded-[2rem] aspect-[4/3.3] shadow-shot">
+          <Image src={p.src} width={p.width} height={p.height} alt={c.photoAlt} widths={[640, 960, 1400]} sizes="(min-width: 1024px) 40rem, 100vw" loading="lazy" class="photo-ink absolute inset-0 w-full h-full object-cover" />
+          <div class="photo-ink-overlay absolute inset-0" aria-hidden="true"></div>
+        </div>
+
+        {/* Link pasted, bot sent. */}
+        <div class="beat absolute start-4 end-4 sm:start-8 sm:end-auto sm:w-[25rem] -bottom-8 rounded-[1.25rem] bg-surface border border-border shadow-pop p-2.5 flex items-center gap-2" style="--bd:.45s" aria-hidden="true">
+          <span class="flex-1 min-w-0 flex items-center gap-2 h-11 px-3 rounded-[0.8rem] bg-surface-2 text-sm text-foreground-soft">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-muted"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>
+            <span class="truncate font-sans" dir="ltr">{c.placeholder}</span>
+            <span class="caret w-px h-4 bg-foreground"></span>
+          </span>
+          <span class="shrink-0 inline-flex items-center h-11 px-4 rounded-[0.8rem] bg-accent text-accent-fg text-sm font-semibold">{c.send}</span>
+        </div>
+
+        {/* Bot joined. */}
+        <div class="beat absolute top-5 start-5 sm:top-7 sm:start-7 inline-flex items-center gap-2.5 h-11 ps-2 pe-4 rounded-pill bg-surface/95 border border-border shadow-card text-sm font-medium text-foreground" style="--bd:1.25s" aria-hidden="true">
+          <span class="w-7 h-7 rounded-full bg-accent text-accent-fg grid place-items-center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg>
+          </span>
+          {c.joined}
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <p class="reveal text-sm font-medium text-accent">{c.kicker}</p>
+        <h2 id="scene-online" class="reveal font-display text-foreground mt-5 text-[clamp(2.3rem,4.6vw,3.9rem)] leading-[1.02] tracking-[-0.03em] font-medium text-balance" style="--rd:.06s">
+          {c.title}
+          <span class="block italic font-normal text-accent">{c.titleAccent}</span>
+        </h2>
+        <p class="reveal mt-7 text-lg text-muted leading-relaxed max-w-[44ch]" style="--rd:.12s">{c.body}</p>
+        <div class="reveal mt-7" style="--rd:.16s">
+          <BrandIcons brands={["meet", "zoom", "teams"]} />
+        </div>
+        <a
+          href={localePath("/use-cases/meeting-bot", locale)}
+          data-analytics-event="cta_clicked"
+          data-analytics-location="scene_online"
+          class="reveal group mt-8 inline-flex items-center gap-2 text-base font-medium text-foreground hover:text-accent transition-colors"
+          style="--rd:.2s"
+        >
+          {c.link}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5 rtl:-scale-x-100"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import type { Locale } from "../../i18n/ui";
+import { localePath } from "../../i18n/utils";
+import { HOME_V2 } from "../../i18n/pages/home-v2";
+import { PHOTOS } from "../../lib/photos";
+
+/**
+ * Who it is for, as one full-bleed photograph with the audiences laid over it
+ * as links into their use-case pages. Inset from the page edge with large
+ * radii, the same sheet shape as the online scene.
+ */
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = HOME_V2[locale].audiences;
+const p = PHOTOS.auditorium;
+---
+
+<section class="px-3 sm:px-5" aria-labelledby="scene-audiences">
+  <div class="reveal-shot relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] min-h-[34rem] sm:min-h-[40rem] flex items-end">
+    <Image src={p.src} width={p.width} height={p.height} alt={c.photoAlt} widths={[800, 1400, 2000]} sizes="100vw" loading="lazy" class="photo-ink absolute inset-0 w-full h-full object-cover" />
+    <div class="photo-ink-overlay absolute inset-0 !opacity-60" aria-hidden="true"></div>
+
+    <div class="relative w-full max-w-6xl mx-auto px-6 lg:px-10 py-14 sm:py-20 text-ink-fg">
+      <h2 id="scene-audiences" class="font-display text-[clamp(2.4rem,6vw,5.2rem)] leading-[1.02] tracking-[-0.035em] font-medium text-balance max-w-[16ch]">
+        {c.title}
+        <span class="block italic font-normal text-ink-accent">{c.titleAccent}</span>
+      </h2>
+      <p class="mt-6 text-lg text-ink-muted max-w-[44ch]">{c.body}</p>
+      <ul class="mt-10 flex flex-wrap gap-2.5">
+        {c.items.map((it) => (
+          <li>
+            <a
+              href={localePath(`/use-cases/${it.slug}`, locale)}
+              data-analytics-event="cta_clicked"
+              data-analytics-location={`audience_${it.slug}`}
+              class="inline-flex items-center h-11 px-5 rounded-pill border border-ink-fg/35 text-ink-fg text-base font-medium hover:bg-ink-fg hover:text-ink transition-colors duration-200 ease-out-expo"
+            >
+              {it.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
