@@ -26,6 +26,8 @@ export const SITES = {
     // which terms a buyer is agreeing to.
     publicOffer: true,
     gaLinkerDomains: ["dicta.uz", "meet.dicta.uz"],
+    // Yandex Metrica counter for this host (public; ships in the page source).
+    metricaId: "113814539",
   },
   global: {
     id: "global",
@@ -35,6 +37,7 @@ export const SITES = {
     locales: ["en", "ar", "ru"],
     publicOffer: false,
     gaLinkerDomains: ["dicta.live", "meet.dicta.live"],
+    metricaId: "113814541",
   },
 };
 

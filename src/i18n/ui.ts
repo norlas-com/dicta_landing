@@ -296,7 +296,7 @@ const en = {
   language: "Language",
   legal: {
     privacyTitle: "Privacy Policy",
-    privacyUpdated: "Last updated: October 26, 2026",
+    privacyUpdated: "Last updated: October 27, 2026",
     termsTitle: "Terms of Service",
     termsUpdated: "Last updated: July 28, 2026",
     offerTitle: "Public Offer",
@@ -389,6 +389,11 @@ const en = {
             name: "Firebase and Google Analytics",
             purpose:
               "Product usage analytics. You can switch this off in Settings; it is never used for advertising.",
+          },
+          {
+            name: "Yandex Metrica and AppMetrica",
+            purpose:
+              "Product usage analytics on our websites and apps, including session recordings and click maps on the websites. Uses a device or browser identifier; it is never used for advertising.",
           },
           {
             name: "Apple Push Notification service and Firebase Cloud Messaging",
@@ -997,7 +1002,7 @@ const ru: typeof en = {
   language: "Язык",
   legal: {
     privacyTitle: "Политика конфиденциальности",
-    privacyUpdated: "Последнее обновление: 26 октября 2026 г.",
+    privacyUpdated: "Последнее обновление: 27 октября 2026 г.",
     termsTitle: "Условия использования",
     termsUpdated: "Последнее обновление: 28 июля 2026 г.",
     offerTitle: "Публичная оферта",
@@ -1090,6 +1095,11 @@ const ru: typeof en = {
             name: "Firebase и Google Analytics",
             purpose:
               "Аналитика использования продукта. Её можно отключить в настройках; она никогда не используется для рекламы.",
+          },
+          {
+            name: "Яндекс Метрика и AppMetrica",
+            purpose:
+              "Аналитика использования наших сайтов и приложений, включая записи сеансов и карты кликов на сайтах. Использует идентификатор устройства или браузера; никогда не используется для рекламы.",
           },
           {
             name: "Apple Push Notification service и Firebase Cloud Messaging",
@@ -1699,7 +1709,7 @@ const uz: typeof en = {
   language: "Til",
   legal: {
     privacyTitle: "Maxfiylik siyosati",
-    privacyUpdated: "Oxirgi yangilangan: 2026-yil 26-oktabr",
+    privacyUpdated: "Oxirgi yangilangan: 2026-yil 27-oktabr",
     termsTitle: "Foydalanish shartlari",
     termsUpdated: "Oxirgi yangilangan: 2026-yil 28-iyul",
     offerTitle: "Ommaviy oferta",
@@ -1792,6 +1802,11 @@ const uz: typeof en = {
             name: "Firebase va Google Analytics",
             purpose:
               "Mahsulotdan foydalanish tahlili. Uni sozlamalarda oʻchirish mumkin; hech qachon reklama uchun ishlatilmaydi.",
+          },
+          {
+            name: "Yandex Metrica va AppMetrica",
+            purpose:
+              "Saytlarimiz va ilovalarimizdan foydalanish tahlili, jumladan saytlarda seans yozuvlari va bosishlar xaritasi. Qurilma yoki brauzer identifikatoridan foydalanadi; hech qachon reklama uchun ishlatilmaydi.",
           },
           {
             name: "Apple Push Notification service va Firebase Cloud Messaging",
@@ -2409,7 +2424,7 @@ const ar: typeof en = {
   language: "اللغة",
   legal: {
     privacyTitle: "سياسة الخصوصية",
-    privacyUpdated: "آخر تحديث: 26 أكتوبر 2026",
+    privacyUpdated: "آخر تحديث: 27 أكتوبر 2026",
     termsTitle: "شروط الخدمة",
     termsUpdated: "آخر تحديث: 28 يوليو 2026",
     offerTitle: "العرض العام",
@@ -2502,6 +2517,11 @@ const ar: typeof en = {
             name: "‏Firebase وGoogle Analytics",
             purpose:
               "تحليلات استخدام المنتج. يمكنك إيقافها من الإعدادات، ولا تُستخدم للإعلانات إطلاقًا.",
+          },
+          {
+            name: "‏Yandex Metrica وAppMetrica",
+            purpose:
+              "تحليلات استخدام مواقعنا وتطبيقاتنا، بما في ذلك تسجيلات الجلسات وخرائط النقرات على المواقع. تستخدم معرّف الجهاز أو المتصفح، ولا تُستخدم للإعلانات إطلاقًا.",
           },
           {
             name: "خدمة إشعارات Apple وFirebase Cloud Messaging",

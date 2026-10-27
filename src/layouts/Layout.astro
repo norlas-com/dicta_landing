@@ -61,7 +61,9 @@ const htmlLangMap: Record<Locale, string> = {
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
 
 // Yandex Metrica: only when a counter id is configured, never on noindex pages.
-const ymId = import.meta.env.PUBLIC_YANDEX_METRICA_ID;
+// Falls back to the per-site id in site.config.mjs (public, like gaId above),
+// so both Pages projects get it without a dashboard env var.
+const ymId = import.meta.env.PUBLIC_YANDEX_METRICA_ID || SITE.metricaId;
 const ymNum = ymId && /^\d+$/.test(String(ymId)) ? Number(ymId) : 0;
 const ymScript = `window.__ymId=${ymNum};(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${ymNum},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});`;
 
