@@ -2,16 +2,15 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import { copyFile, access } from "node:fs/promises";
+import { access, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { SITE } from "./site.config.mjs";
 
-// Region-neutral `ar`: the global site targets the whole Arabic-speaking
-// market, and an ar-SA here would tell search engines otherwise.
 /**
  * @astrojs/sitemap only writes sitemap-index.xml + sitemap-0.xml, but
- * /sitemap.xml is where people, SEO tools and Yandex look first, and it
- * 404'd. Publish the single URL chunk there too (same urlset, all pages).
+ * /sitemap.xml is where people, SEO tools and Yandex look first. Publish a
+ * plain, readable urlset there: <loc> + <lastmod> per page, nothing else.
+ * hreflang alternates already live in every page's <head>.
  * @type {import("astro").AstroIntegration}
  */
 const flatSitemap = {
@@ -22,11 +21,23 @@ const flatSitemap = {
       // A second chunk means sitemap-0 is no longer the whole site.
       const split = await access(out + "sitemap-1.xml").then(() => true, () => false);
       if (split) throw new Error("sitemap split into chunks; /sitemap.xml would be partial");
-      await copyFile(out + "sitemap-0.xml", out + "sitemap.xml");
+      const chunk = await readFile(out + "sitemap-0.xml", "utf8");
+      const locs = [...chunk.matchAll(/<url><loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+      if (!locs.length) throw new Error("no URLs found in sitemap-0.xml");
+      const lastmod = new Date().toISOString();
+      const urls = locs
+        .map((loc) => `<url>\n<loc>${loc}</loc>\n<lastmod>${lastmod}</lastmod>\n</url>`)
+        .join("\n");
+      await writeFile(
+        out + "sitemap.xml",
+        `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
+      );
     },
   },
 };
 
+// Region-neutral `ar`: the global site targets the whole Arabic-speaking
+// market, and an ar-SA here would tell search engines otherwise.
 /** @type {Record<string, string>} */
 const HREFLANG = { uz: "uz-UZ", ru: "ru-RU", en: "en-US", ar: "ar" };
 
