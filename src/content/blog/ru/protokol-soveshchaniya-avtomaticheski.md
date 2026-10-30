@@ -5,6 +5,7 @@ date: 2026-10-27
 lang: ru
 slug: protokol-soveshchaniya-avtomaticheski
 translationKey: meeting-minutes
+topic: guides
 tags: [офлайн, протокол, совещание]
 ---
 

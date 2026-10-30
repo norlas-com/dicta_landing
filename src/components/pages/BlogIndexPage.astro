@@ -1,63 +1,159 @@
 ---
 import type { Locale } from "../../i18n/ui";
+import { localePath } from "../../i18n/utils";
 import { blogCopy } from "../../i18n/pages/blog";
-import { postsFor, postPath, readingMinutes, formatDate } from "../../lib/blog";
+import {
+  postsFor,
+  sitePosts,
+  postPath,
+  topicPath,
+  topicsIn,
+  readingMinutes,
+  formatDate,
+  type Topic,
+} from "../../lib/blog";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
+import BlogCover from "./BlogCover.astro";
 
 interface Props {
   locale: Locale;
+  /** Set on /blog/topic/<topic>: only that topic's posts, topic as the h1. */
+  topic?: Topic;
 }
-const { locale } = Astro.props;
+const { locale, topic } = Astro.props;
 const c = blogCopy[locale];
-const posts = await postsFor(locale);
+const all = await postsFor(locale);
+const topics = topicsIn(all);
+const posts = topic ? all.filter((p) => p.data.topic === topic) : all;
+// The newest post leads the unfiltered index as a wide card; topic pages are
+// short enough to be a plain grid.
+const featured = topic ? undefined : posts[0];
+const rest = featured ? posts.slice(1) : posts;
+
+const path = topic ? `/blog/topic/${topic}` : "/blog";
+const title = topic ? c.topicTitle(c.topics[topic]) : c.indexTitle;
+const description = topic ? c.topicDescription(c.topics[topic]) : c.indexDescription;
+
+// A topic page exists only in languages that have posts in it, so hreflang
+// must list just those (the default "every locale" set would point at 404s).
+let alternates: Partial<Record<Locale, string>> | undefined;
+if (topic) {
+  alternates = {};
+  for (const p of await sitePosts()) if (p.data.topic === topic) alternates[p.data.lang] = topicPath(topic, p.data.lang);
+}
 ---
 
-<Layout
-  title={c.indexTitle}
-  description={c.indexDescription}
-  locale={locale}
-  path="/blog"
-  noindex={posts.length === 0}
->
-  <Header locale={locale} path="/blog" />
+<Layout title={title} description={description} locale={locale} path={path} alternates={alternates} noindex={posts.length === 0}>
+  <Header locale={locale} path={path} />
   <div class="relative flex-1">
-    <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-16 pb-10">
-      <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance">
-        {c.h1}
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-14 sm:pt-16 pb-8">
+      {
+        topic && (
+          <a href={localePath("/blog", locale)} class="text-sm font-medium text-muted hover:text-foreground transition-colors">
+            {c.h1}
+          </a>
+        )
+      }
+      <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance mt-2">
+        {topic ? c.topics[topic] : c.h1}
       </h1>
-      <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{c.sub}</p>
+      {!topic && <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{c.sub}</p>}
+
+      {
+        topics.length > 1 && (
+          <nav aria-label={c.topicsLabel} class="mt-8 -mx-6 px-6 overflow-x-auto [scrollbar-width:none]">
+            <ul class="flex gap-2 w-max">
+              {[undefined, ...topics].map((t) => {
+                const active = t === topic;
+                return (
+                  <li>
+                    <a
+                      href={t ? topicPath(t, locale) : localePath("/blog", locale)}
+                      aria-current={active ? "page" : undefined}
+                      data-analytics-event="blog_topic_clicked"
+                      data-analytics-topic={t ?? "all"}
+                      class:list={[
+                        "inline-flex items-center h-9 px-4 rounded-pill text-sm font-medium whitespace-nowrap border transition-colors duration-150",
+                        active
+                          ? "bg-foreground text-background border-foreground"
+                          : "border-border text-foreground-soft hover:border-border-strong hover:text-foreground",
+                      ]}
+                    >
+                      {t ? c.topics[t] : c.allTopics}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )
+      }
     </div>
 
-    <div class="max-w-3xl mx-auto px-6 lg:px-10 pb-24">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 pb-24">
       {
         posts.length === 0 ? (
           <p class="text-muted border border-border rounded-card bg-surface p-6">{c.empty}</p>
         ) : (
-          <ul class="space-y-4">
-            {posts.map((p) => (
-              <li>
-                <a
-                  href={postPath(p)}
-                  data-analytics-event="blog_post_clicked"
-                  data-analytics-slug={p.data.slug}
-                  class="block rounded-card border border-border bg-surface p-6 hover:shadow-card hover:border-border-strong transition-[box-shadow,border-color] duration-150"
-                >
-                  <p class="text-sm text-muted">
-                    <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
-                    <span aria-hidden="true"> · </span>
-                    {c.readMin(readingMinutes(p.body, locale))}
-                  </p>
-                  <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] leading-snug text-foreground mt-2 text-balance">
-                    {p.data.title}
+          <Fragment>
+            {featured && (
+              <a
+                href={postPath(featured)}
+                data-analytics-event="blog_post_clicked"
+                data-analytics-slug={featured.data.slug}
+                class="group grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:gap-10 items-center mb-14"
+              >
+                <div class="aspect-[16/9] rounded-card overflow-hidden">
+                  <BlogCover
+                    topic={featured.data.topic}
+                    image={featured.data.cover}
+                    alt={featured.data.coverAlt}
+                    large
+                  />
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-accent">{c.topics[featured.data.topic]}</p>
+                  <h2 class="font-display text-[1.9rem] sm:text-[2.3rem] font-semibold tracking-[-0.02em] leading-[1.15] text-foreground mt-2 text-balance group-hover:text-accent transition-colors">
+                    {featured.data.title}
                   </h2>
-                  <p class="text-muted mt-3 leading-relaxed">{p.data.description}</p>
-                  <span class="inline-block mt-4 text-sm font-medium text-accent">{c.readMore}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+                  <p class="text-muted mt-4 leading-relaxed max-w-[52ch]">{featured.data.description}</p>
+                  <p class="text-sm text-muted mt-4">
+                    <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date, locale)}</time>
+                    <span aria-hidden="true"> · </span>
+                    {c.readMin(readingMinutes(featured.body, locale))}
+                  </p>
+                </div>
+              </a>
+            )}
+            <ul class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {rest.map((p) => (
+                <li>
+                  <a
+                    href={postPath(p)}
+                    data-analytics-event="blog_post_clicked"
+                    data-analytics-slug={p.data.slug}
+                    class="group block"
+                  >
+                    <div class="aspect-[16/10] rounded-card overflow-hidden">
+                      <BlogCover topic={p.data.topic} image={p.data.cover} alt={p.data.coverAlt} />
+                    </div>
+                    <p class="text-sm font-medium text-accent mt-5">{c.topics[p.data.topic]}</p>
+                    <h2 class="font-display text-xl font-semibold tracking-[-0.01em] leading-snug text-foreground mt-1.5 text-balance group-hover:text-accent transition-colors">
+                      {p.data.title}
+                    </h2>
+                    <p class="text-muted mt-2.5 leading-relaxed line-clamp-3">{p.data.description}</p>
+                    <p class="text-sm text-muted mt-3">
+                      <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
+                      <span aria-hidden="true"> · </span>
+                      {c.readMin(readingMinutes(p.body, locale))}
+                    </p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Fragment>
         )
       }
     </div>

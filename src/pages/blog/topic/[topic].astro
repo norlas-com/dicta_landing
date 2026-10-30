@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import { DEFAULT_LOCALE } from "../../../i18n/locales";
+import BlogIndexPage from "../../../components/pages/BlogIndexPage.astro";
+import type { Topic } from "../../../lib/blog-topics";
+
+// Inline (not an imported helper): getStaticPaths runs in an isolated scope.
+// One page per topic that has a post in the default locale.
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("blog", (p) => !p.data.draft && p.data.lang === DEFAULT_LOCALE);
+  return [...new Set(posts.map((p) => p.data.topic))].map((topic) => ({ params: { topic } }));
+}) satisfies GetStaticPaths;
+
+const { topic } = Astro.params;
+---
+
+<BlogIndexPage locale={DEFAULT_LOCALE} topic={topic as Topic} />

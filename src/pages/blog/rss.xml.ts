@@ -20,6 +20,7 @@ export const GET: APIRoute = async () => {
       <link>${link}</link>
       <guid isPermaLink="true">${link}</guid>
       <pubDate>${p.data.date.toUTCString()}</pubDate>
+      <category>${esc(c.topics[p.data.topic])}</category>
       <description>${esc(p.data.description)}</description>
     </item>`;
     })

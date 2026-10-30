@@ -5,6 +5,7 @@ date: 2026-10-27
 lang: en
 slug: automatic-meeting-minutes
 translationKey: meeting-minutes
+topic: guides
 tags: [offline, minutes, meetings]
 ---
 

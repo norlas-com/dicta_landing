@@ -5,6 +5,7 @@ date: 2026-10-24
 lang: ru
 slug: zapis-lekcij-konspekt
 translationKey: lectures
+topic: education
 tags: [студенты, лекции, конспект]
 ---
 

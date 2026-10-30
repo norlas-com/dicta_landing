@@ -5,6 +5,7 @@ date: 2026-10-24
 lang: en
 slug: record-lectures-notes
 translationKey: lectures
+topic: education
 tags: [students, lectures, notes]
 ---
 

@@ -5,6 +5,7 @@ date: 2026-10-26
 lang: en
 slug: dicta-vs-aisha-ai-evernote-copy-ai
 translationKey: comparison
+topic: comparisons
 tags: [comparison, transcription, uzbek language]
 ---
 

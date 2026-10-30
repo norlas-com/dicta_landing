@@ -1,6 +1,9 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { LOCALES, type Locale } from "../i18n/locales";
 import { localePath } from "../i18n/utils";
+import { TOPICS, type Topic } from "./blog-topics";
+
+export { TOPICS, type Topic };
 
 export type Post = CollectionEntry<"blog">;
 
@@ -23,6 +26,15 @@ export function postPath(post: Post): string {
   return localePath(`/blog/${post.data.slug}`, post.data.lang);
 }
 
+export function topicPath(topic: Topic, locale: Locale): string {
+  return localePath(`/blog/topic/${topic}`, locale);
+}
+
+/** Topics that have at least one published post in this language, in chip order. */
+export function topicsIn(posts: Post[]): Topic[] {
+  return TOPICS.filter((t) => posts.some((p) => p.data.topic === t));
+}
+
 /** The other-language versions of a post that this build ships. */
 export async function translationsOf(post: Post): Promise<Partial<Record<Locale, Post>>> {
   const out: Partial<Record<Locale, Post>> = {};
@@ -32,12 +44,15 @@ export async function translationsOf(post: Post): Promise<Partial<Record<Locale,
   return out;
 }
 
-/** Same-language posts, most shared tags first, then newest. */
+/** Same-language posts: same topic first, then most shared tags, then newest. */
 export async function relatedPosts(post: Post, limit = 3): Promise<Post[]> {
   const tags = new Set(post.data.tags);
   return (await postsFor(post.data.lang))
     .filter((p) => p.id !== post.id)
-    .map((p) => ({ p, score: p.data.tags.filter((t) => tags.has(t)).length }))
+    .map((p) => ({
+      p,
+      score: (p.data.topic === post.data.topic ? 100 : 0) + p.data.tags.filter((t) => tags.has(t)).length,
+    }))
     .sort((a, b) => b.score - a.score || b.p.data.date.valueOf() - a.p.data.date.valueOf())
     .slice(0, limit)
     .map((x) => x.p);

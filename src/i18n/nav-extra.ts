@@ -15,6 +15,9 @@ export interface NavExtra {
   ucOffline: string;
   ucOnline: string;
   ucBot: string;
+  /** Mobile header: the hamburger button and the sheet's close button. */
+  menu: string;
+  closeMenu: string;
 }
 
 export const navExtra: Record<Locale, NavExtra> = {
@@ -30,6 +33,8 @@ export const navExtra: Record<Locale, NavExtra> = {
     ucOffline: "Oflayn uchrashuvlar",
     ucOnline: "Onlayn uchrashuvlar",
     ucBot: "Uchrashuv boti",
+    menu: "Menyu",
+    closeMenu: "Menyuni yopish",
   },
   ru: {
     features: "Возможности",
@@ -43,6 +48,8 @@ export const navExtra: Record<Locale, NavExtra> = {
     ucOffline: "Офлайн-встречи",
     ucOnline: "Онлайн-встречи",
     ucBot: "Бот для встреч",
+    menu: "Меню",
+    closeMenu: "Закрыть меню",
   },
   en: {
     features: "Features",
@@ -56,6 +63,8 @@ export const navExtra: Record<Locale, NavExtra> = {
     ucOffline: "Offline meetings",
     ucOnline: "Online meetings",
     ucBot: "Meeting bot",
+    menu: "Menu",
+    closeMenu: "Close menu",
   },
   ar: {
     features: "الميزات",
@@ -69,5 +78,7 @@ export const navExtra: Record<Locale, NavExtra> = {
     ucOffline: "الاجتماعات الحضورية",
     ucOnline: "الاجتماعات عبر الإنترنت",
     ucBot: "روبوت الاجتماعات",
+    menu: "القائمة",
+    closeMenu: "إغلاق القائمة",
   },
 };

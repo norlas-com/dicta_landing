@@ -21,6 +21,7 @@ date: 2026-11-02
 lang: uz
 slug: zoom-yozuv-qollanma
 translationKey: zoom-guide
+topic: guides
 tags: [bot, zoom]
 ---
 
@@ -44,7 +45,8 @@ Text. **Bold**, [a link](/download), lists:
 | `lang` | `uz`, `ru`, `en` or `ar`. Must match the folder. |
 | `slug` | The URL: `/blog/<slug>`. Latin, lowercase, dashes. Must be **unique across all languages**, so give each language its own slug (put a keyword in it). |
 | `translationKey` | Any short label. Use the SAME value in every language version of one article; this links them ("also available in", hreflang for Google). |
-| `tags` | Optional. Posts that share tags show up as "related". |
+| `topic` | Required. One of `comparisons`, `guides`, `education` (list in `src/lib/blog-topics.ts`, labels in `src/i18n/pages/blog.ts`). Files the post under `/blog/topic/<topic>/` and the chips on the blog index. To add a topic, add it in both places. |
+| `tags` | Optional. Related posts prefer the same topic, then shared tags. |
 | `updated` | Optional date, shown when you revise an old post. |
 | `cover` | Optional image path, e.g. `/og/meeting.png` (file must exist in `public/`). |
 | `draft` | `true` hides the post everywhere. |

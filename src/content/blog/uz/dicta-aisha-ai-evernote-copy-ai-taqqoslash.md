@@ -5,6 +5,7 @@ date: 2026-10-26
 lang: uz
 slug: dicta-aisha-ai-evernote-copy-ai-taqqoslash
 translationKey: comparison
+topic: comparisons
 tags: [taqqoslash, transkripsiya, o'zbek tili]
 ---
 

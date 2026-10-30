@@ -5,6 +5,7 @@ date: 2026-10-26
 lang: ru
 slug: dicta-aisha-ai-evernote-copy-ai-sravnenie
 translationKey: comparison
+topic: comparisons
 tags: [сравнение, транскрибация, узбекский язык]
 ---
 

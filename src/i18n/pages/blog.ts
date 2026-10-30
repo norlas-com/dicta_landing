@@ -1,4 +1,5 @@
 import type { Locale } from "../locales";
+import type { Topic } from "../../lib/blog-topics";
 
 export interface BlogCopy {
   navLabel: string;
@@ -19,6 +20,13 @@ export interface BlogCopy {
   ctaSecondary: string;
   langName: Record<Locale, string>;
   rssTitle: string;
+  /** Chip that clears the topic filter. */
+  allTopics: string;
+  topicsLabel: string;
+  topics: Record<Topic, string>;
+  /** <title> and meta description of /blog/topic/<topic>. */
+  topicTitle: (topic: string) => string;
+  topicDescription: (topic: string) => string;
 }
 
 export const blogCopy: Record<Locale, BlogCopy> = {
@@ -42,6 +50,11 @@ export const blogCopy: Record<Locale, BlogCopy> = {
     ctaSecondary: "Ilovani yuklab olish",
     langName: { uz: "O'zbekcha", ru: "Русский", en: "English", ar: "العربية" },
     rssTitle: "Dicta blogi",
+    allTopics: "Barchasi",
+    topicsLabel: "Mavzular",
+    topics: { comparisons: "Taqqoslashlar", guides: "Qo'llanmalar", education: "Ta'lim" },
+    topicTitle: (t) => `${t} — Dicta blogi`,
+    topicDescription: (t) => `Dicta blogidagi «${t}» mavzusidagi maqolalar: uchrashuvlarni yozib olish, transkripsiya va AI xulosa.`,
   },
   ru: {
     navLabel: "Блог",
@@ -63,6 +76,11 @@ export const blogCopy: Record<Locale, BlogCopy> = {
     ctaSecondary: "Скачать приложение",
     langName: { uz: "O'zbekcha", ru: "Русский", en: "English", ar: "العربية" },
     rssTitle: "Блог Dicta",
+    allTopics: "Все",
+    topicsLabel: "Темы",
+    topics: { comparisons: "Сравнения", guides: "Руководства", education: "Обучение" },
+    topicTitle: (t) => `${t} — блог Dicta`,
+    topicDescription: (t) => `Статьи блога Dicta в разделе «${t}»: запись встреч, расшифровка и ИИ-резюме.`,
   },
   en: {
     navLabel: "Blog",
@@ -84,6 +102,11 @@ export const blogCopy: Record<Locale, BlogCopy> = {
     ctaSecondary: "Download the app",
     langName: { uz: "O'zbekcha", ru: "Русский", en: "English", ar: "العربية" },
     rssTitle: "The Dicta blog",
+    allTopics: "All",
+    topicsLabel: "Topics",
+    topics: { comparisons: "Comparisons", guides: "Guides", education: "Education" },
+    topicTitle: (t) => `${t} — the Dicta blog`,
+    topicDescription: (t) => `${t} from the Dicta blog: recording meetings, transcription and AI meeting summaries.`,
   },
   ar: {
     navLabel: "المدونة",
@@ -105,5 +128,10 @@ export const blogCopy: Record<Locale, BlogCopy> = {
     ctaSecondary: "حمّل التطبيق",
     langName: { uz: "O'zbekcha", ru: "Русский", en: "English", ar: "العربية" },
     rssTitle: "مدونة Dicta",
+    allTopics: "الكل",
+    topicsLabel: "المواضيع",
+    topics: { comparisons: "مقارنات", guides: "أدلة", education: "التعليم" },
+    topicTitle: (t) => `${t} — مدونة Dicta`,
+    topicDescription: (t) => `مقالات مدونة Dicta في قسم «${t}»: تسجيل الاجتماعات والتفريغ النصي وملخصات الذكاء الاصطناعي.`,
   },
 };

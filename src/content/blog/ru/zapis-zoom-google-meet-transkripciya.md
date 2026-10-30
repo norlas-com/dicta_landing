@@ -5,6 +5,7 @@ date: 2026-10-25
 lang: ru
 slug: zapis-zoom-google-meet-transkripciya
 translationKey: zoom-meet-bot
+topic: guides
 tags: [бот, zoom, google-meet, онлайн-встречи]
 ---
 

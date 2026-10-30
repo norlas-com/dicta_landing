@@ -5,6 +5,7 @@ date: 2026-10-27
 lang: uz
 slug: majlis-bayonnomasini-avtomatik-yozish
 translationKey: meeting-minutes
+topic: guides
 tags: [offline, xulosa, majlis]
 ---
 

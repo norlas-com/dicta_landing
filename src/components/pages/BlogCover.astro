@@ -1,0 +1,110 @@
+---
+// Generated cover for a blog card: a tinted panel per topic with one large
+// serif glyph and a few "transcript lines" (the speaker-dot motif from the
+// home page ribbon). Purely decorative, so it is aria-hidden; a post with a
+// real `cover:` image shows that instead.
+import type { Topic } from "../../lib/blog-topics";
+
+interface Props {
+  topic: Topic;
+  image?: string;
+  alt?: string;
+  /** Larger glyph and lines for the featured card. */
+  large?: boolean;
+}
+const { topic, image, alt, large = false } = Astro.props;
+
+const glyph: Record<Topic, string> = { comparisons: "vs", guides: "1·2·3", education: "¶" };
+// Line widths are fixed per topic so covers in one section look like a set
+// but differ between sections.
+const lines: Record<Topic, number[]> = {
+  comparisons: [78, 52, 64],
+  guides: [60, 84, 40],
+  education: [88, 70, 76],
+};
+---
+
+{
+  image ? (
+    <img src={image} alt={alt ?? ""} loading="lazy" class="blog-cover w-full h-full object-cover" />
+  ) : (
+    <div class:list={["blog-cover", `blog-cover--${topic}`, large && "blog-cover--large"]} aria-hidden="true">
+      <span class="blog-cover__glyph">{glyph[topic]}</span>
+      <span class="blog-cover__lines">
+        {lines[topic].map((w, i) => (
+          <span class="blog-cover__line">
+            <span class:list={["blog-cover__dot", i === 1 && "blog-cover__dot--alt"]} />
+            <span class="blog-cover__bar" style={`inline-size:${w}%`} />
+          </span>
+        ))}
+      </span>
+    </div>
+  )
+}
+
+<style>
+  .blog-cover {
+    position: relative;
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: hidden;
+    padding: 1.1rem 1.25rem;
+    --cover-bg: var(--color-surface-2);
+    --cover-fg: var(--color-foreground);
+    --cover-soft: color-mix(in oklch, var(--cover-fg) 22%, transparent);
+    --cover-dot: var(--color-accent);
+    --cover-dot-alt: var(--color-warning);
+    background: var(--cover-bg);
+    color: var(--cover-fg);
+  }
+  .blog-cover--comparisons {
+    --cover-bg: var(--color-ink);
+    --cover-fg: var(--color-ink-fg);
+    --cover-dot: var(--color-ink-accent);
+  }
+  .blog-cover--guides {
+    --cover-bg: var(--color-accent-soft);
+    --cover-fg: var(--color-accent-strong);
+  }
+  .blog-cover--education {
+    --cover-bg: var(--color-surface-3);
+    --cover-dot: var(--color-success);
+  }
+  .blog-cover__glyph {
+    position: absolute;
+    inset-inline-end: 1.1rem;
+    inset-block-start: 50%;
+    translate: 0 -55%;
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(3rem, 9vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    opacity: 0.92;
+  }
+  .blog-cover--large .blog-cover__glyph { font-size: clamp(3.5rem, 10vw, 7rem); inset-inline-end: 2rem; }
+  .blog-cover__lines {
+    position: absolute;
+    inset-inline: 1.25rem 45%;
+    inset-block-end: 1.1rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .blog-cover--large .blog-cover__lines { inset-inline-end: 50%; gap: 0.7rem; inset-block-end: 1.6rem; }
+  .blog-cover__line { display: flex; align-items: center; gap: 0.5rem; }
+  .blog-cover__dot {
+    flex: none;
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: 9999px;
+    background: var(--cover-dot);
+  }
+  .blog-cover__dot--alt { background: var(--cover-dot-alt); }
+  .blog-cover__bar {
+    block-size: 0.375rem;
+    border-radius: 9999px;
+    background: var(--cover-soft);
+  }
+</style>

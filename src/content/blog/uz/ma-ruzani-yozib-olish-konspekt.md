@@ -5,6 +5,7 @@ date: 2026-10-24
 lang: uz
 slug: ma-ruzani-yozib-olish-konspekt
 translationKey: lectures
+topic: education
 tags: [talabalar, ma'ruza, konspekt]
 ---
 
