@@ -6,54 +6,57 @@
  * violet → cyan brand gradient is retired.
  * @type {import('tailwindcss').Config}
  */
+// Every colour goes through color-mix with <alpha-value> so opacity
+// modifiers (bg-background/90, border-border/60) actually generate; with a
+// bare var() Tailwind silently drops them and borders fall back to white.
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}"],
   darkMode: "class",
   theme: {
     extend: {
       colors: {
-        background: "var(--color-background)",
-        surface: "var(--color-surface)",
-        "surface-2": "var(--color-surface-2)",
-        "surface-3": "var(--color-surface-3)",
-        border: "var(--color-border)",
-        "border-strong": "var(--color-border-strong)",
-        foreground: "var(--color-foreground)",
-        "foreground-soft": "var(--color-foreground-soft)",
-        muted: "var(--color-muted)",
-        "muted-soft": "var(--color-muted-soft)",
+        background: "color-mix(in oklch, var(--color-background) calc(<alpha-value> * 100%), transparent)",
+        surface: "color-mix(in oklch, var(--color-surface) calc(<alpha-value> * 100%), transparent)",
+        "surface-2": "color-mix(in oklch, var(--color-surface-2) calc(<alpha-value> * 100%), transparent)",
+        "surface-3": "color-mix(in oklch, var(--color-surface-3) calc(<alpha-value> * 100%), transparent)",
+        border: "color-mix(in oklch, var(--color-border) calc(<alpha-value> * 100%), transparent)",
+        "border-strong": "color-mix(in oklch, var(--color-border-strong) calc(<alpha-value> * 100%), transparent)",
+        foreground: "color-mix(in oklch, var(--color-foreground) calc(<alpha-value> * 100%), transparent)",
+        "foreground-soft": "color-mix(in oklch, var(--color-foreground-soft) calc(<alpha-value> * 100%), transparent)",
+        muted: "color-mix(in oklch, var(--color-muted) calc(<alpha-value> * 100%), transparent)",
+        "muted-soft": "color-mix(in oklch, var(--color-muted-soft) calc(<alpha-value> * 100%), transparent)",
 
         accent: {
-          DEFAULT: "var(--color-accent)",
-          strong: "var(--color-accent-strong)",
-          soft: "var(--color-accent-soft)",
-          fg: "var(--color-accent-fg)",
+          DEFAULT: "color-mix(in oklch, var(--color-accent) calc(<alpha-value> * 100%), transparent)",
+          strong: "color-mix(in oklch, var(--color-accent-strong) calc(<alpha-value> * 100%), transparent)",
+          soft: "color-mix(in oklch, var(--color-accent-soft) calc(<alpha-value> * 100%), transparent)",
+          fg: "color-mix(in oklch, var(--color-accent-fg) calc(<alpha-value> * 100%), transparent)",
         },
 
         ink: {
-          DEFAULT: "var(--color-ink)",
-          2: "var(--color-ink-2)",
-          line: "var(--color-ink-line)",
-          fg: "var(--color-ink-fg)",
-          muted: "var(--color-ink-muted)",
-          accent: "var(--color-ink-accent)",
+          DEFAULT: "color-mix(in oklch, var(--color-ink) calc(<alpha-value> * 100%), transparent)",
+          2: "color-mix(in oklch, var(--color-ink-2) calc(<alpha-value> * 100%), transparent)",
+          line: "color-mix(in oklch, var(--color-ink-line) calc(<alpha-value> * 100%), transparent)",
+          fg: "color-mix(in oklch, var(--color-ink-fg) calc(<alpha-value> * 100%), transparent)",
+          muted: "color-mix(in oklch, var(--color-ink-muted) calc(<alpha-value> * 100%), transparent)",
+          accent: "color-mix(in oklch, var(--color-ink-accent) calc(<alpha-value> * 100%), transparent)",
         },
 
         live: {
-          DEFAULT: "var(--color-live)",
-          fg: "var(--color-live-fg)",
+          DEFAULT: "color-mix(in oklch, var(--color-live) calc(<alpha-value> * 100%), transparent)",
+          fg: "color-mix(in oklch, var(--color-live-fg) calc(<alpha-value> * 100%), transparent)",
         },
         danger: {
-          DEFAULT: "var(--color-danger)",
-          strong: "var(--color-danger-strong)",
-          fg: "var(--color-danger-fg)",
+          DEFAULT: "color-mix(in oklch, var(--color-danger) calc(<alpha-value> * 100%), transparent)",
+          strong: "color-mix(in oklch, var(--color-danger-strong) calc(<alpha-value> * 100%), transparent)",
+          fg: "color-mix(in oklch, var(--color-danger-fg) calc(<alpha-value> * 100%), transparent)",
         },
-        success: "var(--color-success)",
-        warning: "var(--color-warning)",
+        success: "color-mix(in oklch, var(--color-success) calc(<alpha-value> * 100%), transparent)",
+        warning: "color-mix(in oklch, var(--color-warning) calc(<alpha-value> * 100%), transparent)",
 
-        "platform-meet": "var(--color-platform-meet)",
-        "platform-zoom": "var(--color-platform-zoom)",
-        "platform-teams": "var(--color-platform-teams)",
+        "platform-meet": "color-mix(in oklch, var(--color-platform-meet) calc(<alpha-value> * 100%), transparent)",
+        "platform-zoom": "color-mix(in oklch, var(--color-platform-zoom) calc(<alpha-value> * 100%), transparent)",
+        "platform-teams": "color-mix(in oklch, var(--color-platform-teams) calc(<alpha-value> * 100%), transparent)",
       },
 
       fontFamily: {

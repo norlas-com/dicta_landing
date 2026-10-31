@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
 import { LOCALES, DEFAULT_LOCALE, dirFor } from "../i18n/ui";
 import { t, localePath, appUrl } from "../i18n/utils";
 
@@ -33,9 +34,8 @@ const fallback = t(DEFAULT_LOCALE).notFound;
 >
   <div class="relative flex-1 overflow-hidden flex items-center">
     <div class="relative w-full max-w-3xl mx-auto px-6 lg:px-10 py-20 text-center">
-      <a href={localePath("/", DEFAULT_LOCALE)} class="inline-flex items-baseline gap-2 group mb-10">
-        <span class="font-display text-2xl font-semibold tracking-tight group-hover:text-accent transition-colors">Dicta</span>
-        <span class="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+      <a href={localePath("/", DEFAULT_LOCALE)} aria-label="Dicta" class="inline-flex group mb-10 hover:text-accent transition-colors">
+        <Logo size="md" />
       </a>
 
       {

@@ -5,6 +5,8 @@ date: 2026-10-26
 lang: en
 slug: dicta-vs-aisha-ai-evernote-copy-ai
 translationKey: comparison
+cover: "/blog/covers/comparison.webp"
+coverAlt: "Three phones side by side on a desk, each showing a sound wave, next to a notebook and a cup of tea"
 topic: comparisons
 tags: [comparison, transcription, uzbek language]
 ---

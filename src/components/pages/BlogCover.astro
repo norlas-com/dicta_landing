@@ -26,7 +26,7 @@ const lines: Record<Topic, number[]> = {
 
 {
   image ? (
-    <img src={image} alt={alt ?? ""} loading="lazy" class="blog-cover w-full h-full object-cover" />
+    <img src={image} alt={alt ?? ""} loading="lazy" decoding="async" width="1376" height="768" class="block w-full h-full object-cover bg-surface-2" />
   ) : (
     <div class:list={["blog-cover", `blog-cover--${topic}`, large && "blog-cover--large"]} aria-hidden="true">
       <span class="blog-cover__glyph">{glyph[topic]}</span>

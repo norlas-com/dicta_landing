@@ -5,6 +5,8 @@ date: 2026-10-30
 lang: en
 slug: dicta-zoom-alternative
 translationKey: zoom-alternative
+cover: "/blog/covers/zoom-alternative.webp"
+coverAlt: "A project manager on a video call with colleagues from a laptop in a bright office"
 topic: comparisons
 tags: [zoom, comparison, online meetings]
 ---

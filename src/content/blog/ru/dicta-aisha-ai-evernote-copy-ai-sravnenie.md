@@ -5,6 +5,8 @@ date: 2026-10-26
 lang: ru
 slug: dicta-aisha-ai-evernote-copy-ai-sravnenie
 translationKey: comparison
+cover: "/blog/covers/comparison.webp"
+coverAlt: "Три телефона рядом на столе со звуковой волной на экранах, блокнот и пиала чая"
 topic: comparisons
 tags: [сравнение, транскрибация, узбекский язык]
 ---

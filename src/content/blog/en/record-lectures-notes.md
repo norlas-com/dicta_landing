@@ -5,6 +5,8 @@ date: 2026-10-24
 lang: en
 slug: record-lectures-notes
 translationKey: lectures
+cover: "/blog/covers/lectures.webp"
+coverAlt: "A university lecture hall, a student's phone on the desk recording the lecture"
 topic: education
 tags: [students, lectures, notes]
 ---

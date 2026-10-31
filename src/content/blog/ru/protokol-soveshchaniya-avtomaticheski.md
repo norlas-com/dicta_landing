@@ -5,6 +5,8 @@ date: 2026-10-27
 lang: ru
 slug: protokol-soveshchaniya-avtomaticheski
 translationKey: meeting-minutes
+cover: "/blog/covers/meeting-minutes.webp"
+coverAlt: "Совещание руководителей за столом переговоров, телефон на столе записывает встречу"
 topic: guides
 tags: [офлайн, протокол, совещание]
 ---

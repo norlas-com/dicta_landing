@@ -5,6 +5,8 @@ date: 2026-10-25
 lang: en
 slug: record-transcribe-zoom-google-meet
 translationKey: zoom-meet-bot
+cover: "/blog/covers/zoom-meet-bot.webp"
+coverAlt: "A home office in the evening, a laptop showing a video call with several participants"
 topic: guides
 tags: [bot, zoom, google-meet, online meetings]
 ---

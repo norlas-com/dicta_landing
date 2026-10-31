@@ -5,6 +5,8 @@ date: 2026-10-31
 lang: ru
 slug: rabochiy-den-rukovoditelya-dicta
 translationKey: founder-workday
+cover: "/blog/covers/founder-workday.webp"
+coverAlt: "Руководитель компании утром идёт по офису и смотрит в телефон"
 topic: guides
 tags: [совещания, бот, офлайн, протокол]
 ---

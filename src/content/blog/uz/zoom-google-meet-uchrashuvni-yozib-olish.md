@@ -5,6 +5,8 @@ date: 2026-10-25
 lang: uz
 slug: zoom-google-meet-uchrashuvni-yozib-olish
 translationKey: zoom-meet-bot
+cover: "/blog/covers/zoom-meet-bot.webp"
+coverAlt: "Kechki uy ofisi: noutbukda bir necha ishtirokchili video qo'ng'iroq"
 topic: guides
 tags: [bot, zoom, google-meet, onlayn-uchrashuv]
 ---

@@ -5,6 +5,8 @@ date: 2026-10-25
 lang: ru
 slug: zapis-zoom-google-meet-transkripciya
 translationKey: zoom-meet-bot
+cover: "/blog/covers/zoom-meet-bot.webp"
+coverAlt: "Домашний кабинет вечером, на ноутбуке видеозвонок с несколькими участниками"
 topic: guides
 tags: [бот, zoom, google-meet, онлайн-встречи]
 ---

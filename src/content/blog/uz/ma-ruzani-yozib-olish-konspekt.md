@@ -5,6 +5,8 @@ date: 2026-10-24
 lang: uz
 slug: ma-ruzani-yozib-olish-konspekt
 translationKey: lectures
+cover: "/blog/covers/lectures.webp"
+coverAlt: "Universitet auditoriyasi: talabaning telefoni partada ma'ruzani yozib olmoqda"
 topic: education
 tags: [talabalar, ma'ruza, konspekt]
 ---

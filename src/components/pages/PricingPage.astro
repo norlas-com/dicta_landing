@@ -116,13 +116,13 @@ const crumbLd = {
           catalog ? (
             <>
               <div class="mt-8 overflow-x-auto rounded-panel border border-border bg-surface">
-                <table class="w-full min-w-[40rem] text-sm text-start border-collapse">
+                <table class="w-full min-w-[36rem] sm:min-w-[40rem] text-sm text-start border-collapse">
                   <caption class="sr-only">{k.caption}</caption>
                   <thead>
                     <tr class="border-b border-border">
-                      <th scope="col" class="text-start font-medium text-muted-soft px-5 py-4">{k.featureCol}</th>
+                      <th scope="col" class="sticky start-0 z-10 bg-surface text-start font-medium text-muted-soft px-4 sm:px-5 py-4 w-[9.5rem] sm:w-auto">{k.featureCol}</th>
                       {plans.map((x) => (
-                        <th scope="col" class:list={["text-start font-semibold px-5 py-4", x.popular ? "text-accent" : "text-foreground"]}>
+                        <th scope="col" class:list={["text-start font-semibold px-4 sm:px-5 py-4", x.popular ? "text-accent" : "text-foreground"]}>
                           {x.name}
                         </th>
                       ))}
@@ -131,9 +131,9 @@ const crumbLd = {
                   <tbody>
                     {rows.map((r) => (
                       <tr class="border-b border-border last:border-b-0">
-                        <th scope="row" class="text-start font-medium text-foreground-soft px-5 py-4">{r.label}</th>
+                        <th scope="row" class="sticky start-0 z-10 bg-surface text-start font-medium text-foreground-soft px-4 sm:px-5 py-4 shadow-[1px_0_0_var(--color-border)] sm:shadow-none">{r.label}</th>
                         {r.cells.map((cell) => (
-                          <td class:list={["px-5 py-4 tabular-nums", r.strong ? "font-semibold text-foreground" : "text-foreground-soft"]}>
+                          <td class:list={["px-4 sm:px-5 py-4 tabular-nums", r.strong ? "font-semibold text-foreground" : "text-foreground-soft"]}>
                             {cell === "" ? "—" : cell}
                           </td>
                         ))}

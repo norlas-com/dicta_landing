@@ -5,6 +5,8 @@ date: 2026-10-27
 lang: en
 slug: automatic-meeting-minutes
 translationKey: meeting-minutes
+cover: "/blog/covers/meeting-minutes.webp"
+coverAlt: "A management meeting around a boardroom table, a phone on the table recording it"
 topic: guides
 tags: [offline, minutes, meetings]
 ---

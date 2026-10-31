@@ -5,6 +5,8 @@ date: 2026-10-27
 lang: uz
 slug: majlis-bayonnomasini-avtomatik-yozish
 translationKey: meeting-minutes
+cover: "/blog/covers/meeting-minutes.webp"
+coverAlt: "Rahbarlar majlisi: stol ustidagi telefon uchrashuvni yozib olmoqda"
 topic: guides
 tags: [offline, xulosa, majlis]
 ---

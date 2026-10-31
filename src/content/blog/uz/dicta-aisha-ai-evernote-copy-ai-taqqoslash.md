@@ -5,6 +5,8 @@ date: 2026-10-26
 lang: uz
 slug: dicta-aisha-ai-evernote-copy-ai-taqqoslash
 translationKey: comparison
+cover: "/blog/covers/comparison.webp"
+coverAlt: "Stol ustida yonma-yon uchta telefon, ekranlarida tovush to'lqini, yonida daftar va piyolada choy"
 topic: comparisons
 tags: [taqqoslash, transkripsiya, o'zbek tili]
 ---

@@ -5,6 +5,8 @@ date: 2026-10-24
 lang: ru
 slug: zapis-lekcij-konspekt
 translationKey: lectures
+cover: "/blog/covers/lectures.webp"
+coverAlt: "Университетская аудитория, телефон студента на парте записывает лекцию"
 topic: education
 tags: [студенты, лекции, конспект]
 ---

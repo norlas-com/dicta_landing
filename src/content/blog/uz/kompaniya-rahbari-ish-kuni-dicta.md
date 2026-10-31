@@ -5,6 +5,8 @@ date: 2026-10-31
 lang: uz
 slug: kompaniya-rahbari-ish-kuni-dicta
 translationKey: founder-workday
+cover: "/blog/covers/founder-workday.webp"
+coverAlt: "Kompaniya rahbari ertalab ofisda telefoniga qarab ketmoqda"
 topic: guides
 tags: [majlis, bot, offline, xulosa]
 ---

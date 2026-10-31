@@ -34,6 +34,9 @@ const alternates: Partial<Record<Locale, string>> = {};
 for (const [l, p] of Object.entries(translations)) alternates[l as Locale] = postPath(p as Post);
 const others = (Object.entries(translations) as [Locale, Post][]).filter(([l]) => l !== locale);
 
+// Link previews get the JPEG twin of a WebP cover: not every unfurler
+// (LinkedIn, older Facebook crawlers) reads WebP.
+const shareImage = post.data.cover?.replace(/\.webp$/, ".jpg");
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -45,7 +48,7 @@ const jsonLd = [
     dateModified: (post.data.updated ?? post.data.date).toISOString(),
     mainEntityOfPage: url,
     url,
-    ...(post.data.cover ? { image: abs(post.data.cover) } : {}),
+    ...(shareImage ? { image: abs(shareImage) } : {}),
     articleSection: c.topics[post.data.topic],
     keywords: post.data.tags.join(", "),
     author: { "@type": "Organization", name: "Dicta", url: SITE.url },
@@ -81,7 +84,7 @@ const jsonLd = [
   path={`/blog/${post.data.slug}`}
   alternates={alternates}
   ogType="article"
-  ogImage={post.data.cover}
+  ogImage={shareImage}
   jsonLd={jsonLd}
 >
   <Header locale={locale} path="/blog" />
@@ -126,6 +129,21 @@ const jsonLd = [
         )
       }
     </div>
+
+    {
+      post.data.cover && (
+        <div class="max-w-4xl mx-auto px-3 sm:px-6 lg:px-10 pb-8">
+          <img
+            src={post.data.cover}
+            alt={post.data.coverAlt ?? ""}
+            width="1376"
+            height="768"
+            fetchpriority="high"
+            class="w-full aspect-[16/9] object-cover rounded-card bg-surface-2"
+          />
+        </div>
+      )
+    }
 
     <div class="max-w-3xl mx-auto px-6 lg:px-10 pb-12 blog-prose">
       <Content />

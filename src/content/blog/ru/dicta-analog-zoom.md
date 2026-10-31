@@ -5,6 +5,8 @@ date: 2026-10-30
 lang: ru
 slug: dicta-analog-zoom
 translationKey: zoom-alternative
+cover: "/blog/covers/zoom-alternative.webp"
+coverAlt: "Менеджер проекта на видеозвонке с коллегами в светлом офисе"
 topic: comparisons
 tags: [zoom, сравнение, онлайн-встречи]
 ---

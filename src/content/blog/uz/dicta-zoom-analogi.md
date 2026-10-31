@@ -5,6 +5,8 @@ date: 2026-10-30
 lang: uz
 slug: dicta-zoom-analogi
 translationKey: zoom-alternative
+cover: "/blog/covers/zoom-alternative.webp"
+coverAlt: "Loyiha menejeri yorug' ofisda noutbukdan hamkasblar bilan video qo'ng'iroqda"
 topic: comparisons
 tags: [zoom, taqqoslash, onlayn-uchrashuv]
 ---
