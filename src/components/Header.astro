@@ -127,7 +127,8 @@ const menuLinks = [
 <dialog
   data-menu
   aria-label={nx.menu}
-  class="mobile-menu lg:hidden m-0 p-0 w-full max-w-none h-[100dvh] max-h-none bg-background text-foreground"
+  tabindex="-1"
+  class="mobile-menu lg:hidden m-0 p-0 outline-none w-full max-w-none h-[100dvh] max-h-none bg-background text-foreground"
 >
   <div class="flex flex-col h-full">
     <div class="px-6 h-16 flex items-center justify-between flex-none">
@@ -232,6 +233,9 @@ const menuLinks = [
   if (menu) {
     document.querySelector("[data-menu-open]")?.addEventListener("click", () => {
       menu.showModal();
+      // showModal() focuses the first link (the logo) and Safari draws the
+      // focus ring around it; start on the sheet itself instead.
+      menu.focus();
       document.documentElement.style.overflow = "hidden";
     });
     menu.querySelector("[data-menu-close]")?.addEventListener("click", () => menu.close());
