@@ -233,7 +233,7 @@ const siteJsonLd =
       ))
     }
   </head>
-  <body class="font-sans">
+  <body class="font-sans" data-fp={noindex ? "0" : "1"}>
     <main class="min-h-screen bg-background text-foreground flex flex-col">
       <slot />
     </main>
@@ -255,6 +255,14 @@ const siteJsonLd =
         );
         revealables.forEach((el) => io.observe(el));
       }
+    </script>
+
+    <script>
+      // Dicta first-party analytics (session_start, screen_view/leave, ui_tap,
+      // signup_cta_tapped -> POST /v1/analytics/events). Skipped on noindex
+      // pages, exactly like GA4 / Metrica above.
+      import { initFirstParty } from "../lib/firstParty";
+      if (document.body.dataset.fp === "1") initFirstParty();
     </script>
 
     <script>
