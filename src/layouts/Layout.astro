@@ -44,6 +44,23 @@ const site = Astro.site ?? new URL("https://dicta.uz");
 const pageUrl = (p: string) =>
   new URL(p.endsWith("/") || /\.[a-z0-9]+$/i.test(p) ? p : `${p}/`, site).toString();
 const canonical = pageUrl(localePath(path, locale));
+
+// First-visit language pick (client side: the site is static, so there is no
+// Accept-Language header to read at request time; navigator.languages mirrors
+// it). Only the unprefixed default-locale URL is ever redirected, and only for
+// a visitor with no saved choice — so a deep link to /ru/ or an explicit
+// switch is never overridden, and crawlers (which get skipped by UA/webdriver,
+// and send no language list) keep indexing the canonical page. The pick is not
+// stored: only the switcher writes the choice.
+const autoLocaleTargets =
+  !noindex && locale === DEFAULT_LOCALE
+    ? Object.fromEntries(
+        LOCALES.filter((l) => l !== DEFAULT_LOCALE && (!alternates || alternates[l])).map((l) => [
+          l,
+          new URL(pageUrl(alternates ? alternates[l]! : switchLocalePath(path, l)), site).pathname,
+        ]),
+      )
+    : null;
 const ogImageAbs = new URL(ogImage, site).toString();
 const htmlLangMap: Record<Locale, string> = {
   uz: "uz-UZ",
@@ -134,6 +151,35 @@ const siteJsonLd =
         }
       })();
     </script>
+
+    {
+      autoLocaleTargets && (
+        <script
+          is:inline
+          define:vars={{ targets: autoLocaleTargets, defaultLocale: DEFAULT_LOCALE, cookieName: "dicta_locale" }}
+        >
+          (function () {
+            try {
+              if (navigator.webdriver) return;
+              if (/bot|crawl|spider|slurp|headless|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)) return;
+              if (document.cookie.indexOf(cookieName + "=") !== -1) return;
+              if (localStorage.getItem(cookieName)) return;
+              var langs = navigator.languages && navigator.languages.length ? navigator.languages : navigator.language ? [navigator.language] : [];
+              if (!langs.length) return;
+              var offered = ["uz", "ru", "en"].filter(function (l) { return l === defaultLocale || targets[l]; });
+              var pick = null;
+              for (var i = 0; i < langs.length && !pick; i++) {
+                var p = String(langs[i]).toLowerCase().split("-")[0];
+                if (offered.indexOf(p) !== -1) pick = p;
+              }
+              if (!pick && offered.indexOf("en") !== -1) pick = "en";
+              if (!pick || pick === defaultLocale || !targets[pick]) return;
+              location.replace(targets[pick] + location.search + location.hash);
+            } catch (e) {}
+          })();
+        </script>
+      )
+    }
 
     {preloadFonts.map((href) => <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />)}
     <title>{title}</title>

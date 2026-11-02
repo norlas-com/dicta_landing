@@ -248,6 +248,9 @@ const menuLinks = [
       link.addEventListener("click", () => {
         const code = link.getAttribute("data-set-locale");
         document.cookie = `${cookie}=${code}; path=/; max-age=31536000; domain=.dicta.uz; samesite=lax`;
+        // Also remember it host-locally: the cookie above is scoped to .dicta.uz and
+        // is not readable on dicta.live, where the first-visit auto-pick checks this.
+        try { localStorage.setItem(cookie, code); } catch (e) {}
       });
     });
   }
