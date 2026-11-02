@@ -37,7 +37,9 @@ function packsLineFor(cur: "UZS" | "USD"): string | null {
 const defaultCur: "UZS" | "USD" = catalog.default_currency ?? "UZS";
 const currencies: ("UZS" | "USD")[] = ["UZS", "USD"];
 
-const plans = catalog.plans.map((plan) => {
+// Enterprise (`custom`) is a display-only tier rendered last with a contact CTA,
+// never a checkout card — drop it from the catalog loop if the API lists it.
+const plans = catalog.plans.filter((plan) => plan.id !== "custom").map((plan) => {
   const isFree = plan.prices.USD === 0 && plan.prices.UZS === 0;
   const bullets = [
     p.bulletStorage.replace("{gb}", String(plan.storage_gb)),
@@ -55,6 +57,13 @@ const plans = catalog.plans.map((plan) => {
     usd: amountFor(plan.prices, "USD"),
   };
 });
+
+const gridCols =
+  plans.length + 1 >= 5
+    ? "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+    : "sm:grid-cols-2 lg:grid-cols-4";
+const enterpriseBullets = [p.enterpriseMinutes, p.enterpriseMembers, p.enterpriseSupport];
+const ENTERPRISE_CONTACT = "mailto:support@dicta.uz";
 
 const packsUZS = packsLineFor("UZS");
 const packsUSD = packsLineFor("USD");
@@ -93,7 +102,7 @@ const packsUSD = packsLineFor("USD");
       </div>
     </div>
 
-    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+    <div class:list={["mt-10 grid gap-5 items-stretch", gridCols]}>
       {
         plans.map((plan, i) => (
           <div class:list={["reveal relative h-full", plan.popular && "sm:-my-1"]} style={`--rd:${i * 0.08}s`}>
@@ -171,6 +180,38 @@ const packsUSD = packsLineFor("USD");
           </div>
         ))
       }
+      <div class="reveal relative h-full" style={`--rd:${plans.length * 0.08}s`}>
+        <div class="relative h-full flex flex-col rounded-panel overflow-hidden border border-border bg-surface hover:-translate-y-0.5 hover:shadow-card transition-transform duration-200 ease-out-expo">
+          <div class="flex flex-col flex-1 p-6">
+            <div class="flex items-center justify-between gap-2 min-h-[1.75rem]">
+              <h3 class="text-lg font-semibold text-foreground">{p.enterpriseName}</h3>
+            </div>
+            <div class="mt-4 flex items-baseline gap-1.5">
+              <span class="font-display font-semibold tracking-[-0.01em] leading-none text-[1.75rem] text-foreground">{p.enterprisePrice}</span>
+            </div>
+            <ul class="mt-6 space-y-3">
+              {enterpriseBullets.map((b) => (
+                <li class="flex items-start gap-2.5 text-sm text-foreground-soft">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 mt-0.5 text-muted">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="leading-snug">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-2 flex-1 flex items-end">
+              <a
+                href={ENTERPRISE_CONTACT}
+                data-analytics-event="pricing_plan_selected"
+                data-analytics-plan="custom"
+                class="w-full inline-flex items-center justify-center h-11 rounded-pill font-medium transition-[background-color,transform] duration-200 ease-out-expo active:scale-[0.98] text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3"
+              >
+                {p.enterpriseCta}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="mt-10 flex flex-col gap-2 text-center">
