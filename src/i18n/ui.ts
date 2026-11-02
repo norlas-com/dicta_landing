@@ -232,7 +232,7 @@ const en = {
       },
       sales: {
         q: "How do I contact sales?",
-        a: "Use the contact form on this site: leave a phone number or an email and our team will contact you. You can also write to support@dicta.uz.",
+        a: "Use the contact form on this site: leave a phone number or an email and our team will contact you. You can also write to info@dicta.uz.",
       },
     },
   },
@@ -255,7 +255,7 @@ const en = {
     successTitle: "Thank you, request received.",
     successBody: "Our team will contact you soon.",
     errorInvalid: "Please leave a valid phone number or email so we can reach you.",
-    errorGeneric: "Something went wrong. Please try again or write to support@dicta.uz.",
+    errorGeneric: "Something went wrong. Please try again or write to info@dicta.uz.",
     note: "We will use these details to contact you about your request.",
   },
   // 404 page. One static file serves every locale, so the page carries all of
@@ -950,7 +950,7 @@ const ru: typeof en = {
       },
       sales: {
         q: "Как связаться с отделом продаж?",
-        a: "Воспользуйтесь формой на этом сайте: оставьте телефон или email, и наша команда свяжется с вами. Можно также написать на support@dicta.uz.",
+        a: "Воспользуйтесь формой на этом сайте: оставьте телефон или email, и наша команда свяжется с вами. Можно также написать на info@dicta.uz.",
       },
     },
   },
@@ -972,7 +972,7 @@ const ru: typeof en = {
     successTitle: "Спасибо, заявка получена.",
     successBody: "Наша команда скоро свяжется с вами.",
     errorInvalid: "Оставьте корректный телефон или email, чтобы мы могли связаться с вами.",
-    errorGeneric: "Что-то пошло не так. Попробуйте ещё раз или напишите на support@dicta.uz.",
+    errorGeneric: "Что-то пошло не так. Попробуйте ещё раз или напишите на info@dicta.uz.",
     note: "Мы используем эти данные, чтобы связаться с вами по вашей заявке.",
   },
   notFound: {
@@ -1663,7 +1663,7 @@ const uz: typeof en = {
       },
       sales: {
         q: "Sotuv boʻlimi bilan qanday bogʻlanaman?",
-        a: "Shu saytdagi aloqa formasidan foydalaning: telefon raqamingiz yoki emailingizni qoldiring, jamoamiz siz bilan bogʻlanadi. Shuningdek, support@dicta.uz manziliga yozishingiz mumkin.",
+        a: "Shu saytdagi aloqa formasidan foydalaning: telefon raqamingiz yoki emailingizni qoldiring, jamoamiz siz bilan bogʻlanadi. Shuningdek, info@dicta.uz manziliga yozishingiz mumkin.",
       },
     },
   },
@@ -1685,7 +1685,7 @@ const uz: typeof en = {
     successTitle: "Rahmat, soʻrovingiz qabul qilindi.",
     successBody: "Jamoamiz tez orada siz bilan bogʻlanadi.",
     errorInvalid: "Siz bilan bogʻlanishimiz uchun toʻgʻri telefon yoki email qoldiring.",
-    errorGeneric: "Xatolik yuz berdi. Qayta urinib koʻring yoki support@dicta.uz manziliga yozing.",
+    errorGeneric: "Xatolik yuz berdi. Qayta urinib koʻring yoki info@dicta.uz manziliga yozing.",
     note: "Bu maʼlumotlardan soʻrovingiz yuzasidan siz bilan bogʻlanish uchun foydalanamiz.",
   },
   notFound: {
@@ -2381,7 +2381,7 @@ const ar: typeof en = {
       },
       sales: {
         q: "كيف أتواصل مع فريق المبيعات؟",
-        a: "استخدم نموذج التواصل في هذا الموقع: اترك رقم هاتفك أو بريدك الإلكتروني وسيتواصل معك فريقنا. ويمكنك أيضًا المراسلة على support@dicta.uz.",
+        a: "استخدم نموذج التواصل في هذا الموقع: اترك رقم هاتفك أو بريدك الإلكتروني وسيتواصل معك فريقنا. ويمكنك أيضًا المراسلة على info@dicta.uz.",
       },
     },
   },
@@ -2403,7 +2403,7 @@ const ar: typeof en = {
     successTitle: "شكرًا لك، تم استلام طلبك.",
     successBody: "سيتواصل معك فريقنا قريبًا.",
     errorInvalid: "يُرجى ترك رقم هاتف أو بريد إلكتروني صالح لنتمكّن من التواصل معك.",
-    errorGeneric: "حدث خطأ ما. أعد المحاولة أو راسلنا على support@dicta.uz.",
+    errorGeneric: "حدث خطأ ما. أعد المحاولة أو راسلنا على info@dicta.uz.",
     note: "سنستخدم هذه البيانات للتواصل معك بشأن طلبك.",
   },
   notFound: {
