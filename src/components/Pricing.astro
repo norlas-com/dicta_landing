@@ -58,10 +58,6 @@ const plans = catalog.plans.filter((plan) => plan.id !== "custom").map((plan) =>
   };
 });
 
-const gridCols =
-  plans.length + 1 >= 5
-    ? "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
-    : "sm:grid-cols-2 lg:grid-cols-4";
 const enterpriseBullets = [p.enterpriseMinutes, p.enterpriseMembers, p.enterpriseSupport];
 const ENTERPRISE_CONTACT = "mailto:info@dicta.uz";
 
@@ -147,7 +143,19 @@ const packsUSD = packsLineFor("USD");
       </div>
     </div>
 
-    <div class:list={["mt-10 grid gap-5 items-stretch", gridCols]}>
+    {/* One scrollable row: each card keeps a readable width instead of five
+        columns being squeezed until prices and pills overflow. The edge
+        arrows show there is more (overlay scrollbars hide it on macOS). */}
+    <div class="relative mt-10">
+    <button type="button" aria-hidden="true" tabindex="-1" data-plans-step="-1" hidden
+      class="absolute start-0 top-1/2 z-[2] -ms-14 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-md transition-colors hover:bg-surface-2 lg:[&:not([hidden])]:inline-flex">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rtl:rotate-180"><path d="m15 18-6-6 6-6"></path></svg>
+    </button>
+    <button type="button" aria-hidden="true" tabindex="-1" data-plans-step="1" hidden
+      class="absolute end-0 top-1/2 z-[2] -me-14 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-md transition-colors hover:bg-surface-2 lg:[&:not([hidden])]:inline-flex">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rtl:rotate-180"><path d="m9 18 6-6-6-6"></path></svg>
+    </button>
+    <div data-plans-row class="-mx-2 flex scroll-px-2 snap-x snap-mandatory items-stretch gap-5 overflow-x-auto overscroll-x-contain px-2 pb-4 pt-2">
       {
         [...plans.map((plan) => ({ kind: "plan" as const, plan })), { kind: "enterprise" as const, plan: null }].map((card, i) => {
           const plan = card.plan;
@@ -155,7 +163,7 @@ const packsUSD = packsLineFor("USD");
           const popular = plan?.popular ?? false;
           const bullets = plan ? plan.bullets : enterpriseBullets;
           return (
-            <div class="reveal relative h-full" style={`--rd:${i * 0.08}s`}>
+            <div class="reveal relative w-[264px] shrink-0 snap-start" style={`--rd:${i * 0.08}s`}>
               <div
                 class:list={[
                   "plan-card group relative h-full flex flex-col rounded-panel border bg-surface p-4",
@@ -166,7 +174,7 @@ const packsUSD = packsLineFor("USD");
               >
                 {/* Art tile. The figure is contained with padding so it is never
                     cropped; the tile is a pale backdrop in the tier hue. */}
-                <div class="relative h-40 overflow-hidden rounded-card" style={`background-color:${s.tile}`}>
+                <div class="relative h-28 overflow-hidden rounded-card" style={`background-color:${s.tile}`}>
                   <div class="plan-float h-full w-full py-2" style={`--fd:${i * 0.4}s`}>
                     <img
                       src={s.art}
@@ -177,13 +185,13 @@ const packsUSD = packsLineFor("USD");
                     />
                   </div>
                   {popular && (
-                    <span class:list={["absolute end-2 top-2 inline-flex items-center h-6 px-2.5 rounded-pill text-2xs font-semibold uppercase tracking-[0.1em] shadow-sm", s.primary]}>
+                    <span class:list={["absolute end-2 top-2 inline-flex items-center h-6 px-2.5 max-w-[calc(100%-1rem)] whitespace-nowrap rounded-pill text-2xs font-semibold uppercase tracking-[0.1em] shadow-sm", s.primary]}>
                       {p.popular}
                     </span>
                   )}
                 </div>
 
-                <h3 class:list={["mt-4 font-display text-xl font-medium", s.text]}>
+                <h3 class:list={["mt-3 font-display text-xl font-medium", s.text]}>
                   {plan ? plan.name : p.enterpriseName}
                 </h3>
 
@@ -198,7 +206,7 @@ const packsUSD = packsLineFor("USD");
                         data-usd={plan.usd.amount}
                         class:list={[
                           "font-display font-semibold tracking-[-0.01em] leading-none text-foreground whitespace-nowrap",
-                          plan.isFree ? "text-3xl" : "text-[2.25rem] xl:text-[1.85rem]",
+                          plan.isFree ? "text-3xl" : "text-[2rem]",
                         ]}
                       >
                         {defaultCur === "UZS" ? plan.uzs.amount : plan.usd.amount}
@@ -214,7 +222,7 @@ const packsUSD = packsLineFor("USD");
                       </span>
                     </>
                   ) : (
-                    <span class="font-display font-semibold tracking-[-0.01em] leading-none text-[1.75rem] text-foreground">{p.enterprisePrice}</span>
+                    <span class="font-display font-semibold tracking-[-0.01em] leading-tight text-2xl text-foreground break-words">{p.enterprisePrice}</span>
                   )}
                 </div>
 
@@ -251,6 +259,7 @@ const packsUSD = packsLineFor("USD");
         })
       }
     </div>
+    </div>
 
     <div class="mt-10 flex flex-col gap-2 text-center">
       {
@@ -271,6 +280,28 @@ const packsUSD = packsLineFor("USD");
 <script>
   import { track } from "../lib/analytics";
   document.querySelectorAll("[data-pricing]").forEach((section) => {
+    const row = section.querySelector<HTMLElement>("[data-plans-row]");
+    const steps = section.querySelectorAll<HTMLButtonElement>("[data-plans-step]");
+    if (row) {
+      // RTL scrollLeft runs 0 → negative; its magnitude is the distance from the start.
+      const edges = () => {
+        const from = Math.abs(row.scrollLeft);
+        const max = row.scrollWidth - row.clientWidth;
+        steps.forEach((b) => {
+          b.hidden = b.dataset.plansStep === "1" ? from >= max - 4 : from <= 4;
+        });
+      };
+      steps.forEach((b) =>
+        b.addEventListener("click", () => {
+          const rtl = getComputedStyle(row).direction === "rtl";
+          const dir = Number(b.dataset.plansStep) * (rtl ? -1 : 1);
+          row.scrollBy({ left: dir * row.clientWidth * 0.8, behavior: "smooth" });
+        }),
+      );
+      row.addEventListener("scroll", edges, { passive: true });
+      new ResizeObserver(edges).observe(row);
+      edges();
+    }
     const btns = section.querySelectorAll("[data-cur-btn]");
     const apply = (cur: string) => {
       const key = cur === "UZS" ? "uzs" : "usd";
