@@ -66,40 +66,40 @@ const enterpriseBullets = [p.enterpriseMinutes, p.enterpriseMembers, p.enterpris
 const ENTERPRISE_CONTACT = "mailto:info@dicta.uz";
 
 // Per-tier art and hue, as in the app's Billing tab. Full class literals so
-// Tailwind sees them. `tile` is the mascot image's own backdrop colour, so the
-// bob never shows an edge; `tier` feeds the hover halo.
+// Tailwind sees them. The art is a transparent cut-out, so `tile` is only a
+// pale backdrop in the tier hue; `tier` feeds the hover halo.
 type Slot = "neutral" | "accent" | "business" | "top" | "enterprise";
 const SLOT: Record<Slot, { art: string; tile: string; tier: string; text: string; primary: string }> = {
   neutral: {
-    art: "/plans/mascot-neutral.webp",
+    art: "/plans/plan-neutral.webp",
     tile: "#eeedf9",
     tier: "color-mix(in oklch, var(--color-foreground) 60%, transparent)",
     text: "text-muted",
     primary: "bg-foreground text-background hover:opacity-90",
   },
   accent: {
-    art: "/plans/mascot-accent.webp",
+    art: "/plans/plan-accent.webp",
     tile: "#dfe5f1",
     tier: "var(--color-accent)",
     text: "text-accent",
     primary: "bg-accent text-accent-fg hover:bg-accent-strong",
   },
   business: {
-    art: "/plans/mascot-business.webp",
+    art: "/plans/plan-business.webp",
     tile: "#e9fcf7",
     tier: "var(--color-tier-business)",
     text: "text-tier-business",
     primary: "bg-tier-business text-tier-business-fg hover:bg-tier-business-strong",
   },
   top: {
-    art: "/plans/mascot-top.webp",
+    art: "/plans/plan-top.webp",
     tile: "#faf1e3",
     tier: "var(--color-tier-top)",
     text: "text-tier-top",
     primary: "bg-tier-top text-tier-top-fg hover:bg-tier-top-strong",
   },
   enterprise: {
-    art: "/plans/mascot-enterprise.webp",
+    art: "/plans/plan-enterprise.webp",
     tile: "#cfdae8",
     tier: "color-mix(in oklch, var(--color-accent) 80%, transparent)",
     text: "text-accent",
@@ -164,15 +164,13 @@ const packsUSD = packsLineFor("USD");
                 style={`--tier:${s.tier}`}
                 data-tier={plan ? slotFor(plan.id) : "enterprise"}
               >
-                {/* Mascot tile. The art is contained with padding so it is never
-                    cropped; the tile colour is the image's own backdrop. */}
+                {/* Art tile. The figure is contained with padding so it is never
+                    cropped; the tile is a pale backdrop in the tier hue. */}
                 <div class="relative h-40 overflow-hidden rounded-card" style={`background-color:${s.tile}`}>
                   <div class="plan-float h-full w-full py-2" style={`--fd:${i * 0.4}s`}>
                     <img
                       src={s.art}
                       alt=""
-                      width="640"
-                      height="480"
                       loading="lazy"
                       decoding="async"
                       class="plan-art h-full w-full object-contain"

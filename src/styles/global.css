@@ -333,7 +333,7 @@ html.js .revealed .beat {
 
 /* ---- Pricing plan cards -------------------------------------------------
  * Same look as the app's Billing tab (web PlansGrid): each card is headed by
- * the Dicta mascot on a tile in its own backdrop colour, tinted per tier.
+ * the plan's figure on a pale tile in its tier colour, tinted per tier.
  * Pro reuses the accent; Business is teal, Top is gold. */
 :root,
 .light {
@@ -370,7 +370,7 @@ html.js .revealed .beat {
   transform: scale(1.05);
 }
 
-/* The mascot bobs gently; each card is out of phase via --fd. */
+/* The figure bobs gently; each card is out of phase via --fd. */
 @keyframes plan-float {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -5px; }
