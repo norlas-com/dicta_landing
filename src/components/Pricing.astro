@@ -65,6 +65,51 @@ const gridCols =
 const enterpriseBullets = [p.enterpriseMinutes, p.enterpriseMembers, p.enterpriseSupport];
 const ENTERPRISE_CONTACT = "mailto:info@dicta.uz";
 
+// Per-tier art and hue, as in the app's Billing tab. Full class literals so
+// Tailwind sees them. `tile` is the mascot image's own backdrop colour, so the
+// bob never shows an edge; `tier` feeds the hover halo.
+type Slot = "neutral" | "accent" | "business" | "top" | "enterprise";
+const SLOT: Record<Slot, { art: string; tile: string; tier: string; text: string; primary: string }> = {
+  neutral: {
+    art: "/plans/mascot-neutral.webp",
+    tile: "#eeedf9",
+    tier: "color-mix(in oklch, var(--color-foreground) 60%, transparent)",
+    text: "text-muted",
+    primary: "bg-foreground text-background hover:opacity-90",
+  },
+  accent: {
+    art: "/plans/mascot-accent.webp",
+    tile: "#dfe5f1",
+    tier: "var(--color-accent)",
+    text: "text-accent",
+    primary: "bg-accent text-accent-fg hover:bg-accent-strong",
+  },
+  business: {
+    art: "/plans/mascot-business.webp",
+    tile: "#e9fcf7",
+    tier: "var(--color-tier-business)",
+    text: "text-tier-business",
+    primary: "bg-tier-business text-tier-business-fg hover:bg-tier-business-strong",
+  },
+  top: {
+    art: "/plans/mascot-top.webp",
+    tile: "#faf1e3",
+    tier: "var(--color-tier-top)",
+    text: "text-tier-top",
+    primary: "bg-tier-top text-tier-top-fg hover:bg-tier-top-strong",
+  },
+  enterprise: {
+    art: "/plans/mascot-enterprise.webp",
+    tile: "#cfdae8",
+    tier: "color-mix(in oklch, var(--color-accent) 80%, transparent)",
+    text: "text-accent",
+    primary: "bg-accent text-accent-fg hover:bg-accent-strong",
+  },
+};
+// Plan ids come from the API catalog; an unknown one gets the brand hue.
+const PLAN_SLOT: Record<string, Slot> = { free: "neutral", pro: "accent", business: "business", top: "top" };
+const slotFor = (id: string): Slot => PLAN_SLOT[id] ?? "accent";
+
 const packsUZS = packsLineFor("UZS");
 const packsUSD = packsLineFor("USD");
 ---
@@ -104,55 +149,84 @@ const packsUSD = packsLineFor("USD");
 
     <div class:list={["mt-10 grid gap-5 items-stretch", gridCols]}>
       {
-        plans.map((plan, i) => (
-          <div class:list={["reveal relative h-full", plan.popular && "sm:-my-1"]} style={`--rd:${i * 0.08}s`}>
-            <div
-              class:list={[
-                "relative h-full flex flex-col rounded-panel overflow-hidden transition-transform duration-200 ease-out-expo",
-                plan.popular
-                  ? "border border-accent/40 bg-surface shadow-glow"
-                  : "border border-border bg-surface hover:-translate-y-0.5 hover:shadow-card",
-              ]}
-            >
-              <div class="flex flex-col flex-1 p-6">
-                <div class="flex items-center justify-between gap-2 min-h-[1.75rem]">
-                  <h3 class="text-lg font-semibold text-foreground">{plan.name}</h3>
-                  {plan.popular && (
-                    <span class="inline-flex items-center h-6 px-2.5 rounded-pill bg-accent-soft text-accent text-2xs font-semibold uppercase tracking-[0.1em]">
+        [...plans.map((plan) => ({ kind: "plan" as const, plan })), { kind: "enterprise" as const, plan: null }].map((card, i) => {
+          const plan = card.plan;
+          const s = SLOT[plan ? slotFor(plan.id) : "enterprise"];
+          const popular = plan?.popular ?? false;
+          const bullets = plan ? plan.bullets : enterpriseBullets;
+          return (
+            <div class="reveal relative h-full" style={`--rd:${i * 0.08}s`}>
+              <div
+                class:list={[
+                  "plan-card group relative h-full flex flex-col rounded-panel border bg-surface p-4",
+                  popular ? "plan-glow z-[1] border-transparent" : "border-border",
+                ]}
+                style={`--tier:${s.tier}`}
+                data-tier={plan ? slotFor(plan.id) : "enterprise"}
+              >
+                {/* Mascot tile. The art is contained with padding so it is never
+                    cropped; the tile colour is the image's own backdrop. */}
+                <div class="relative h-40 overflow-hidden rounded-card" style={`background-color:${s.tile}`}>
+                  <div class="plan-float h-full w-full py-2" style={`--fd:${i * 0.4}s`}>
+                    <img
+                      src={s.art}
+                      alt=""
+                      width="640"
+                      height="480"
+                      loading="lazy"
+                      decoding="async"
+                      class="plan-art h-full w-full object-contain"
+                    />
+                  </div>
+                  {popular && (
+                    <span class:list={["absolute end-2 top-2 inline-flex items-center h-6 px-2.5 rounded-pill text-2xs font-semibold uppercase tracking-[0.1em] shadow-sm", s.primary]}>
                       {p.popular}
                     </span>
                   )}
                 </div>
 
-                <div class="mt-4 flex items-baseline gap-1.5">
-                  <span
-                    data-price-amount
-                    data-uzs={plan.uzs.amount}
-                    data-usd={plan.usd.amount}
-                    class:list={[
-                      "font-display font-semibold tracking-[-0.01em] leading-none",
-                      plan.isFree ? "text-3xl text-accent" : "text-[2.25rem] text-foreground",
-                    ]}
-                  >
-                    {defaultCur === "UZS" ? plan.uzs.amount : plan.usd.amount}
-                  </span>
-                  <span
-                    data-price-unit
-                    data-uzs={plan.uzs.unit}
-                    data-usd={plan.usd.unit}
-                    class="text-sm font-medium text-muted"
-                    hidden={(defaultCur === "UZS" ? plan.uzs.unit : plan.usd.unit) === ""}
-                  >
-                    {defaultCur === "UZS" ? plan.uzs.unit : plan.usd.unit}
-                  </span>
+                <h3 class:list={["mt-4 font-display text-xl font-medium", s.text]}>
+                  {plan ? plan.name : p.enterpriseName}
+                </h3>
+
+                <div class="mt-2 flex flex-wrap items-baseline gap-x-1.5 min-h-[2.25rem]">
+                  {plan ? (
+                    <>
+                      {/* dir isolates the space-grouped digits so RTL can't flip "849 000". */}
+                      <span
+                        data-price-amount
+                        dir="ltr"
+                        data-uzs={plan.uzs.amount}
+                        data-usd={plan.usd.amount}
+                        class:list={[
+                          "font-display font-semibold tracking-[-0.01em] leading-none text-foreground whitespace-nowrap",
+                          plan.isFree ? "text-3xl" : "text-[2.25rem] xl:text-[1.85rem]",
+                        ]}
+                      >
+                        {defaultCur === "UZS" ? plan.uzs.amount : plan.usd.amount}
+                      </span>
+                      <span
+                        data-price-unit
+                        data-uzs={plan.uzs.unit}
+                        data-usd={plan.usd.unit}
+                        class="text-sm font-medium text-muted"
+                        hidden={(defaultCur === "UZS" ? plan.uzs.unit : plan.usd.unit) === ""}
+                      >
+                        {defaultCur === "UZS" ? plan.uzs.unit : plan.usd.unit}
+                      </span>
+                    </>
+                  ) : (
+                    <span class="font-display font-semibold tracking-[-0.01em] leading-none text-[1.75rem] text-foreground">{p.enterprisePrice}</span>
+                  )}
                 </div>
 
-                <p class="mt-2 text-sm text-muted-soft font-sans tabular-nums">{plan.minutesLabel}</p>
+                {/* Always laid out (blank for Enterprise) so the lists line up. */}
+                <p class="mt-2 h-[1.35rem] text-sm text-muted-soft font-sans tabular-nums">{plan?.minutesLabel}</p>
 
-                <ul class="mt-6 space-y-3">
-                  {plan.bullets.map((b) => (
+                <ul class="mt-5 space-y-3">
+                  {bullets.map((b) => (
                     <li class="flex items-start gap-2.5 text-sm text-foreground-soft">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class:list={["shrink-0 mt-0.5", plan.popular ? "text-accent" : "text-muted"]}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class:list={["shrink-0 mt-0.5", s.text]}>
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                       <span class="leading-snug">{b}</span>
@@ -162,56 +236,22 @@ const packsUSD = packsLineFor("USD");
 
                 <div class="mt-6 pt-2 flex-1 flex items-end">
                   <a
-                    href={appUrl("/sign-up")}
+                    href={plan ? appUrl("/sign-up") : ENTERPRISE_CONTACT}
                     data-analytics-event="pricing_plan_selected"
-                    data-analytics-plan={plan.id}
+                    data-analytics-plan={plan ? plan.id : "custom"}
                     class:list={[
-                      "w-full inline-flex items-center justify-center h-11 rounded-pill font-medium transition-[background-color,transform] duration-200 ease-out-expo active:scale-[0.98]",
-                      plan.popular
-                        ? "bg-accent text-accent-fg shadow-glow hover:bg-accent-strong"
-                        : "text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3",
+                      "w-full inline-flex items-center justify-center h-11 rounded-pill font-medium transition-[background-color,opacity,transform] duration-200 ease-out-expo active:scale-[0.98]",
+                      plan ? [s.primary, "shadow-sm"] : "text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3",
                     ]}
                   >
-                    {p.cta}
+                    {plan ? p.cta : p.enterpriseCta}
                   </a>
                 </div>
               </div>
             </div>
-          </div>
-        ))
+          );
+        })
       }
-      <div class="reveal relative h-full" style={`--rd:${plans.length * 0.08}s`}>
-        <div class="relative h-full flex flex-col rounded-panel overflow-hidden border border-border bg-surface hover:-translate-y-0.5 hover:shadow-card transition-transform duration-200 ease-out-expo">
-          <div class="flex flex-col flex-1 p-6">
-            <div class="flex items-center justify-between gap-2 min-h-[1.75rem]">
-              <h3 class="text-lg font-semibold text-foreground">{p.enterpriseName}</h3>
-            </div>
-            <div class="mt-4 flex items-baseline gap-1.5">
-              <span class="font-display font-semibold tracking-[-0.01em] leading-none text-[1.75rem] text-foreground">{p.enterprisePrice}</span>
-            </div>
-            <ul class="mt-6 space-y-3">
-              {enterpriseBullets.map((b) => (
-                <li class="flex items-start gap-2.5 text-sm text-foreground-soft">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 mt-0.5 text-muted">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span class="leading-snug">{b}</span>
-                </li>
-              ))}
-            </ul>
-            <div class="mt-6 pt-2 flex-1 flex items-end">
-              <a
-                href={ENTERPRISE_CONTACT}
-                data-analytics-event="pricing_plan_selected"
-                data-analytics-plan="custom"
-                class="w-full inline-flex items-center justify-center h-11 rounded-pill font-medium transition-[background-color,transform] duration-200 ease-out-expo active:scale-[0.98] text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3"
-              >
-                {p.enterpriseCta}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="mt-10 flex flex-col gap-2 text-center">

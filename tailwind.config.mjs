@@ -54,6 +54,17 @@ export default {
         success: "color-mix(in oklch, var(--color-success) calc(<alpha-value> * 100%), transparent)",
         warning: "color-mix(in oklch, var(--color-warning) calc(<alpha-value> * 100%), transparent)",
 
+        "tier-business": {
+          DEFAULT: "color-mix(in oklch, var(--color-tier-business) calc(<alpha-value> * 100%), transparent)",
+          strong: "color-mix(in oklch, var(--color-tier-business-strong) calc(<alpha-value> * 100%), transparent)",
+          fg: "color-mix(in oklch, var(--color-tier-business-fg) calc(<alpha-value> * 100%), transparent)",
+        },
+        "tier-top": {
+          DEFAULT: "color-mix(in oklch, var(--color-tier-top) calc(<alpha-value> * 100%), transparent)",
+          strong: "color-mix(in oklch, var(--color-tier-top-strong) calc(<alpha-value> * 100%), transparent)",
+          fg: "color-mix(in oklch, var(--color-tier-top-fg) calc(<alpha-value> * 100%), transparent)",
+        },
+
         "platform-meet": "color-mix(in oklch, var(--color-platform-meet) calc(<alpha-value> * 100%), transparent)",
         "platform-zoom": "color-mix(in oklch, var(--color-platform-zoom) calc(<alpha-value> * 100%), transparent)",
         "platform-teams": "color-mix(in oklch, var(--color-platform-teams) calc(<alpha-value> * 100%), transparent)",
