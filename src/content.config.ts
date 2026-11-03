@@ -8,6 +8,7 @@ import { TOPICS } from "./lib/blog-topics";
 // versions of one article together (hreflang + the "also available in" links).
 // `topic` is the one section a post is filed under (/blog/topic/<topic>); the
 // list lives in src/lib/blog-topics.ts so the index chips and routes share it.
+// `faq` mirrors a post's visible FAQ section and becomes FAQPage JSON-LD.
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
@@ -23,6 +24,7 @@ const blog = defineCollection({
     cover: z.string().optional(),
     coverAlt: z.string().optional(),
     draft: z.boolean().default(false),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
   }),
 });
 

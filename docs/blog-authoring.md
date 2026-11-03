@@ -50,12 +50,13 @@ Text. **Bold**, [a link](/download), lists:
 | `updated` | Optional date, shown when you revise an old post. |
 | `cover` | Optional image path, e.g. `/og/meeting.png` (file must exist in `public/`). |
 | `draft` | `true` hides the post everywhere. |
+| `faq` | Optional list of `{ q, a }` pairs copied from the post's FAQ section. Adds FAQPage data for Google. Keep the questions visible in the text too. |
 
 ## Writing tips
 
 - Use `##` for section headings and `###` for sub-sections. Never `#`.
 - 700 to 1000 words works well. Reading time is calculated automatically.
-- Link to other pages with relative paths such as `/download` or `/faq` (add `/ru` or `/en` for those languages).
+- Link to other pages with relative paths such as `/download` or `/faq` (add `/ru` or `/en` for those languages). Write links the dicta.uz way: on dicta.live the build drops the `/en` prefix and points `meet.dicta.uz` at `meet.dicta.live` by itself.
 - Do not invent features, prices or customers. Check facts with the product team.
 - Which posts appear where: dicta.uz shows `uz`, `ru`, `en`; dicta.live shows `en`, `ar`, `ru`. A post in a language a site does not ship is simply not published there.
 

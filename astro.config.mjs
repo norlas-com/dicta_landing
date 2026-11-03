@@ -36,6 +36,26 @@ const flatSitemap = {
   },
 };
 
+/**
+ * Blog posts are written once and built for both sites, so their links name
+ * the dicta.uz layout: `/en/...` for English, `meet.dicta.uz` for the app.
+ * On a site whose default locale is English (dicta.live), `/en/...` does not
+ * exist, and the app lives on that site's own host. Rewrite both at build.
+ */
+function rehypeSiteLinks() {
+  const prefix = `/${SITE.defaultLocale}/`;
+  /** @param {any} node */
+  const walk = (node) => {
+    const href = node.type === "element" && node.tagName === "a" ? node.properties?.href : undefined;
+    if (typeof href === "string") {
+      if (href.startsWith(prefix)) node.properties.href = href.slice(prefix.length - 1);
+      else node.properties.href = href.replace("https://meet.dicta.uz", `https://${SITE.appHost}`);
+    }
+    node.children?.forEach(walk);
+  };
+  return walk;
+}
+
 // Region-neutral `ar`: the global site targets the whole Arabic-speaking
 // market, and an ar-SA here would tell search engines otherwise.
 /** @type {Record<string, string>} */
@@ -51,6 +71,7 @@ export default defineConfig({
   // match the domain this build is served from. See site.config.mjs.
   site: SITE.url,
   trailingSlash: "ignore",
+  markdown: { rehypePlugins: [rehypeSiteLinks] },
   // Home-page photography (src/lib/photos.ts) is fetched and re-encoded at
   // build time, then served from this site.
   image: { domains: ["images.unsplash.com"] },

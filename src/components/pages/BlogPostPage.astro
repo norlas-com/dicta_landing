@@ -74,6 +74,19 @@ const jsonLd = [
       { "@type": "ListItem", position: 4, name: post.data.title, item: url },
     ],
   },
+  ...(post.data.faq.length > 0
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.data.faq.map(({ q, a }) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        },
+      ]
+    : []),
 ];
 ---
 
