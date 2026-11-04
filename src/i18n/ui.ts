@@ -138,7 +138,7 @@ const en = {
     eyebrow: "Pricing",
     headingPre: "Start free.",
     headingAccent: "Upgrade only if you need to.",
-    sub: "Every team runs on a generous free tier. Move to a paid plan when you want more minutes, storage, and history.",
+    sub: "Meetings are free on every plan, with no time limit. Plans differ in minutes of recording, transcription and AI, plus storage and history.",
     currencyLabel: "Currency",
     currencyUzs: "UZS",
     currencyUsd: "USD",
@@ -150,7 +150,9 @@ const en = {
     enterpriseMembers: "Unlimited team members",
     enterpriseSupport: "Dedicated support",
     enterpriseCta: "Contact us",
-    minutes: "{min} min/mo",
+    minutes: "{min} min of recording & AI / mo",
+    // First row on every plan card: online meetings are free and unlimited.
+    meetingsFree: "Meetings — free, unlimited",
     bulletStorage: "{gb} GB storage",
     bulletRetentionForever: "Keep history forever",
     bulletRetentionDays: "{days}-day history",
@@ -161,7 +163,7 @@ const en = {
     },
     popular: "Most popular",
     cta: "Get started free",
-    packsLine: "Need more? One-time minute packs from {price} — they never expire.",
+    packsLine: "Need more recording & AI minutes? One-time packs from {price} — they never expire.",
     reassurance: "Every plan starts free. No card required.",
     vatNote: "Prices are VAT-exempt — the seller is an IT Park resident.",
   },
@@ -214,10 +216,16 @@ const en = {
       },
       limits: {
         q: "How do free minutes and limits work?",
-        a: "Every team starts on the Free plan: {free} minutes per month, no card required. Paid plans raise the limit: {paid}. Plans also set storage and how long history is kept. Need more minutes? One-time minute packs never expire.",
+        a: "Meetings are free on every plan, with no time limit. Minutes are spent only on recording, transcription and AI summaries: the Free plan includes {free} minutes per month, no card required. Paid plans raise the limit: {paid}. Plans also set storage and how long history is kept. Need more minutes? One-time minute packs never expire.",
       },
       limitsNoCatalog:
-        "Every plan starts free, with no card required. Paid plans raise the monthly minutes, storage and history. Need more minutes? One-time minute packs never expire.",
+        "Meetings are free on every plan, with no time limit. Minutes are spent only on recording, transcription and AI summaries. Every plan starts free, with no card required; paid plans raise the monthly minutes, storage and history. Need more minutes? One-time minute packs never expire.",
+      meetingsFree: {
+        q: "Are meetings in Dicta free?",
+        a: "Yes. Online meetings are free on every plan, with no time limit. Only premium features have a limit: recording, transcription and AI summaries — {free} minutes a month on Free.",
+      },
+      meetingsFreeNoCatalog:
+        "Yes. Online meetings are free on every plan, with no time limit. Only premium features have a limit: recording, transcription and AI summaries, counted in minutes per month.",
       pay: {
         q: "How do we pay, and does it renew automatically?",
         a: "Paid plans are paid online in Uzbek sum (UZS), by bank card or from an Uzbek e-wallet (Payme, Click, Uzum, Alif, Anorbank, Xazna) through the Multicard gateway. Dicta never sees or stores your card details, and a fiscal receipt is issued for every payment. Renewal is manual, with no auto-renewal: when the paid period ends the account returns to the free plan, and we email a reminder first. If your company needs a separate contract, request it at legal@dicta.uz.",
@@ -860,7 +868,7 @@ const ru: typeof en = {
     eyebrow: "Цены",
     headingPre: "Начните бесплатно.",
     headingAccent: "Переходите на платный по мере роста.",
-    sub: "Каждая команда работает на щедром бесплатном тарифе. Переходите на платный, когда нужно больше минут, места и истории.",
+    sub: "Встречи бесплатны на любом тарифе и без ограничения по времени. Тарифы отличаются минутами записи, расшифровки и AI, а также хранилищем и историей.",
     currencyLabel: "Валюта",
     currencyUzs: "UZS",
     currencyUsd: "USD",
@@ -872,7 +880,9 @@ const ru: typeof en = {
     enterpriseMembers: "Неограниченное число участников",
     enterpriseSupport: "Выделенная поддержка",
     enterpriseCta: "Связаться с нами",
-    minutes: "{min} мин/мес",
+    minutes: "{min} мин записи и AI / мес",
+    // First row on every plan card: online meetings are free and unlimited.
+    meetingsFree: "Встречи — бесплатно, без лимита",
     bulletStorage: "{gb} ГБ хранилища",
     bulletRetentionForever: "История хранится вечно",
     bulletRetentionDays: "История за {days} дней",
@@ -883,7 +893,7 @@ const ru: typeof en = {
     },
     popular: "Самый популярный",
     cta: "Начать бесплатно",
-    packsLine: "Нужно больше? Разовые пакеты минут от {price} — они не сгорают.",
+    packsLine: "Нужно больше минут записи и AI? Разовые пакеты от {price} — они не сгорают.",
     reassurance: "Любой тариф начинается бесплатно. Карта не нужна.",
     vatNote: "Цены не облагаются НДС — продавец является резидентом IT Park.",
   },
@@ -932,10 +942,16 @@ const ru: typeof en = {
       },
       limits: {
         q: "Как работают бесплатные минуты и лимиты?",
-        a: "Каждая команда начинает с тарифа Free: {free} минут в месяц, карта не нужна. Платные тарифы увеличивают лимит: {paid}. Тарифы также определяют объём хранилища и срок хранения истории. Нужно больше минут? Разовые пакеты минут не сгорают.",
+        a: "Встречи бесплатны на любом тарифе и без ограничения по времени. Минуты тратятся только на запись, расшифровку и AI-итоги: на тарифе Free это {free} минут в месяц, карта не нужна. Платные тарифы увеличивают лимит: {paid}. Тарифы также определяют объём хранилища и срок хранения истории. Нужно больше минут? Разовые пакеты минут не сгорают.",
       },
       limitsNoCatalog:
-        "Любой тариф начинается бесплатно, карта не нужна. Платные тарифы увеличивают месячные минуты, хранилище и историю. Нужно больше минут? Разовые пакеты минут не сгорают.",
+        "Встречи бесплатны на любом тарифе и без ограничения по времени. Минуты тратятся только на запись, расшифровку и AI-итоги. Любой тариф начинается бесплатно, карта не нужна; платные тарифы увеличивают месячные минуты, хранилище и историю. Нужно больше минут? Разовые пакеты минут не сгорают.",
+      meetingsFree: {
+        q: "Встречи в Dicta бесплатные?",
+        a: "Да. Онлайн-встречи бесплатны на любом тарифе и без ограничения по времени. Лимит есть только на премиум-функции: запись, расшифровку и AI-итоги — на Free это {free} минут в месяц.",
+      },
+      meetingsFreeNoCatalog:
+        "Да. Онлайн-встречи бесплатны на любом тарифе и без ограничения по времени. Лимит есть только на премиум-функции: запись, расшифровку и AI-итоги — он считается в минутах в месяц.",
       pay: {
         q: "Как оплатить и продлевается ли подписка автоматически?",
         a: "Платные тарифы оплачиваются онлайн в узбекских сумах (UZS) банковской картой или из узбекского электронного кошелька (Payme, Click, Uzum, Alif, Anorbank, Xazna) через платёжный шлюз Multicard. Dicta не видит и не хранит данные вашей карты, а за каждый платёж выдаётся фискальный чек. Продление ручное, автопродления нет: когда оплаченный период заканчивается, аккаунт возвращается на бесплатный тариф, а перед этим мы отправляем напоминание по почте. Если вашей компании нужен отдельный договор, запросите его по адресу legal@dicta.uz.",
@@ -1573,7 +1589,7 @@ const uz: typeof en = {
     eyebrow: "Narxlar",
     headingPre: "Bepuldan boshlang.",
     headingAccent: "Kerak boʻlsa kengaytiring.",
-    sub: "Har bir jamoa saxiy bepul rejadan foydalanadi. Koʻproq daqiqa, joy va tarix kerak boʻlganda toʻlovli rejaga oʻting.",
+    sub: "Uchrashuvlar har qanday tarifda bepul va vaqt cheklovisiz. Tariflar yozuv, transkripsiya va AI daqiqalari, shuningdek xotira va tarix bilan farqlanadi.",
     currencyLabel: "Valyuta",
     currencyUzs: "UZS",
     currencyUsd: "USD",
@@ -1585,7 +1601,9 @@ const uz: typeof en = {
     enterpriseMembers: "Cheksiz a’zolar",
     enterpriseSupport: "Shaxsiy yordam",
     enterpriseCta: "Biz bilan bog‘lanish",
-    minutes: "Oyiga {min} daqiqa",
+    minutes: "Oyiga {min} daqiqa yozuv va AI",
+    // First row on every plan card: online meetings are free and unlimited.
+    meetingsFree: "Uchrashuvlar — bepul, cheksiz",
     bulletStorage: "{gb} GB xotira",
     bulletRetentionForever: "Tarix abadiy saqlanadi",
     bulletRetentionDays: "{days} kunlik tarix",
@@ -1596,7 +1614,7 @@ const uz: typeof en = {
     },
     popular: "Eng mashhur",
     cta: "Bepul boshlash",
-    packsLine: "Koʻproq kerakmi? Bir martalik daqiqa paketlari {price} dan — ular hech qachon eskirmaydi.",
+    packsLine: "Koʻproq yozuv va AI daqiqalari kerakmi? Bir martalik paketlar {price} dan — ular hech qachon eskirmaydi.",
     reassurance: "Har bir reja bepul boshlanadi. Karta talab qilinmaydi.",
     vatNote: "Narxlarga QQS solinmaydi — sotuvchi IT Park rezidenti.",
   },
@@ -1645,10 +1663,16 @@ const uz: typeof en = {
       },
       limits: {
         q: "Bepul daqiqalar va limitlar qanday ishlaydi?",
-        a: "Har bir jamoa Free rejadan boshlaydi: oyiga {free} daqiqa, karta shart emas. Pullik rejalar limitni oshiradi: {paid}. Rejalar xotira hajmini va tarix qancha saqlanishini ham belgilaydi. Koʻproq daqiqa kerakmi? Bir martalik daqiqa paketlari hech qachon eskirmaydi.",
+        a: "Uchrashuvlar har qanday tarifda bepul va vaqt cheklovisiz. Daqiqalar faqat yozib olish, transkripsiya va AI xulosalarga sarflanadi: Free rejada oyiga {free} daqiqa, karta shart emas. Pullik rejalar limitni oshiradi: {paid}. Rejalar xotira hajmini va tarix qancha saqlanishini ham belgilaydi. Koʻproq daqiqa kerakmi? Bir martalik daqiqa paketlari hech qachon eskirmaydi.",
       },
       limitsNoCatalog:
-        "Har bir reja bepul boshlanadi, karta shart emas. Pullik rejalar oylik daqiqalar, xotira va tarixni oshiradi. Koʻproq daqiqa kerakmi? Bir martalik daqiqa paketlari hech qachon eskirmaydi.",
+        "Uchrashuvlar har qanday tarifda bepul va vaqt cheklovisiz. Daqiqalar faqat yozib olish, transkripsiya va AI xulosalarga sarflanadi. Har bir reja bepul boshlanadi, karta shart emas; pullik rejalar oylik daqiqalar, xotira va tarixni oshiradi. Koʻproq daqiqa kerakmi? Bir martalik daqiqa paketlari hech qachon eskirmaydi.",
+      meetingsFree: {
+        q: "Dictada uchrashuvlar bepulmi?",
+        a: "Ha. Onlayn uchrashuvlar har qanday tarifda bepul va vaqt cheklovisiz. Limit faqat premium funksiyalarga qoʻyiladi: yozib olish, transkripsiya va AI xulosalar — Free rejada oyiga {free} daqiqa.",
+      },
+      meetingsFreeNoCatalog:
+        "Ha. Onlayn uchrashuvlar har qanday tarifda bepul va vaqt cheklovisiz. Limit faqat premium funksiyalarga qoʻyiladi: yozib olish, transkripsiya va AI xulosalar, u oylik daqiqalarda hisoblanadi.",
       pay: {
         q: "Qanday toʻlanadi va obuna avtomatik yangilanadimi?",
         a: "Pullik rejalar onlayn, oʻzbek soʻmida (UZS), bank kartasi yoki oʻzbek elektron hamyoni (Payme, Click, Uzum, Alif, Anorbank, Xazna) orqali Multicard shlyuzi bilan toʻlanadi. Dicta karta maʼlumotlaringizni koʻrmaydi va saqlamaydi, har bir toʻlov uchun fiskal chek beriladi. Yangilash qoʻlda, avtomatik yangilanish yoʻq: toʻlangan davr tugagach hisob bepul rejaga qaytadi, bundan oldin esa pochtaga eslatma yuboramiz. Kompaniyangizga alohida shartnoma kerak boʻlsa, uni legal@dicta.uz manzilidan soʻrang.",
@@ -2291,7 +2315,7 @@ const ar: typeof en = {
     eyebrow: "الأسعار",
     headingPre: "ابدأ مجانًا.",
     headingAccent: "لا تُرقِّ إلا إن احتجت.",
-    sub: "كل فريق يعمل ضمن باقة مجانية سخية. وانتقل إلى باقة مدفوعة عندما تريد دقائق وتخزينًا وسجلًا أكثر.",
+    sub: "الاجتماعات مجانية في كل باقة وبلا حد زمني. تختلف الباقات في دقائق التسجيل والتفريغ النصي والذكاء الاصطناعي، وفي التخزين والسجل.",
     currencyLabel: "العملة",
     currencyUzs: "سوم",
     currencyUsd: "دولار أمريكي",
@@ -2303,7 +2327,9 @@ const ar: typeof en = {
     enterpriseMembers: "أعضاء غير محدودين",
     enterpriseSupport: "دعم مخصص",
     enterpriseCta: "تواصل معنا",
-    minutes: "{min} دقيقة شهريًا",
+    minutes: "{min} دقيقة تسجيل وذكاء اصطناعي شهريًا",
+    // First row on every plan card: online meetings are free and unlimited.
+    meetingsFree: "الاجتماعات — مجانية وبلا حدود",
     bulletStorage: "{gb} غيغابايت تخزين",
     bulletRetentionForever: "الاحتفاظ بالسجل إلى الأبد",
     bulletRetentionDays: "سجل لمدة {days} يومًا",
@@ -2314,7 +2340,7 @@ const ar: typeof en = {
     },
     popular: "الأكثر رواجًا",
     cta: "ابدأ مجانًا",
-    packsLine: "تحتاج المزيد؟ باقات دقائق لمرة واحدة ابتداءً من {price}، ولا تنتهي صلاحيتها.",
+    packsLine: "تحتاج المزيد من دقائق التسجيل والذكاء الاصطناعي؟ باقات لمرة واحدة ابتداءً من {price}، ولا تنتهي صلاحيتها.",
     reassurance: "كل باقة تبدأ مجانًا. ولا حاجة إلى بطاقة.",
     vatNote: "الأسعار معفاة من ضريبة القيمة المضافة، فالبائع مقيم في IT Park.",
   },
@@ -2363,10 +2389,16 @@ const ar: typeof en = {
       },
       limits: {
         q: "كيف تعمل الدقائق المجانية والحدود؟",
-        a: "يبدأ كل فريق بالباقة المجانية Free: {free} دقيقة شهريًا دون الحاجة إلى بطاقة. وترفع الباقات المدفوعة الحد: {paid}. كما تحدد الباقات مساحة التخزين ومدة الاحتفاظ بالسجل. تحتاج دقائق أكثر؟ باقات الدقائق لمرة واحدة لا تنتهي صلاحيتها.",
+        a: "الاجتماعات مجانية في كل باقة وبلا حد زمني. تُستهلك الدقائق فقط في التسجيل والتفريغ النصي وملخصات الذكاء الاصطناعي: تتضمن الباقة المجانية Free {free} دقيقة شهريًا دون الحاجة إلى بطاقة. وترفع الباقات المدفوعة الحد: {paid}. كما تحدد الباقات مساحة التخزين ومدة الاحتفاظ بالسجل. تحتاج دقائق أكثر؟ باقات الدقائق لمرة واحدة لا تنتهي صلاحيتها.",
       },
       limitsNoCatalog:
-        "كل باقة تبدأ مجانًا دون الحاجة إلى بطاقة. وترفع الباقات المدفوعة الدقائق الشهرية والتخزين والسجل. تحتاج دقائق أكثر؟ باقات الدقائق لمرة واحدة لا تنتهي صلاحيتها.",
+        "الاجتماعات مجانية في كل باقة وبلا حد زمني. تُستهلك الدقائق فقط في التسجيل والتفريغ النصي وملخصات الذكاء الاصطناعي. كل باقة تبدأ مجانًا دون الحاجة إلى بطاقة، وترفع الباقات المدفوعة الدقائق الشهرية والتخزين والسجل. تحتاج دقائق أكثر؟ باقات الدقائق لمرة واحدة لا تنتهي صلاحيتها.",
+      meetingsFree: {
+        q: "هل الاجتماعات في Dicta مجانية؟",
+        a: "نعم. الاجتماعات عبر الإنترنت مجانية في كل باقة وبلا حد زمني. الحد مفروض فقط على الميزات المميزة: التسجيل والتفريغ النصي وملخصات الذكاء الاصطناعي — {free} دقيقة شهريًا في الباقة المجانية.",
+      },
+      meetingsFreeNoCatalog:
+        "نعم. الاجتماعات عبر الإنترنت مجانية في كل باقة وبلا حد زمني. الحد مفروض فقط على الميزات المميزة: التسجيل والتفريغ النصي وملخصات الذكاء الاصطناعي، ويُحسب بالدقائق شهريًا.",
       pay: {
         q: "كيف ندفع، وهل يتجدد الاشتراك تلقائيًا؟",
         a: "تُدفع الباقات المدفوعة عبر الإنترنت. التجديد يدوي ولا يوجد تجديد تلقائي: عندما تنتهي الفترة المدفوعة يعود الحساب إلى الباقة المجانية، ونرسل تذكيرًا بالبريد الإلكتروني قبل ذلك.",

@@ -9,6 +9,7 @@ import type { BillingCatalog } from "./catalog";
 
 export type FaqKey =
   | "what"
+  | "meetingsFree"
   | "rooms"
   | "bot"
   | "desktop"
@@ -24,6 +25,7 @@ export type FaqKey =
 /** Full /faq order. */
 export const FAQ_KEYS: readonly FaqKey[] = [
   "what",
+  "meetingsFree",
   "rooms",
   "bot",
   "desktop",
@@ -37,8 +39,10 @@ export const FAQ_KEYS: readonly FaqKey[] = [
   "sales",
 ];
 
-/** The five a first-time visitor needs, for the home page block. */
-export const FAQ_HOME_KEYS: readonly FaqKey[] = ["what", "rooms", "bot", "limits", "privacy"];
+/** What a first-time visitor needs, for the home page block. "Are meetings
+ *  free?" sits right after "what": people read "60 min/month" as a call-time
+ *  cap, and it is not one. */
+export const FAQ_HOME_KEYS: readonly FaqKey[] = ["what", "meetingsFree", "rooms", "bot", "limits", "privacy"];
 
 export interface FaqItem {
   key: FaqKey;
@@ -70,9 +74,11 @@ export function faqItems(
   // Without a catalog the Pricing section is not rendered, so there is nothing
   // for the "see pricing" link to land on.
   let limits = f.q.limitsNoCatalog;
+  let meetingsFree = f.q.meetingsFreeNoCatalog;
   if (catalog) {
     const free = catalog.plans.find((p) => p.id === "free");
     const paid = catalog.plans.filter((p) => p.id !== "free");
+    if (free) meetingsFree = f.q.meetingsFree.a.replace("{free}", String(free.minutes));
     if (free && paid.length > 0) {
       limits = f.q.limits.a
         .replace("{free}", String(free.minutes))
@@ -85,11 +91,12 @@ export function faqItems(
     }
   }
 
+  // Answers filled from the catalog; the rest are used as written.
+  const filled: Partial<Record<FaqKey, string>> = { limits, meetingsFree };
+
   return keys.map((key) => {
-    const entry = f.q[key];
-    const a = key === "limits" ? limits : (entry as { a: string }).a;
-    const q = key === "limits" ? f.q.limits.q : (entry as { q: string }).q;
-    return { key, q, a, more: more[key] };
+    const entry = f.q[key] as { q: string; a: string };
+    return { key, q: entry.q, a: filled[key] ?? entry.a, more: more[key] };
   });
 }
 

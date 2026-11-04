@@ -42,6 +42,7 @@ const currencies: ("UZS" | "USD")[] = ["UZS", "USD"];
 const plans = catalog.plans.filter((plan) => plan.id !== "custom").map((plan) => {
   const isFree = plan.prices.USD === 0 && plan.prices.UZS === 0;
   const bullets = [
+    p.meetingsFree,
     p.bulletStorage.replace("{gb}", String(plan.storage_gb)),
     plan.retention_days == null
       ? p.bulletRetentionForever
@@ -58,7 +59,7 @@ const plans = catalog.plans.filter((plan) => plan.id !== "custom").map((plan) =>
   };
 });
 
-const enterpriseBullets = [p.enterpriseMinutes, p.enterpriseMembers, p.enterpriseSupport];
+const enterpriseBullets = [p.meetingsFree, p.enterpriseMinutes, p.enterpriseMembers, p.enterpriseSupport];
 const ENTERPRISE_CONTACT = "mailto:info@dicta.uz";
 
 // Per-tier art and hue, as in the app's Billing tab. Full class literals so
@@ -227,7 +228,7 @@ const packsUSD = packsLineFor("USD");
                 </div>
 
                 {/* Always laid out (blank for Enterprise) so the lists line up. */}
-                <p class="mt-2 h-[1.35rem] text-sm text-muted-soft font-sans tabular-nums">{plan?.minutesLabel}</p>
+                <p class="mt-2 min-h-[1.35rem] text-sm text-muted-soft font-sans tabular-nums">{plan?.minutesLabel}</p>
 
                 <ul class="mt-5 space-y-3">
                   {bullets.map((b) => (
