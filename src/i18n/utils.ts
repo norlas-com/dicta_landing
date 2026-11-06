@@ -58,13 +58,26 @@ export function t(locale: Locale) {
 
 /**
  * Build a locale-aware internal path. uz is unprefixed; ru/en get their prefix.
- *   localePath("/download", "ru") -> "/ru/download"
+ *   localePath("/download", "ru") -> "/ru/download/"
  *   localePath("/", "uz")         -> "/"
  */
 export function localePath(path: string, locale: Locale): string {
   const clean = path === "/" ? "" : path.replace(/^\/+/, "/");
-  if (locale === DEFAULT_LOCALE) return clean === "" ? "/" : clean;
-  return clean === "" ? `/${locale}` : `/${locale}${clean}`;
+  if (locale === DEFAULT_LOCALE) return clean === "" ? "/" : withSlash(clean);
+  return clean === "" ? `/${locale}/` : withSlash(`/${locale}${clean}`);
+}
+
+/**
+ * Cloudflare Pages serves every page as a directory and 308s `/pricing` to
+ * `/pricing/`. Internal links name the slashed URL so crawlers and visitors
+ * skip the redirect hop. Files (`/blog/rss.xml`) and `?`/`#` suffixes keep
+ * their shape; the slash goes before the suffix.
+ */
+export function withSlash(href: string): string {
+  const m = href.match(/^([^?#]*)(.*)$/)!;
+  const [pathPart, suffix] = [m[1], m[2]];
+  if (pathPart === "" || pathPart.endsWith("/") || /\.[a-z0-9]+$/i.test(pathPart)) return href;
+  return `${pathPart}/${suffix}`;
 }
 
 /** Same page in another locale, given the current pathname (for the switcher + hreflang). */

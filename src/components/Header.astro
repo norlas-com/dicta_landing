@@ -11,8 +11,11 @@ import { navExtra } from "../i18n/nav-extra";
 interface Props {
   locale: Locale;
   path: string;
+  /** Per-locale targets for pages that do not exist in every locale (blog
+   *  topics); a locale missing here falls back to the same bare path. */
+  switchPaths?: Partial<Record<Locale, string>>;
 }
-const { locale, path } = Astro.props;
+const { locale, path, switchPaths } = Astro.props;
 const d = t(locale);
 const home = localePath("/", locale);
 const nx = navExtra[locale];
@@ -82,7 +85,7 @@ const menuLinks = [
       </a>
 
       <div class="hidden sm:block">
-        <LanguageSwitcher locale={locale} path={path} />
+        <LanguageSwitcher locale={locale} path={path} switchPaths={switchPaths} />
       </div>
       <ThemeToggle />
 
@@ -176,7 +179,7 @@ const menuLinks = [
           LOCALES.map((code) => (
             <li>
               <a
-                href={switchLocalePath(path, code)}
+                href={switchPaths?.[code] ?? switchLocalePath(path, code)}
                 hreflang={code}
                 lang={code}
                 data-set-locale={code}

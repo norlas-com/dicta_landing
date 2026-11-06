@@ -1,5 +1,5 @@
 ---
-import type { Locale } from "../../i18n/ui";
+import { LOCALES, type Locale } from "../../i18n/ui";
 import { localePath } from "../../i18n/utils";
 import { blogCopy } from "../../i18n/pages/blog";
 import {
@@ -39,14 +39,18 @@ const description = topic ? c.topicDescription(c.topics[topic]) : c.indexDescrip
 // A topic page exists only in languages that have posts in it, so hreflang
 // must list just those (the default "every locale" set would point at 404s).
 let alternates: Partial<Record<Locale, string>> | undefined;
+// The language switcher follows the same rule: a language without this topic
+// goes to its blog index rather than to a page that was never built.
+let switchPaths: Partial<Record<Locale, string>> | undefined;
 if (topic) {
   alternates = {};
   for (const p of await sitePosts()) if (p.data.topic === topic) alternates[p.data.lang] = topicPath(topic, p.data.lang);
+  switchPaths = Object.fromEntries(LOCALES.map((l) => [l, alternates![l] ?? localePath("/blog", l)]));
 }
 ---
 
 <Layout title={title} description={description} locale={locale} path={path} alternates={alternates} noindex={posts.length === 0}>
-  <Header locale={locale} path={path} />
+  <Header locale={locale} path={path} switchPaths={switchPaths} />
   <div class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-14 sm:pt-16 pb-8">
       {

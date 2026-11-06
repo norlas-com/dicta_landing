@@ -13,8 +13,11 @@
 /llms.txt
   Content-Type: text/plain; charset=utf-8
 
-# Baseline security headers for the marketing site.
+# Baseline security headers for the marketing site. HSTS covers this host
+# only (no includeSubDomains): the TURN/SFU and other subdomains are not all
+# plain HTTPS sites, so pinning them from here could break them.
 /*
+  Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
