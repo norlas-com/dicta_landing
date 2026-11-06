@@ -111,9 +111,9 @@ const jsonLd = [
             data-analytics-event="download_app_clicked"
             data-analytics-os="macos"
             data-analytics-arch="arm"
-            class="mt-5 w-full inline-flex items-center justify-center gap-2 h-11 rounded-pill font-medium bg-accent text-accent-fg shadow-glow hover:bg-accent-strong transition-colors duration-200 ease-out-expo"
+            class="mt-5 w-full inline-flex items-center justify-center min-h-11 px-5 py-2.5 rounded-pill font-medium text-center leading-snug text-balance bg-accent text-accent-fg shadow-glow hover:bg-accent-strong transition-colors duration-200 ease-out-expo"
           >
-            {dl.mac} · <span data-mac-arch>{dl.appleSilicon}</span>
+            <span>{dl.mac} · <span data-mac-arch class="whitespace-nowrap">{dl.appleSilicon}</span></span>
           </a>
           <div class="mt-3 flex items-center justify-between text-xs">
             <a href={rel.arm64Url} data-mac-alt-arm data-analytics-event="download_app_clicked" data-analytics-os="macos" data-analytics-arch="arm" class="text-muted hover:text-foreground transition-colors">{dl.appleSilicon}</a>
@@ -139,7 +139,7 @@ const jsonLd = [
             data-analytics-event="download_app_clicked"
             data-analytics-os="windows"
             data-analytics-arch="na"
-            class="mt-5 w-full inline-flex items-center justify-center gap-2 h-11 rounded-pill font-medium text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3 transition-colors"
+            class="mt-5 w-full inline-flex items-center justify-center min-h-11 px-5 py-2.5 rounded-pill font-medium text-center leading-snug text-balance text-foreground bg-surface-2 border border-border-strong hover:bg-surface-3 transition-colors"
           >
             {dl.windows}
           </a>
