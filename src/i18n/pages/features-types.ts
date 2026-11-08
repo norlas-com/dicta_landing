@@ -47,6 +47,9 @@ export interface FeaturesUi {
   allFeatures: string;
   learnMore: string;
   desktopLink: string;
+  /** Webinar launch-offer banner; `n` is the percent off. */
+  webinarOffer: (n: number) => string;
+  webinarOfferCta: string;
 }
 
 export interface FeaturesLocale {

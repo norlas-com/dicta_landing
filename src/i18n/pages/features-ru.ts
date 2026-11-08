@@ -23,6 +23,8 @@ export const ru: FeaturesLocale = {
     allFeatures: "Все возможности",
     learnMore: "Подробнее",
     desktopLink: "Скачать приложение для компьютера",
+    webinarOffer: (n: number) => `Акция к запуску: скидка ${n}% на каждый вебинар, созданный сейчас. Применится автоматически при оплате.`,
+    webinarOfferCta: "Создать вебинар",
   },
   features: {
     transcription: {

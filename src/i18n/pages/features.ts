@@ -10,6 +10,12 @@ export type { FeatureSlug };
 
 export const FEATURES: Record<Locale, FeaturesLocale> = { uz, ru, en, ar };
 
+/**
+ * Webinar launch campaign shown as a banner on /features/webinars.
+ * Keep equal to the backend's WEBINAR_LAUNCH_DISCOUNT_PERCENT; 0 hides it.
+ */
+export const WEBINAR_LAUNCH_DISCOUNT_PERCENT = 10;
+
 /** Which screenshot (name in src/assets/landing/shots) belongs to a feature; absent = none exists. */
 export const FEATURE_SHOTS: Partial<Record<FeatureSlug, { name: string; mobile?: boolean }>> = {
   transcription: { name: "transcript" },

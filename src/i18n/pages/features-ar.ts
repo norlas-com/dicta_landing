@@ -22,6 +22,8 @@ export const ar: FeaturesLocale = {
     allFeatures: "كل المزايا",
     learnMore: "اعرف المزيد",
     desktopLink: "حمّل تطبيق سطح المكتب",
+    webinarOffer: (n: number) => `عرض الإطلاق: خصم ${n}% على كل ندوة عبر الإنترنت تنشئها الآن. يُطبَّق تلقائيًا عند الدفع.`,
+    webinarOfferCta: "أنشئ ندوة",
   },
   features: {
     transcription: {

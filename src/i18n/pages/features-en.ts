@@ -23,6 +23,8 @@ export const en: FeaturesLocale = {
     allFeatures: "All features",
     learnMore: "Learn more",
     desktopLink: "Download the desktop app",
+    webinarOffer: (n: number) => `Launch offer: ${n}% off every webinar you create now. Applied automatically at checkout.`,
+    webinarOfferCta: "Create a webinar",
   },
   features: {
     transcription: {

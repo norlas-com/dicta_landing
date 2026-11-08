@@ -23,6 +23,8 @@ export const uz: FeaturesLocale = {
     allFeatures: "Barcha imkoniyatlar",
     learnMore: "Batafsil",
     desktopLink: "Kompyuter ilovasini yuklab olish",
+    webinarOffer: (n: number) => `Ishga tushirish aksiyasi: hozir yaratilgan har bir vebinarga ${n}% chegirma. Toʻlovda avtomatik qoʻllanadi.`,
+    webinarOfferCta: "Vebinar yaratish",
   },
   features: {
     transcription: {
