@@ -5,6 +5,8 @@ date: 2026-11-09
 lang: ru
 slug: zapis-vstrech-bez-bota-prilozhenie-dicta
 translationKey: botless-desktop-recording
+cover: "/blog/covers/botless-desktop-recording.webp"
+coverAlt: "Видеозвонок на компьютере записывается без бота: Dicta готовит расшифровку и AI-резюме"
 topic: guides
 tags: [desktop, bot, zoom, google-meet, teams]
 faq:

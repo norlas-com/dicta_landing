@@ -5,6 +5,8 @@ date: 2026-11-09
 lang: en
 slug: record-meetings-without-a-bot-dicta-desktop-app
 translationKey: botless-desktop-recording
+cover: "/blog/covers/botless-desktop-recording.webp"
+coverAlt: "A video call on a computer being recorded without a bot: Dicta produces a transcript and an AI summary"
 topic: guides
 tags: [desktop, bot, zoom, google-meet, teams]
 faq:

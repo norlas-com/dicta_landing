@@ -5,6 +5,8 @@ date: 2026-11-09
 lang: uz
 slug: botsiz-uchrashuv-yozish-dicta-kompyuter-ilovasi
 translationKey: botless-desktop-recording
+cover: "/blog/covers/botless-desktop-recording.webp"
+coverAlt: "Kompyuterdagi video qoʻngʻiroq botsiz yozib olinmoqda: Dicta transkripsiya va AI xulosa tayyorlaydi"
 topic: guides
 tags: [desktop, bot, zoom, google-meet, teams]
 faq:
