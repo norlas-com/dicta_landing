@@ -26,6 +26,8 @@ faq:
 
 Webinars are commonly used for online classes, product presentations, open sessions with experts and staff training.
 
+> **Offer: 10% off webinars in Dicta.** Every webinar you create now is 10% off, applied automatically at checkout. [Create a webinar →](https://meet.dicta.uz/sign-up)
+
 ## Webinar vs. regular meeting: what's the difference
 
 - **A webinar** is for a large audience: mostly the host speaks, and everyone else listens and asks questions.
@@ -79,5 +81,7 @@ Yes. With recording on, Dicta produces the recording, a transcript and an AI sum
 ## Run your next webinar in Dicta
 
 Up to about 600 attendees, with Q&A and polls, plus a recording, transcript and AI summary in Uzbek, Russian and English.
+
+Right now every webinar is **10% off**, applied automatically at checkout.
 
 **[Start for free →](https://meet.dicta.uz/sign-up)**

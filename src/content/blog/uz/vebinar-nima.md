@@ -26,6 +26,8 @@ faq:
 
 Vebinar odatda onlayn darslar, mahsulot taqdimotlari, mutaxassislar bilan ochiq suhbatlar va xodimlarni oʻqitish uchun ishlatiladi.
 
+> **Aksiya: Dictada vebinarlarga 10% chegirma.** Hozir yaratilgan har bir vebinarga 10% chegirma beriladi, u toʻlovda avtomatik qoʻllanadi. [Vebinar yaratish →](https://meet.dicta.uz/sign-up)
+
 ## Vebinar va oddiy uchrashuv: farqi nimada
 
 - **Vebinar** katta auditoriya uchun: asosan boshlovchi gapiradi, koʻpchilik tinglaydi va savol beradi.
@@ -79,5 +81,7 @@ Ha. Yozib olishni yoqsangiz, Dicta sessiyaning yozuvi, transkripsiyasi va AI xul
 ## Navbatdagi vebinaringizni Dictada oʻtkazing
 
 Taxminan 600 ishtirokchigacha, savol-javob va soʻrovnomalar bilan, yozuv, transkripsiya va AI xulosa bilan, oʻzbek, rus va ingliz tillarida.
+
+Hozir har bir vebinarga **10% chegirma**: toʻlovda avtomatik qoʻllanadi.
 
 **[Bepul boshlash →](https://meet.dicta.uz/sign-up)**
