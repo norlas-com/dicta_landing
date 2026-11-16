@@ -82,6 +82,13 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-GHTZKSLH1X";
 // so both Pages projects get it without a dashboard env var.
 const ymId = import.meta.env.PUBLIC_YANDEX_METRICA_ID || SITE.metricaId;
 const ymNum = ymId && /^\d+$/.test(String(ymId)) ? Number(ymId) : 0;
+// Amplitude "default" project (EU data region) — the same project as the web
+// app and the mobile apps. The project API key is public by design (it is
+// ingestion-only and is embedded in the loader URL), so it is committed as a
+// fallback like gaId; PUBLIC_AMPLITUDE_API_KEY overrides it, and "" switches
+// Amplitude off. Skipped on noindex pages, like GA4 / Metrica.
+const amplitudeKey = import.meta.env.PUBLIC_AMPLITUDE_API_KEY ?? "f6ac294fa34a278032a297d1f364d0d9";
+
 const ymScript = `window.__ymId=${ymNum};(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${ymNum},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});`;
 
 // Preload only the font subsets the first paint of this locale uses. Arabic
@@ -344,5 +351,28 @@ const siteJsonLd =
         { capture: true },
       );
     </script>
+
+    {/* Amplitude (EU): Analytics + autocapture + Session Replay from the
+        project's CDN loader. At the end of <body> so the ~190 KB loader never
+        blocks first paint, yet it still runs before the bundled module
+        scripts above, so lib/analytics track() finds window.amplitude. The EU
+        host is required — cdn.amplitude.com rejects this project's key. Its
+        cookie sits on the parent domain, so a visitor keeps one device id from
+        dicta.uz into meet.dicta.uz (same for dicta.live). */}
+    {
+      amplitudeKey && !noindex && (
+        <Fragment>
+          <script is:inline src={`https://cdn.eu.amplitude.com/script/${amplitudeKey}.js`} />
+          <script is:inline define:vars={{ amplitudeKey }}>
+            if (window.amplitude && window.sessionReplay) {
+              window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1, serverZone: "EU" }));
+              window.amplitude.init(amplitudeKey, { serverZone: "EU", autocapture: true });
+            } else {
+              console.error("[amplitude] loader did not load — no events will be sent");
+            }
+          </script>
+        </Fragment>
+      )
+    }
   </body>
 </html>

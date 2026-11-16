@@ -27,6 +27,7 @@ export function track(event: LandingEvent | (string & {}), params: AnalyticsPara
     gtag?: (...a: unknown[]) => void;
     ym?: (...a: unknown[]) => void;
     __ymId?: number;
+    amplitude?: { track?: (event: string, props?: Record<string, unknown>) => unknown };
   };
   const clean: Record<string, string | number | boolean> = {};
   for (const [k, v] of Object.entries(params)) {
@@ -35,4 +36,6 @@ export function track(event: LandingEvent | (string & {}), params: AnalyticsPara
   if (typeof w.gtag === "function") w.gtag("event", event, clean);
   // Yandex Metrica goal (counter id is set by Layout when configured).
   if (typeof w.ym === "function" && w.__ymId) w.ym(w.__ymId, "reachGoal", event, clean);
+  // Amplitude (EU), initialised by Layout's CDN loader when configured.
+  if (typeof w.amplitude?.track === "function") w.amplitude.track(event, clean);
 }
