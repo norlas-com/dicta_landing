@@ -316,7 +316,7 @@ const en = {
     offerTitle: "Public Offer",
     offerUpdated: "Last updated: July 28, 2026",
     deleteAccountTitle: "How to delete your Dicta account",
-    deleteAccountUpdated: "Last updated: July 27, 2026",
+    deleteAccountUpdated: "Last updated: November 16, 2026",
     privacy: {
       intro:
         'Dicta ("we", "our") operates the meeting service at dicta.uz. This page explains what we collect, how we collect it, what we use it for, and every third party we share it with.',
@@ -472,21 +472,21 @@ const en = {
         title: "Where to find the button",
         ios: {
           label: "iPhone and iPad.",
-          text: "Open the Dicta app, go to Settings, and scroll to the bottom — “Delete account”.",
+          text: "Open the Dicta app and go to Settings → Account → Data & privacy → “Delete account” (at the bottom). In older app versions it is on the Account screen itself.",
         },
         android: {
           label: "Android.",
-          text: "Open the Dicta app, go to Settings, and scroll to the bottom — “Delete account”.",
+          text: "Open the Dicta app and go to Settings → Account → Data & privacy → “Delete account” (at the bottom). In older app versions it is on the Account screen itself.",
         },
         web: {
           label: "Web.",
-          text: "Sign in at meet.dicta.uz, open Settings, and scroll to the bottom — “Delete account”.",
+          text: "Sign in at meet.dicta.uz and go to Settings → Data & privacy → “Delete account” (at the bottom).",
         },
       },
       confirm: {
         title: "What you'll be asked to confirm",
         typeDelete:
-          "Type the word DELETE, in capitals, to confirm you meant to press the button.",
+          "Review what will be deleted, tell us why you're leaving, then type your account's email address to confirm you meant it.",
         reauth:
           "Prove it's you. If your account has a password, you'll enter it. If you only ever signed in with Google or Apple, we email you a one-time code instead.",
         blockers:
@@ -1036,7 +1036,7 @@ const ru: typeof en = {
     offerTitle: "Публичная оферта",
     offerUpdated: "Последнее обновление: 28 июля 2026 г.",
     deleteAccountTitle: "Как удалить аккаунт Dicta",
-    deleteAccountUpdated: "Последнее обновление: 27 июля 2026 г.",
+    deleteAccountUpdated: "Последнее обновление: 16 ноября 2026 г.",
     privacy: {
       intro:
         "Dicta («мы», «наш») управляет сервисом видеовстреч на dicta.uz. На этой странице описано, какие данные мы собираем, как мы их собираем, для чего используем и каким третьим лицам передаём.",
@@ -1192,21 +1192,21 @@ const ru: typeof en = {
         title: "Где находится кнопка",
         ios: {
           label: "iPhone и iPad.",
-          text: "Откройте приложение Dicta, перейдите в «Настройки» и пролистайте вниз — «Удалить аккаунт».",
+          text: "Откройте приложение Dicta: «Настройки» → «Аккаунт» → «Данные и конфиденциальность» → «Удалить аккаунт» (в самом низу). В старых версиях приложения кнопка находится прямо на экране «Аккаунт».",
         },
         android: {
           label: "Android.",
-          text: "Откройте приложение Dicta, перейдите в «Настройки» и пролистайте вниз — «Удалить аккаунт».",
+          text: "Откройте приложение Dicta: «Настройки» → «Аккаунт» → «Данные и конфиденциальность» → «Удалить аккаунт» (в самом низу). В старых версиях приложения кнопка находится прямо на экране «Аккаунт».",
         },
         web: {
           label: "Веб-версия.",
-          text: "Войдите на meet.dicta.uz, откройте «Настройки» и пролистайте вниз — «Удалить аккаунт».",
+          text: "Войдите на meet.dicta.uz: «Настройки» → «Данные и конфиденциальность» → «Удалить аккаунт» (в самом низу).",
         },
       },
       confirm: {
         title: "Что нужно будет подтвердить",
         typeDelete:
-          "Введите слово DELETE заглавными буквами — чтобы подтвердить, что кнопка нажата не случайно.",
+          "Посмотрите, что будет удалено, укажите причину ухода и введите email своего аккаунта — чтобы подтвердить, что это не случайность.",
         reauth:
           "Подтвердите, что это вы. Если у аккаунта есть пароль, введите его. Если вы входили только через Google или Apple, мы отправим одноразовый код на вашу почту.",
         blockers:
@@ -1757,7 +1757,7 @@ const uz: typeof en = {
     offerTitle: "Ommaviy oferta",
     offerUpdated: "Oxirgi yangilangan: 2026-yil 28-iyul",
     deleteAccountTitle: "Dicta hisobini qanday oʻchirish mumkin",
-    deleteAccountUpdated: "Oxirgi yangilangan: 2026-yil 27-iyul",
+    deleteAccountUpdated: "Oxirgi yangilangan: 2026-yil 16-noyabr",
     privacy: {
       intro:
         "«Dicta» («biz», «bizning») dicta.uz manzilidagi videouchrashuvlar xizmatini boshqaradi. Ushbu sahifada qanday maʼlumotlarni toʻplashimiz, ularni qanday yigʻishimiz, nima uchun ishlatishimiz va qaysi uchinchi tomonlarga uzatishimiz tushuntirilgan.",
@@ -1913,21 +1913,21 @@ const uz: typeof en = {
         title: "Tugma qayerda",
         ios: {
           label: "iPhone va iPad.",
-          text: "Dicta ilovasini oching, «Sozlamalar»ga oʻting va pastga suring — «Hisobni oʻchirish».",
+          text: "Dicta ilovasini oching: «Sozlamalar» → «Hisob» → «Maʼlumotlar va maxfiylik» → «Hisobni oʻchirish» (eng pastda). Ilovaning eski versiyalarida bu tugma «Hisob» ekranining oʻzida joylashgan.",
         },
         android: {
           label: "Android.",
-          text: "Dicta ilovasini oching, «Sozlamalar»ga oʻting va pastga suring — «Hisobni oʻchirish».",
+          text: "Dicta ilovasini oching: «Sozlamalar» → «Hisob» → «Maʼlumotlar va maxfiylik» → «Hisobni oʻchirish» (eng pastda). Ilovaning eski versiyalarida bu tugma «Hisob» ekranining oʻzida joylashgan.",
         },
         web: {
           label: "Veb-versiya.",
-          text: "meet.dicta.uz saytiga kiring, «Sozlamalar»ni oching va pastga suring — «Hisobni oʻchirish».",
+          text: "meet.dicta.uz saytiga kiring: «Sozlamalar» → «Ma’lumotlar va maxfiylik» → «Akkauntni o‘chirish» (eng pastda).",
         },
       },
       confirm: {
         title: "Nimani tasdiqlashingiz kerak",
         typeDelete:
-          "Tasdiqlash uchun DELETE soʻzini katta harflarda yozing — tugma tasodifan bosilmaganiga ishonch hosil qilamiz.",
+          "Nimalar oʻchirilishini koʻring, nega ketayotganingizni belgilang va tasdiqlash uchun hisobingizning email manzilini yozing.",
         reauth:
           "Bu haqiqatan siz ekaningizni tasdiqlang. Hisobingizda parol boʻlsa, uni kiritasiz. Agar faqat Google yoki Apple orqali kirgan boʻlsangiz, pochtangizga bir martalik kod yuboramiz.",
         blockers:
@@ -2486,7 +2486,7 @@ const ar: typeof en = {
     offerTitle: "العرض العام",
     offerUpdated: "آخر تحديث: 28 يوليو 2026",
     deleteAccountTitle: "كيفية حذف حسابك في Dicta",
-    deleteAccountUpdated: "آخر تحديث: 27 يوليو 2026",
+    deleteAccountUpdated: "آخر تحديث: 16 نوفمبر 2026",
     privacy: {
       intro:
         'Dicta ("نحن", "الخاصة بنا") operates the meeting service at dicta.uz. This page explains what we collect, how we collect it, what we use it for, and every third party we share it with.',
@@ -2642,21 +2642,21 @@ const ar: typeof en = {
         title: "أين تجد الزر",
         ios: {
           label: "‏iPhone وiPad.",
-          text: "افتح تطبيق Dicta، وانتقل إلى الإعدادات، ومرّر إلى الأسفل حتى «حذف الحساب».",
+          text: "افتح تطبيق Dicta وانتقل إلى الإعدادات ← الحساب ← البيانات والخصوصية ← «حذف الحساب» (في الأسفل). في الإصدارات الأقدم من التطبيق يوجد الزر في شاشة الحساب نفسها.",
         },
         android: {
           label: "Android.",
-          text: "افتح تطبيق Dicta، وانتقل إلى الإعدادات، ومرّر إلى الأسفل حتى «حذف الحساب».",
+          text: "افتح تطبيق Dicta وانتقل إلى الإعدادات ← الحساب ← البيانات والخصوصية ← «حذف الحساب» (في الأسفل). في الإصدارات الأقدم من التطبيق يوجد الزر في شاشة الحساب نفسها.",
         },
         web: {
           label: "الويب.",
-          text: "سجّل الدخول على meet.dicta.uz، وافتح الإعدادات، ومرّر إلى الأسفل حتى «حذف الحساب».",
+          text: "سجّل الدخول على meet.dicta.uz وانتقل إلى الإعدادات ← البيانات والخصوصية ← «حذف الحساب» (في الأسفل).",
         },
       },
       confirm: {
         title: "ما سيُطلب منك تأكيده",
         typeDelete:
-          "اكتب كلمة DELETE بأحرف كبيرة لتأكيد أنك قصدت الضغط على الزر.",
+          "راجع ما سيتم حذفه، وأخبرنا بسبب المغادرة، ثم اكتب البريد الإلكتروني لحسابك لتأكيد أنك تقصد ذلك.",
         reauth:
           "إثبات هويتك. فإن كانت لحسابك كلمة مرور، ستُدخلها. وإن كنت تسجّل الدخول عبر Google أو Apple فقط، نرسل إليك رمزًا لمرة واحدة بالبريد الإلكتروني.",
         blockers:
