@@ -472,11 +472,11 @@ const en = {
         title: "Where to find the button",
         ios: {
           label: "iPhone and iPad.",
-          text: "Open the Dicta app and go to Settings → Account → Data & privacy → “Delete account” (at the bottom).",
+          text: "Open the Dicta app and go to Settings → Account → Data & privacy → “Delete account” (at the bottom). In older app versions it is on the Account screen itself.",
         },
         android: {
           label: "Android.",
-          text: "Open the Dicta app and go to Settings → Account → Data & privacy → “Delete account” (at the bottom).",
+          text: "Open the Dicta app and go to Settings → Account → Data & privacy → “Delete account” (at the bottom). In older app versions it is on the Account screen itself.",
         },
         web: {
           label: "Web.",
@@ -1192,11 +1192,11 @@ const ru: typeof en = {
         title: "Где находится кнопка",
         ios: {
           label: "iPhone и iPad.",
-          text: "Откройте приложение Dicta: «Настройки» → «Аккаунт» → «Данные и конфиденциальность» → «Удалить аккаунт» (в самом низу).",
+          text: "Откройте приложение Dicta: «Настройки» → «Аккаунт» → «Данные и конфиденциальность» → «Удалить аккаунт» (в самом низу). В старых версиях приложения кнопка находится прямо на экране «Аккаунт».",
         },
         android: {
           label: "Android.",
-          text: "Откройте приложение Dicta: «Настройки» → «Аккаунт» → «Данные и конфиденциальность» → «Удалить аккаунт» (в самом низу).",
+          text: "Откройте приложение Dicta: «Настройки» → «Аккаунт» → «Данные и конфиденциальность» → «Удалить аккаунт» (в самом низу). В старых версиях приложения кнопка находится прямо на экране «Аккаунт».",
         },
         web: {
           label: "Веб-версия.",
@@ -1913,15 +1913,15 @@ const uz: typeof en = {
         title: "Tugma qayerda",
         ios: {
           label: "iPhone va iPad.",
-          text: "Dicta ilovasini oching: «Sozlamalar» → «Hisob» → «Maʼlumotlar va maxfiylik» → «Hisobni oʻchirish» (eng pastda).",
+          text: "Dicta ilovasini oching: «Sozlamalar» → «Hisob» → «Maʼlumotlar va maxfiylik» → «Hisobni oʻchirish» (eng pastda). Ilovaning eski versiyalarida bu tugma «Hisob» ekranining oʻzida joylashgan.",
         },
         android: {
           label: "Android.",
-          text: "Dicta ilovasini oching: «Sozlamalar» → «Hisob» → «Maʼlumotlar va maxfiylik» → «Hisobni oʻchirish» (eng pastda).",
+          text: "Dicta ilovasini oching: «Sozlamalar» → «Hisob» → «Maʼlumotlar va maxfiylik» → «Hisobni oʻchirish» (eng pastda). Ilovaning eski versiyalarida bu tugma «Hisob» ekranining oʻzida joylashgan.",
         },
         web: {
           label: "Veb-versiya.",
-          text: "meet.dicta.uz saytiga kiring: «Sozlamalar» → «Maʼlumotlar va maxfiylik» → «Hisobni oʻchirish» (eng pastda).",
+          text: "meet.dicta.uz saytiga kiring: «Sozlamalar» → «Ma’lumotlar va maxfiylik» → «Akkauntni o‘chirish» (eng pastda).",
         },
       },
       confirm: {
@@ -2642,11 +2642,11 @@ const ar: typeof en = {
         title: "أين تجد الزر",
         ios: {
           label: "‏iPhone وiPad.",
-          text: "افتح تطبيق Dicta وانتقل إلى الإعدادات ← الحساب ← البيانات والخصوصية ← «حذف الحساب» (في الأسفل).",
+          text: "افتح تطبيق Dicta وانتقل إلى الإعدادات ← الحساب ← البيانات والخصوصية ← «حذف الحساب» (في الأسفل). في الإصدارات الأقدم من التطبيق يوجد الزر في شاشة الحساب نفسها.",
         },
         android: {
           label: "Android.",
-          text: "افتح تطبيق Dicta وانتقل إلى الإعدادات ← الحساب ← البيانات والخصوصية ← «حذف الحساب» (في الأسفل).",
+          text: "افتح تطبيق Dicta وانتقل إلى الإعدادات ← الحساب ← البيانات والخصوصية ← «حذف الحساب» (في الأسفل). في الإصدارات الأقدم من التطبيق يوجد الزر في شاشة الحساب نفسها.",
         },
         web: {
           label: "الويب.",
