@@ -20,7 +20,15 @@ export type FaqKey =
   | "pay"
   | "privacy"
   | "apps"
+  | "referral"
   | "sales";
+
+/**
+ * Referral program FAQ entry. The program ships switched off, so the entry is
+ * written in every dictionary but stays out of the lists below until launch.
+ * Flip this together with `draft: false` on the referral-program blog posts.
+ */
+const REFERRAL_LIVE = false;
 
 /** Full /faq order. */
 export const FAQ_KEYS: readonly FaqKey[] = [
@@ -36,6 +44,7 @@ export const FAQ_KEYS: readonly FaqKey[] = [
   "pay",
   "privacy",
   "apps",
+  ...(REFERRAL_LIVE ? (["referral"] as const) : []),
   "sales",
 ];
 

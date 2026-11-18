@@ -238,6 +238,10 @@ const en = {
         q: "Which apps are available?",
         a: "Dicta works in the browser, as a desktop app for macOS and Windows, and as mobile apps for iOS and Android.",
       },
+      referral: {
+        q: "Can I get free minutes by inviting a friend?",
+        a: "Yes. Share your personal invite link from the app (Settings, Invite friends) or the web sidebar. When your friend signs up and pays for their first subscription, you both get extra minutes: currently 60 each. They show up as Extra minutes, and a refund of that payment reverses them.",
+      },
       sales: {
         q: "How do I contact sales?",
         a: "Use the contact form on this site: leave a phone number or an email and our team will contact you. You can also write to info@dicta.uz.",
@@ -964,6 +968,10 @@ const ru: typeof en = {
         q: "Какие приложения доступны?",
         a: "Dicta работает в браузере, как приложение для компьютера (macOS и Windows) и как мобильные приложения для iOS и Android.",
       },
+      referral: {
+        q: "Можно ли получить бесплатные минуты за приглашение друга?",
+        a: "Да. Отправьте личную ссылку-приглашение из приложения («Настройки», «Пригласить друзей») или из бокового меню в вебе. Когда друг зарегистрируется и оплатит первую подписку, вы оба получите дополнительные минуты: сейчас по 60. Они отображаются как «Дополнительные минуты», а при возврате этого платежа списываются.",
+      },
       sales: {
         q: "Как связаться с отделом продаж?",
         a: "Воспользуйтесь формой на этом сайте: оставьте телефон или email, и наша команда свяжется с вами. Можно также написать на info@dicta.uz.",
@@ -1684,6 +1692,10 @@ const uz: typeof en = {
       apps: {
         q: "Qanday ilovalar mavjud?",
         a: "Dicta brauzerda, macOS va Windows uchun kompyuter ilovasi sifatida hamda iOS va Android uchun mobil ilovalar sifatida ishlaydi.",
+      },
+      referral: {
+        q: "Doʻstimni taklif qilib, bepul daqiqa olsam boʻladimi?",
+        a: "Ha. Shaxsiy taklif havolangizni ilovadan («Sozlamalar», «Doʻstlarni taklif qilish») yoki vebdagi yon paneldan yuboring. Doʻstingiz roʻyxatdan oʻtib, birinchi obunasini toʻlaganda, ikkalangiz qoʻshimcha daqiqa olasiz: hozir 60 tadan. Ular «Qo'shimcha daqiqalar» sifatida koʻrinadi, shu toʻlov qaytarilsa esa ayriladi.",
       },
       sales: {
         q: "Sotuv boʻlimi bilan qanday bogʻlanaman?",
@@ -2410,6 +2422,10 @@ const ar: typeof en = {
       apps: {
         q: "ما التطبيقات المتاحة؟",
         a: "تعمل Dicta في المتصفح، وكتطبيق لسطح المكتب على macOS وWindows، وكتطبيقات جوال على iOS وAndroid.",
+      },
+      referral: {
+        q: "هل يمكنني الحصول على دقائق مجانية عند دعوة صديق؟",
+        a: "نعم. شارك رابط الدعوة الخاص بك من التطبيق (الإعدادات ثم دعوة الأصدقاء) أو من الشريط الجانبي في الويب. عندما يسجّل صديقك ويدفع أول اشتراك له، تحصلان معًا على دقائق إضافية: حاليًا 60 دقيقة لكل منكما. تظهر باسم «الدقائق الإضافية»، ويُلغى المنح إذا استُرد ذلك الدفع.",
       },
       sales: {
         q: "كيف أتواصل مع فريق المبيعات؟",
