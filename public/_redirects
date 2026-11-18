@@ -28,3 +28,7 @@
 /connect-telegram/*   https://meet.dicta.uz/connect-telegram/:splat   301
 /sign-in              https://meet.dicta.uz/sign-in                   301
 /sign-up              https://meet.dicta.uz/sign-up                   301
+# Referral invite links (dicta.uz/r/CODE). 302 on purpose: the target is the app
+# host's public invite page and may change. The dicta.live build rewrites the
+# host to meet.dicta.live (see referralRedirectHost in astro.config.mjs).
+/r/*                  https://meet.dicta.uz/r/:splat                  302

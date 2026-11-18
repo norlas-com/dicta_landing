@@ -99,6 +99,26 @@ const flatSitemap = {
 };
 
 /**
+ * `public/_redirects` is shared by both builds and names meet.dicta.uz. The
+ * referral invite rule is the one that must follow the site: dicta.live/r/CODE
+ * has to land on meet.dicta.live, so rewrite that single line in the output.
+ * @type {import("astro").AstroIntegration}
+ */
+const referralRedirectHost = {
+  name: "referral-redirect-host",
+  hooks: {
+    "astro:build:done": async ({ dir }) => {
+      if (SITE.appHost === "meet.dicta.uz") return;
+      const file = fileURLToPath(dir) + "_redirects";
+      const text = await readFile(file, "utf8");
+      const next = text.replace("https://meet.dicta.uz/r/:splat", `https://${SITE.appHost}/r/:splat`);
+      if (next === text) throw new Error("referral /r/* rule not found in _redirects");
+      await writeFile(file, next);
+    },
+  },
+};
+
+/**
  * Cloudflare Pages 308s `/pricing` to `/pricing/`; internal links name the
  * slashed URL so readers and crawlers skip the hop. Mirrors withSlash() in
  * src/i18n/utils.ts: files and `?`/`#` suffixes keep their shape.
@@ -179,5 +199,6 @@ export default defineConfig({
     }),
     // After sitemap(), so sitemap-0.xml exists when this runs.
     flatSitemap,
+    referralRedirectHost,
   ],
 });
