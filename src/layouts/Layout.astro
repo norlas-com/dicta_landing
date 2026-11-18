@@ -88,6 +88,12 @@ const ymNum = ymId && /^\d+$/.test(String(ymId)) ? Number(ymId) : 0;
 // fallback like gaId; PUBLIC_AMPLITUDE_API_KEY overrides it, and "" switches
 // Amplitude off. Skipped on noindex pages, like GA4 / Metrica.
 const amplitudeKey = import.meta.env.PUBLIC_AMPLITUDE_API_KEY ?? "f6ac294fa34a278032a297d1f364d0d9";
+// Meta Pixel "Dicta Web" (ad account act_963331026840922). The pixel id is
+// public (it ships in every page), so it is committed as a fallback like gaId;
+// PUBLIC_META_PIXEL_ID overrides it and "" switches the pixel off. Skipped on
+// noindex pages, like GA4 / Metrica / Amplitude. lib/analytics track() mirrors
+// landing events to it (standard Lead/Contact + every event as a custom one).
+const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID ?? "2903159800040870";
 
 const ymScript = `window.__ymId=${ymNum};(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${ymNum},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});`;
 
@@ -232,6 +238,27 @@ const siteJsonLd =
               linker: { domains: linkerDomains },
             });
           </script>
+        </Fragment>
+      )
+    }
+
+    {/* Meta (Facebook) Pixel: standard base code, automatic PageView per load
+        (the site is an MPA). Async loader, so it never blocks first paint. */}
+    {
+      metaPixelId && !noindex && (
+        <Fragment>
+          <script is:inline define:vars={{ metaPixelId }}>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,"script","https://connect.facebook.net/en_US/fbevents.js");
+            fbq("init", metaPixelId);
+            fbq("track", "PageView");
+          </script>
+          <noscript>
+            <img height="1" width="1" style="display:none" alt="" src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`} />
+          </noscript>
         </Fragment>
       )
     }

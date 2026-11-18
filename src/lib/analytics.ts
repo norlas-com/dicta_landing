@@ -28,6 +28,7 @@ export function track(event: LandingEvent | (string & {}), params: AnalyticsPara
     ym?: (...a: unknown[]) => void;
     __ymId?: number;
     amplitude?: { track?: (event: string, props?: Record<string, unknown>) => unknown };
+    fbq?: (...a: unknown[]) => void;
   };
   const clean: Record<string, string | number | boolean> = {};
   for (const [k, v] of Object.entries(params)) {
@@ -38,4 +39,18 @@ export function track(event: LandingEvent | (string & {}), params: AnalyticsPara
   if (typeof w.ym === "function" && w.__ymId) w.ym(w.__ymId, "reachGoal", event, clean);
   // Amplitude (EU), initialised by Layout's CDN loader when configured.
   if (typeof w.amplitude?.track === "function") w.amplitude.track(event, clean);
+  // Meta Pixel (initialised by Layout when configured): every landing event as
+  // a custom event, plus the standard event Meta optimises ads for.
+  if (typeof w.fbq === "function") {
+    w.fbq("trackCustom", event, clean);
+    const standard = META_STANDARD_EVENTS[event];
+    if (standard) w.fbq("track", standard, clean);
+  }
 }
+
+/** Landing events that also map to a Meta standard event. */
+const META_STANDARD_EVENTS: Record<string, string> = {
+  signup_start_click: "Lead",
+  download_app_clicked: "Lead",
+  contact_submitted: "Contact",
+};
