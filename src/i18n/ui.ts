@@ -1695,7 +1695,7 @@ const uz: typeof en = {
       },
       referral: {
         q: "Doʻstimni taklif qilib, bepul daqiqa olsam boʻladimi?",
-        a: "Ha. Shaxsiy taklif havolangizni ilovadan («Sozlamalar», «Doʻstlarni taklif qilish») yoki vebdagi yon paneldan yuboring. Doʻstingiz roʻyxatdan oʻtib, birinchi obunasini toʻlaganda, ikkalangiz qoʻshimcha daqiqa olasiz: hozir 60 tadan. Ular «Qo'shimcha daqiqalar» sifatida koʻrinadi, shu toʻlov qaytarilsa esa ayriladi.",
+        a: "Ha. Shaxsiy taklif havolangizni ilovadan («Sozlamalar», «Doʻstlarni taklif qilish») yoki vebdagi yon paneldan yuboring. Doʻstingiz roʻyxatdan oʻtib, birinchi obunasini toʻlaganda, ikkalangiz qoʻshimcha daqiqa olasiz: hozir 60 tadan. Ular «Qoʻshimcha daqiqalar» sifatida koʻrinadi, shu toʻlov qaytarilsa esa ayriladi.",
       },
       sales: {
         q: "Sotuv boʻlimi bilan qanday bogʻlanaman?",

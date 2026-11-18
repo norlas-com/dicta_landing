@@ -14,7 +14,7 @@ faq:
   - q: "Doʻstimni taklif qilsam, qancha bepul daqiqa olaman?"
     a: "Hozir sizga 60 daqiqa, doʻstingizga ham 60 daqiqa. Miqdorni Dicta belgilaydi va u oʻzgarishi mumkin, lekin allaqachon olingan daqiqalar sizda qoladi."
   - q: "Daqiqalar qachon tushadi?"
-    a: "Doʻstingizning birinchi obuna toʻlovi oʻtgan zahoti. Ikkalangizga bildirishnoma keladi, daqiqalar esa balansda «Qo'shimcha daqiqalar» sifatida koʻrinadi."
+    a: "Doʻstingizning birinchi obuna toʻlovi oʻtgan zahoti. Ikkalangizga bildirishnoma keladi, daqiqalar esa balansda «Qoʻshimcha daqiqalar» sifatida koʻrinadi."
   - q: "Doʻstim Dictada yangi foydalanuvchi boʻlishi kerakmi?"
     a: "Ha. Taklif sizning havolangiz orqali roʻyxatdan oʻtganlar yoki akkaunt ochgandan keyingi dastlabki kunlarda, hali hech narsa toʻlamasdan turib, kodingizni kiritganlar uchun amal qiladi."
   - q: "Doʻstimning toʻlovi qaytarilsa nima boʻladi?"
@@ -44,7 +44,7 @@ Hozir bonus har bir tomonga 60 daqiqa. Miqdorni Dicta belgilaydi va u oʻzgarish
 
 ## Daqiqalar qachon tushadi va qayerda koʻrinadi
 
-Daqiqalar **doʻstingiz toʻlovi muvaffaqiyatli oʻtgan zahoti** tushadi. Ikkalangizga ilovada bildirishnoma keladi. Bonusni daqiqalar sarfi ekranida **«Qo'shimcha daqiqalar»** qatorida koʻrasiz.
+Daqiqalar **doʻstingiz toʻlovi muvaffaqiyatli oʻtgan zahoti** tushadi. Ikkalangizga ilovada bildirishnoma keladi. Bonusni daqiqalar sarfi ekranida **«Qoʻshimcha daqiqalar»** qatorida koʻrasiz.
 
 Qoʻshimcha daqiqalar tarifingizdagi oylik daqiqalar tugagandan keyin sarflanadi va oy oxirida kuymaydi. Doʻstingizning daqiqalari toʻlov qilgan ish maydoniga, sizniki esa shaxsiy ish maydoningizga tushadi.
 
@@ -65,7 +65,7 @@ Kodingiz doimiy, shuning uchun bir oy oldin yuborgan havolangiz hamon ishlaydi. 
 Hozir sizga 60 daqiqa, doʻstingizga ham 60 daqiqa. Miqdorni Dicta belgilaydi va u oʻzgarishi mumkin, lekin allaqachon olingan daqiqalar sizda qoladi.
 
 **Daqiqalar qachon tushadi?**
-Doʻstingizning birinchi obuna toʻlovi oʻtgan zahoti. Ikkalangizga bildirishnoma keladi, daqiqalar esa balansda «Qo'shimcha daqiqalar» sifatida koʻrinadi.
+Doʻstingizning birinchi obuna toʻlovi oʻtgan zahoti. Ikkalangizga bildirishnoma keladi, daqiqalar esa balansda «Qoʻshimcha daqiqalar» sifatida koʻrinadi.
 
 **Doʻstim Dictada yangi foydalanuvchi boʻlishi kerakmi?**
 Ha. Taklif sizning havolangiz orqali roʻyxatdan oʻtganlar yoki akkaunt ochgandan keyingi dastlabki kunlarda, hali hech narsa toʻlamasdan turib, kodingizni kiritganlar uchun amal qiladi.
