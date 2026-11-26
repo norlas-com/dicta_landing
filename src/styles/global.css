@@ -373,7 +373,9 @@ html.js .live-line {
 /* Arabic has no case and joins letters: no transform, no tracking, and the
  * Arabic face instead of a mono one. */
 .meeting-label:lang(ar) {
-  font-family: var(--font-arabic), sans-serif;
+  /* Inter after the Arabic face: Latin words inside a label ("Dicta")
+   * keep the site's sans instead of the system one. */
+  font-family: var(--font-arabic), var(--font-sans), sans-serif;
   font-size: 12px;
   text-transform: none;
   letter-spacing: 0;
