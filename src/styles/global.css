@@ -190,9 +190,15 @@ html.js .reveal {
     transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--rd, 0s);
 }
-html.js .reveal.revealed {
+html.js .reveal.revealed,
+/* A keyboard user can tab into a line before its scroll reveal fires (WCAG
+ * 2.4.7): whatever holds focus is shown at once, with no stagger. */
+html.js .reveal:focus-within {
   opacity: 1;
   transform: none;
+}
+html.js .reveal:focus-within {
+  transition-delay: 0s;
 }
 
 /* Product shots settle in from a slight tilt, like a sheet laid on a desk. */
@@ -473,9 +479,14 @@ html.js .notes-in {
     transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--rd, 0s);
 }
-html.js .notes-in.revealed {
+html.js .notes-in.revealed,
+html.js .notes-in:focus-within {
   opacity: 1;
   transform: none;
+}
+/* Focus shows its line at once (see .reveal:focus-within above). */
+html.js .notes-in:focus-within {
+  transition-delay: 0s;
 }
 
 @media (prefers-reduced-motion: reduce) {

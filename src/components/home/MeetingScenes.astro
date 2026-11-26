@@ -286,16 +286,16 @@ const secLabel = "meeting-label text-muted mb-2";
     const items = [...root.querySelectorAll<HTMLElement>("[data-notes-scene]")];
     const reveal = (els: HTMLElement[]) => els.forEach((el) => el.classList.add("revealed"));
     const wide = matchMedia("(min-width: 1024px)");
+    const order = ["offline", "online", "payoff", "languages"];
+    const upTo = (scene: string) => items.filter((el) => order.indexOf(el.dataset.notesScene ?? "") <= order.indexOf(scene));
     if (!("IntersectionObserver" in window)) {
       reveal(items);
     } else if (wide.matches) {
-      const order = ["offline", "online", "payoff", "languages"];
       const io = new IntersectionObserver(
         (entries) => {
           for (const e of entries) {
             if (!e.isIntersecting) continue;
-            const k = order.indexOf((e.target as HTMLElement).dataset.sceneBlock ?? "");
-            reveal(items.filter((el) => order.indexOf(el.dataset.notesScene ?? "") <= k));
+            reveal(upTo((e.target as HTMLElement).dataset.sceneBlock ?? ""));
             io.unobserve(e.target);
           }
         },
@@ -322,5 +322,13 @@ const secLabel = "meeting-label text-muted mb-2";
     }
     // The layout switched between pinned and stacked: show the notes whole.
     wide.addEventListener("change", () => reveal(items));
+    // Tabbing into the pinned card reaches a line (the ai-summary link) while
+    // its scene may still be below the fold. CSS shows the focused line at
+    // once (:focus-within); writing its scene and every earlier one keeps it
+    // shown after focus moves on, with no gaps above it.
+    root.addEventListener("focusin", (e) => {
+      const line = (e.target as Element).closest<HTMLElement>("[data-notes-scene]");
+      if (line) reveal(upTo(line.dataset.notesScene ?? ""));
+    });
   }
 </script>
