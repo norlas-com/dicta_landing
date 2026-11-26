@@ -579,11 +579,12 @@ html.js .notes-in:focus-within {
 /* Timestamped steps: stamp, a dashed tape with one node per step, the step.
  * The first node is the red "recording started" dot, the last one is filled
  * (done). Logical properties only, so RTL mirrors by itself. */
+/* No margin/padding reset here: preflight already zeroes the <ol>, and a
+ * `margin: 0` written after the utilities would beat the caller's mt-*,
+ * leaving the timeline pressed against its heading. */
 .timed-steps {
   --tape-x: 0.625rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 .timed-step {
   position: relative;

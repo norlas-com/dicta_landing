@@ -126,14 +126,16 @@ const jsonLd: Record<string, unknown>[] = [
       </div>
     )}
 
-    <section aria-labelledby="how-title" class="max-w-4xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
+    {/* The sections below share one container edge, so every H2 starts at
+        the same x; narrower content keeps its measure inside it. */}
+    <section aria-labelledby="how-title" class="max-w-6xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
       <h2 id="how-title" class={h2}>{ui.howTitle}</h2>
-      <TimedSteps class="mt-10" steps={f.steps} stamps={stamps} numbers={f.steps.map((_, i) => `0${i + 1}`)} titleTag="h3" />
+      <TimedSteps class="mt-10 max-w-4xl" steps={f.steps} stamps={stamps} numbers={f.steps.map((_, i) => `0${i + 1}`)} titleTag="h3" />
     </section>
 
-    <section aria-labelledby="faq-title" class="max-w-3xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
+    <section aria-labelledby="faq-title" class="max-w-6xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
       <h2 id="faq-title" class={h2}>{ui.faqTitle}</h2>
-      <div class="mt-8 grid gap-3">
+      <div class="mt-8 grid gap-3 max-w-3xl">
         {f.faq.map((i) => (
           <details class="group rounded-card border border-border bg-surface open:shadow-card transition-colors duration-150 ease-out-expo">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 rounded-card px-5 py-4 text-lg font-medium text-foreground hover:text-accent transition-colors [&::-webkit-details-marker]:hidden">
