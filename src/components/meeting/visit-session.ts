@@ -13,6 +13,7 @@ export interface OpenVisit {
 }
 
 let opened: OpenVisit | null = null;
+const restored: Array<() => void> = [];
 
 export function openVisit(): OpenVisit {
   if (opened) return opened;
@@ -26,4 +27,21 @@ export function openVisit(): OpenVisit {
   const state = recordPage(loadVisit(s, Date.now()), location.pathname, topic);
   opened = { state, stored: saveVisit(s, state) };
   return opened;
+}
+
+/**
+ * Run `cb` when this page comes back from the back/forward cache. No script
+ * reruns then, but it is a new view of the page: the visit is reopened (read
+ * again, this page recorded again) once, before any callback re-renders.
+ */
+export function onVisitRestored(cb: () => void): void {
+  if (!restored.length) {
+    window.addEventListener("pageshow", (e) => {
+      if (!e.persisted) return;
+      opened = null;
+      openVisit();
+      restored.forEach((f) => f());
+    });
+  }
+  restored.push(cb);
 }

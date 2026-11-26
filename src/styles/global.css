@@ -399,6 +399,16 @@ html.js .live-line {
   }
 }
 
+/* RecPill: a static "● Dicta" mark without JS, the recording label and clock
+ * with it (html.js is set before first paint, so neither state flashes). */
+html.js [data-rec-static],
+html:not(.js) [data-rec-live] {
+  display: none;
+}
+html:not(.js) [data-rec-pill] .rec-dot {
+  animation: none;
+}
+
 /* Notes that write themselves: fade + 6px rise, gated on html.js so no-JS
  * visitors always see them. Driven by the same .revealed observer. */
 html.js .notes-in {

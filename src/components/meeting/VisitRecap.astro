@@ -36,7 +36,7 @@ const { locale, tone = "paper", class: className } = Astro.props;
   import { MEETING_UI } from "../../i18n/pages/meeting-ui";
   import type { Locale } from "../../i18n/locales";
   import { summarizeVisit } from "../../lib/visit";
-  import { openVisit } from "./visit-session";
+  import { openVisit, onVisitRestored } from "./visit-session";
 
   const CHIP = {
     paper: "inline-flex items-center gap-1.5 h-7 px-2.5 rounded-pill border border-border bg-background",
@@ -83,7 +83,11 @@ const { locale, tone = "paper", class: className } = Astro.props;
     el.hidden = false;
   };
 
-  document.querySelectorAll<HTMLElement>("[data-visit-recap]").forEach((el) => {
+  const recaps = document.querySelectorAll<HTMLElement>("[data-visit-recap]");
+  // Back from the back/forward cache: a recap on show would keep the page
+  // count and clock of the first view, so redraw it from the reopened visit.
+  if (recaps.length) onVisitRestored(() => recaps.forEach((el) => render(el)));
+  recaps.forEach((el) => {
     render(el);
     // Refresh the clock when the closing section actually comes into view.
     const io = new IntersectionObserver((entries) => {

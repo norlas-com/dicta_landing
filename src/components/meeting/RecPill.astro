@@ -6,7 +6,9 @@ import { meetingUi } from "../../i18n/pages/meeting-ui";
  * "● Recording 02:41" — the clock counts the whole visit, not this page: the
  * start time lives in sessionStorage (see visit-session.ts). Decorative, so it
  * is hidden from assistive tech: a screen reader announcing "Recording" would
- * suggest the visitor is actually being recorded. Without JS it reads 00:00.
+ * suggest the visitor is actually being recorded. Without JS there is no
+ * clock to run, so the pill is a static "● Dicta" mark (spec §6.1); html.js
+ * is set before first paint, so a JS visitor never sees the swap.
  */
 interface Props {
   locale: Locale;
@@ -29,20 +31,24 @@ const m = meetingUi(locale);
   ]}
 >
   <span class="rec-dot flex-none"></span>
-  {!compact && <span class="meeting-label text-foreground-soft">{m.recording}</span>}
-  <time data-rec-clock datetime="PT0S" class="font-mono text-[12px] leading-none tabular-nums tracking-tight">00:00</time>
+  <span data-rec-static class="text-[13px] font-semibold leading-none">{m.dicta}</span>
+  <span data-rec-live class="contents">
+    {!compact && <span class="meeting-label text-foreground-soft">{m.recording}</span>}
+    <time data-rec-clock datetime="PT0S" class="font-mono text-[12px] leading-none tabular-nums tracking-tight">00:00</time>
+  </span>
 </span>
 
 <script>
-  import { openVisit } from "./visit-session";
+  import { openVisit, onVisitRestored } from "./visit-session";
   import { formatClock } from "../../lib/visit";
 
   const clocks = document.querySelectorAll<HTMLTimeElement>("[data-rec-clock]");
   if (clocks.length) {
-    const { startedAt } = openVisit().state;
     let timer = 0;
     const tick = () => {
-      const ms = Math.max(0, Date.now() - startedAt);
+      // Read on every tick, not once: a page restored from the back/forward
+      // cache reopens the visit (see onVisitRestored).
+      const ms = Math.max(0, Date.now() - openVisit().state.startedAt);
       const text = formatClock(ms);
       const iso = `PT${Math.floor(ms / 1000)}S`;
       clocks.forEach((c) => {
@@ -56,5 +62,6 @@ const m = meetingUi(locale);
     tick();
     // Background tabs throttle timers; catch up the moment the tab is back.
     document.addEventListener("visibilitychange", () => document.visibilityState === "visible" && tick());
+    onVisitRestored(tick);
   }
 </script>
