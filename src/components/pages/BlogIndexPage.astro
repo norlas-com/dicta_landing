@@ -123,7 +123,7 @@ if (topic) {
                     <span class="block text-accent font-medium">{c.topics[featured.data.topic]}</span>
                     <span class="block mt-1.5 whitespace-nowrap">
                       <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date, locale)}</time>
-                      <span aria-hidden="true"> · </span>
+                      <span aria-hidden="true"> · </span><span class="sr-only">, </span>
                       {c.readMin(readingMinutes(featured.body, locale))}
                     </span>
                   </p>
@@ -151,7 +151,7 @@ if (topic) {
                         <span class="block text-accent font-medium">{c.topics[p.data.topic]}</span>
                         <span class="block mt-1.5 whitespace-nowrap">
                           <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
-                          <span aria-hidden="true"> · </span>
+                          <span aria-hidden="true"> · </span><span class="sr-only">, </span>
                           {c.readMin(readingMinutes(p.body, locale))}
                         </span>
                       </p>

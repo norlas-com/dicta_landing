@@ -110,7 +110,9 @@ const jsonLd = [
   <article class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-12 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-14">
       <aside data-post-rail class="mb-8 lg:mb-0 lg:pt-[3.4rem]">
-        <div class="lg:sticky lg:top-24">
+        {/* Pinned under the header, and never taller than the screen: a long
+            table of contents scrolls inside the rail. */}
+        <div class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain [scrollbar-width:thin]">
           <dl class="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 lg:grid-cols-1 lg:gap-y-5">
             <div>
               <dt data-ui-label class="meeting-label text-muted">{m.post.topic}</dt>
