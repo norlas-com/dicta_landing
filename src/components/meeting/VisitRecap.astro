@@ -22,7 +22,10 @@ const { locale, tone = "paper", class: className } = Astro.props;
   data-tone={tone}
   hidden
   class:list={[
-    "flex flex-wrap items-center gap-1.5 font-mono text-[12px] leading-none",
+    // Only a shown recap is a flex row: a bare .flex would beat the [hidden]
+    // rule (same specificity, later in the CSS) and keep the empty recap
+    // taking space.
+    "[&:not([hidden])]:flex flex-wrap items-center gap-1.5 font-mono text-[12px] leading-none",
     tone === "ink" ? "text-ink-muted" : "text-muted",
     className,
   ]}
@@ -64,7 +67,19 @@ const { locale, tone = "paper", class: className } = Astro.props;
       chip.append(text);
       return chip;
     });
-    el.replaceChildren(...chips);
+    // Chips are visual; between them a visually hidden " · " keeps copy-paste
+    // and screen readers from running the parts together.
+    const nodes: Node[] = [];
+    chips.forEach((chip, i) => {
+      if (i > 0) {
+        const sep = document.createElement("span");
+        sep.className = "sr-only";
+        sep.textContent = " · ";
+        nodes.push(sep);
+      }
+      nodes.push(chip);
+    });
+    el.replaceChildren(...nodes);
     el.hidden = false;
   };
 

@@ -91,6 +91,13 @@ test("saveVisit: writes JSON under key; swallows errors; null ok", () => {
   assert.doesNotThrow(() => saveVisit(null, st));
 });
 
+test("saveVisit: returns true on success, false when storage is null or setItem throws", () => {
+  const st: VisitState = { startedAt: NOW, pages: [{ path: "/a/", topic: null }] };
+  assert.equal(saveVisit({ setItem: () => {} }, st), true);
+  assert.equal(saveVisit(null, st), false);
+  assert.equal(saveVisit({ setItem: () => { throw new Error("quota"); } }, st), false);
+});
+
 test("formatClock", () => {
   assert.equal(formatClock(-5), "00:00");
   assert.equal(formatClock(0), "00:00");

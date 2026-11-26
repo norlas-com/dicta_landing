@@ -63,12 +63,15 @@ export function recordPage(state: VisitState, path: string, topic: VisitTopic | 
   return { startedAt: state.startedAt, pages };
 }
 
-export function saveVisit(storage: Pick<Storage, "setItem"> | null, state: VisitState): void {
-  if (!storage) return;
+/** Returns true only when the visit was actually written. */
+export function saveVisit(storage: Pick<Storage, "setItem"> | null, state: VisitState): boolean {
+  if (!storage) return false;
   try {
     storage.setItem(VISIT_KEY, JSON.stringify(state));
+    return true;
   } catch {
     // storage unavailable or full: the timer simply won't persist
+    return false;
   }
 }
 

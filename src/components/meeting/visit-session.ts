@@ -6,8 +6,9 @@ import type { VisitTopic } from "../../i18n/pages/meeting-ui";
 
 export interface OpenVisit {
   state: VisitState;
-  /** false when sessionStorage is unavailable: the timer then runs from page
-   *  load, and the visit recap stays hidden. */
+  /** false when the visit could not be saved (sessionStorage blocked, or a
+   *  write that failed, e.g. quota): the timer then runs from page load, and
+   *  the visit recap stays hidden rather than recap a visit it can't keep. */
   stored: boolean;
 }
 
@@ -23,7 +24,6 @@ export function openVisit(): OpenVisit {
   }
   const topic = (document.body.dataset.visitTopic || null) as VisitTopic | null;
   const state = recordPage(loadVisit(s, Date.now()), location.pathname, topic);
-  saveVisit(s, state);
-  opened = { state, stored: s !== null };
+  opened = { state, stored: saveVisit(s, state) };
   return opened;
 }
