@@ -136,18 +136,25 @@ const jsonLd = [
             </div>
           </dl>
           {
-            toc.length >= 2 && (
-              <details data-post-toc open data-ui-label class="mt-6 border-t border-border pt-4">
-                <summary class="meeting-label text-muted cursor-pointer select-none">{m.post.inThisPost}</summary>
-                <ol class="mt-3 grid gap-2 text-sm leading-snug">
-                  {toc.map((h) => (
-                    <li>
-                      <a href={`#${h.slug}`} class="text-foreground-soft hover:text-accent transition-colors">{h.text}</a>
-                    </li>
-                  ))}
-                </ol>
-              </details>
-            )
+            toc.length >= 2 &&
+              [
+                // Closed on a phone (it sits above the article), open beside it on a
+                // wide screen: two copies shown by breakpoint, so nothing toggles
+                // after load and the layout never shifts. Both are UI labels.
+                { cls: "lg:hidden", open: false },
+                { cls: "max-lg:hidden", open: true },
+              ].map(({ cls, open }) => (
+                <details data-post-toc open={open} data-ui-label class={`mt-6 border-t border-border pt-4 ${cls}`}>
+                  <summary class="meeting-label text-muted cursor-pointer select-none">{m.post.inThisPost}</summary>
+                  <ol class="mt-3 grid gap-2 text-sm leading-snug">
+                    {toc.map((h) => (
+                      <li>
+                        <a href={`#${h.slug}`} class="text-foreground-soft hover:text-accent transition-colors">{h.text}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </details>
+              ))
           }
         </div>
       </aside>
@@ -296,10 +303,3 @@ const jsonLd = [
   .blog-prose img { max-width: 100%; height: auto; border-radius: 12px; }
   .blog-prose hr { border: 0; border-top: 1px solid var(--color-border); margin-block: 2em; }
 </style>
-
-<script>
-  // The contents list starts folded on a phone (it sits above the article) and
-  // open beside it on a wide screen. Without JS it stays open.
-  const toc = document.querySelector<HTMLDetailsElement>("[data-post-toc]");
-  if (toc && !window.matchMedia("(min-width: 1024px)").matches) toc.open = false;
-</script>
