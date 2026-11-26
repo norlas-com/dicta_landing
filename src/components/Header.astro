@@ -39,10 +39,6 @@ const menuLinks = [
 // The bar marks the section you are in: the page itself, or any page under it
 // (a feature page under Features, a post under Blog).
 const here = localePath(pagePath ?? path, locale);
-// The pill spells out "Recording" from xl up, where the bar has room for it.
-// Uzbek has the longest nav and the longest label ("Yozib olinmoqda"); with
-// both, the bar runs edge to edge at 1280, so there it keeps the dot + clock.
-const recLabelFits = locale !== "uz";
 const current = (href: string) => (here === href ? "page" : here.startsWith(href) ? "true" : undefined);
 ---
 
@@ -111,17 +107,11 @@ const current = (href: string) => (here === href ? "page" : here.startsWith(href
         <ThemeToggle />
       </div>
 
-      {/* The visit, recording: counts the whole visit across pages. */}
-      {
-        recLabelFits ? (
-          <Fragment>
-            <RecPill locale={locale} class="hidden xl:inline-flex mx-1" />
-            <RecPill locale={locale} compact class="hidden lg:inline-flex xl:hidden mx-1" />
-          </Fragment>
-        ) : (
-          <RecPill locale={locale} compact class="hidden lg:inline-flex mx-1" />
-        )
-      }
+      {/* The visit, recording: counts the whole visit across pages. The pill
+          spells out "Recording" from xl up, where the bar has room for it in
+          every locale (uz "Yozilmoqda" leaves ~29px spare at 1280, ru ~21px). */}
+      <RecPill locale={locale} class="hidden xl:inline-flex mx-1" />
+      <RecPill locale={locale} compact class="hidden lg:inline-flex xl:hidden mx-1" />
 
       <a
         href={appUrl("/sign-in")}
