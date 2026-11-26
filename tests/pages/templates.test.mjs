@@ -29,25 +29,30 @@ for (const { site, rel, kind } of PAGES) {
   });
 
   if (kind === "meeting") {
-    test(`${label}: notes card holds the benefit/steps H2 and all its H3s`, () => {
-      // The card wraps the H2 that precedes the first H3 (FeaturePage: h2#benefits-title,
-      // UseCasePage: the "how it works" H2) and every H3 up to the next H2.
+    test(`${label}: notes card holds the first section after the hero`, () => {
+      // R15: the single [data-notes-card] contains the FIRST H2 after the H1 and every H3
+      // between that H2 and the next H2 (feature: benefits H2 + 3 H3s; use-case: problem H2,
+      // no H3s). It must also come before the second H2 in DOM order.
       const doc = loadPage(site, rel);
       const cards = findAll(doc, has("data-notes-card"));
       assert.equal(cards.length, 1, "expected exactly one [data-notes-card]");
       const card = cards[0];
       const main = findAll(doc, (e) => e.tagName === "main")[0];
-      const heads = findAll(main, (e) => /^h[23]$/.test(e.tagName));
-      const firstH3 = heads.findIndex((h) => h.tagName === "h3");
-      assert.ok(firstH3 > 0, "page has no H3");
-      let p = firstH3 - 1;
-      while (heads[p].tagName !== "h2") p--;
-      const h2 = heads[p];
+      const heads = findAll(main, (e) => /^h[123]$/.test(e.tagName));
+      const first = heads.findIndex((h) => h.tagName === "h2");
+      assert.ok(first >= 0, "page has no H2");
+      const h2 = heads[first];
       const h3s = [];
-      for (let i = p + 1; i < heads.length && heads[i].tagName === "h3"; i++) h3s.push(heads[i]);
+      let second = null;
+      for (let i = first + 1; i < heads.length; i++) {
+        if (heads[i].tagName === "h2") { second = heads[i]; break; }
+        if (heads[i].tagName === "h3") h3s.push(heads[i]);
+      }
       const inCard = new Set(findAll(card, (e) => /^h[23]$/.test(e.tagName)));
-      assert.ok(inCard.has(h2), `[data-notes-card] must contain H2 "${textOf(h2)}"`);
-      for (const h of h3s) assert.ok(inCard.has(h), `[data-notes-card] must contain H3 "${textOf(h)}"`);
+      assert.ok(inCard.has(h2), `[data-notes-card] must contain the first H2 "${textOf(h2)}"`);
+      for (const h of h3s) assert.ok(inCard.has(h), `[data-notes-card] must contain H3 "${textOf(h)}" (before the next H2)`);
+      assert.ok(second, "page has no second H2");
+      assert.ok(docIndex(card) < docIndex(second), `[data-notes-card] must come before the second H2 "${textOf(second)}"`);
     });
   }
 
