@@ -36,9 +36,11 @@ function anchorsFor(site, rel) {
   const h3 = hs.findIndex((h) => h.level === 3);
   assert.ok(h3 > 0, `baseline ${rel} has no H3`);
   let p = h3 - 1;
-  while (hs[p].level !== 2) p--;
+  while (p >= 0 && hs[p].level !== 2) p--;
+  assert.ok(p >= 0, `baseline ${rel}: no H2 before the first H3`);
   let n = h3 + 1;
-  while (hs[n].level !== 2) n++;
+  while (n < hs.length && hs[n].level !== 2) n++;
+  assert.ok(n < hs.length, `baseline ${rel}: no H2 after the first H3`);
   return { payoff: hs[p].text, title: hs[h3].text, languages: hs[n].text };
 }
 
@@ -50,9 +52,12 @@ for (const { site, rel } of PAGES) {
   });
 
   test(`${label}: no removed stock photos`, () => {
-    const removed = new Set(allow().removedAlts);
+    const list = allow().removedAlts;
+    assert.ok(list.length > 0, "Task 6 must fill allow.json removedAlts with the stock-photo alts");
+    const removed = new Set(list);
     const doc = loadPage(site, rel);
-    const bad = findAll(doc, (e) => e.tagName === "img" && removed.has(attr(e, "alt")));
+    const collapse = (t) => (t ?? "").replace(/\s+/g, " ").trim();
+    const bad = findAll(doc, (e) => e.tagName === "img" && removed.has(collapse(attr(e, "alt"))));
     assert.deepEqual(bad.map((e) => attr(e, "alt")), [], "stock-photo <img> still rendered");
   });
 
@@ -69,11 +74,19 @@ for (const { site, rel } of PAGES) {
     assert.ok(idx < docIndex(heading(doc, 2, languages)), `[data-notes-card] must come before languages H2 "${languages}"`);
     const inner = findAll(card, (e) => e.tagName === "h3" && textOf(e) === title);
     assert.equal(inner.length, 1, `[data-notes-card] must contain the payoff H3 "${title}"`);
+    const next = heading(doc, 2, languages);
+    assert.ok(!findAll(card, (e) => e === next).length, `languages H2 "${languages}" must NOT be inside [data-notes-card]`);
   });
 
   test(`${label}: nothing hidden`, () => {
-    const got = extractPage(raw(site, rel), rel).hiddenText;
-    assert.deepEqual(got, baselines[site][rel].hiddenText, "hiddenText must equal baseline");
+    // R16: no hiddenText entry may be added (multiset: count on page <= count in baseline).
+    // Un-hiding or removing text is fine (same semantics as scripts/seo/diff.mjs).
+    const count = (arr) => arr.reduce((m, t) => m.set(t, (m.get(t) ?? 0) + 1), new Map());
+    const base = count(baselines[site][rel].hiddenText);
+    const now = count(extractPage(raw(site, rel), rel).hiddenText);
+    const added = [];
+    for (const [t, n] of now) if (n > (base.get(t) ?? 0)) added.push(`${t} (x${n - (base.get(t) ?? 0)})`);
+    assert.deepEqual(added, [], "newly hidden text (copy must not be hidden)");
   });
 
   test(`${label}: rec pill only in header`, () => {
@@ -82,19 +95,21 @@ for (const { site, rel } of PAGES) {
     const pills = findAll(doc, (e) => attr(e, "data-rec-pill") !== undefined);
     assert.ok(pills.length >= 1, "expected at least one [data-rec-pill]");
     const [header] = byTag(doc, "header");
+    assert.ok(header, "no <header>");
     const inHeader = new Set(findAll(header, (e) => attr(e, "data-rec-pill") !== undefined));
     assert.deepEqual(pills.filter((p) => !inHeader.has(p)).length, 0, "every [data-rec-pill] must be inside <header>");
   });
 
   test(`${label}: closing task link`, () => {
     const doc = loadPage(site, rel);
-    const [footer] = byTag(doc, "footer");
-    assert.ok(footer, "no <footer>");
-    const fIdx = docIndex(footer);
-    const sections = byTag(doc, "section").filter((s) => docIndex(s) < fIdx);
-    const last = sections[sections.length - 1];
-    assert.ok(last, "no <section> before <footer>");
+    const [main] = byTag(doc, "main");
+    assert.ok(main, "no <main>");
+    // last TOP-LEVEL <section> in <main> (no <section> ancestor inside main)
+    const nested = (s) => { for (let p = s.parentNode; p && p !== main; p = p.parentNode) if (p.tagName === "section") return true; return false; };
+    const tops = findAll(main, (e) => e.tagName === "section" && !nested(e));
+    const last = tops[tops.length - 1];
+    assert.ok(last, "no top-level <section> in <main>");
     const links = findAll(last, (e) => e.tagName === "a" && attr(e, "data-analytics-event") === "signup_start_click");
-    assert.ok(links.length >= 1, 'last <section> before <footer> must contain a task-line <a data-analytics-event="signup_start_click">');
+    assert.ok(links.length >= 1, 'last top-level <section> in <main> must contain a task-line <a data-analytics-event="signup_start_click">');
   });
 }
