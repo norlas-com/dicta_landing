@@ -11,8 +11,7 @@ import { meetingUi } from "../../i18n/pages/meeting-ui";
 import Room from "../meeting/Room.astro";
 import NotesCard from "../meeting/NotesCard.astro";
 import NotesItem from "../meeting/NotesItem.astro";
-import TaskLine from "../meeting/TaskLine.astro";
-import VisitRecap from "../meeting/VisitRecap.astro";
+import ClosingRoom from "../meeting/ClosingRoom.astro";
 
 interface Props {
   locale: Locale;
@@ -207,34 +206,27 @@ const crumbLd = {
       </div>
     </section>
 
-    <section aria-labelledby="enterprise-title" class="px-3 sm:px-5 mb-3 sm:mb-5">
-      <Room variant="hero" as="div" class="max-w-6xl mx-auto">
-        <h2 id="enterprise-title" class="font-display text-[2rem] sm:text-[2.8rem] font-medium leading-[1.08] tracking-[-0.025em] max-w-[18ch] text-balance">
-          {c.enterprise.title}
-        </h2>
-        <p class="text-lg text-ink-muted mt-4 max-w-[48ch] leading-relaxed">{c.enterprise.body}</p>
-        <div class="mt-8 flex flex-col lg:flex-row lg:items-center gap-4 max-w-3xl">
-          <TaskLine
-            tone="ink"
-            class="lg:flex-1"
-            who={m.you}
-            task={m.taskStartFree}
-            href={appUrl("/sign-up")}
-            cta={c.enterprise.secondary}
-            attrs={{ "data-analytics-event": "signup_start_click", "data-analytics-location": "pricing_page_bottom" }}
-          />
-          <a
-            href={contactHref}
-            data-analytics-event="cta_clicked"
-            data-analytics-location="pricing_enterprise"
-            class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors"
-          >
-            {c.enterprise.cta}
-          </a>
-        </div>
-        <VisitRecap locale={locale} tone="ink" class="mt-6" />
-      </Room>
-    </section>
+    {/* Contact sales leads, as it did before the redesign; signing up stays
+        the secondary action. */}
+    <ClosingRoom
+      locale={locale}
+      headingId="enterprise-title"
+      title={c.enterprise.title}
+      sub={c.enterprise.body}
+      primary={{
+        href: contactHref,
+        label: c.enterprise.cta,
+        attrs: { "data-analytics-event": "cta_clicked", "data-analytics-location": "pricing_enterprise" },
+      }}
+      secondary={[
+        {
+          href: appUrl("/sign-up"),
+          label: c.enterprise.secondary,
+          attrs: { "data-analytics-event": "signup_start_click", "data-analytics-location": "pricing_page_bottom" },
+        },
+      ]}
+      class="mb-3 sm:mb-5"
+    />
   </div>
   <Footer locale={locale} />
 </Layout>
