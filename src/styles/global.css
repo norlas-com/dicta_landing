@@ -746,3 +746,47 @@ html.js .notes-in.revealed {
     transition: none;
   }
 }
+
+/* ---- Legal pages --------------------------------------------------------
+ * Privacy, terms, offer, delete-account: a calm single column. Literata
+ * headings, Inter body, a mono line for the "updated" date. Text is
+ * untouched; only the type around it changes. */
+.legal-prose h1 {
+  font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--color-foreground);
+  text-wrap: balance;
+}
+.legal-prose h2 {
+  font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--color-foreground);
+  margin-block: 2.25rem 0.5rem;
+  padding-block-start: 1.5rem;
+  border-block-start: 1px solid var(--color-border);
+}
+:lang(ar) .legal-prose :is(h1, h2) { letter-spacing: 0; line-height: 1.35; }
+.legal-prose p,
+.legal-prose li { color: var(--color-muted); line-height: 1.75; font-size: 1.0625rem; }
+.legal-prose ul { list-style: disc; padding-inline-start: 1.5rem; }
+.legal-prose li + li { margin-block-start: 0.4rem; }
+.legal-prose strong { color: var(--color-foreground); font-weight: 600; }
+.legal-prose a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+.legal-prose a:hover { color: var(--color-accent-strong); }
+.legal-prose p.legal-date { color: var(--color-muted); font-size: 11px; line-height: 1.2; }
+.legal-prose p.legal-date:lang(ar) { font-size: 12px; }
+
+/* A saturated button for use on the ink room in both themes: the dark theme's
+ * accent is light, so it would need dark text; this one keeps white text. */
+.btn-solid-on-ink {
+  --solid: oklch(0.5 0.155 278);
+  background: var(--solid);
+  color: oklch(0.985 0.005 85);
+}
+.btn-solid-on-ink:hover { background: oklch(0.44 0.17 278); }
