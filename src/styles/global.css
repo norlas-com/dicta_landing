@@ -440,6 +440,7 @@ html.js .revealed .beat {
  * Arabic face instead of a mono one. */
 .meeting-label:lang(ar) {
   font-family: var(--font-arabic), sans-serif;
+  font-size: 12px;
   text-transform: none;
   letter-spacing: 0;
 }
