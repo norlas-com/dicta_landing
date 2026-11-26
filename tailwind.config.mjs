@@ -96,9 +96,10 @@ export default {
           "serif",
         ],
         serif: ["var(--font-serif)", "var(--font-arabic)", "Literata", "ui-serif", "Georgia", "serif"],
+        // No Arabic face here (see .meeting-label in global.css): Arabic
+        // mono text gets it through .font-mono:lang(ar).
         mono: [
           "var(--font-mono)",
-          "var(--font-arabic)",
           "JetBrains Mono",
           "ui-monospace",
           "SFMono-Regular",
