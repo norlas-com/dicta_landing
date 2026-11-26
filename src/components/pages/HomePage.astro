@@ -8,13 +8,9 @@ import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/appLinks";
 import { HOME_META } from "../../i18n/pages/home-meta";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
-import HeroStage from "../home/HeroStage.astro";
-import ProofBand from "../home/ProofBand.astro";
+import MeetingHero from "../home/MeetingHero.astro";
 import Stats from "../Stats.astro";
-import SceneOffline from "../home/SceneOffline.astro";
-import SceneOnline from "../home/SceneOnline.astro";
-import ScenePayoff from "../home/ScenePayoff.astro";
-import SceneLanguages from "../home/SceneLanguages.astro";
+import MeetingScenes from "../home/MeetingScenes.astro";
 import SceneAudiences from "../home/SceneAudiences.astro";
 import Pricing from "../Pricing.astro";
 import Faq from "../Faq.astro";
@@ -57,16 +53,13 @@ const jsonLd = [
 ];
 ---
 
-<Layout title={title} description={description} locale={locale} path="/" jsonLd={jsonLd}>
+<Layout title={title} description={description} locale={locale} path="/" jsonLd={jsonLd} visitTopic="home">
   <Header locale={locale} path="/" />
-  <HeroStage locale={locale} />
-  <ProofBand locale={locale}>
-    <Stats locale={locale} stats={stats} />
-  </ProofBand>
-  <SceneOffline locale={locale} />
-  <SceneOnline locale={locale} />
-  <ScenePayoff locale={locale} />
-  <SceneLanguages locale={locale} />
+  <MeetingHero locale={locale} />
+  {/* Stats keeps its place right after the hero: its H2 ("So far") is the
+      page's second heading, and the heading order must not change. */}
+  <Stats locale={locale} stats={stats} />
+  <MeetingScenes locale={locale} />
   <SceneAudiences locale={locale} />
   {catalog && <Pricing locale={locale} catalog={catalog} />}
   <Faq locale={locale} items={faq} home />

@@ -4,10 +4,11 @@ import { t } from "../i18n/utils";
 import type { UsageStats } from "../lib/stats";
 
 /**
- * The ink band: real usage so far, said as one sentence rather than a row of
- * metric tiles. Numbers come from api.dicta.uz/v1/public/stats at build time
- * (lib/stats.ts) and count up once when the band scrolls into view; the
- * final value is in the HTML, so no-JS and reduced-motion visitors see it.
+ * A quiet strip between the opening room and the meeting: real usage so far,
+ * said as one sentence rather than a row of metric tiles. Numbers come from
+ * api.dicta.uz/v1/public/stats at build time (lib/stats.ts) and count up once
+ * when the strip scrolls into view; the final value is in the HTML, so no-JS
+ * and reduced-motion visitors see it.
  */
 interface Props {
   locale: Locale;
@@ -39,29 +40,24 @@ const parts: { n: number; label: string }[] = [
 ];
 ---
 
-<section aria-labelledby="stats-title" class="relative bg-ink text-ink-fg overflow-hidden">
-  {/* Faint ruled lines, the same notebook motif as the hero, in ink. */}
-  <div
-    aria-hidden="true"
-    class="absolute inset-0 pointer-events-none opacity-60"
-    style="background-image: linear-gradient(var(--color-ink-2) 1px, transparent 1px); background-size: 100% 44px;"
-  ></div>
+<section aria-labelledby="stats-title" class="px-3 sm:px-5">
+  <div class="max-w-6xl mx-auto px-3 sm:px-5 lg:px-14 py-12 sm:py-16 grid lg:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] gap-x-12 gap-y-4 items-baseline">
+    <div class="reveal flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full bg-accent flex-none" aria-hidden="true"></span>
+      <h2 id="stats-title" class="text-sm font-semibold text-foreground">{s.eyebrow}</h2>
+    </div>
 
-  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-    <h2 id="stats-title" class="reveal text-sm font-medium text-ink-muted">{s.eyebrow}</h2>
+    <div>
+      <p class="reveal font-display text-foreground text-[1.55rem] leading-[1.32] sm:text-[1.95rem] lg:text-[2.2rem] lg:leading-[1.24] tracking-[-0.015em] max-w-[32ch] text-balance" style="--rd:.06s" data-stats data-intl={intlLocale}>
+        {/* One line on purpose: a line break between these expressions renders
+            as a space before the commas and the final period. */}
+        {s.pre}{parts.map((p, i) => (<><span class="whitespace-nowrap"><span class="font-sans font-semibold tabular-nums text-accent" data-count={p.n}>{fmt.format(p.n)}</span> {p.label}</span>{i === 0 ? s.sep1 : i === 1 ? s.sep2 : ""}</>))}{s.post}
+      </p>
 
-    <p class="reveal font-display text-[2rem] leading-[1.25] sm:text-[2.6rem] lg:text-[3.3rem] lg:leading-[1.18] tracking-[-0.02em] mt-6 max-w-[22ch] sm:max-w-[26ch] text-balance" style="--rd:.08s" data-stats>
-      {/* One line on purpose: a line break between these expressions renders
-          as a space before the commas and the final period. */}
-      {s.pre}{parts.map((p, i) => (<><span class="whitespace-nowrap"><span class="font-sans font-semibold tabular-nums text-ink-accent" data-count={p.n}>{fmt.format(p.n)}</span> {p.label}</span>{i === 0 ? s.sep1 : i === 1 ? s.sep2 : ""}</>))}{s.post}
-    </p>
-
-    <div class="reveal mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-ink-muted" style="--rd:.16s">
-      <span class="inline-flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-ink-accent" aria-hidden="true"></span>
-        {s.updated.replace("{date}", date)}
-      </span>
-      <span>{s.footnote}</span>
+      <div class="reveal mt-5 flex flex-wrap items-center gap-x-6 gap-y-1.5 text-sm text-muted" style="--rd:.12s">
+        <span class="tabular-nums">{s.updated.replace("{date}", date)}</span>
+        <span>{s.footnote}</span>
+      </div>
     </div>
   </div>
 </section>
@@ -71,8 +67,10 @@ const parts: { n: number; label: string }[] = [
   const el = document.querySelector<HTMLElement>("[data-stats]");
   if (el && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
     const nums = [...el.querySelectorAll<HTMLElement>("[data-count]")];
-    const lang = document.documentElement.lang || undefined;
-    const fmt = new Intl.NumberFormat(lang);
+    // The build formatted the final numbers for this locale; land on exactly
+    // that text, whatever the browser's own number format is.
+    const finals = nums.map((n) => n.textContent);
+    const fmt = new Intl.NumberFormat(el.dataset.intl || document.documentElement.lang || undefined);
     const io = new IntersectionObserver(
       (entries) => {
         if (!entries.some((e) => e.isIntersecting)) return;
@@ -84,6 +82,7 @@ const parts: { n: number; label: string }[] = [
           const eased = 1 - Math.pow(1 - p, 4);
           for (const n of nums) n.textContent = fmt.format(Math.round(Number(n.dataset.count) * eased));
           if (p < 1) requestAnimationFrame(tick);
+          else nums.forEach((n, i) => (n.textContent = finals[i]));
         };
         requestAnimationFrame(tick);
       },

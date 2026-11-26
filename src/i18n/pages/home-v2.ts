@@ -19,9 +19,6 @@ export interface HomeV2 {
     platforms: string;
     recording: string;
   };
-  proof: {
-    lead: string;
-  };
   offline: {
     kicker: string;
     title: string;
@@ -31,7 +28,6 @@ export interface HomeV2 {
     link: string;
     recording: string;
     speakers: [string, string, string];
-    photoAlt: string;
   };
   online: {
     kicker: string;
@@ -43,7 +39,6 @@ export interface HomeV2 {
     send: string;
     joined: string;
     room: string;
-    photoAlt: string;
   };
   payoff: {
     title: string;
@@ -69,7 +64,6 @@ export interface HomeV2 {
     titleAccent: string;
     body: string;
     items: { label: string; slug: string }[];
-    photoAlt: string;
   };
   closing: {
     title: string;
@@ -97,9 +91,6 @@ const uz: HomeV2 = {
     platforms: "Veb, iOS, Android, macOS va Windows",
     recording: "Yozilmoqda",
   },
-  proof: {
-    lead: "Premier barcha onlayn va oflayn uchrashuvlarini Dicta bilan yozadi.",
-  },
   offline: {
     kicker: "Oflayn uchrashuvlar",
     title: "Stol atrofidagi majlis.",
@@ -109,7 +100,6 @@ const uz: HomeV2 = {
     link: "Oflayn uchrashuvlar haqida",
     recording: "Yozilmoqda",
     speakers: ["Dilnoza", "Rustam", "Aziz"],
-    photoAlt: "Uzun stol atrofida yigʻilish oʻtkazayotgan jamoa",
   },
   online: {
     kicker: "Onlayn uchrashuvlar",
@@ -121,7 +111,6 @@ const uz: HomeV2 = {
     send: "Bot yuborish",
     joined: "Dicta Notetaker qoʻngʻiroqqa qoʻshildi",
     room: "Dicta xonasi",
-    photoAlt: "Bitta noutbuk atrofida onlayn qoʻngʻiroqdagi jamoa",
   },
   payoff: {
     title: "Uchrashuv tugadi.",
@@ -166,7 +155,6 @@ const uz: HomeV2 = {
       { label: "Davlat tashkilotlari", slug: "government" },
       { label: "Dumaloq stol", slug: "round-table" },
     ],
-    photoAlt: "Talabalarga toʻla maʼruza zali",
   },
   closing: {
     title: "Keyingi uchrashuvingiz",
@@ -185,9 +173,6 @@ const ru: HomeV2 = {
     platforms: "Веб, iOS, Android, macOS и Windows",
     recording: "Идёт запись",
   },
-  proof: {
-    lead: "Premier записывает все свои онлайн- и офлайн-встречи в Dicta.",
-  },
   offline: {
     kicker: "Офлайн-встречи",
     title: "Совещание за столом.",
@@ -197,7 +182,6 @@ const ru: HomeV2 = {
     link: "Подробнее об офлайн-встречах",
     recording: "Идёт запись",
     speakers: ["Дильноза", "Рустам", "Азиз"],
-    photoAlt: "Команда проводит совещание за длинным столом",
   },
   online: {
     kicker: "Онлайн-встречи",
@@ -209,7 +193,6 @@ const ru: HomeV2 = {
     send: "Отправить бота",
     joined: "Dicta Notetaker подключился к звонку",
     room: "Комната Dicta",
-    photoAlt: "Команда на онлайн-звонке у одного ноутбука",
   },
   payoff: {
     title: "Встреча закончилась.",
@@ -254,7 +237,6 @@ const ru: HomeV2 = {
       { label: "Госорганизации", slug: "government" },
       { label: "Круглый стол", slug: "round-table" },
     ],
-    photoAlt: "Лекционный зал, полный студентов",
   },
   closing: {
     title: "Следующая встреча",
@@ -273,9 +255,6 @@ const en: HomeV2 = {
     platforms: "Web, iOS, Android, macOS and Windows",
     recording: "Recording",
   },
-  proof: {
-    lead: "Premier records every online and in-person meeting with Dicta.",
-  },
   offline: {
     kicker: "In-person meetings",
     title: "A meeting around the table.",
@@ -285,7 +264,6 @@ const en: HomeV2 = {
     link: "More on in-person meetings",
     recording: "Recording",
     speakers: ["Dilnoza", "Rustam", "Aziz"],
-    photoAlt: "A team holding a meeting around a long table",
   },
   online: {
     kicker: "Online meetings",
@@ -297,7 +275,6 @@ const en: HomeV2 = {
     send: "Send bot",
     joined: "Dicta Notetaker joined the call",
     room: "Dicta room",
-    photoAlt: "A team on an online call around one laptop",
   },
   payoff: {
     title: "The meeting is over.",
@@ -342,7 +319,6 @@ const en: HomeV2 = {
       { label: "Government", slug: "government" },
       { label: "Round table", slug: "round-table" },
     ],
-    photoAlt: "A lecture hall full of students",
   },
   closing: {
     title: "Your next meeting",
@@ -361,9 +337,6 @@ const ar: HomeV2 = {
     platforms: "الويب وiOS وAndroid وmacOS وWindows",
     recording: "جارٍ التسجيل",
   },
-  proof: {
-    lead: "تسجّل Premier جميع اجتماعاتها عبر الإنترنت والحضورية باستخدام Dicta.",
-  },
   offline: {
     kicker: "الاجتماعات الحضورية",
     title: "اجتماع حول الطاولة.",
@@ -373,7 +346,6 @@ const ar: HomeV2 = {
     link: "المزيد عن الاجتماعات الحضورية",
     recording: "جارٍ التسجيل",
     speakers: ["دلنوزا", "رستم", "عزيز"],
-    photoAlt: "فريق يعقد اجتماعًا حول طاولة طويلة",
   },
   online: {
     kicker: "الاجتماعات عبر الإنترنت",
@@ -385,7 +357,6 @@ const ar: HomeV2 = {
     send: "إرسال الروبوت",
     joined: "انضم Dicta Notetaker إلى المكالمة",
     room: "غرفة Dicta",
-    photoAlt: "فريق في مكالمة عبر الإنترنت حول حاسوب واحد",
   },
   payoff: {
     title: "انتهى الاجتماع.",
@@ -430,7 +401,6 @@ const ar: HomeV2 = {
       { label: "الجهات الحكومية", slug: "government" },
       { label: "الطاولة المستديرة", slug: "round-table" },
     ],
-    photoAlt: "قاعة محاضرات مليئة بالطلاب",
   },
   closing: {
     title: "اجتماعك القادم",

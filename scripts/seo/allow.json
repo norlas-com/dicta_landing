@@ -1,1 +1,28 @@
-{"removedText":[],"removedAlts":[],"removedOutbound":[],"removedAnalytics":[]}
+{
+  "removedText": [
+    "Premier barcha onlayn va oflayn uchrashuvlarini Dicta bilan yozadi.",
+    "Premier записывает все свои онлайн- и офлайн-встречи в Dicta.",
+    "Premier records every online and in-person meeting with Dicta."
+  ],
+  "removedAlts": [
+    "Premier",
+    "Uzun stol atrofida yigʻilish oʻtkazayotgan jamoa",
+    "Bitta noutbuk atrofida onlayn qoʻngʻiroqdagi jamoa",
+    "Talabalarga toʻla maʼruza zali",
+    "Команда проводит совещание за длинным столом",
+    "Команда на онлайн-звонке у одного ноутбука",
+    "Лекционный зал, полный студентов",
+    "A team holding a meeting around a long table",
+    "A team on an online call around one laptop",
+    "A lecture hall full of students",
+    "فريق يعقد اجتماعًا حول طاولة طويلة",
+    "فريق في مكالمة عبر الإنترنت حول حاسوب واحد",
+    "قاعة محاضرات مليئة بالطلاب"
+  ],
+  "removedOutbound": [
+    "https://premier.uz/"
+  ],
+  "removedAnalytics": [
+    "outbound_click||premier.uz"
+  ]
+}

@@ -327,7 +327,9 @@ const siteJsonLd =
     <script>
       // Scroll-reveal: elements with .reveal rise in on first intersection;
       // .notes-in lines of the meeting notes write themselves in the same way.
-      const revealables = document.querySelectorAll(".reveal, .reveal-shot, .notes-in");
+      // Lines tied to a scene ([data-notes-scene], the home page) are written
+      // by their scene instead: see MeetingScenes.astro.
+      const revealables = document.querySelectorAll(".reveal, .reveal-shot, .notes-in:not([data-notes-scene])");
       if (revealables.length) {
         const io = new IntersectionObserver(
           (entries) => {
