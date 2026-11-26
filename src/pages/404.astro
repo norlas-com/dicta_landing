@@ -34,7 +34,7 @@ const fallback = t(DEFAULT_LOCALE).notFound;
   path="/404"
   noindex
 >
-  <main class="flex-1 flex items-center px-3 sm:px-5 py-6 sm:py-10">
+  <div class="flex-1 flex items-center px-3 sm:px-5 py-6 sm:py-10">
     <Room variant="compact" as="div" class="w-full max-w-3xl mx-auto text-center">
       <a href={localePath("/", DEFAULT_LOCALE)} aria-label="Dicta" class="inline-flex group mb-8 text-ink-fg hover:text-ink-accent transition-colors">
         <Logo size="md" />
@@ -74,7 +74,7 @@ const fallback = t(DEFAULT_LOCALE).notFound;
       }
       <SceneArt slot="art" kind="phone" class="mx-auto mt-8 w-full max-w-xs" />
     </Room>
-  </main>
+  </div>
 </Layout>
 
 <script>

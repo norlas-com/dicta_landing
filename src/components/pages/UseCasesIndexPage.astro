@@ -29,7 +29,7 @@ const jsonLd = [
 
 <Layout title={`${u.indexTitle} — Dicta`} description={u.indexMeta} locale={locale} path="/use-cases" jsonLd={jsonLd} visitTopic="useCases">
   <Header locale={locale} path="/use-cases" />
-  <main class="relative flex-1">
+  <div class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 pb-6">
       <h1 class="font-display text-[2.4rem] sm:text-[3.4rem] font-semibold tracking-[-0.02em] leading-[1.1] text-foreground text-balance max-w-[20ch]">
         {u.indexH1}
@@ -61,6 +61,6 @@ const jsonLd = [
         })
       }
     </ul>
-  </main>
+  </div>
   <Footer locale={locale} />
 </Layout>

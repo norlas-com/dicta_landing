@@ -54,7 +54,7 @@ const jsonLd = [
 <Layout title={`${dl.title} — Dicta`} description={dl.sub} locale={locale} path="/download" jsonLd={jsonLd} visitTopic="download">
   <Header locale={locale} path="/download" />
 
-  <main class="relative flex-1">
+  <div class="relative flex-1">
     <div class="max-w-4xl mx-auto px-3 sm:px-5 pt-8 lg:pt-12">
       <Room variant="compact" as="div">
         <p class="meeting-label text-ink-muted" data-ui-label>{m.topics.download}</p>
@@ -163,7 +163,7 @@ const jsonLd = [
       <a href={localePath("/", locale)} class="mt-4 inline-flex text-sm text-muted hover:text-foreground transition-colors">← {dl.back}</a>
       <VisitRecap locale={locale} class="mt-8" />
     </div>
-  </main>
+  </div>
 
   <Footer locale={locale} />
 </Layout>

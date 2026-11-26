@@ -28,7 +28,7 @@ const jsonLd = [
 
 <Layout title={`${ui.indexMetaTitle} — Dicta`} description={ui.indexMetaDesc} locale={locale} path="/features" jsonLd={jsonLd} visitTopic="features">
   <Header locale={locale} path="/features" />
-  <main class="relative flex-1">
+  <div class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24">
       <h1 class="font-display text-[2.4rem] sm:text-[3.4rem] font-semibold tracking-[-0.02em] leading-[1.1] text-foreground text-balance max-w-[20ch]">{ui.indexTitle}</h1>
       <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{ui.indexSub}</p>
@@ -65,6 +65,6 @@ const jsonLd = [
         </a>
       </div>
     </section>
-  </main>
+  </div>
   <Footer locale={locale} />
 </Layout>

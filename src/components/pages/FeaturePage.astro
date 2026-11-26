@@ -65,7 +65,7 @@ const jsonLd: Record<string, unknown>[] = [
 
 <Layout title={`${f.metaTitle} — Dicta`} description={f.metaDesc} locale={locale} path={path} jsonLd={jsonLd} visitTopic="features">
   <Header locale={locale} path={path} />
-  <main class="relative flex-1">
+  <div class="relative flex-1">
     <div class="max-w-6xl mx-auto px-3 sm:px-5 pt-8 lg:pt-12">
       <nav aria-label="Breadcrumb" class="text-sm text-muted mb-5 px-3 sm:px-1">
         <a href={localePath("/features", locale)} class="hover:text-accent transition-colors">{ui.breadcrumbRoot}</a>
@@ -191,6 +191,6 @@ const jsonLd: Record<string, unknown>[] = [
         <VisitRecap locale={locale} tone="ink" class="mt-6" />
       </Room>
     </section>
-  </main>
+  </div>
   <Footer locale={locale} />
 </Layout>

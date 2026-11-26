@@ -33,7 +33,7 @@ const crumbLd = {
 
 <Layout title={c.metaTitle} description={c.metaDescription} locale={locale} path="/developers" jsonLd={[crumbLd]} visitTopic="developers">
   <Header locale={locale} path="/developers" />
-  <main class="relative flex-1">
+  <div class="relative flex-1">
     <div class="max-w-6xl mx-auto px-3 sm:px-5 pt-8 lg:pt-12">
       <Room variant="compact" as="div">
         <p class="meeting-label text-ink-muted" data-ui-label>{m.topics.developers}</p>
@@ -113,6 +113,6 @@ const crumbLd = {
         <a href={localePath("/faq", locale)} class="text-accent hover:text-accent-strong font-medium">{c.links.faq}</a>
       </p>
     </section>
-  </main>
+  </div>
   <Footer locale={locale} />
 </Layout>

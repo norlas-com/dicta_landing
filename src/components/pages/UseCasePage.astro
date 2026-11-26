@@ -69,7 +69,7 @@ const h2 = "font-display text-[1.8rem] sm:text-[2.3rem] font-semibold tracking-[
 
 <Layout title={`${c.title} — Dicta`} description={c.meta} locale={locale} path={path} jsonLd={jsonLd} visitTopic="useCases">
   <Header locale={locale} path={path} />
-  <main class="relative flex-1">
+  <div class="relative flex-1">
     <div class="max-w-6xl mx-auto px-3 sm:px-5 pt-8 lg:pt-12">
       <p class="mb-5 px-3 sm:px-1">
         <a href={localePath("/use-cases", locale)} class="text-sm font-medium text-accent hover:text-accent-strong">{u.crumb}</a>
@@ -177,6 +177,6 @@ const h2 = "font-display text-[1.8rem] sm:text-[2.3rem] font-semibold tracking-[
         }
       </ul>
     </nav>
-  </main>
+  </div>
   <Footer locale={locale} />
 </Layout>
