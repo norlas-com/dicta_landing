@@ -1,0 +1,32 @@
+---
+/**
+ * "How it works" as a meeting timeline: a timestamp per step (00:00 · you,
+ * 00:01 · Dicta, + minutes · you) on a dashed tape. The stamps are UI labels;
+ * each step's title and text are the page's real copy. Grid areas and
+ * logical properties, so the tape sits on the right in RTL.
+ */
+interface Props {
+  steps: { t: string; d: string }[];
+  stamps: string[];
+  titleTag: "h3" | "p";
+  class?: string;
+}
+const { steps, stamps, titleTag, class: className } = Astro.props;
+const Title = titleTag;
+const state = (i: number) => (i === 0 ? "start" : i === steps.length - 1 ? "end" : "mid");
+---
+
+<ol class:list={["timed-steps", className]}>
+  {
+    steps.map((s, i) => (
+      <li class="timed-step" data-state={state(i)}>
+        <span class="timed-stamp meeting-label" data-ui-label>{stamps[i] ?? ""}</span>
+        <span class="timed-node" aria-hidden="true" />
+        <div class="timed-body">
+          <Title class="font-display text-xl font-medium leading-snug text-foreground">{s.t}</Title>
+          <p class="mt-1.5 max-w-[62ch] text-foreground-soft leading-relaxed">{s.d}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

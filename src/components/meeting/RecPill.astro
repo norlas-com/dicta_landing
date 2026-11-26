@@ -1,0 +1,60 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { meetingUi } from "../../i18n/pages/meeting-ui";
+
+/**
+ * "● Recording 02:41" — the clock counts the whole visit, not this page: the
+ * start time lives in sessionStorage (see visit-session.ts). Decorative, so it
+ * is hidden from assistive tech: a screen reader announcing "Recording" would
+ * suggest the visitor is actually being recorded. Without JS it reads 00:00.
+ */
+interface Props {
+  locale: Locale;
+  /** Dot and clock only (the narrow header). */
+  compact?: boolean;
+  class?: string;
+}
+const { locale, compact = false, class: className } = Astro.props;
+const m = meetingUi(locale);
+---
+
+<span
+  data-rec-pill
+  data-ui-label
+  aria-hidden="true"
+  class:list={[
+    "inline-flex items-center h-8 rounded-pill border border-border-strong bg-surface text-foreground whitespace-nowrap select-none",
+    compact ? "gap-1.5 px-2.5" : "gap-2 px-3",
+    className,
+  ]}
+>
+  <span class="rec-dot flex-none"></span>
+  {!compact && <span class="meeting-label text-foreground-soft">{m.recording}</span>}
+  <time data-rec-clock datetime="PT0S" class="font-mono text-[12px] leading-none tabular-nums tracking-tight">00:00</time>
+</span>
+
+<script>
+  import { openVisit } from "./visit-session";
+  import { formatClock } from "../../lib/visit";
+
+  const clocks = document.querySelectorAll<HTMLTimeElement>("[data-rec-clock]");
+  if (clocks.length) {
+    const { startedAt } = openVisit().state;
+    let timer = 0;
+    const tick = () => {
+      const ms = Math.max(0, Date.now() - startedAt);
+      const text = formatClock(ms);
+      const iso = `PT${Math.floor(ms / 1000)}S`;
+      clocks.forEach((c) => {
+        if (c.textContent !== text) c.textContent = text;
+        c.dateTime = iso;
+      });
+      // Land on the next whole second of the visit, so the clock never skips.
+      clearTimeout(timer);
+      timer = window.setTimeout(tick, 1000 - (ms % 1000) + 5);
+    };
+    tick();
+    // Background tabs throttle timers; catch up the moment the tab is back.
+    document.addEventListener("visibilitychange", () => document.visibilityState === "visible" && tick());
+  }
+</script>

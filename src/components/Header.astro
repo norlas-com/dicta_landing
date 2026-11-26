@@ -7,6 +7,7 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import Logo from "./Logo.astro";
 import { navExtra } from "../i18n/nav-extra";
+import RecPill from "./meeting/RecPill.astro";
 
 interface Props {
   locale: Locale;
@@ -30,70 +31,99 @@ const menuLinks = [
   { href: localePath("/download", locale), label: d.nav.download, item: "download" },
   { href: localePath("/developers", locale), label: nx.developers, item: "developers" },
 ];
+
+// The bar marks the section you are in: the page itself, or any page under it
+// (a feature page under Features, a post under Blog).
+const here = localePath(path, locale);
+// The pill spells out "Recording" from xl up, where the bar has room for it.
+// Uzbek has the longest nav and the longest label ("Yozib olinmoqda"); with
+// both, the bar runs edge to edge at 1280, so there it keeps the dot + clock.
+const recLabelFits = locale !== "uz";
+const current = (href: string) => (here === href ? "page" : here.startsWith(href) ? "true" : undefined);
 ---
 
-<header class="sticky top-0 z-40 w-full border-b border-transparent bg-background/90 supports-[backdrop-filter]:bg-background/75 supports-[backdrop-filter]:backdrop-blur-md transition-colors duration-200 [&.is-stuck]:border-border" data-header>
-  <div class="max-w-6xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-    <a href={home} data-analytics-event="nav_clicked" data-analytics-item="logo" aria-label="Dicta" class="inline-flex items-center group hover:text-accent transition-colors">
+<header class="sticky top-0 z-40 w-full border-b border-border/60 bg-background/90 supports-[backdrop-filter]:bg-background/75 supports-[backdrop-filter]:backdrop-blur-md transition-colors duration-200 [&.is-stuck]:border-border" data-header>
+  <div class="max-w-6xl mx-auto ps-4 pe-2 sm:px-6 lg:px-10 h-16 flex items-center">
+    <a href={home} data-analytics-event="nav_clicked" data-analytics-item="logo" aria-label="Dicta" class="inline-flex flex-none items-center group hover:text-accent transition-colors [&_img]:max-[399px]:h-[1.35rem] [&_span]:max-[399px]:text-[1.35rem] [&>span]:max-[399px]:gap-1.5">
       <Logo />
     </a>
 
-    <nav class="flex items-center gap-1 sm:gap-2">
-      <a
-        href={localePath("/features", locale)}
-        data-analytics-event="nav_clicked"
-        data-analytics-item="features"
-        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
-      >
-        {nx.features}
-      </a>
+    {/* Section links sit with the logo; the meeting controls sit on the far
+        side, the way a call window puts its status and actions together. */}
+    <nav class="flex items-center gap-0.5 sm:ms-3 lg:ms-5 xl:ms-6">
+        <a
+          href={localePath("/features", locale)}
+          data-analytics-event="nav_clicked"
+          data-analytics-item="features"
+          aria-current={current(localePath("/features", locale))}
+          class="hidden lg:inline-flex items-center h-9 px-2.5 rounded-pill text-sm font-medium whitespace-nowrap text-muted hover:text-foreground aria-[current]:text-foreground transition-colors duration-150 ease-out-expo"
+        >
+          {nx.features}
+        </a>
+        <a
+          href={localePath("/use-cases", locale)}
+          data-analytics-event="nav_clicked"
+          data-analytics-item="use_cases"
+          aria-current={current(localePath("/use-cases", locale))}
+          class="hidden lg:inline-flex items-center h-9 px-2.5 rounded-pill text-sm font-medium whitespace-nowrap text-muted hover:text-foreground aria-[current]:text-foreground transition-colors duration-150 ease-out-expo"
+        >
+          {nx.useCases}
+        </a>
+        <a
+          href={localePath("/pricing", locale)}
+          data-analytics-event="nav_clicked"
+          data-analytics-item="pricing"
+          aria-current={current(localePath("/pricing", locale))}
+          class="hidden sm:inline-flex items-center h-9 px-2.5 rounded-pill text-sm font-medium whitespace-nowrap text-muted hover:text-foreground aria-[current]:text-foreground transition-colors duration-150 ease-out-expo"
+        >
+          {nx.pricing}
+        </a>
+        <a
+          href={localePath("/blog", locale)}
+          data-analytics-event="nav_clicked"
+          data-analytics-item="blog"
+          aria-current={current(localePath("/blog", locale))}
+          class="hidden lg:inline-flex items-center h-9 px-2.5 rounded-pill text-sm font-medium whitespace-nowrap text-muted hover:text-foreground aria-[current]:text-foreground transition-colors duration-150 ease-out-expo"
+        >
+          {nx.blog}
+        </a>
+        <a
+          href={localePath("/download", locale)}
+          data-analytics-event="nav_clicked"
+          data-analytics-item="download"
+          aria-current={current(localePath("/download", locale))}
+          class="hidden lg:inline-flex items-center h-9 px-2.5 rounded-pill text-sm font-medium whitespace-nowrap text-muted hover:text-foreground aria-[current]:text-foreground transition-colors duration-150 ease-out-expo"
+        >
+          {d.nav.download}
+        </a>
+    </nav>
 
-      <a
-        href={localePath("/use-cases", locale)}
-        data-analytics-event="nav_clicked"
-        data-analytics-item="use_cases"
-        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
-      >
-        {nx.useCases}
-      </a>
-
-      <a
-        href={localePath("/pricing", locale)}
-        data-analytics-event="nav_clicked"
-        data-analytics-item="pricing"
-        class="hidden sm:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
-      >
-        {nx.pricing}
-      </a>
-
-      <a
-        href={localePath("/blog", locale)}
-        data-analytics-event="nav_clicked"
-        data-analytics-item="blog"
-        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
-      >
-        {nx.blog}
-      </a>
-
-      <a
-        href={localePath("/download", locale)}
-        data-analytics-event="nav_clicked"
-        data-analytics-item="download"
-        class="hidden lg:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-muted hover:text-foreground transition-colors duration-150 ease-out-expo"
-      >
-        {d.nav.download}
-      </a>
-
+    <div class="ms-auto ps-2 flex flex-none items-center gap-0.5 sm:gap-1">
       <div class="hidden sm:block">
         <LanguageSwitcher locale={locale} path={path} switchPaths={switchPaths} />
       </div>
-      <ThemeToggle />
+      {/* Below md the theme switch lives in the menu sheet, where there is room. */}
+      <div class="hidden md:block">
+        <ThemeToggle />
+      </div>
+
+      {/* The visit, recording: counts the whole visit across pages. */}
+      {
+        recLabelFits ? (
+          <Fragment>
+            <RecPill locale={locale} class="hidden xl:inline-flex mx-1" />
+            <RecPill locale={locale} compact class="hidden lg:inline-flex xl:hidden mx-1" />
+          </Fragment>
+        ) : (
+          <RecPill locale={locale} compact class="hidden lg:inline-flex mx-1" />
+        )
+      }
 
       <a
         href={appUrl("/sign-in")}
         data-analytics-event="login_click"
         data-analytics-location="header"
-        class="hidden sm:inline-flex items-center h-10 px-3 rounded-full text-sm font-medium text-foreground-soft hover:text-foreground transition-colors duration-150 ease-out-expo"
+        class="hidden sm:inline-flex items-center h-10 px-3 rounded-pill text-sm font-medium text-foreground-soft hover:text-foreground transition-colors duration-150 ease-out-expo"
       >
         {d.common.login}
       </a>
@@ -104,23 +134,25 @@ const menuLinks = [
         href={appUrl("/sign-up")}
         data-analytics-event="signup_start_click"
         data-analytics-location="header"
-        class="inline-flex items-center h-10 px-4 sm:px-5 rounded-full bg-accent text-accent-fg text-sm font-medium shadow-glow hover:bg-accent-strong transition-colors duration-150 ease-out-expo"
+        class="inline-flex items-center h-10 px-4 max-[399px]:px-3.5 max-[399px]:text-[13px] sm:px-5 rounded-pill bg-accent text-accent-fg text-sm font-semibold shadow-glow hover:bg-accent-strong transition-colors duration-150 ease-out-expo whitespace-nowrap"
       >
         {d.home.startFree}
       </a>
+
+      <RecPill locale={locale} compact class="lg:hidden ms-1 sm:ms-1.5 max-sm:px-2 max-sm:gap-1" />
 
       <button
         type="button"
         data-menu-open
         aria-haspopup="dialog"
         aria-label={nx.menu}
-        class="lg:hidden inline-flex items-center justify-center w-10 h-10 -me-2 rounded-full text-foreground hover:bg-surface-2 transition-colors"
+        class="lg:hidden inline-flex items-center justify-center w-9 sm:w-10 h-10 rounded-full text-foreground hover:bg-surface-2 transition-colors"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <path d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
       </button>
-    </nav>
+    </div>
   </div>
 </header>
 
@@ -138,6 +170,8 @@ const menuLinks = [
       <a href={home} aria-label="Dicta" class="inline-flex items-center">
         <Logo />
       </a>
+      <div class="flex items-center gap-1">
+      <ThemeToggle />
       <button
         type="button"
         data-menu-close
@@ -148,6 +182,7 @@ const menuLinks = [
           <path d="M6 6l12 12M18 6L6 18"></path>
         </svg>
       </button>
+      </div>
     </div>
 
     <nav class="flex-1 overflow-y-auto px-6 pt-2 pb-6">

@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { LOCALES, DEFAULT_LOCALE, dirFor, type Locale } from "../i18n/ui";
+import type { VisitTopic } from "../i18n/pages/meeting-ui";
 import { SITE } from "../../site.config.mjs";
 import { localePath, switchLocalePath } from "../i18n/utils";
 import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
@@ -23,6 +24,8 @@ interface Props {
    *  default "same bare path in every locale" hreflang set. */
   alternates?: Partial<Record<Locale, string>>;
   ogType?: "website" | "article";
+  /** What this page is about, for the visit recap ("Looked at: Pricing"). */
+  visitTopic?: VisitTopic;
 }
 
 const {
@@ -35,6 +38,7 @@ const {
   noindex = false,
   alternates,
   ogType = "website",
+  visitTopic,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://dicta.uz");
@@ -315,14 +319,15 @@ const siteJsonLd =
       ))
     }
   </head>
-  <body class="font-sans" data-fp={noindex ? "0" : "1"}>
+  <body class="font-sans" data-fp={noindex ? "0" : "1"} data-visit-topic={visitTopic}>
     <main class="min-h-screen bg-background text-foreground flex flex-col">
       <slot />
     </main>
 
     <script>
-      // Scroll-reveal: elements with .reveal rise in on first intersection.
-      const revealables = document.querySelectorAll(".reveal, .reveal-shot");
+      // Scroll-reveal: elements with .reveal rise in on first intersection;
+      // .notes-in lines of the meeting notes write themselves in the same way.
+      const revealables = document.querySelectorAll(".reveal, .reveal-shot, .notes-in");
       if (revealables.length) {
         const io = new IntersectionObserver(
           (entries) => {

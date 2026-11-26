@@ -1,0 +1,37 @@
+---
+/**
+ * The notes: a recap card that reads like Dicta's own meeting summary. The
+ * optional `label` is a small header line ("Dicta · notes, live"); headings
+ * come through the default slot so callers keep their own h2/h3 and order.
+ */
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"div">, "class"> {
+  label?: string;
+  class?: string;
+  /** Pin beside the room on lg+ (the parent grid decides the column). */
+  sticky?: boolean;
+  as?: "div" | "aside" | "section";
+}
+const { label, class: className, sticky = false, as: Tag = "div", ...rest } = Astro.props;
+---
+
+<Tag
+  data-notes-card
+  class:list={[
+    "notes-card relative min-w-0 bg-surface text-foreground rounded-card border border-border shadow-card px-5 pt-4 pb-6 sm:px-7 sm:pt-5 sm:pb-7",
+    sticky && "lg:sticky lg:top-24 lg:self-start",
+    className,
+  ]}
+  {...rest}
+>
+  {
+    label && (
+      <p class="meeting-label flex items-center gap-2 text-muted pb-3.5 mb-5 border-b border-dashed border-border" data-ui-label>
+        <img src="/logo.svg" alt="" width="370" height="319" decoding="async" class="h-3 w-auto flex-none" />
+        <span>{label}</span>
+      </p>
+    )
+  }
+  <slot />
+</Tag>

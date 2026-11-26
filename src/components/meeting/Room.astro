@@ -1,0 +1,48 @@
+---
+/**
+ * The room: the dark ink panel the meeting happens in. Text goes in the
+ * default slot (callers keep their own h1/h2 and copy); a drawn scene or the
+ * call tiles go in `art`, which always sits after the text.
+ *
+ * - hero:    the home page's opening room (rounded, generous, art at the foot)
+ * - scene:   one scene of the home story; square edges so consecutive scenes
+ *            read as one continuous ink column (the parent rounds the ends)
+ * - compact: an inner page's hero, beside a NotesCard
+ */
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"section">, "class"> {
+  variant: "hero" | "scene" | "compact";
+  as?: "section" | "div";
+  class?: string;
+}
+const { variant, as: Tag = "section", class: className, ...rest } = Astro.props;
+const hasArt = Astro.slots.has("art");
+
+const shell = {
+  hero: "rounded-[1.75rem] sm:rounded-[2.25rem] px-6 pt-8 pb-6 sm:px-10 sm:pt-12 sm:pb-8 lg:px-14 lg:pt-14 lg:pb-10 gap-10 sm:gap-14",
+  scene: "px-6 py-14 sm:px-10 sm:py-16 lg:px-14 lg:py-20 gap-10",
+  compact: "rounded-[1.5rem] sm:rounded-[1.75rem] px-6 pt-8 pb-7 sm:px-9 sm:pt-10 sm:pb-8 gap-8",
+}[variant];
+---
+
+<Tag
+  data-room={variant}
+  class:list={[
+    "room relative isolate flex flex-col bg-ink text-ink-fg dark:ring-1 dark:ring-inset dark:ring-ink-line/70",
+    shell,
+    className,
+  ]}
+  {...rest}
+>
+  <div class="room-body relative min-w-0">
+    <slot />
+  </div>
+  {
+    hasArt && (
+      <div class:list={["room-art relative min-w-0", variant === "scene" ? "" : "mt-auto"]}>
+        <slot name="art" />
+      </div>
+    )
+  }
+</Tag>

@@ -488,3 +488,206 @@ html.js .notes-in.revealed {
     transition: none;
   }
 }
+
+/* ---- Meeting parts ------------------------------------------------------
+ * Shared by src/components/meeting/*. The room is ink, the notes are paper;
+ * everything else is a small mark a real recap would carry: a checkbox, a
+ * tick, a timestamp on a dashed tape. */
+
+/* Display sizes for the room's headings (callers keep their own h1/h2). */
+.meeting-display {
+  font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5.4vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+.meeting-title {
+  font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+.notes-title {
+  font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
+  font-weight: 500;
+  font-size: 1.3125rem;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+}
+/* Arabic joins letters: negative tracking breaks the joins. */
+:lang(ar) :is(.meeting-display, .meeting-title, .notes-title) {
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+/* Focus rings stay visible on ink. */
+.room *:focus-visible {
+  outline-color: var(--color-ink-accent);
+}
+
+/* The task checkbox. Empty in the notes; on a TaskLine it ticks itself while
+ * the pointer (or keyboard focus) is on the task's button. */
+.notes-box {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--color-accent-fg);
+}
+.notes-box svg {
+  width: 11px;
+  height: 11px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-tone="ink"] .notes-box {
+  border-color: var(--color-ink-accent);
+  color: var(--color-ink);
+}
+[data-task-line]:has(a:hover, a:focus-visible) .notes-box {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+[data-task-line][data-tone="ink"]:has(a:hover, a:focus-visible) .notes-box {
+  background: var(--color-ink-accent);
+  border-color: var(--color-ink-accent);
+}
+[data-task-line]:has(a:hover, a:focus-visible) .notes-box svg {
+  opacity: 1;
+  transform: none;
+}
+
+/* Timestamped steps: stamp, a dashed tape with one node per step, the step.
+ * The first node is the red "recording started" dot, the last one is filled
+ * (done). Logical properties only, so RTL mirrors by itself. */
+.timed-steps {
+  --tape-x: 0.625rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.timed-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  grid-template-areas:
+    "node stamp"
+    "node body";
+  column-gap: 1rem;
+  row-gap: 0.375rem;
+  padding-bottom: 2rem;
+}
+.timed-step:last-child {
+  padding-bottom: 0;
+}
+.timed-step::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: var(--tape-x);
+  top: 1.1rem;
+  bottom: -0.15rem;
+  border-inline-start: 1.5px dashed var(--color-border-strong);
+  transform: translateX(-50%);
+}
+[dir="rtl"] .timed-step::before {
+  transform: translateX(50%);
+}
+.timed-step:last-child::before {
+  display: none;
+}
+.timed-stamp {
+  grid-area: stamp;
+  color: var(--color-muted);
+  align-self: center;
+  white-space: nowrap;
+}
+.timed-node {
+  grid-area: node;
+  justify-self: center;
+  width: 11px;
+  height: 11px;
+  margin-top: 0.2rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-accent);
+  background: var(--color-background);
+}
+.timed-step[data-state="start"] .timed-node {
+  border-color: var(--color-live);
+  background: var(--color-live);
+}
+.timed-step[data-state="end"] .timed-node {
+  background: var(--color-accent);
+}
+.timed-body {
+  grid-area: body;
+  min-width: 0;
+}
+@media (min-width: 640px) {
+  .timed-steps {
+    --tape-x: calc(9.5rem + 1.25rem + 0.625rem);
+  }
+  .timed-step {
+    grid-template-columns: 9.5rem 1.25rem minmax(0, 1fr);
+    grid-template-areas: "stamp node body";
+    column-gap: 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+  .timed-stamp {
+    align-self: start;
+    text-align: end;
+    padding-top: 0.42rem;
+    white-space: normal;
+  }
+  .timed-node {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Drawn scenes. Colours are tokens read through variables, so a scene sits
+ * on ink by default and a paper parent can re-point them. */
+.scene-art {
+  --sa-panel: var(--color-ink-2);
+  --sa-deep: var(--color-ink);
+  --sa-line: var(--color-ink-line);
+  --sa-hi: var(--color-ink-accent);
+  --sa-fg: var(--color-ink-fg);
+  --sa-muted: var(--color-ink-muted);
+  --sa-live: var(--color-live);
+  display: block;
+  overflow: visible;
+}
+.scene-art .wave-bar {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+/* Labels inside a mirrored scene are flipped back so they stay readable. */
+[dir="rtl"] .scene-art .sa-text {
+  transform: scaleX(-1);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+.rec-pulse {
+  animation: rec-pulse 1.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rec-pulse,
+  .scene-art .wave-bar {
+    animation: none;
+  }
+  .notes-box svg {
+    transition: none;
+  }
+}

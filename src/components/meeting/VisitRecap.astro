@@ -1,0 +1,79 @@
+---
+import type { Locale } from "../../i18n/locales";
+
+/**
+ * A one-line recap of this visit for a page's closing section: "4 pages ·
+ * 06:53 · Looked at: Features, Pricing". Read from the same sessionStorage as
+ * the RecPill. Stays `hidden` (and empty in the static HTML) unless the
+ * script finds a stored visit, so the page never depends on it.
+ */
+interface Props {
+  locale: Locale;
+  tone?: "paper" | "ink";
+  class?: string;
+}
+const { locale, tone = "paper", class: className } = Astro.props;
+---
+
+<p
+  data-visit-recap
+  data-ui-label
+  data-locale={locale}
+  data-tone={tone}
+  hidden
+  class:list={[
+    "flex flex-wrap items-center gap-1.5 font-mono text-[12px] leading-none",
+    tone === "ink" ? "text-ink-muted" : "text-muted",
+    className,
+  ]}
+>
+</p>
+
+<script>
+  import { MEETING_UI } from "../../i18n/pages/meeting-ui";
+  import type { Locale } from "../../i18n/locales";
+  import { summarizeVisit } from "../../lib/visit";
+  import { openVisit } from "./visit-session";
+
+  const CHIP = {
+    paper: "inline-flex items-center gap-1.5 h-7 px-2.5 rounded-pill border border-border bg-background",
+    ink: "inline-flex items-center gap-1.5 h-7 px-2.5 rounded-pill border border-ink-line bg-ink-2",
+  };
+
+  const render = (el: HTMLElement) => {
+    const { state, stored } = openVisit();
+    if (!stored) return;
+    const sum = summarizeVisit(state, Date.now());
+    if (sum.pageCount < 1) return;
+    const locale = (el.dataset.locale ?? "en") as Locale;
+    const m = MEETING_UI[locale] ?? MEETING_UI.en;
+    const parts = [m.visitPages(sum.pageCount), sum.clock];
+    if (sum.topics.length) {
+      parts.push(`${m.visitLookedAt}: ${sum.topics.map((t) => m.topics[t]).join(locale === "ar" ? "، " : ", ")}`);
+    }
+    const chipClass = el.dataset.tone === "ink" ? CHIP.ink : CHIP.paper;
+    const chips = parts.map((text, i) => {
+      const chip = document.createElement("span");
+      chip.className = chipClass;
+      if (i === 0) {
+        // A stopped-recording square: the meeting this visit was is over.
+        const stop = document.createElement("span");
+        stop.className = "w-2 h-2 rounded-[2px] bg-current opacity-70";
+        chip.append(stop);
+      }
+      chip.append(text);
+      return chip;
+    });
+    el.replaceChildren(...chips);
+    el.hidden = false;
+  };
+
+  document.querySelectorAll<HTMLElement>("[data-visit-recap]").forEach((el) => {
+    render(el);
+    // Refresh the clock when the closing section actually comes into view.
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) render(el);
+    });
+    io.observe(el);
+  });
+</script>

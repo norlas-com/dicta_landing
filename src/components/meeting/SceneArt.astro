@@ -1,0 +1,253 @@
+---
+/**
+ * Small drawn scenes for the room, in place of stock photos. Flat shapes in
+ * the ink tokens (see .scene-art in global.css), a red dot where Dicta is
+ * recording, and a breathing waveform where it is listening. Decorative
+ * (aria-hidden); mirrored in RTL, with the few letters flipped back.
+ *
+ * offline   — people around a table, a phone recording in the middle
+ * online    — a call grid; the Dicta bot has joined as the fourth tile
+ * languages — one voice, the same line written in uz / ru / en
+ * audience  — a lecture hall, the lectern recording, one hand up
+ * phone     — the app on a phone: recording, waveform, transcript
+ */
+interface Props {
+  kind: "offline" | "online" | "languages" | "audience" | "phone";
+  class?: string;
+}
+const { kind, class: className } = Astro.props;
+
+const r1 = (n: number) => Math.round(n * 10) / 10;
+const rad = (d: number) => (d * Math.PI) / 180;
+
+// offline: six seats on an ellipse around the table, each turned to face it.
+const seats = [-150, -90, -30, 30, 90, 150].map((deg, i) => ({
+  x: r1(240 + 196 * Math.cos(rad(deg))),
+  y: r1(150 + 104 * Math.sin(rad(deg))),
+  rot: deg - 90,
+  speaking: i === 2,
+  notebook: i === 4 || i === 0,
+}));
+
+// audience: rows of heads on arcs below the lectern, larger toward the viewer.
+const rows = [
+  { r: 150, n: 5, head: 7, span: 26 },
+  { r: 186, n: 7, head: 8, span: 30 },
+  { r: 222, n: 9, head: 9, span: 33 },
+  { r: 258, n: 11, head: 10, span: 35 },
+].map((row, ri) => ({
+  ...row,
+  seats: Array.from({ length: row.n }, (_, i) => {
+    const deg = 90 - row.span + (2 * row.span * i) / (row.n - 1);
+    return { x: r1(240 + row.r * Math.cos(rad(deg))), y: r1(-44 + row.r * Math.sin(rad(deg))), hand: ri === 2 && i === 2 };
+  }),
+}));
+
+const wave = (count: number, x0: number, step: number, cy: number, w: number, hs: number[]) =>
+  Array.from({ length: count }, (_, i) => {
+    const h = hs[i % hs.length];
+    return { x: r1(x0 + i * step), y: r1(cy - h / 2), h, w, d: `${r1((i * 0.09) % 0.9)}s` };
+  });
+
+const phoneWave = wave(17, 189, 6.2, 112, 3, [10, 18, 28, 40, 24, 34, 16, 44, 30, 20, 38, 26, 14, 32, 22, 12, 8]);
+const voiceWave = wave(9, 44, 10, 140, 4, [14, 30, 48, 26, 56, 36, 20, 42, 16]);
+const tableWave = wave(5, 231, 4.5, 154, 2.2, [6, 12, 16, 10, 7]);
+---
+
+<svg
+  class:list={["scene-art w-full h-auto rtl:-scale-x-100", className]}
+  viewBox="0 0 480 280"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+  data-scene={kind}
+>
+  {
+    kind === "offline" && (
+      <g>
+        <ellipse cx="240" cy="150" rx="150" ry="70" fill="var(--sa-panel)" stroke="var(--sa-line)" stroke-width="1.5" />
+        {seats.map((s) => (
+          <g transform={`translate(${s.x} ${s.y}) rotate(${s.rot})`}>
+            {s.notebook && (
+              <g>
+                <rect x="-12" y="-46" width="24" height="16" rx="2" fill="var(--sa-deep)" stroke="var(--sa-line)" />
+                <path d="M-7 -41h14M-7 -37h10" stroke="var(--sa-line)" stroke-width="1.2" stroke-linecap="round" />
+              </g>
+            )}
+            <ellipse cx="0" cy="7" rx="24" ry="12" fill="var(--sa-line)" />
+            <circle cx="0" cy="-6" r="11" fill="var(--sa-panel)" stroke={s.speaking ? "var(--sa-hi)" : "var(--sa-muted)"} stroke-width={s.speaking ? 2.5 : 1.5} />
+            {s.speaking && (
+              <g stroke="var(--sa-hi)" stroke-width="1.8" stroke-linecap="round">
+                <path d="M-8 -24 Q0 -30 8 -24" />
+                <path d="M-13 -32 Q0 -41 13 -32" opacity="0.55" />
+              </g>
+            )}
+          </g>
+        ))}
+        <rect x="226" y="122" width="28" height="54" rx="6" fill="var(--sa-deep)" stroke="var(--sa-hi)" stroke-width="1.5" />
+        <circle class="rec-pulse" cx="240" cy="133" r="3" fill="var(--sa-live)" />
+        {tableWave.map((b) => (
+          <rect class="wave-bar" style={`--wd:${b.d}`} x={b.x} y={b.y} width={b.w} height={b.h} rx="1.1" fill="var(--sa-hi)" />
+        ))}
+      </g>
+    )
+  }
+
+  {
+    kind === "online" && (
+      <g>
+        <rect x="40" y="16" width="400" height="248" rx="16" fill="var(--sa-deep)" stroke="var(--sa-line)" stroke-width="1.5" />
+        <g fill="var(--sa-line)">
+          <circle cx="60" cy="34" r="3.5" />
+          <circle cx="72" cy="34" r="3.5" />
+          <circle cx="84" cy="34" r="3.5" />
+          <rect x="392" y="31" width="30" height="6" rx="3" />
+        </g>
+        <circle class="rec-pulse" cx="381" cy="34" r="4" fill="var(--sa-live)" />
+        {[
+          { x: 56, y: 54, speaking: true },
+          { x: 244, y: 54, speaking: false },
+          { x: 56, y: 157, speaking: false },
+        ].map((t) => (
+          <g>
+            <rect x={t.x} y={t.y} width="180" height="95" rx="10" fill="var(--sa-panel)" stroke={t.speaking ? "var(--sa-hi)" : "none"} stroke-width="2" />
+            <circle cx={t.x + 90} cy={t.y + 38} r="14" fill="var(--sa-line)" />
+            <path d={`M${t.x + 62} ${t.y + 95} a28 24 0 0 1 56 0z`} fill="var(--sa-line)" />
+            <rect x={t.x + 10} y={t.y + 79} width="38" height="7" rx="3.5" fill="var(--sa-deep)" opacity="0.7" />
+            {t.speaking && (
+              <g fill="var(--sa-hi)">
+                <rect class="wave-bar" style="--wd:0s" x={t.x + 160} y={t.y + 74} width="2.5" height="14" rx="1.2" />
+                <rect class="wave-bar" style="--wd:.2s" x={t.x + 165} y={t.y + 74} width="2.5" height="14" rx="1.2" />
+                <rect class="wave-bar" style="--wd:.4s" x={t.x + 170} y={t.y + 74} width="2.5" height="14" rx="1.2" />
+              </g>
+            )}
+          </g>
+        ))}
+        <rect x="244" y="157" width="180" height="95" rx="10" fill="var(--sa-deep)" stroke="var(--sa-hi)" stroke-width="1.5" stroke-dasharray="5 5" />
+        <g transform="translate(316 186) scale(1.6)" stroke="var(--sa-hi)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M4 9v6M8 6v12M12 9v6" />
+          <path d="M14 5h2a7 7 0 0 1 0 14h-2" />
+        </g>
+        <circle cx="410" cy="171" r="8" fill="var(--sa-hi)" />
+        <path d="M406.5 171.2l2.3 2.2 4.4-4.6" stroke="var(--sa-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+    )
+  }
+
+  {
+    kind === "languages" && (
+      <g>
+        {voiceWave.map((b) => (
+          <rect class="wave-bar" style={`--wd:${b.d}`} x={b.x} y={b.y} width={b.w} height={b.h} rx="2" fill="var(--sa-hi)" />
+        ))}
+        <g stroke="var(--sa-line)" stroke-width="1.5" stroke-dasharray="3 5" stroke-linecap="round">
+          <path d="M140 140 C160 140 158 76 182 76" />
+          <path d="M140 140 H182" />
+          <path d="M140 140 C160 140 158 204 182 204" />
+        </g>
+        {[
+          { y: 76, code: "UZ", words: [64, 44, 82], mark: 1 },
+          { y: 140, code: "RU", words: [52, 90, 40], mark: 1 },
+          { y: 204, code: "EN", words: [36, 72, 58], mark: 1 },
+        ].map((row) => (
+          <g>
+            <rect x="186" y={row.y - 13} width="42" height="26" rx="13" fill="var(--sa-deep)" stroke="var(--sa-hi)" stroke-width="1.5" />
+            <text
+              class="sa-text"
+              x="207"
+              y={row.y + 4}
+              text-anchor="middle"
+              fill="var(--sa-fg)"
+              font-size="11"
+              font-family="var(--font-mono), ui-monospace, monospace"
+              letter-spacing="0.08em"
+            >
+              {row.code}
+            </text>
+            {row.words.map((w, i) => {
+              const x = 240 + row.words.slice(0, i).reduce((a, b) => a + b + 8, 0);
+              return i === row.mark ? (
+                <rect x={x - 4} y={row.y - 10} width={w + 8} height="20" rx="10" fill="none" stroke="var(--sa-hi)" stroke-width="1.5" />
+              ) : null;
+            })}
+            {row.words.map((w, i) => {
+              const x = 240 + row.words.slice(0, i).reduce((a, b) => a + b + 8, 0);
+              return <rect x={x} y={row.y - 3.5} width={w} height="7" rx="3.5" fill={i === row.mark ? "var(--sa-hi)" : "var(--sa-muted)"} opacity={i === row.mark ? 1 : 0.55} />;
+            })}
+          </g>
+        ))}
+      </g>
+    )
+  }
+
+  {
+    kind === "audience" && (
+      <g>
+        <g stroke="var(--sa-hi)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M197 92 A50 50 0 0 0 283 92" opacity="0.7" />
+          <path d="M175 104 A75 75 0 0 0 305 104" opacity="0.35" />
+        </g>
+        <ellipse cx="240" cy="52" rx="19" ry="9" fill="var(--sa-line)" />
+        <circle cx="240" cy="33" r="10" fill="var(--sa-panel)" stroke="var(--sa-hi)" stroke-width="2.2" />
+        <path d="M218 52 H262 L257 86 H223 Z" fill="var(--sa-panel)" stroke="var(--sa-line)" stroke-width="1.5" stroke-linejoin="round" />
+        <rect x="234" y="58" width="12" height="19" rx="2.5" fill="var(--sa-deep)" stroke="var(--sa-hi)" stroke-width="1.2" />
+        <circle class="rec-pulse" cx="240" cy="63" r="1.8" fill="var(--sa-live)" />
+        {rows.map((row) =>
+          row.seats.map((s) => (
+            <g>
+              {s.hand && (
+                <g stroke="var(--sa-hi)" stroke-width="2.2" stroke-linecap="round">
+                  <path d={`M${s.x + row.head + 3} ${s.y + 4} L${s.x + row.head + 6} ${s.y - row.head - 10}`} />
+                  <circle cx={s.x + row.head + 6.5} cy={s.y - row.head - 13} r="2.6" fill="var(--sa-hi)" stroke="none" />
+                </g>
+              )}
+              <ellipse cx={s.x} cy={s.y + row.head * 1.25} rx={row.head * 1.7} ry={row.head * 0.85} fill="var(--sa-panel)" />
+              <circle cx={s.x} cy={s.y} r={row.head} fill="var(--sa-line)" stroke={s.hand ? "var(--sa-hi)" : "none"} stroke-width="1.6" />
+            </g>
+          )),
+        )}
+      </g>
+    )
+  }
+
+  {
+    kind === "phone" && (
+      <g>
+        <g stroke="var(--sa-line)" stroke-width="1.6" stroke-linecap="round">
+          <path d="M146 92 Q132 112 146 132" />
+          <path d="M128 80 Q108 112 128 144" opacity="0.6" />
+          <path d="M334 92 Q348 112 334 132" />
+          <path d="M352 80 Q372 112 352 144" opacity="0.6" />
+        </g>
+        <rect x="170" y="14" width="140" height="252" rx="24" fill="var(--sa-deep)" stroke="var(--sa-hi)" stroke-width="1.5" />
+        <rect x="220" y="24" width="40" height="6" rx="3" fill="var(--sa-line)" />
+        <circle class="rec-pulse" cx="192" cy="52" r="4" fill="var(--sa-live)" />
+        <text
+          class="sa-text"
+          x="202"
+          y="56"
+          fill="var(--sa-fg)"
+          font-size="12"
+          font-family="var(--font-mono), ui-monospace, monospace"
+        >
+          02:41
+        </text>
+        {phoneWave.map((b) => (
+          <rect class="wave-bar" style={`--wd:${b.d}`} x={b.x} y={b.y} width={b.w} height={b.h} rx="1.5" fill="var(--sa-hi)" />
+        ))}
+        {[
+          { y: 162, who: "var(--sa-hi)", a: 76, b: 48 },
+          { y: 196, who: "var(--sa-line)", a: 62, b: 70 },
+        ].map((l) => (
+          <g>
+            <circle cx="194" cy={l.y} r="7" fill={l.who} />
+            <rect x="208" y={l.y - 7} width={l.a} height="5" rx="2.5" fill="var(--sa-muted)" opacity="0.6" />
+            <rect x="208" y={l.y + 3} width={l.b} height="5" rx="2.5" fill="var(--sa-muted)" opacity="0.35" />
+          </g>
+        ))}
+        <circle cx="240" cy="238" r="14" fill="none" stroke="var(--sa-line)" stroke-width="1.5" />
+        <rect x="234.5" y="232.5" width="11" height="11" rx="2.5" fill="var(--sa-live)" />
+      </g>
+    )
+  }
+</svg>

@@ -3,6 +3,7 @@ import type { Locale } from "../i18n/ui";
 import { t, localePath } from "../i18n/utils";
 import { SITE } from "../../site.config.mjs";
 import { navExtra } from "../i18n/nav-extra";
+import Logo from "./Logo.astro";
 
 interface Props {
   locale: Locale;
@@ -30,24 +31,39 @@ const columns = [
     { href: "/developers", label: nx.developers, item: "developers" },
   ] },
 ];
+// Bar heights of the closing waveform (a meeting winding down to the stop).
+const tape = [6, 10, 16, 9, 20, 13, 7, 18, 24, 12, 8, 15, 21, 10, 6, 14, 18, 9, 12, 7, 10, 5, 8, 4];
 ---
 
-<footer class="mt-auto border-t border-border">
-  <div class="max-w-6xl mx-auto px-6 pt-10 pb-2 grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+<footer class="mt-auto border-t border-border bg-background">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-12 sm:pt-14 pb-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+    {/* The end of the page is the end of the meeting: the brand mark over a
+        finished recording, a waveform that stops on a square. Decoration;
+        the brand link lives in the header. */}
+    <div aria-hidden="true" class="flex flex-col gap-5">
+      <Logo size="md" />
+      <svg viewBox={`0 0 ${tape.length * 6 + 14} 24`} width={tape.length * 6 + 14} height="24" class="self-start h-6 max-w-full text-border-strong rtl:-scale-x-100" fill="currentColor">
+        {tape.map((h, i) => <rect x={i * 6} y={12 - h / 2} width="2.5" height={h} rx="1.25" />)}
+        <rect x={tape.length * 6 + 2} y="6" width="12" height="12" rx="2.5" class="text-live" fill="currentColor" />
+      </svg>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-9 text-sm">
     {columns.map((col) => (
       <div>
-        <p class="font-medium text-foreground mb-3">{col.title}</p>
-        <ul class="space-y-2">
+        <p class="meeting-label text-muted mb-4">{col.title}</p>
+        <ul class="space-y-2.5">
           {col.links.map((l) => (
-            <li><a href={localePath(l.href, locale)} data-analytics-event="nav_clicked" data-analytics-item={l.item} class="text-muted hover:text-foreground transition-colors">{l.label}</a></li>
+            <li><a href={localePath(l.href, locale)} data-analytics-event="nav_clicked" data-analytics-item={l.item} class="text-foreground-soft hover:text-accent transition-colors">{l.label}</a></li>
           ))}
         </ul>
       </div>
     ))}
+    </div>
   </div>
-  <div class="max-w-6xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-4 text-xs text-muted">
-    <p>© {year} Dicta. {d.landing.footerRights}</p>
-    <div class="flex flex-wrap items-center gap-4">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="border-t border-dashed border-border-strong py-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 text-xs text-muted">
+    <p class="font-mono text-[12px] tabular-nums">© {year} Dicta. {d.landing.footerRights}</p>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
             <a href={`${home === "/" ? "" : home}/#contact`} data-analytics-event="nav_clicked" data-analytics-item="contact" class="hover:text-foreground transition-colors">{d.nav.contact}</a>
       {/* The apps are the only way to use some features (roundtable records on
           everyone's phone and has no browser path), so the download link
@@ -81,6 +97,7 @@ const columns = [
           <span class="text-sm font-bold uppercase tracking-wide text-foreground ms-[3px]">ORLAS</span>
         </span>
       </a>
+    </div>
     </div>
   </div>
 </footer>

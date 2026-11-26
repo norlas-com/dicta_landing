@@ -1,0 +1,48 @@
+---
+/**
+ * The site's call to action, written as an open task in the recap:
+ * "☐ You: record your next meeting free  [Start free]". Who and task are UI
+ * labels; the button text is the page's existing CTA copy, and `attrs`
+ * carries its existing data-analytics-* attributes verbatim.
+ * The box ticks itself while the button is hovered or focused.
+ */
+interface Props {
+  who: string;
+  task: string;
+  href: string;
+  cta: string;
+  attrs?: Record<string, string>;
+  tone?: "paper" | "ink";
+  class?: string;
+}
+const { who, task, href, cta, attrs = {}, tone = "paper", class: className } = Astro.props;
+const ink = tone === "ink";
+---
+
+<div
+  data-task-line
+  data-tone={tone}
+  class:list={[
+    "task-line flex flex-wrap items-center gap-x-5 gap-y-3 rounded-card ps-4 pe-3 py-3",
+    ink ? "bg-ink-2 ring-1 ring-inset ring-ink-line text-ink-fg" : "bg-surface ring-1 ring-inset ring-border text-foreground",
+    className,
+  ]}
+>
+  <span class="flex flex-1 items-start gap-3 min-w-[min(100%,14rem)]">
+    <span aria-hidden="true" class="notes-box mt-[0.28em]">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.4l2.2 2.1L9.5 3.5" /></svg>
+    </span>
+    <span data-ui-label class="text-[0.9375rem] leading-snug"><b class="font-semibold">{who}:</b> <span class={ink ? "text-ink-muted" : "text-foreground-soft"}>{task}</span></span>
+  </span>
+  <a
+    href={href}
+    {...attrs}
+    class:list={[
+      "group inline-flex flex-none items-center justify-center gap-2 h-11 px-5 rounded-pill text-sm font-semibold active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo max-sm:w-full",
+      ink ? "bg-ink-fg text-ink hover:bg-ink-accent" : "bg-accent text-accent-fg hover:bg-accent-strong",
+    ]}
+  >
+    {cta}
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-none transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+  </a>
+</div>
