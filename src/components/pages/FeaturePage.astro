@@ -98,7 +98,7 @@ const jsonLd: Record<string, unknown>[] = [
             </a>
           </p>
         )}
-        <NotesCard slot="notes" as="section" aria-labelledby="benefits-title" label={`${m.dicta} · ${m.notesLive}`} class="h-full">
+        <NotesCard slot="notes" as="section" aria-labelledby="benefits-title" label={`${m.dicta} · ${m.notesLive}`}>
           <h2 id="benefits-title" class="font-display text-[1.5rem] sm:text-[1.75rem] font-semibold tracking-[-0.02em] leading-tight text-foreground text-balance">{ui.benefitsTitle}</h2>
           <ul class="mt-5 grid gap-4">
             {f.benefits.map((b, i) => (

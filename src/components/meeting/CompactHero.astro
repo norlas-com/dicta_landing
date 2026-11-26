@@ -17,7 +17,7 @@ interface Props {
 const { eyebrow, h1, sub, art } = Astro.props;
 ---
 
-<div class="grid lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] gap-4 lg:gap-6 items-stretch">
+<div class="grid lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] gap-4 lg:gap-6 items-start">
   <Room variant="compact" as="div" class="min-w-0">
     <p class="text-sm font-medium text-ink-accent">{eyebrow}</p>
     <h1 class="font-display text-ink-fg mt-4 text-[clamp(2.1rem,5.4vw,3.4rem)] leading-[1.04] tracking-[-0.03em] font-medium text-balance">{h1}</h1>
