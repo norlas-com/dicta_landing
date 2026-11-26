@@ -17,7 +17,6 @@ export interface HomeV2 {
     sub: string;
     download: string;
     platforms: string;
-    recording: string;
   };
   offline: {
     kicker: string;
@@ -26,7 +25,6 @@ export interface HomeV2 {
     body: string;
     roundTable: string;
     link: string;
-    recording: string;
     speakers: [string, string, string];
   };
   online: {
@@ -89,7 +87,6 @@ const uz: HomeV2 = {
     sub: "Majlis, qoʻngʻiroq yoki maʼruza: Dicta yozib oladi, kim nima deganini ajratadi va qarorlar bilan vazifalarni bir necha daqiqada tayyorlab beradi.",
     download: "Ilovani yuklab olish",
     platforms: "Veb, iOS, Android, macOS va Windows",
-    recording: "Yozilmoqda",
   },
   offline: {
     kicker: "Oflayn uchrashuvlar",
@@ -98,7 +95,6 @@ const uz: HomeV2 = {
     body: "Telefonni stol ustiga qoʻying. Beshta odam gapirsa ham Dicta har bir ovozni ajratadi va kim nima deganini biladi.",
     roundTable: "Katta yigʻilishda har kim oʻz telefonidan qoʻshiladi, Dumaloq stol rejimi barcha yozuvlarni bitta xulosaga birlashtiradi.",
     link: "Oflayn uchrashuvlar haqida",
-    recording: "Yozilmoqda",
     speakers: ["Dilnoza", "Rustam", "Aziz"],
   },
   online: {
@@ -171,7 +167,6 @@ const ru: HomeV2 = {
     sub: "Совещание, созвон или лекция: Dicta записывает, различает, кто что сказал, и через несколько минут выдаёт решения и задачи.",
     download: "Скачать приложение",
     platforms: "Веб, iOS, Android, macOS и Windows",
-    recording: "Идёт запись",
   },
   offline: {
     kicker: "Офлайн-встречи",
@@ -180,7 +175,6 @@ const ru: HomeV2 = {
     body: "Положите телефон на стол. Даже если говорят пятеро, Dicta различит каждый голос и поймёт, кто что сказал.",
     roundTable: "На большом совещании каждый подключается со своего телефона, а режим «Круглый стол» сводит все записи в один протокол.",
     link: "Подробнее об офлайн-встречах",
-    recording: "Идёт запись",
     speakers: ["Дильноза", "Рустам", "Азиз"],
   },
   online: {
@@ -253,7 +247,6 @@ const en: HomeV2 = {
     sub: "A board meeting, a call or a lecture: Dicta records it, tells the speakers apart and hands you the decisions and tasks within minutes.",
     download: "Get the app",
     platforms: "Web, iOS, Android, macOS and Windows",
-    recording: "Recording",
   },
   offline: {
     kicker: "In-person meetings",
@@ -262,7 +255,6 @@ const en: HomeV2 = {
     body: "Put your phone on the table. Even with five people talking, Dicta tells every voice apart and knows who said what.",
     roundTable: "In a big meeting everyone joins from their own phone, and Round table merges every recording into one set of minutes.",
     link: "More on in-person meetings",
-    recording: "Recording",
     speakers: ["Dilnoza", "Rustam", "Aziz"],
   },
   online: {
@@ -335,7 +327,6 @@ const ar: HomeV2 = {
     sub: "اجتماع أو مكالمة أو محاضرة: تسجّل Dicta كل شيء، وتميّز بين المتحدثين، وتسلّمك القرارات والمهام خلال دقائق.",
     download: "حمّل التطبيق",
     platforms: "الويب وiOS وAndroid وmacOS وWindows",
-    recording: "جارٍ التسجيل",
   },
   offline: {
     kicker: "الاجتماعات الحضورية",
@@ -344,7 +335,6 @@ const ar: HomeV2 = {
     body: "ضع هاتفك على الطاولة. حتى لو تحدّث خمسة أشخاص، تميّز Dicta كل صوت وتعرف من قال ماذا.",
     roundTable: "في الاجتماعات الكبيرة ينضم كل شخص من هاتفه، ويجمع وضع الطاولة المستديرة كل التسجيلات في محضر واحد.",
     link: "المزيد عن الاجتماعات الحضورية",
-    recording: "جارٍ التسجيل",
     speakers: ["دلنوزا", "رستم", "عزيز"],
   },
   online: {

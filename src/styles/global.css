@@ -233,22 +233,6 @@ html.js .live-line {
   animation-delay: var(--ld, 0s);
 }
 
-/* Hairline marquee for the "who uses it" row. */
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  animation: marquee 38s linear infinite;
-}
-[dir="rtl"] .marquee-track {
-  animation-direction: reverse;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -264,9 +248,6 @@ html.js .live-line {
     opacity: 1;
     transform: none;
   }
-  .marquee-track {
-    animation: none;
-  }
 }
 
 /* ---- Home stage --------------------------------------------------------
@@ -281,62 +262,9 @@ html.js .live-line {
   animation-delay: var(--wd, 0s);
 }
 
-/* A product moment that pops in after its scene is revealed (link pasted,
- * bot joined, a speaker recognised). Driven by the parent .revealed class. */
-html.js .reveal .beat,
-html.js .reveal-shot .beat {
-  opacity: 0;
-  transform: translateY(10px) scale(0.98);
-  transition:
-    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--bd, 0.4s);
-}
-html.js .revealed .beat {
-  opacity: 1;
-  transform: none;
-}
-
-/* Cinematic photo: slightly desaturated, ink multiplied over it so stock
- * light reads as the brand's own indigo dusk. */
-.photo-ink {
-  filter: saturate(0.78) contrast(1.04);
-}
-.photo-ink-overlay {
-  background: var(--color-ink);
-  mix-blend-mode: multiply;
-  opacity: 0.38;
-}
-
-/* Typed link in the bot scene. */
-@keyframes caret {
-  50% { opacity: 0; }
-}
-.caret {
-  animation: caret 1s steps(1) infinite;
-}
-
-/* Pill highlight on one key word (the language scene). */
-.pill-mark {
-  border-radius: 9999px;
-  padding: 0 0.32em 0.04em;
-  box-shadow: inset 0 0 0 1.5px var(--color-accent);
-  background: var(--color-accent-soft);
-  /* When the phrase wraps, each line gets its own full pill instead of one
-     pill sliced open at the line break. */
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .wave-bar,
-  .caret {
+  .wave-bar {
     animation: none;
-  }
-  html.js .reveal .beat,
-  html.js .reveal-shot .beat {
-    opacity: 1;
-    transform: none;
   }
 }
 
