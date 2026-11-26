@@ -5,9 +5,8 @@ import { ALL_LOCALES } from "../../src/i18n/locales.ts";
 import { navExtra } from "../../src/i18n/nav-extra.ts";
 
 const STRING_KEYS = [
-  "recording", "notesLive", "summary", "speakers", "decisions", "tasks",
-  "whatYouGet", "nextStep", "you", "dicta", "taskStartFree", "taskRecordNext",
-  "taskTryFeature", "stepLater", "visitLookedAt",
+  "recording", "notesLive", "speakers", "nextStep", "you", "dicta",
+  "taskStartFree", "taskTryFeature", "stepLater", "visitLookedAt",
 ] as const;
 const TOPICS = ["home", "features", "useCases", "pricing", "blog", "download", "developers", "faq"] as const;
 const POST_KEYS = ["topic", "writtenBy", "duration", "date", "inThisPost"] as const;

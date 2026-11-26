@@ -16,16 +16,11 @@ export type VisitTopic =
 export interface MeetingUi {
   recording: string;
   notesLive: string;
-  summary: string;
   speakers: string;
-  decisions: string;
-  tasks: string;
-  whatYouGet: string;
   nextStep: string;
   you: string;
   dicta: string;
   taskStartFree: string;
-  taskRecordNext: string;
   taskTryFeature: string;
   /** "+ minutes" */
   stepLater: string;
@@ -44,16 +39,11 @@ function plural(locale: string, forms: Partial<Record<Intl.LDMLPluralRule, strin
 const en: MeetingUi = {
   recording: "Recording",
   notesLive: "notes, live",
-  summary: "Summary",
   speakers: "Speakers",
-  decisions: "Decisions",
-  tasks: "Tasks",
-  whatYouGet: "What you get",
   nextStep: "Next step",
   you: "You",
   dicta: "Dicta",
   taskStartFree: "start for free",
-  taskRecordNext: "record your next meeting free",
   taskTryFeature: "try it on your next meeting",
   stepLater: "+ minutes",
   visitPages: plural("en", { one: "{n} page" }, "{n} pages"),
@@ -73,18 +63,13 @@ const en: MeetingUi = {
 
 // NATIVE READ PENDING
 const uz: MeetingUi = {
-  recording: "Yozib olinmoqda",
+  recording: "Yozilmoqda",
   notesLive: "qaydlar, jonli",
-  summary: "Xulosa",
   speakers: "Soʻzlovchilar",
-  decisions: "Qarorlar",
-  tasks: "Vazifalar",
-  whatYouGet: "Nimaga ega boʻlasiz",
   nextStep: "Keyingi qadam",
   you: "Siz",
   dicta: "Dicta",
   taskStartFree: "bepul boshlang",
-  taskRecordNext: "keyingi uchrashuvingizni bepul yozib oling",
   taskTryFeature: "keyingi uchrashuvingizda sinab koʻring",
   stepLater: "+ daqiqa",
   visitPages: plural("uz", {}, "{n} sahifa"),
@@ -105,16 +90,11 @@ const uz: MeetingUi = {
 const ru: MeetingUi = {
   recording: "Идёт запись",
   notesLive: "заметки, вживую",
-  summary: "Итоги",
   speakers: "Спикеры",
-  decisions: "Решения",
-  tasks: "Задачи",
-  whatYouGet: "Что вы получаете",
   nextStep: "Следующий шаг",
   you: "Вы",
   dicta: "Dicta",
   taskStartFree: "начните бесплатно",
-  taskRecordNext: "запишите следующую встречу бесплатно",
   taskTryFeature: "попробуйте на следующей встрече",
   stepLater: "+ минуты",
   visitPages: plural("ru", { one: "{n} страница", few: "{n} страницы", many: "{n} страниц" }, "{n} страницы"),
@@ -135,16 +115,11 @@ const ru: MeetingUi = {
 const ar: MeetingUi = {
   recording: "جارٍ التسجيل",
   notesLive: "الملاحظات مباشرةً",
-  summary: "الملخّص",
   speakers: "المتحدثون",
-  decisions: "القرارات",
-  tasks: "المهام",
-  whatYouGet: "ما ستحصل عليه",
   nextStep: "الخطوة التالية",
   you: "أنت",
   dicta: "Dicta",
   taskStartFree: "ابدأ مجانًا",
-  taskRecordNext: "سجّل اجتماعك القادم مجانًا",
   taskTryFeature: "جرّبها في اجتماعك القادم",
   stepLater: "+ دقائق",
   visitPages: plural(
