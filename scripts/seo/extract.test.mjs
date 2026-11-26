@@ -60,3 +60,39 @@ test("jsonLd key order irrelevant", () => {
   assert.equal(a.jsonLd.length, 1);
   assert.deepEqual(a.jsonLd, b.jsonLd);
 });
+
+test("internalRel records internal links that carry a rel", () => {
+  const s = extractPage(
+    `<!doctype html><html><head><link rel="canonical" href="https://dicta.uz/"></head><body>
+      <a href="/pricing/">P</a><a href="/blog/2/" rel="next">N</a><a href="https://dicta.uz/x/" rel="nofollow">X</a>
+      <a href="/blog/2/" rel="next">N again</a><a href="https://example.com/" rel="noopener">E</a></body></html>`,
+    "index.html",
+  );
+  assert.deepEqual(s.internalRel, [
+    { href: "/blog/2/", rel: "next" },
+    { href: "https://dicta.uz/x/", rel: "nofollow" },
+  ]);
+});
+
+test("headLinks keeps head <link>s not covered elsewhere, as rel|type|href", () => {
+  const s = extractPage(
+    `<!doctype html><html><head>
+      <link rel="stylesheet" href="/a.css"><link rel="preload" as="font" href="/f.woff2"><link rel="modulepreload" href="/m.js">
+      <link rel="icon" href="/favicon.ico"><link rel="shortcut icon" href="/f2.ico"><link rel="apple-touch-icon" href="/t.png"><link rel="manifest" href="/site.webmanifest">
+      <link rel="canonical" href="https://dicta.uz/"><link rel="alternate" hreflang="en-US" href="https://dicta.uz/en/">
+      <link rel="alternate" type="application/rss+xml" title="Blog" href="/blog/rss.xml">
+      <link rel="preconnect" href="https://fonts.example">
+    </head><body></body></html>`,
+    "index.html",
+  );
+  assert.deepEqual(s.headLinks, ["alternate|application/rss+xml|/blog/rss.xml", "preconnect||https://fonts.example"]);
+});
+
+test("htmlLang and htmlDir", () => {
+  const s = extractPage(`<!doctype html><html lang="ar" dir="rtl"><head></head><body></body></html>`, "ar/index.html");
+  assert.equal(s.htmlLang, "ar");
+  assert.equal(s.htmlDir, "rtl");
+  const none = extractPage(`<!doctype html><html><head></head><body></body></html>`, "index.html");
+  assert.equal(none.htmlLang, null);
+  assert.equal(none.htmlDir, null);
+});

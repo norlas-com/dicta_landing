@@ -94,6 +94,20 @@ export function extractPage(html, relPath) {
   const canonicalEl = headEls.find((e) => e.tagName === "link" && relHas(e, "canonical"));
   const canonical = canonicalEl ? (attr(canonicalEl, "href") ?? "") : null;
 
+  // Every other head <link> a crawler or feed reader acts on (RSS discovery,
+  // preconnect, ...): "rel|type|href", sorted. Asset/icon links and the ones
+  // already covered by `canonical` / `hreflang` are left out.
+  const COVERED_REL = new Set(["stylesheet", "preload", "modulepreload", "icon", "apple-touch-icon", "manifest", "canonical"]);
+  const headLinks = headEls
+    .filter((e) => {
+      if (e.tagName !== "link") return false;
+      const rels = (attr(e, "rel") ?? "").toLowerCase().split(/\s+/).filter(Boolean);
+      if (rels.some((r) => COVERED_REL.has(r))) return false;
+      return !(rels.includes("alternate") && attr(e, "hreflang") !== undefined);
+    })
+    .map((e) => [collapse(attr(e, "rel") ?? ""), attr(e, "type") ?? "", attr(e, "href") ?? ""].join("|"))
+    .sort(byString);
+
   const hreflang = headEls
     .filter((e) => e.tagName === "link" && relHas(e, "alternate") && attr(e, "hreflang") !== undefined)
     .map((e) => ({ lang: attr(e, "hreflang"), href: attr(e, "href") ?? "" }))
@@ -145,6 +159,7 @@ export function extractPage(html, relPath) {
     (origin !== null && (href === origin || href.startsWith(origin + "/") || href.startsWith(origin + "?") || href.startsWith(origin + "#")));
 
   const linkSet = new Set();
+  const internalRelMap = new Map();
   const outboundMap = new Map();
   for (const e of elements) {
     if (e.tagName !== "a") continue;
@@ -153,13 +168,21 @@ export function extractPage(html, relPath) {
     const h = href.trim();
     // Same-page fragments and empty hrefs are not links to another URL.
     if (h === "" || h.startsWith("#")) continue;
-    if (isInternal(h)) linkSet.add(h);
-    else {
+    if (isInternal(h)) {
+      linkSet.add(h);
+      // rel on an internal link (nofollow, next/prev, ...) changes how it is crawled.
+      const rel = collapse(attr(e, "rel") ?? "");
+      if (rel) {
+        const entry = { href: h, rel };
+        internalRelMap.set(JSON.stringify(entry), entry);
+      }
+    } else {
       const entry = { href: h, rel: attr(e, "rel") ?? "" };
       outboundMap.set(JSON.stringify(entry), entry);
     }
   }
   const links = [...linkSet].sort(byString);
+  const internalRel = [...internalRelMap.values()].sort((a, b) => byString(a.href, b.href) || byString(a.rel, b.rel));
   const outbound = [...outboundMap.values()].sort((a, b) => byString(a.href, b.href) || byString(a.rel, b.rel));
 
   // data-analytics-*: "event|location|url", followed by "|name=value" for any
@@ -219,15 +242,19 @@ export function extractPage(html, relPath) {
 
   return {
     path: relPath,
+    htmlLang: htmlEl ? (attr(htmlEl, "lang") ?? null) : null,
+    htmlDir: htmlEl ? (attr(htmlEl, "dir") ?? null) : null,
     title,
     description,
     canonical,
     robots,
     hreflang,
+    headLinks,
     meta,
     jsonLd,
     headings,
     links,
+    internalRel,
     outbound,
     text,
     alts,

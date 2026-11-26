@@ -15,7 +15,16 @@ if (!baseFile || !nextFile || !allowFile) {
 const read = async (f) => JSON.parse(await readFile(f, "utf8"));
 const [base, next, allow] = await Promise.all([read(baseFile), read(nextFile), read(allowFile)]);
 
-const findings = diffSnapshots(base, next, allow);
+const used = {};
+const findings = diffSnapshots(base, next, allow, used);
+
+// An allow entry that excused nothing is stale or mistyped. Warn, don't fail:
+// allow.json is shared by both sites, and an entry may only exist on one.
+for (const [list, entries] of Object.entries(allow)) {
+  for (const entry of entries ?? []) {
+    if (!used[list]?.has(entry)) console.warn(`WARNING: allow.json ${list} entry matched no removal in ${nextFile}: ${JSON.stringify(entry)}`);
+  }
+}
 if (findings.length) {
   for (const f of findings) console.log(`${f.path}  ${f.field}  ${f.detail}`);
   console.error(`SEO snapshot: ${findings.length} difference(s) between ${baseFile} and ${nextFile}`);

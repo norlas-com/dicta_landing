@@ -41,12 +41,12 @@ export function attr(el, name) {
   return el.attrs?.find((a) => a.name === name)?.value;
 }
 
-/** textContent of `el` (script/style excluded), whitespace collapsed and trimmed. */
+/** textContent of `el` (script/style/noscript excluded, like extract.mjs), whitespace collapsed and trimmed. */
 export function textOf(el) {
   let out = "";
   const walk = (n) => {
     if (n.nodeName === "#text") out += n.value;
-    else if (isElement(n) && (n.tagName === "script" || n.tagName === "style")) return;
+    else if (isElement(n) && (n.tagName === "script" || n.tagName === "style" || n.tagName === "noscript")) return;
     for (const c of n.childNodes ?? []) walk(c);
   };
   walk(el);

@@ -13,7 +13,7 @@
 /** @typedef {{ path: string, field: string, detail: string }} Finding */
 /** @typedef {{ removedText: string[], removedAlts: string[], removedOutbound: string[], removedAnalytics: string[] }} Allow */
 
-const SCALARS = ["title", "description", "canonical", "robots"];
+const SCALARS = ["htmlLang", "htmlDir", "title", "description", "canonical", "robots"];
 
 const show = (v) => JSON.stringify(v);
 
@@ -44,7 +44,9 @@ function counted(list) {
 const COLLECTIONS = {
   hreflang: { key: (e) => `${e.lang} ${e.href}`, allow: null, removed: true, added: true },
   jsonLd: { key: (e) => e, allow: null, removed: true, added: true },
+  headLinks: { key: (e) => e, allow: null, removed: true, added: true },
   links: { key: (e) => e, allow: null, removed: true, added: true },
+  internalRel: { key: (e) => show(e), allow: null, removed: true, added: true },
   outbound: { key: (e) => show(e), allow: { list: "removedOutbound", of: (e) => e.href }, removed: true, added: true },
   text: { key: (e) => e, allow: { list: "removedText", of: (e) => e }, removed: true, added: false },
   alts: { key: (e) => e, allow: { list: "removedAlts", of: (e) => e }, removed: true, added: false },
@@ -56,9 +58,10 @@ const COLLECTIONS = {
  * @param {any} base  a PageSnapshot
  * @param {any} next
  * @param {Allow} allow
+ * @param {Record<string, Set<string>>} used  collects the allow entries that excused a removal
  * @returns {Finding[]}
  */
-function diffPage(base, next, allow) {
+function diffPage(base, next, allow, used) {
   /** @type {Finding[]} */
   const out = [];
   const path = base.path;
@@ -97,7 +100,13 @@ function diffPage(base, next, allow) {
     const bKeys = b.map(rule.key);
     const allowed = rule.allow ? new Set(allow[rule.allow.list] ?? []) : new Set();
     const byKey = new Map(a.map((e) => [rule.key(e), e]));
-    const removed = minus(aKeys, bKeys).filter((k) => !(rule.allow && allowed.has(rule.allow.of(byKey.get(k)))));
+    const removed = minus(aKeys, bKeys).filter((k) => {
+      if (!rule.allow) return true;
+      const entry = rule.allow.of(byKey.get(k));
+      if (!allowed.has(entry)) return true;
+      (used[rule.allow.list] ??= new Set()).add(entry);
+      return false;
+    });
     if (rule.removed) for (const k of counted(removed)) add(field, `removed ${k}`);
     if (rule.added) for (const k of counted(minus(bKeys, aKeys))) add(field, `added ${k}`);
   }
@@ -111,9 +120,11 @@ const isSitemap = (name) => /^sitemap[^/]*\.xml$/.test(name);
  * @param {{ pages: Record<string, any>, files: Record<string, string> }} base
  * @param {{ pages: Record<string, any>, files: Record<string, string> }} next
  * @param {Allow} allow
+ * @param {Record<string, Set<string>>} [used]  optional out-param: per allow list,
+ *   the entries that actually excused a removal (compare.mjs warns about the rest)
  * @returns {Finding[]}
  */
-export function diffSnapshots(base, next, allow) {
+export function diffSnapshots(base, next, allow, used = {}) {
   /** @type {Finding[]} */
   const out = [];
 
@@ -123,7 +134,7 @@ export function diffSnapshots(base, next, allow) {
     const b = next.pages?.[p];
     if (!b) out.push({ path: p, field: "page", detail: "removed" });
     else if (!a) out.push({ path: p, field: "page", detail: "added" });
-    else out.push(...diffPage({ ...a, path: p }, b, allow));
+    else out.push(...diffPage({ ...a, path: p }, b, allow, used));
   }
 
   const names = [...new Set([...Object.keys(base.files ?? {}), ...Object.keys(next.files ?? {})])].sort();

@@ -81,3 +81,23 @@ test("alts: added alt is not a finding, removed alt needs allow.removedAlts", ()
   assert.deepEqual(removed, [{ path: "index.html", field: "alts", detail: "removed Photo" }]);
   assert.deepEqual(diffSnapshots(snap(`<img alt="Photo">`), snap(``), { ...NO_ALLOW, removedAlts: ["Photo"] }), []);
 });
+
+test("internalRel, headLinks, htmlLang and htmlDir changes are findings", () => {
+  const doc = (lang, dir, rss, rel) =>
+    `<!doctype html><html lang="${lang}" dir="${dir}"><head><link rel="canonical" href="https://dicta.uz/">${rss}</head>` +
+    `<body><a href="/blog/2/"${rel}>N</a></body></html>`;
+  const s = (h) => ({ pages: { "index.html": extractPage(h, "index.html") }, files: {} });
+  const rss = `<link rel="alternate" type="application/rss+xml" href="/blog/rss.xml">`;
+  const base = s(doc("uz", "ltr", rss, ` rel="next"`));
+  assert.deepEqual(diffSnapshots(base, s(doc("uz", "ltr", rss, ` rel="next"`)), NO_ALLOW), []);
+
+  const fields = diffSnapshots(base, s(doc("ru", "rtl", "", "")), NO_ALLOW).map((f) => f.field).sort();
+  assert.deepEqual(fields, ["headLinks", "htmlDir", "htmlLang", "internalRel"]);
+});
+
+test("diffSnapshots reports which allow entries were used", () => {
+  const used = {};
+  const allow = { ...NO_ALLOW, removedText: ["Gone", "Never there"] };
+  assert.deepEqual(diffSnapshots(snap(`<p>Gone</p>`), snap(``), allow, used), []);
+  assert.deepEqual([...used.removedText], ["Gone"]);
+});

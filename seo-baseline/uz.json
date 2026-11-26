@@ -2,11 +2,16 @@
   "pages": {
     "404.html": {
       "path": "404.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Sahifa topilmadi — Dicta",
       "description": "Bunday sahifa mavjud emas yoki koʻchirilgan.",
       "canonical": null,
       "robots": "noindex, nofollow",
       "hreflang": [],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
+      ],
       "meta": {
         "og:description": "Bunday sahifa mavjud emas yoki koʻchirilgan.",
         "og:image": "https://dicta.uz/og/meeting.png",
@@ -43,6 +48,7 @@
         "/ru/",
         "/ru/download/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://meet.dicta.uz/sign-in",
@@ -89,6 +95,8 @@
     },
     "blog/botsiz-uchrashuv-yozish-dicta-kompyuter-ilovasi/index.html": {
       "path": "blog/botsiz-uchrashuv-yozish-dicta-kompyuter-ilovasi/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Botsiz yozuv: istalgan uchrashuvni Dicta kompyuter ilovasi bilan yozib oling — Dicta",
       "description": "Zoom, Google Meet va Teams qoʻngʻiroqlarini botsiz yozib oling. Dicta ilovasi qoʻngʻiroqni oʻzi aniqlaydi va spikerlar boʻyicha transkripsiya hamda AI xulosa beradi.",
       "canonical": "https://dicta.uz/blog/botsiz-uchrashuv-yozish-dicta-kompyuter-ilovasi/",
@@ -110,6 +118,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/botsiz-uchrashuv-yozish-dicta-kompyuter-ilovasi/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Zoom, Google Meet va Teams qoʻngʻiroqlarini botsiz yozib oling. Dicta ilovasi qoʻngʻiroqni oʻzi aniqlaydi va spikerlar boʻyicha transkripsiya hamda AI xulosa beradi.",
@@ -230,6 +241,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -492,6 +504,8 @@
     },
     "blog/dicta-aisha-ai-evernote-copy-ai-taqqoslash/index.html": {
       "path": "blog/dicta-aisha-ai-evernote-copy-ai-taqqoslash/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Dicta, Aisha AI, Evernote va Copy AI: o'zbek tilidagi uchrashuv yozuvlari uchun taqqoslash — Dicta",
       "description": "O'zbek tilida uchrashuv yozish va transkripsiya uchun Dicta, Aisha AI, Evernote va Copy AI'ni halol taqqoslaymiz: kim nimaga mos va tanlashda nimaga qarash kerak.",
       "canonical": "https://dicta.uz/blog/dicta-aisha-ai-evernote-copy-ai-taqqoslash/",
@@ -513,6 +527,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/dicta-aisha-ai-evernote-copy-ai-taqqoslash/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "O'zbek tilida uchrashuv yozish va transkripsiya uchun Dicta, Aisha AI, Evernote va Copy AI'ni halol taqqoslaymiz: kim nimaga mos va tanlashda nimaga qarash kerak.",
@@ -599,6 +616,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -818,6 +836,8 @@
     },
     "blog/dicta-zoom-analogi/index.html": {
       "path": "blog/dicta-zoom-analogi/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Dicta — Zoom analogimi? Farqi nimada va qachon tanlash kerak — Dicta",
       "description": "Dicta oddiy video aloqa emas: uchrashuvlar yozib olinadi, oʻzbek, rus va ingliz tillarida matnga aylantiriladi va vazifalar bilan qisqa xulosaga aylanadi.",
       "canonical": "https://dicta.uz/blog/dicta-zoom-analogi/",
@@ -839,6 +859,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/dicta-zoom-analogi/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta oddiy video aloqa emas: uchrashuvlar yozib olinadi, oʻzbek, rus va ingliz tillarida matnga aylantiriladi va vazifalar bilan qisqa xulosaga aylanadi.",
@@ -925,6 +948,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -1139,6 +1163,8 @@
     },
     "blog/index.html": {
       "path": "blog/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Blog: majlis xulosasi, transkripsiya va AI yordamchi — Dicta",
       "description": "Uchrashuvlarni yozib olish, ovozni matnga aylantirish va majlis xulosasini avtomatlashtirish bo'yicha amaliy qo'llanmalar.",
       "canonical": "https://dicta.uz/blog/",
@@ -1160,6 +1186,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Uchrashuvlarni yozib olish, ovozni matnga aylantirish va majlis xulosasini avtomatlashtirish bo'yicha amaliy qo'llanmalar.",
@@ -1254,6 +1283,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -1462,6 +1492,8 @@
     },
     "blog/kompaniya-rahbari-ish-kuni-dicta/index.html": {
       "path": "blog/kompaniya-rahbari-ish-kuni-dicta/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Rahbarning bir kuni: kompaniya egasi Dicta'dan ertalabdan kechgacha qanday foydalanadi — Dicta",
       "description": "Ertalabki yig'ilishdan oxirgi mijoz qo'ng'irog'igacha: kompaniya rahbari Dicta yozuvi, transkript, AI xulosa, vazifalar va AI chat yordamida kunini qanday boshqaradi.",
       "canonical": "https://dicta.uz/blog/kompaniya-rahbari-ish-kuni-dicta/",
@@ -1479,6 +1511,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/kompaniya-rahbari-ish-kuni-dicta/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Ertalabki yig'ilishdan oxirgi mijoz qo'ng'irog'igacha: kompaniya rahbari Dicta yozuvi, transkript, AI xulosa, vazifalar va AI chat yordamida kunini qanday boshqaradi.",
@@ -1579,6 +1614,7 @@
         "/use-cases/online-meetings/",
         "/use-cases/round-table/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -1792,6 +1828,8 @@
     },
     "blog/ma-ruzani-yozib-olish-konspekt/index.html": {
       "path": "blog/ma-ruzani-yozib-olish-konspekt/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Talabalar uchun: ma'ruzalarni yozib olish va konspektga aylantirish — Dicta",
       "description": "Ma'ruzani telefonda yozib olib, matnga aylantirish va AI yordamida konspekt tayyorlash: talabalar uchun amaliy qo'llanma va maslahatlar.",
       "canonical": "https://dicta.uz/blog/ma-ruzani-yozib-olish-konspekt/",
@@ -1813,6 +1851,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/ma-ruzani-yozib-olish-konspekt/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Ma'ruzani telefonda yozib olib, matnga aylantirish va AI yordamida konspekt tayyorlash: talabalar uchun amaliy qo'llanma va maslahatlar.",
@@ -1911,6 +1952,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -2114,6 +2156,8 @@
     },
     "blog/majlis-bayonnomasini-avtomatik-yozish/index.html": {
       "path": "blog/majlis-bayonnomasini-avtomatik-yozish/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Majlis xulosasini avtomatik yozish: to'liq qo'llanma — Dicta",
       "description": "Majlis xulosasi nima, uni qo'lda yozish nega qiyin va telefon bilan yozib olib, AI yordamida bir necha daqiqada tayyor qilish yo'li. Qadam-baqadam.",
       "canonical": "https://dicta.uz/blog/majlis-bayonnomasini-avtomatik-yozish/",
@@ -2135,6 +2179,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/majlis-bayonnomasini-avtomatik-yozish/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Majlis xulosasi nima, uni qo'lda yozish nega qiyin va telefon bilan yozib olib, AI yordamida bir necha daqiqada tayyor qilish yo'li. Qadam-baqadam.",
@@ -2233,6 +2280,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -2450,6 +2498,8 @@
     },
     "blog/mcp-oddiy-tilda/index.html": {
       "path": "blog/mcp-oddiy-tilda/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "MCP oddiy tilda: Model Context Protocol nima va nima uchun kerak — Dicta",
       "description": "MCP (Model Context Protocol) nima? Oddiy tushuntirish: AI yordamchilar ilovalaringiz va ma'lumotlaringizga qanday ulanadi, nega MCPni AI uchun USB-C deyishadi va Dicta bunda qanday rol oʻynaydi.",
       "canonical": "https://dicta.uz/blog/mcp-oddiy-tilda/",
@@ -2471,6 +2521,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/mcp-oddiy-tilda/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "MCP (Model Context Protocol) nima? Oddiy tushuntirish: AI yordamchilar ilovalaringiz va ma'lumotlaringizga qanday ulanadi, nega MCPni AI uchun USB-C deyishadi va Dicta bunda qanday rol oʻynaydi.",
@@ -2572,6 +2625,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -2811,6 +2865,8 @@
     },
     "blog/samarali-majlis-maslahatlar-va-misollar/index.html": {
       "path": "blog/samarali-majlis-maslahatlar-va-misollar/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Samarali majlis: maslahatlar va misollar — Dicta",
       "description": "Samarali majlisni qanday oʻtkazish kerak: kun tartibi, rollar, reglament, xulosa va vazifalar. Amaliy maslahatlar, kun tartibi shabloni, misollar va chek-list.",
       "canonical": "https://dicta.uz/blog/samarali-majlis-maslahatlar-va-misollar/",
@@ -2832,6 +2888,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/samarali-majlis-maslahatlar-va-misollar/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Samarali majlisni qanday oʻtkazish kerak: kun tartibi, rollar, reglament, xulosa va vazifalar. Amaliy maslahatlar, kun tartibi shabloni, misollar va chek-list.",
@@ -2985,6 +3044,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -3319,6 +3379,8 @@
     },
     "blog/topic/comparisons/index.html": {
       "path": "blog/topic/comparisons/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Taqqoslashlar — Dicta blogi",
       "description": "Dicta blogidagi «Taqqoslashlar» mavzusidagi maqolalar: uchrashuvlarni yozib olish, transkripsiya va AI xulosa.",
       "canonical": "https://dicta.uz/blog/topic/comparisons/",
@@ -3340,6 +3402,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/comparisons/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta blogidagi «Taqqoslashlar» mavzusidagi maqolalar: uchrashuvlarni yozib olish, transkripsiya va AI xulosa.",
@@ -3394,6 +3459,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -3546,6 +3612,8 @@
     },
     "blog/topic/education/index.html": {
       "path": "blog/topic/education/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Ta'lim — Dicta blogi",
       "description": "Dicta blogidagi «Ta'lim» mavzusidagi maqolalar: uchrashuvlarni yozib olish, transkripsiya va AI xulosa.",
       "canonical": "https://dicta.uz/blog/topic/education/",
@@ -3567,6 +3635,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/education/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta blogidagi «Ta'lim» mavzusidagi maqolalar: uchrashuvlarni yozib olish, transkripsiya va AI xulosa.",
@@ -3616,6 +3687,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -3761,6 +3833,8 @@
     },
     "blog/topic/guides/index.html": {
       "path": "blog/topic/guides/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Qo'llanmalar — Dicta blogi",
       "description": "Dicta blogidagi «Qo'llanmalar» mavzusidagi maqolalar: uchrashuvlarni yozib olish, transkripsiya va AI xulosa.",
       "canonical": "https://dicta.uz/blog/topic/guides/",
@@ -3782,6 +3856,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/guides/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta blogidagi «Qo'llanmalar» mavzusidagi maqolalar: uchrashuvlarni yozib olish, transkripsiya va AI xulosa.",
@@ -3861,6 +3938,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -4048,6 +4126,8 @@
     },
     "blog/vebinar-nima/index.html": {
       "path": "blog/vebinar-nima/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Vebinar nima? Vebinar qanday oʻtkaziladi: qisqa qoʻllanma — Dicta",
       "description": "Vebinar nima, u oddiy uchrashuvdan nimasi bilan farq qiladi va uni qanday oʻtkazish kerak? Dictada vebinar oʻtkazish: yozuv, transkripsiya va AI xulosa.",
       "canonical": "https://dicta.uz/blog/vebinar-nima/",
@@ -4069,6 +4149,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/vebinar-nima/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Vebinar nima, u oddiy uchrashuvdan nimasi bilan farq qiladi va uni qanday oʻtkazish kerak? Dictada vebinar oʻtkazish: yozuv, transkripsiya va AI xulosa.",
@@ -4152,6 +4235,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -4388,6 +4472,8 @@
     },
     "blog/zoom-google-meet-uchrashuvni-yozib-olish/index.html": {
       "path": "blog/zoom-google-meet-uchrashuvni-yozib-olish/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Zoom va Google Meet uchrashuvlarini avtomatik yozib olish va transkripsiya qilish — Dicta",
       "description": "Zoom, Google Meet va Teams uchrashuvlariga bot yuborib, yozib olish, transkripsiya va AI xulosa olish. Qadamlar, afzalliklar va kamchiliklar.",
       "canonical": "https://dicta.uz/blog/zoom-google-meet-uchrashuvni-yozib-olish/",
@@ -4409,6 +4495,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/zoom-google-meet-uchrashuvni-yozib-olish/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Zoom, Google Meet va Teams uchrashuvlariga bot yuborib, yozib olish, transkripsiya va AI xulosa olish. Qadamlar, afzalliklar va kamchiliklar.",
@@ -4499,6 +4588,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -4709,6 +4799,8 @@
     },
     "delete-account/index.html": {
       "path": "delete-account/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Dicta hisobini qanday oʻchirish mumkin — Dicta",
       "description": "Dicta hisobingizni ilovaning oʻzida mustaqil oʻchirishingiz mumkin — bizga xat yozish yoki ruxsat soʻrash shart emas. Ushbu sahifada tugma qayerdaligi, uni bosgandan keyin nima boʻlishi va aynan nimalar oʻchirilishi tushuntirilgan.",
       "canonical": "https://dicta.uz/delete-account/",
@@ -4730,6 +4822,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/delete-account/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta hisobingizni ilovaning oʻzida mustaqil oʻchirishingiz mumkin — bizga xat yozish yoki ruxsat soʻrash shart emas. Ushbu sahifada tugma qayerdaligi, uni bosgandan keyin nima boʻlishi va aynan nimalar oʻchirilishi tushuntirilgan.",
@@ -4803,6 +4898,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -4970,6 +5066,8 @@
     },
     "developers/index.html": {
       "path": "developers/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Dicta integratsiyalari va API: Trello, Telegram va boshqalar | Dicta",
       "description": "Uchrashuvlardagi vazifalarni Trello, Jira, ClickUp, Asana yoki Hisobotga yuboring, xulosalarni Telegramda oling va yozuv yuborib, transkripsiya olish uchun API ruxsatini soʻrang.",
       "canonical": "https://dicta.uz/developers/",
@@ -4991,6 +5089,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/developers/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Uchrashuvlardagi vazifalarni Trello, Jira, ClickUp, Asana yoki Hisobotga yuboring, xulosalarni Telegramda oling va yozuv yuborib, transkripsiya olish uchun API ruxsatini soʻrang.",
@@ -5062,6 +5163,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -5217,6 +5319,8 @@
     },
     "download/index.html": {
       "path": "download/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Dictani oʻrnating — Dicta",
       "description": "Dicta uchrashuvlaringiz qayerda boʻlsa — telefoningizda, kompyuteringizda va brauzerda ishlaydi.",
       "canonical": "https://dicta.uz/download/",
@@ -5238,6 +5342,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/download/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta uchrashuvlaringiz qayerda boʻlsa — telefoningizda, kompyuteringizda va brauzerda ishlaydi.",
@@ -5290,6 +5397,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -5454,6 +5562,8 @@
     },
     "en/blog/automatic-meeting-minutes/index.html": {
       "path": "en/blog/automatic-meeting-minutes/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Automatic Meeting Minutes: A Complete Guide to AI Meeting Notes — Dicta",
       "description": "Why writing meeting minutes by hand is hard, and how to record a meeting on your phone and get AI meeting notes with decisions and action items in minutes. Step by step.",
       "canonical": "https://dicta.uz/en/blog/automatic-meeting-minutes/",
@@ -5475,6 +5585,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/majlis-bayonnomasini-avtomatik-yozish/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Why writing meeting minutes by hand is hard, and how to record a meeting on your phone and get AI meeting notes with decisions and action items in minutes. Step by step.",
@@ -5573,6 +5686,7 @@
         "/ru/blog/",
         "/ru/blog/protokol-soveshchaniya-avtomaticheski/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -5790,6 +5904,8 @@
     },
     "en/blog/dicta-vs-aisha-ai-evernote-copy-ai/index.html": {
       "path": "en/blog/dicta-vs-aisha-ai-evernote-copy-ai/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Dicta vs Aisha AI, Evernote and Copy AI: Meeting Transcription in Uzbek Compared — Dicta",
       "description": "An honest comparison of Dicta, Aisha AI, Evernote and Copy AI for meeting transcription in Uzbek: who each tool suits and what to check before you choose.",
       "canonical": "https://dicta.uz/en/blog/dicta-vs-aisha-ai-evernote-copy-ai/",
@@ -5811,6 +5927,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/dicta-aisha-ai-evernote-copy-ai-taqqoslash/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "An honest comparison of Dicta, Aisha AI, Evernote and Copy AI for meeting transcription in Uzbek: who each tool suits and what to check before you choose.",
@@ -5901,6 +6020,7 @@
         "/ru/blog/",
         "/ru/blog/dicta-aisha-ai-evernote-copy-ai-sravnenie/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -6122,6 +6242,8 @@
     },
     "en/blog/dicta-zoom-alternative/index.html": {
       "path": "en/blog/dicta-zoom-alternative/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Is Dicta a Zoom alternative? How it differs and when to choose it — Dicta",
       "description": "Dicta is more than video calls: meetings are recorded, transcribed in Uzbek, Russian and English, and turned into a short summary with action items.",
       "canonical": "https://dicta.uz/en/blog/dicta-zoom-alternative/",
@@ -6143,6 +6265,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/dicta-zoom-analogi/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta is more than video calls: meetings are recorded, transcribed in Uzbek, Russian and English, and turned into a short summary with action items.",
@@ -6229,6 +6354,7 @@
         "/ru/blog/",
         "/ru/blog/dicta-analog-zoom/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -6443,6 +6569,8 @@
     },
     "en/blog/effective-meeting-tips-and-examples/index.html": {
       "path": "en/blog/effective-meeting-tips-and-examples/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Effective Meetings: Tips and Examples — Dicta",
       "description": "How to run effective meetings: agenda, roles, timing, minutes and action items. Practical tips, an agenda template, examples and a checklist.",
       "canonical": "https://dicta.uz/en/blog/effective-meeting-tips-and-examples/",
@@ -6464,6 +6592,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/samarali-majlis-maslahatlar-va-misollar/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "How to run effective meetings: agenda, roles, timing, minutes and action items. Practical tips, an agenda template, examples and a checklist.",
@@ -6617,6 +6748,7 @@
         "/ru/blog/",
         "/ru/blog/effektivnoe-soveshchanie-sovety-i-primery/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -6951,6 +7083,8 @@
     },
     "en/blog/index.html": {
       "path": "en/blog/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Blog: AI meeting notes, transcription and minutes — Dicta",
       "description": "Practical guides on recording meetings, transcribing audio to text and automating meeting minutes, including in Uzbek.",
       "canonical": "https://dicta.uz/en/blog/",
@@ -6972,6 +7106,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Practical guides on recording meetings, transcribing audio to text and automating meeting minutes, including in Uzbek.",
@@ -7061,6 +7198,7 @@
         "/en/use-cases/online-meetings/",
         "/ru/blog/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -7262,6 +7400,8 @@
     },
     "en/blog/mcp-in-simple-words/index.html": {
       "path": "en/blog/mcp-in-simple-words/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "MCP in Simple Words: What Is Model Context Protocol and Why Does It Matter? — Dicta",
       "description": "What is MCP (Model Context Protocol)? A plain-language explanation of how AI assistants connect to your apps and data, why it is called the USB-C of AI, and how Dicta fits in.",
       "canonical": "https://dicta.uz/en/blog/mcp-in-simple-words/",
@@ -7283,6 +7423,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/mcp-oddiy-tilda/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "What is MCP (Model Context Protocol)? A plain-language explanation of how AI assistants connect to your apps and data, why it is called the USB-C of AI, and how Dicta fits in.",
@@ -7384,6 +7527,7 @@
         "/ru/blog/",
         "/ru/blog/mcp-prostymi-slovami/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -7623,6 +7767,8 @@
     },
     "en/blog/record-lectures-notes/index.html": {
       "path": "en/blog/record-lectures-notes/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "How to Record Lectures and Turn Them into Study Notes — Dicta",
       "description": "Record a lecture on your phone, get a transcript and use AI to build study notes. A practical guide for students, with tips for better lecture transcription.",
       "canonical": "https://dicta.uz/en/blog/record-lectures-notes/",
@@ -7644,6 +7790,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/ma-ruzani-yozib-olish-konspekt/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Record a lecture on your phone, get a transcript and use AI to build study notes. A practical guide for students, with tips for better lecture transcription.",
@@ -7742,6 +7891,7 @@
         "/ru/blog/",
         "/ru/blog/zapis-lekcij-konspekt/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -7945,6 +8095,8 @@
     },
     "en/blog/record-meetings-without-a-bot-dicta-desktop-app/index.html": {
       "path": "en/blog/record-meetings-without-a-bot-dicta-desktop-app/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "No Bot Required: Record Any Meeting with Dicta's Desktop App — Dicta",
       "description": "Record Zoom, Google Meet and Teams calls without a bot. Dicta's desktop app detects your call and delivers a speaker-labeled transcript and AI summary.",
       "canonical": "https://dicta.uz/en/blog/record-meetings-without-a-bot-dicta-desktop-app/",
@@ -7966,6 +8118,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/botsiz-uchrashuv-yozish-dicta-kompyuter-ilovasi/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Record Zoom, Google Meet and Teams calls without a bot. Dicta's desktop app detects your call and delivers a speaker-labeled transcript and AI summary.",
@@ -8086,6 +8241,7 @@
         "/ru/blog/",
         "/ru/blog/zapis-vstrech-bez-bota-prilozhenie-dicta/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -8354,6 +8510,8 @@
     },
     "en/blog/record-transcribe-zoom-google-meet/index.html": {
       "path": "en/blog/record-transcribe-zoom-google-meet/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "How to Record and Transcribe Zoom and Google Meet Meetings with an AI Notetaker — Dicta",
       "description": "Send an AI notetaker bot to Zoom, Google Meet and Teams calls to record, transcribe and summarize them. Steps, benefits and limitations.",
       "canonical": "https://dicta.uz/en/blog/record-transcribe-zoom-google-meet/",
@@ -8375,6 +8533,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/zoom-google-meet-uchrashuvni-yozib-olish/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Send an AI notetaker bot to Zoom, Google Meet and Teams calls to record, transcribe and summarize them. Steps, benefits and limitations.",
@@ -8465,6 +8626,7 @@
         "/ru/blog/",
         "/ru/blog/zapis-zoom-google-meet-transkripciya/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -8676,6 +8838,8 @@
     },
     "en/blog/topic/comparisons/index.html": {
       "path": "en/blog/topic/comparisons/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Comparisons — the Dicta blog",
       "description": "Comparisons from the Dicta blog: recording meetings, transcription and AI meeting summaries.",
       "canonical": "https://dicta.uz/en/blog/topic/comparisons/",
@@ -8697,6 +8861,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/comparisons/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Comparisons from the Dicta blog: recording meetings, transcription and AI meeting summaries.",
@@ -8751,6 +8918,7 @@
         "/en/use-cases/online-meetings/",
         "/ru/blog/topic/comparisons/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -8903,6 +9071,8 @@
     },
     "en/blog/topic/education/index.html": {
       "path": "en/blog/topic/education/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Education — the Dicta blog",
       "description": "Education from the Dicta blog: recording meetings, transcription and AI meeting summaries.",
       "canonical": "https://dicta.uz/en/blog/topic/education/",
@@ -8924,6 +9094,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/education/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Education from the Dicta blog: recording meetings, transcription and AI meeting summaries.",
@@ -8973,6 +9146,7 @@
         "/en/use-cases/online-meetings/",
         "/ru/blog/topic/education/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -9118,6 +9292,8 @@
     },
     "en/blog/topic/guides/index.html": {
       "path": "en/blog/topic/guides/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Guides — the Dicta blog",
       "description": "Guides from the Dicta blog: recording meetings, transcription and AI meeting summaries.",
       "canonical": "https://dicta.uz/en/blog/topic/guides/",
@@ -9139,6 +9315,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/guides/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Guides from the Dicta blog: recording meetings, transcription and AI meeting summaries.",
@@ -9213,6 +9392,7 @@
         "/en/use-cases/online-meetings/",
         "/ru/blog/topic/guides/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -9393,6 +9573,8 @@
     },
     "en/blog/what-is-a-webinar/index.html": {
       "path": "en/blog/what-is-a-webinar/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "What is a webinar and how do you run one? A short guide — Dicta",
       "description": "What a webinar is, how it differs from a regular meeting and how to run one well. Webinars in Dicta: recording, transcript and AI summary.",
       "canonical": "https://dicta.uz/en/blog/what-is-a-webinar/",
@@ -9414,6 +9596,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/vebinar-nima/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "What a webinar is, how it differs from a regular meeting and how to run one well. Webinars in Dicta: recording, transcript and AI summary.",
@@ -9497,6 +9682,7 @@
         "/ru/blog/",
         "/ru/blog/chto-takoe-vebinar/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -9732,6 +9918,8 @@
     },
     "en/delete-account/index.html": {
       "path": "en/delete-account/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "How to delete your Dicta account — Dicta",
       "description": "You can delete your Dicta account yourself, from inside the app — you don't need to email us or ask permission. This page explains where the button is, what happens after you press it, and exactly what gets deleted.",
       "canonical": "https://dicta.uz/en/delete-account/",
@@ -9753,6 +9941,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/delete-account/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "You can delete your Dicta account yourself, from inside the app — you don't need to email us or ask permission. This page explains where the button is, what happens after you press it, and exactly what gets deleted.",
@@ -9826,6 +10017,7 @@
         "/en/use-cases/online-meetings/",
         "/ru/delete-account/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -9993,6 +10185,8 @@
     },
     "en/developers/index.html": {
       "path": "en/developers/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Dicta integrations and API: Trello, Telegram and more | Dicta",
       "description": "Send action items from your meetings to Trello, Jira, ClickUp, Asana or Hisobot, get recaps in Telegram, and ask us about API access for sending recordings and getting transcripts back.",
       "canonical": "https://dicta.uz/en/developers/",
@@ -10014,6 +10208,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/developers/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Send action items from your meetings to Trello, Jira, ClickUp, Asana or Hisobot, get recaps in Telegram, and ask us about API access for sending recordings and getting transcripts back.",
@@ -10085,6 +10282,7 @@
         "/en/use-cases/online-meetings/",
         "/ru/developers/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -10240,6 +10438,8 @@
     },
     "en/download/index.html": {
       "path": "en/download/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Get Dicta — Dicta",
       "description": "Dicta runs everywhere your meetings do — on your phone, on your computer, and in the browser.",
       "canonical": "https://dicta.uz/en/download/",
@@ -10261,6 +10461,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/download/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta runs everywhere your meetings do — on your phone, on your computer, and in the browser.",
@@ -10313,6 +10516,7 @@
         "/en/use-cases/online-meetings/",
         "/ru/download/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -10477,6 +10681,8 @@
     },
     "en/faq/index.html": {
       "path": "en/faq/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Frequently asked questions — Dicta",
       "description": "How Dicta works for online and in-person meetings, what it costs, and how your data is handled.",
       "canonical": "https://dicta.uz/en/faq/",
@@ -10498,6 +10704,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/faq/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "How Dicta works for online and in-person meetings, what it costs, and how your data is handled.",
@@ -10542,6 +10751,7 @@
         "/faq/",
         "/ru/faq/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -10717,6 +10927,8 @@
     },
     "en/features/ai-chat/index.html": {
       "path": "en/features/ai-chat/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "AI chat across all your meetings — Dicta",
       "description": "Ask questions about what was said in your past meetings. Dicta's AI chat answers from your transcripts, so you don't have to search by hand.",
       "canonical": "https://dicta.uz/en/features/ai-chat/",
@@ -10738,6 +10950,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/ai-chat/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Ask questions about what was said in your past meetings. Dicta's AI chat answers from your transcripts, so you don't have to search by hand.",
@@ -10841,6 +11056,7 @@
         "/features/ai-chat/",
         "/ru/features/ai-chat/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -11014,6 +11230,8 @@
     },
     "en/features/ai-summary/index.html": {
       "path": "en/features/ai-summary/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "AI meeting summary: decisions, topics and action items — Dicta",
       "description": "After every meeting Dicta writes a short AI summary with the main topics, key decisions and action items with owners. A two-minute read instead of an hour of recording.",
       "canonical": "https://dicta.uz/en/features/ai-summary/",
@@ -11035,6 +11253,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/ai-summary/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "After every meeting Dicta writes a short AI summary with the main topics, key decisions and action items with owners. A two-minute read instead of an hour of recording.",
@@ -11138,6 +11359,7 @@
         "/features/ai-summary/",
         "/ru/features/ai-summary/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -11314,6 +11536,8 @@
     },
     "en/features/desktop-app/index.html": {
       "path": "en/features/desktop-app/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Dicta desktop app for macOS and Windows: auto-record meetings — Dicta",
       "description": "The Dicta desktop app for macOS and Windows records the meetings on your computer, then gives you a transcript with speakers and an AI summary.",
       "canonical": "https://dicta.uz/en/features/desktop-app/",
@@ -11335,6 +11559,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/desktop-app/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "The Dicta desktop app for macOS and Windows records the meetings on your computer, then gives you a transcript with speakers and an AI summary.",
@@ -11438,6 +11665,7 @@
         "/features/desktop-app/",
         "/ru/features/desktop-app/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -11613,6 +11841,8 @@
     },
     "en/features/index.html": {
       "path": "en/features/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Features: AI meeting notes, transcription and notetaker bot — Dicta",
       "description": "Dicta features: meeting transcription with speakers, AI summaries, a notetaker bot for Zoom, Google Meet and Teams, offline recording, webinars, AI chat and tasks. Works in Uzbek, Russian, English and Arabic.",
       "canonical": "https://dicta.uz/en/features/",
@@ -11634,6 +11864,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta features: meeting transcription with speakers, AI summaries, a notetaker bot for Zoom, Google Meet and Teams, offline recording, webinars, AI chat and tasks. Works in Uzbek, Russian, English and Arabic.",
@@ -11731,6 +11964,7 @@
         "/features/",
         "/ru/features/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -11896,6 +12130,8 @@
     },
     "en/features/meeting-room/index.html": {
       "path": "en/features/meeting-room/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Online meetings in Uzbekistan: browser and app, with AI notes — Dicta",
       "description": "Run online meetings in Dicta's own room: instant or scheduled, join by code from the browser or the apps. Every meeting is recorded, transcribed and summarised.",
       "canonical": "https://dicta.uz/en/features/meeting-room/",
@@ -11917,6 +12153,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/meeting-room/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Run online meetings in Dicta's own room: instant or scheduled, join by code from the browser or the apps. Every meeting is recorded, transcribed and summarised.",
@@ -12020,6 +12259,7 @@
         "/features/meeting-room/",
         "/ru/features/meeting-room/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -12193,6 +12433,8 @@
     },
     "en/features/notetaker-bot/index.html": {
       "path": "en/features/notetaker-bot/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Notetaker bot for Zoom, Google Meet and Microsoft Teams — Dicta",
       "description": "Send the Dicta bot into a Zoom, Google Meet or Microsoft Teams call. It records the meeting and gives you a transcript with speakers and an AI summary afterwards.",
       "canonical": "https://dicta.uz/en/features/notetaker-bot/",
@@ -12214,6 +12456,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/notetaker-bot/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Send the Dicta bot into a Zoom, Google Meet or Microsoft Teams call. It records the meeting and gives you a transcript with speakers and an AI summary afterwards.",
@@ -12317,6 +12562,7 @@
         "/features/notetaker-bot/",
         "/ru/features/notetaker-bot/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -12493,6 +12739,8 @@
     },
     "en/features/offline-recording/index.html": {
       "path": "en/features/offline-recording/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Record an in-person meeting on your phone: transcript with speakers — Dicta",
       "description": "Record a real-world meeting, lecture or interview on your phone. Dicta separates the voices, writes a transcript and an AI summary. Round table mode merges several phones.",
       "canonical": "https://dicta.uz/en/features/offline-recording/",
@@ -12514,6 +12762,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/offline-recording/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Record a real-world meeting, lecture or interview on your phone. Dicta separates the voices, writes a transcript and an AI summary. Round table mode merges several phones.",
@@ -12617,6 +12868,7 @@
         "/features/offline-recording/",
         "/ru/features/offline-recording/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -12792,6 +13044,8 @@
     },
     "en/features/tasks-integrations/index.html": {
       "path": "en/features/tasks-integrations/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Action items from meetings: tasks, Trello export and Telegram recaps — Dicta",
       "description": "Dicta pulls action items out of every meeting, assigns them to people and exports to Trello and other task trackers. Get meeting recaps in Telegram.",
       "canonical": "https://dicta.uz/en/features/tasks-integrations/",
@@ -12813,6 +13067,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/tasks-integrations/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta pulls action items out of every meeting, assigns them to people and exports to Trello and other task trackers. Get meeting recaps in Telegram.",
@@ -12916,6 +13173,7 @@
         "/features/tasks-integrations/",
         "/ru/features/tasks-integrations/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -13091,6 +13349,8 @@
     },
     "en/features/transcription/index.html": {
       "path": "en/features/transcription/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Meeting transcription in Uzbek, Russian, English and Arabic — Dicta",
       "description": "Turn speech into text with speakers labelled. Dicta transcribes meetings in Uzbek, Russian, English and Arabic and lets you search the text and jump to the moment in the recording.",
       "canonical": "https://dicta.uz/en/features/transcription/",
@@ -13112,6 +13372,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/transcription/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Turn speech into text with speakers labelled. Dicta transcribes meetings in Uzbek, Russian, English and Arabic and lets you search the text and jump to the moment in the recording.",
@@ -13215,6 +13478,7 @@
         "/features/transcription/",
         "/ru/features/transcription/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -13390,6 +13654,8 @@
     },
     "en/features/upload/index.html": {
       "path": "en/features/upload/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Audio to text: upload a recording, get a transcript and summary — Dicta",
       "description": "Upload an audio or video file to Dicta and get a transcript with speakers and an AI summary. Works with Uzbek, Russian, English and Arabic recordings.",
       "canonical": "https://dicta.uz/en/features/upload/",
@@ -13411,6 +13677,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/upload/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Upload an audio or video file to Dicta and get a transcript with speakers and an AI summary. Works with Uzbek, Russian, English and Arabic recordings.",
@@ -13514,6 +13783,7 @@
         "/features/upload/",
         "/ru/features/upload/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -13687,6 +13957,8 @@
     },
     "en/features/webinars/index.html": {
       "path": "en/features/webinars/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Webinars for up to about 600 participants, with AI summary — Dicta",
       "description": "Host webinars in Dicta for up to about 600 participants. Get a recording, a transcript and an AI summary of every session.",
       "canonical": "https://dicta.uz/en/features/webinars/",
@@ -13708,6 +13980,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/webinars/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Host webinars in Dicta for up to about 600 participants. Get a recording, a transcript and an AI summary of every session.",
@@ -13811,6 +14086,7 @@
         "/features/webinars/",
         "/ru/features/webinars/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -13988,6 +14264,8 @@
     },
     "en/index.html": {
       "path": "en/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Dicta: AI notes for offline and online meetings, bot for Zoom and Meet",
       "description": "Dicta records and transcribes meetings in Uzbek, Russian and English, then writes notes and tasks. Offline, online, and a bot for Zoom, Meet and Teams.",
       "canonical": "https://dicta.uz/en/",
@@ -14009,6 +14287,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta records and transcribes meetings in Uzbek, Russian and English, then writes notes and tasks. Offline, online, and a bot for Zoom, Meet and Teams.",
@@ -14130,6 +14411,7 @@
         "/en/use-cases/sales-calls/",
         "/ru/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -14481,6 +14763,8 @@
     },
     "en/offer/index.html": {
       "path": "en/offer/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Public Offer — Dicta",
       "description": "This document is a public offer by \"NORLAS IT SOLUTIONS\" LLC (the \"Seller\") addressed to any individual or legal entity (the \"Customer\") to conclude an agreement for paid access to the Dicta service on the terms set out below. Please read it in full before you pay: payment means acceptance of every clause of this offer.",
       "canonical": "https://dicta.uz/en/offer/",
@@ -14502,6 +14786,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/offer/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "This document is a public offer by \"NORLAS IT SOLUTIONS\" LLC (the \"Seller\") addressed to any individual or legal entity (the \"Customer\") to conclude an agreement for paid access to the Dicta service on the terms set out below. Please read it in full before you pay: payment means acceptance of every clause of this offer.",
@@ -14616,6 +14903,7 @@
         "/offer/",
         "/ru/offer/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -14864,6 +15152,8 @@
     },
     "en/pricing/index.html": {
       "path": "en/pricing/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Dicta pricing: free plan, Pro, Business and Top | Dicta",
       "description": "Compare Dicta plans for AI meeting notes: monthly transcription minutes, storage, history and support. Start free, pay in Uzbek sum by card or e-wallet, or in USD through the app stores.",
       "canonical": "https://dicta.uz/en/pricing/",
@@ -14885,6 +15175,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/pricing/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Compare Dicta plans for AI meeting notes: monthly transcription minutes, storage, history and support. Start free, pay in Uzbek sum by card or e-wallet, or in USD through the app stores.",
@@ -14973,6 +15266,7 @@
         "/pricing/",
         "/ru/pricing/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -15242,6 +15536,8 @@
     },
     "en/privacy/index.html": {
       "path": "en/privacy/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Privacy Policy — Dicta",
       "description": "Dicta (\"we\", \"our\") operates the meeting service at dicta.uz. This page explains what we collect, how we collect it, what we use it for, and every third party we share it with.",
       "canonical": "https://dicta.uz/en/privacy/",
@@ -15263,6 +15559,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/privacy/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta (\"we\", \"our\") operates the meeting service at dicta.uz. This page explains what we collect, how we collect it, what we use it for, and every third party we share it with.",
@@ -15348,6 +15647,7 @@
         "/privacy/",
         "/ru/privacy/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -15551,6 +15851,8 @@
     },
     "en/terms/index.html": {
       "path": "en/terms/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Terms of Service — Dicta",
       "description": "By using Dicta you agree to these terms. If you do not agree, do not use the service.",
       "canonical": "https://dicta.uz/en/terms/",
@@ -15572,6 +15874,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/terms/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "By using Dicta you agree to these terms. If you do not agree, do not use the service.",
@@ -15653,6 +15958,7 @@
         "/ru/terms/",
         "/terms/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -15819,6 +16125,8 @@
     },
     "en/use-cases/education/index.html": {
       "path": "en/use-cases/education/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Record lectures and turn them into text — Dicta",
       "description": "Lecture recording for students: record a class on your phone and Dicta converts the audio to text and writes a short summary. Uzbek, Russian and English.",
       "canonical": "https://dicta.uz/en/use-cases/education/",
@@ -15840,6 +16148,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/education/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Lecture recording for students: record a class on your phone and Dicta converts the audio to text and writes a short summary. Uzbek, Russian and English.",
@@ -15945,6 +16256,7 @@
         "/ru/use-cases/education/",
         "/use-cases/education/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -16134,6 +16446,8 @@
     },
     "en/use-cases/government/index.html": {
       "path": "en/use-cases/government/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Automatic meeting minutes for government bodies — Dicta",
       "description": "For state organisations: automatic meeting minutes and protocols, speech-to-text in Uzbek and Russian, decisions and assignments with named owners.",
       "canonical": "https://dicta.uz/en/use-cases/government/",
@@ -16155,6 +16469,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/government/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "For state organisations: automatic meeting minutes and protocols, speech-to-text in Uzbek and Russian, decisions and assignments with named owners.",
@@ -16260,6 +16577,7 @@
         "/ru/use-cases/government/",
         "/use-cases/government/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -16447,6 +16765,8 @@
     },
     "en/use-cases/hr-interviews/index.html": {
       "path": "en/use-cases/hr-interviews/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Record job interviews and transcribe them for HR — Dicta",
       "description": "For HR and recruiters: record candidate interviews, turn them into Uzbek, Russian or English transcripts with AI notes, and compare candidates from the text.",
       "canonical": "https://dicta.uz/en/use-cases/hr-interviews/",
@@ -16468,6 +16788,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/hr-interviews/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "For HR and recruiters: record candidate interviews, turn them into Uzbek, Russian or English transcripts with AI notes, and compare candidates from the text.",
@@ -16573,6 +16896,7 @@
         "/ru/use-cases/hr-interviews/",
         "/use-cases/hr-interviews/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -16759,6 +17083,8 @@
     },
     "en/use-cases/index.html": {
       "path": "en/use-cases/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Use cases: meetings, calls, lectures — Dicta",
       "description": "Dicta records meetings, transcribes Uzbek, Russian and English speech, and writes the minutes: in-person meetings, online meetings, a Zoom notetaker bot, sales, HR, education and government.",
       "canonical": "https://dicta.uz/en/use-cases/",
@@ -16780,6 +17106,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta records meetings, transcribes Uzbek, Russian and English speech, and writes the minutes: in-person meetings, online meetings, a Zoom notetaker bot, sales, HR, education and government.",
@@ -16860,6 +17189,7 @@
         "/ru/use-cases/",
         "/use-cases/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -17021,6 +17351,8 @@
     },
     "en/use-cases/meeting-bot/index.html": {
       "path": "en/use-cases/meeting-bot/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Meeting bot for Zoom, Google Meet and Teams — Dicta",
       "description": "An AI notetaker for Zoom, Google Meet and Microsoft Teams: the Dicta bot joins the call, records it and produces a transcript and meeting minutes, with Uzbek support.",
       "canonical": "https://dicta.uz/en/use-cases/meeting-bot/",
@@ -17042,6 +17374,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/meeting-bot/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "An AI notetaker for Zoom, Google Meet and Microsoft Teams: the Dicta bot joins the call, records it and produces a transcript and meeting minutes, with Uzbek support.",
@@ -17147,6 +17482,7 @@
         "/ru/use-cases/meeting-bot/",
         "/use-cases/meeting-bot/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -17337,6 +17673,8 @@
     },
     "en/use-cases/offline-meetings/index.html": {
       "path": "en/use-cases/offline-meetings/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Record in-person meetings and get the minutes — Dicta",
       "description": "Automatic meeting minutes for in-person meetings: record on your phone and Dicta transcribes Uzbek and Russian speech, separates the speakers and lists the decisions.",
       "canonical": "https://dicta.uz/en/use-cases/offline-meetings/",
@@ -17358,6 +17696,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/offline-meetings/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Automatic meeting minutes for in-person meetings: record on your phone and Dicta transcribes Uzbek and Russian speech, separates the speakers and lists the decisions.",
@@ -17463,6 +17804,7 @@
         "/ru/use-cases/offline-meetings/",
         "/use-cases/offline-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -17652,6 +17994,8 @@
     },
     "en/use-cases/online-meetings/index.html": {
       "path": "en/use-cases/online-meetings/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Online meetings in Uzbekistan with recording and AI notes — Dicta",
       "description": "Online meetings in Uzbekistan: host video calls in the Dicta room, record them and get an Uzbek, Russian or English transcript with AI meeting notes. Guests join by link.",
       "canonical": "https://dicta.uz/en/use-cases/online-meetings/",
@@ -17673,6 +18017,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/online-meetings/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Online meetings in Uzbekistan: host video calls in the Dicta room, record them and get an Uzbek, Russian or English transcript with AI meeting notes. Guests join by link.",
@@ -17778,6 +18125,7 @@
         "/ru/use-cases/online-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -17968,6 +18316,8 @@
     },
     "en/use-cases/round-table/index.html": {
       "path": "en/use-cases/round-table/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Round table: record a big meeting on many phones — Dicta",
       "description": "For large in-room meetings: each participant records on their own phone and Dicta merges the tracks into one accurate transcript and set of meeting minutes.",
       "canonical": "https://dicta.uz/en/use-cases/round-table/",
@@ -17989,6 +18339,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/round-table/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "For large in-room meetings: each participant records on their own phone and Dicta merges the tracks into one accurate transcript and set of meeting minutes.",
@@ -18094,6 +18447,7 @@
         "/ru/use-cases/round-table/",
         "/use-cases/round-table/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -18280,6 +18634,8 @@
     },
     "en/use-cases/sales-calls/index.html": {
       "path": "en/use-cases/sales-calls/index.html",
+      "htmlLang": "en-US",
+      "htmlDir": "ltr",
       "title": "Record sales calls and get AI call notes — Dicta",
       "description": "For sales teams: record customer meetings and calls, get an Uzbek, Russian or English transcript and AI meeting notes with agreements and next steps.",
       "canonical": "https://dicta.uz/en/use-cases/sales-calls/",
@@ -18301,6 +18657,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/sales-calls/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "For sales teams: record customer meetings and calls, get an Uzbek, Russian or English transcript and AI meeting notes with agreements and next steps.",
@@ -18406,6 +18765,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -18592,6 +18952,8 @@
     },
     "faq/index.html": {
       "path": "faq/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Koʻp beriladigan savollar — Dicta",
       "description": "Dicta onlayn va oflayn uchrashuvlarda qanday ishlaydi, narxi qancha va maʼlumotlaringiz bilan qanday ishlanadi.",
       "canonical": "https://dicta.uz/faq/",
@@ -18613,6 +18975,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/faq/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta onlayn va oflayn uchrashuvlarda qanday ishlaydi, narxi qancha va maʼlumotlaringiz bilan qanday ishlanadi.",
@@ -18657,6 +19022,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -18832,6 +19198,8 @@
     },
     "features/ai-chat/index.html": {
       "path": "features/ai-chat/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Barcha uchrashuvlaringiz boʻyicha AI chat — Dicta",
       "description": "Oldingi uchrashuvlarda nima deyilgani haqida savol bering. Dicta AI chati transkripsiyalaringiz asosida javob beradi, qoʻlda qidirish shart emas.",
       "canonical": "https://dicta.uz/features/ai-chat/",
@@ -18853,6 +19221,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/ai-chat/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Oldingi uchrashuvlarda nima deyilgani haqida savol bering. Dicta AI chati transkripsiyalaringiz asosida javob beradi, qoʻlda qidirish shart emas.",
@@ -18956,6 +19327,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -19129,6 +19501,8 @@
     },
     "features/ai-summary/index.html": {
       "path": "features/ai-summary/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "AI xulosa: uchrashuv qarorlari, mavzulari va vazifalari — Dicta",
       "description": "Har bir uchrashuvdan keyin Dicta qisqa AI xulosa yozadi: asosiy mavzular, qarorlar va masʼul belgilangan vazifalar. Bir soatlik yozuv oʻrniga ikki daqiqalik oʻqish.",
       "canonical": "https://dicta.uz/features/ai-summary/",
@@ -19150,6 +19524,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/ai-summary/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Har bir uchrashuvdan keyin Dicta qisqa AI xulosa yozadi: asosiy mavzular, qarorlar va masʼul belgilangan vazifalar. Bir soatlik yozuv oʻrniga ikki daqiqalik oʻqish.",
@@ -19253,6 +19630,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -19429,6 +19807,8 @@
     },
     "features/desktop-app/index.html": {
       "path": "features/desktop-app/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "macOS va Windows uchun Dicta ilovasi: uchrashuvni avtomatik yozish — Dicta",
       "description": "macOS va Windows uchun Dicta ilovasi kompyuteringizdagi uchrashuvlarni yozib oladi, keyin spikerlar bilan transkripsiya va AI xulosa beradi.",
       "canonical": "https://dicta.uz/features/desktop-app/",
@@ -19450,6 +19830,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/desktop-app/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "macOS va Windows uchun Dicta ilovasi kompyuteringizdagi uchrashuvlarni yozib oladi, keyin spikerlar bilan transkripsiya va AI xulosa beradi.",
@@ -19553,6 +19936,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -19728,6 +20112,8 @@
     },
     "features/index.html": {
       "path": "features/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Imkoniyatlar: AI xulosa, transkripsiya va yozuv boti — Dicta",
       "description": "Dicta imkoniyatlari: spikerlar bilan ovozni matnga aylantirish, AI xulosa, Zoom, Google Meet va Teams uchun bot, oflayn yozuv, vebinarlar, AI chat va vazifalar. Oʻzbek, rus, ingliz va arab tillarida.",
       "canonical": "https://dicta.uz/features/",
@@ -19749,6 +20135,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta imkoniyatlari: spikerlar bilan ovozni matnga aylantirish, AI xulosa, Zoom, Google Meet va Teams uchun bot, oflayn yozuv, vebinarlar, AI chat va vazifalar. Oʻzbek, rus, ingliz va arab tillarida.",
@@ -19846,6 +20235,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -20011,6 +20401,8 @@
     },
     "features/meeting-room/index.html": {
       "path": "features/meeting-room/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Onlayn uchrashuv: brauzer va ilovada, AI xulosa bilan — Dicta",
       "description": "Onlayn uchrashuvlarni Dicta xonasida oʻtkazing: darhol yoki rejalashtirilgan, kod orqali brauzer va ilovalardan kiring. Har bir uchrashuv yozib olinadi, matnga aylantiriladi va xulosa qilinadi.",
       "canonical": "https://dicta.uz/features/meeting-room/",
@@ -20032,6 +20424,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/meeting-room/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Onlayn uchrashuvlarni Dicta xonasida oʻtkazing: darhol yoki rejalashtirilgan, kod orqali brauzer va ilovalardan kiring. Har bir uchrashuv yozib olinadi, matnga aylantiriladi va xulosa qilinadi.",
@@ -20135,6 +20530,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -20308,6 +20704,8 @@
     },
     "features/notetaker-bot/index.html": {
       "path": "features/notetaker-bot/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Zoom, Google Meet va Teams uchun uchrashuvni yozib olish boti — Dicta",
       "description": "Dicta botini Zoom, Google Meet yoki Microsoft Teams qoʻngʻirogʻiga yuboring. U uchrashuvni yozib oladi va keyin spikerlar bilan transkripsiya hamda AI xulosa beradi.",
       "canonical": "https://dicta.uz/features/notetaker-bot/",
@@ -20329,6 +20727,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/notetaker-bot/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta botini Zoom, Google Meet yoki Microsoft Teams qoʻngʻirogʻiga yuboring. U uchrashuvni yozib oladi va keyin spikerlar bilan transkripsiya hamda AI xulosa beradi.",
@@ -20432,6 +20833,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -20608,6 +21010,8 @@
     },
     "features/offline-recording/index.html": {
       "path": "features/offline-recording/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Telefonda yigʻilishni yozib olish: spikerlar bilan transkripsiya — Dicta",
       "description": "Jonli yigʻilish, maʼruza yoki intervyuni telefonda yozib oling. Dicta ovozlarni ajratadi, transkripsiya va AI xulosa tayyorlaydi. “Davra suhbati” rejimi bir nechta telefonni birlashtiradi.",
       "canonical": "https://dicta.uz/features/offline-recording/",
@@ -20629,6 +21033,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/offline-recording/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Jonli yigʻilish, maʼruza yoki intervyuni telefonda yozib oling. Dicta ovozlarni ajratadi, transkripsiya va AI xulosa tayyorlaydi. “Davra suhbati” rejimi bir nechta telefonni birlashtiradi.",
@@ -20732,6 +21139,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -20907,6 +21315,8 @@
     },
     "features/tasks-integrations/index.html": {
       "path": "features/tasks-integrations/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Uchrashuvdan vazifalar: Trello’ga eksport va Telegram’da xulosa — Dicta",
       "description": "Dicta har bir uchrashuvdan vazifalarni ajratadi, masʼullarni belgilaydi va Trello hamda boshqa vazifa menejerlariga eksport qiladi. Uchrashuv xulosalarini Telegram’da olish mumkin.",
       "canonical": "https://dicta.uz/features/tasks-integrations/",
@@ -20928,6 +21338,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/tasks-integrations/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta har bir uchrashuvdan vazifalarni ajratadi, masʼullarni belgilaydi va Trello hamda boshqa vazifa menejerlariga eksport qiladi. Uchrashuv xulosalarini Telegram’da olish mumkin.",
@@ -21031,6 +21444,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -21206,6 +21620,8 @@
     },
     "features/transcription/index.html": {
       "path": "features/transcription/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Oʻzbek tilida transkripsiya: ovozni matnga aylantirish — Dicta",
       "description": "Nutqni spikerlar belgilangan matnga aylantiring. Dicta uchrashuvlarni oʻzbek, rus, ingliz va arab tillarida transkripsiya qiladi; matndan qidirib, yozuvning kerakli joyiga oʻtish mumkin.",
       "canonical": "https://dicta.uz/features/transcription/",
@@ -21227,6 +21643,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/transcription/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Nutqni spikerlar belgilangan matnga aylantiring. Dicta uchrashuvlarni oʻzbek, rus, ingliz va arab tillarida transkripsiya qiladi; matndan qidirib, yozuvning kerakli joyiga oʻtish mumkin.",
@@ -21330,6 +21749,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -21505,6 +21925,8 @@
     },
     "features/upload/index.html": {
       "path": "features/upload/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Audioni matnga aylantirish: yozuvni yuklang, transkripsiya oling — Dicta",
       "description": "Dicta’ga audio yoki video fayl yuklang va spikerlar bilan transkripsiya hamda AI xulosa oling. Oʻzbek, rus, ingliz va arab tilidagi yozuvlar bilan ishlaydi.",
       "canonical": "https://dicta.uz/features/upload/",
@@ -21526,6 +21948,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/upload/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta’ga audio yoki video fayl yuklang va spikerlar bilan transkripsiya hamda AI xulosa oling. Oʻzbek, rus, ingliz va arab tilidagi yozuvlar bilan ishlaydi.",
@@ -21629,6 +22054,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -21802,6 +22228,8 @@
     },
     "features/webinars/index.html": {
       "path": "features/webinars/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "600 tagacha ishtirokchili vebinarlar, AI xulosa bilan — Dicta",
       "description": "Dicta’da taxminan 600 ishtirokchigacha vebinar oʻtkazing. Har bir sessiyaning yozuvi, transkripsiyasi va AI xulosasi.",
       "canonical": "https://dicta.uz/features/webinars/",
@@ -21823,6 +22251,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/webinars/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta’da taxminan 600 ishtirokchigacha vebinar oʻtkazing. Har bir sessiyaning yozuvi, transkripsiyasi va AI xulosasi.",
@@ -21926,6 +22357,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -22103,6 +22535,8 @@
     },
     "index.html": {
       "path": "index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Dicta: oflayn va onlayn uchrashuvlar, Zoom va Meet uchun bot",
       "description": "Dicta uchrashuvni yozib oladi, o'zbek tilida matnga aylantiradi, xulosa tuzadi. Oflayn majlis, onlayn uchrashuv va Zoom, Meet uchun bot.",
       "canonical": "https://dicta.uz/",
@@ -22124,6 +22558,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta uchrashuvni yozib oladi, o'zbek tilida matnga aylantiradi, xulosa tuzadi. Oflayn majlis, onlayn uchrashuv va Zoom, Meet uchun bot.",
@@ -22245,6 +22682,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -22596,6 +23034,8 @@
     },
     "offer/index.html": {
       "path": "offer/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Ommaviy oferta — Dicta",
       "description": "Ushbu hujjat «NORLAS IT SOLUTIONS» masʼuliyati cheklangan jamiyatining (keyingi oʻrinlarda — «Sotuvchi») har qanday jismoniy yoki yuridik shaxsga (keyingi oʻrinlarda — «Xaridor») qaratilgan ommaviy ofertasi boʻlib, quyidagi shartlar asosida Dicta xizmatidan pullik foydalanish boʻyicha shartnoma tuzishni taklif etadi. Iltimos, toʻlovdan oldin uni toʻliq oʻqib chiqing: toʻlov ushbu ofertaning barcha shartlariga rozilik bildirish demakdir.",
       "canonical": "https://dicta.uz/offer/",
@@ -22617,6 +23057,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/offer/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Ushbu hujjat «NORLAS IT SOLUTIONS» masʼuliyati cheklangan jamiyatining (keyingi oʻrinlarda — «Sotuvchi») har qanday jismoniy yoki yuridik shaxsga (keyingi oʻrinlarda — «Xaridor») qaratilgan ommaviy ofertasi boʻlib, quyidagi shartlar asosida Dicta xizmatidan pullik foydalanish boʻyicha shartnoma tuzishni taklif etadi. Iltimos, toʻlovdan oldin uni toʻliq oʻqib chiqing: toʻlov ushbu ofertaning barcha shartlariga rozilik bildirish demakdir.",
@@ -22731,6 +23174,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -22979,6 +23423,8 @@
     },
     "pricing/index.html": {
       "path": "pricing/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Dicta narxlari: bepul, Pro, Business va Top rejalar | Dicta",
       "description": "Uchrashuv yozuvlari uchun Dicta rejalarini solishtiring: oyiga transkripsiya daqiqalari, xotira, tarix va qoʻllab-quvvatlash. Bepul boshlang, soʻmda karta yoki hamyon bilan, USD da ilova doʻkonlari orqali toʻlang.",
       "canonical": "https://dicta.uz/pricing/",
@@ -23000,6 +23446,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/pricing/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Uchrashuv yozuvlari uchun Dicta rejalarini solishtiring: oyiga transkripsiya daqiqalari, xotira, tarix va qoʻllab-quvvatlash. Bepul boshlang, soʻmda karta yoki hamyon bilan, USD da ilova doʻkonlari orqali toʻlang.",
@@ -23088,6 +23537,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -23357,6 +23807,8 @@
     },
     "privacy/index.html": {
       "path": "privacy/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Maxfiylik siyosati — Dicta",
       "description": "«Dicta» («biz», «bizning») dicta.uz manzilidagi videouchrashuvlar xizmatini boshqaradi. Ushbu sahifada qanday maʼlumotlarni toʻplashimiz, ularni qanday yigʻishimiz, nima uchun ishlatishimiz va qaysi uchinchi tomonlarga uzatishimiz tushuntirilgan.",
       "canonical": "https://dicta.uz/privacy/",
@@ -23378,6 +23830,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/privacy/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "«Dicta» («biz», «bizning») dicta.uz manzilidagi videouchrashuvlar xizmatini boshqaradi. Ushbu sahifada qanday maʼlumotlarni toʻplashimiz, ularni qanday yigʻishimiz, nima uchun ishlatishimiz va qaysi uchinchi tomonlarga uzatishimiz tushuntirilgan.",
@@ -23463,6 +23918,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -23666,6 +24122,8 @@
     },
     "ru/blog/chto-takoe-vebinar/index.html": {
       "path": "ru/blog/chto-takoe-vebinar/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Что такое вебинар и как его провести: короткое руководство — Dicta",
       "description": "Что такое вебинар, чем он отличается от обычной встречи и как его провести. Вебинары в Dicta: запись, расшифровка и AI-резюме.",
       "canonical": "https://dicta.uz/ru/blog/chto-takoe-vebinar/",
@@ -23687,6 +24145,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/vebinar-nima/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Что такое вебинар, чем он отличается от обычной встречи и как его провести. Вебинары в Dicta: запись, расшифровка и AI-резюме.",
@@ -23770,6 +24231,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -24007,6 +24469,8 @@
     },
     "ru/blog/dicta-aisha-ai-evernote-copy-ai-sravnenie/index.html": {
       "path": "ru/blog/dicta-aisha-ai-evernote-copy-ai-sravnenie/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Dicta, Aisha AI, Evernote и Copy AI: сравнение для записи встреч на узбекском — Dicta",
       "description": "Честное сравнение Dicta, Aisha AI, Evernote и Copy AI для записи и расшифровки встреч на узбекском: что для чего подходит и на что смотреть при выборе.",
       "canonical": "https://dicta.uz/ru/blog/dicta-aisha-ai-evernote-copy-ai-sravnenie/",
@@ -24028,6 +24492,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/dicta-aisha-ai-evernote-copy-ai-taqqoslash/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Честное сравнение Dicta, Aisha AI, Evernote и Copy AI для записи и расшифровки встреч на узбекском: что для чего подходит и на что смотреть при выборе.",
@@ -24114,6 +24581,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -24333,6 +24801,8 @@
     },
     "ru/blog/dicta-analog-zoom/index.html": {
       "path": "ru/blog/dicta-analog-zoom/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Dicta — аналог Zoom? Чем отличается и когда выбрать — Dicta",
       "description": "Dicta не просто видеосвязь: встречи записываются, расшифровываются на узбекском, русском и английском и превращаются в краткое резюме с задачами.",
       "canonical": "https://dicta.uz/ru/blog/dicta-analog-zoom/",
@@ -24354,6 +24824,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/dicta-zoom-analogi/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta не просто видеосвязь: встречи записываются, расшифровываются на узбекском, русском и английском и превращаются в краткое резюме с задачами.",
@@ -24440,6 +24913,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -24654,6 +25128,8 @@
     },
     "ru/blog/effektivnoe-soveshchanie-sovety-i-primery/index.html": {
       "path": "ru/blog/effektivnoe-soveshchanie-sovety-i-primery/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Эффективное совещание: советы и примеры — Dicta",
       "description": "Как проводить эффективные совещания: повестка, роли, регламент, протокол и задачи. Практические советы, шаблон повестки, примеры и чек-лист.",
       "canonical": "https://dicta.uz/ru/blog/effektivnoe-soveshchanie-sovety-i-primery/",
@@ -24675,6 +25151,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/samarali-majlis-maslahatlar-va-misollar/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Как проводить эффективные совещания: повестка, роли, регламент, протокол и задачи. Практические советы, шаблон повестки, примеры и чек-лист.",
@@ -24828,6 +25307,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -25162,6 +25642,8 @@
     },
     "ru/blog/index.html": {
       "path": "ru/blog/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Блог: протокол совещания, расшифровка и ИИ-ассистент — Dicta",
       "description": "Практические материалы о записи встреч, расшифровке аудио в текст и автоматическом протоколе совещания.",
       "canonical": "https://dicta.uz/ru/blog/",
@@ -25183,6 +25665,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Практические материалы о записи встреч, расшифровке аудио в текст и автоматическом протоколе совещания.",
@@ -25277,6 +25762,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -25485,6 +25971,8 @@
     },
     "ru/blog/mcp-prostymi-slovami/index.html": {
       "path": "ru/blog/mcp-prostymi-slovami/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "MCP простыми словами: что такое Model Context Protocol и зачем он нужен — Dicta",
       "description": "Что такое MCP (Model Context Protocol)? Простое объяснение: как AI-ассистенты подключаются к вашим приложениям и данным, почему MCP называют USB-C для AI и как с ним связан Dicta.",
       "canonical": "https://dicta.uz/ru/blog/mcp-prostymi-slovami/",
@@ -25506,6 +25994,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/mcp-oddiy-tilda/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Что такое MCP (Model Context Protocol)? Простое объяснение: как AI-ассистенты подключаются к вашим приложениям и данным, почему MCP называют USB-C для AI и как с ним связан Dicta.",
@@ -25607,6 +26098,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -25846,6 +26338,8 @@
     },
     "ru/blog/protokol-soveshchaniya-avtomaticheski/index.html": {
       "path": "ru/blog/protokol-soveshchaniya-avtomaticheski/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Протокол совещания автоматически: полное руководство — Dicta",
       "description": "Что входит в протокол совещания, почему вести его вручную сложно и как записать встречу на телефон и получить готовый протокол с помощью ИИ за несколько минут. Пошагово.",
       "canonical": "https://dicta.uz/ru/blog/protokol-soveshchaniya-avtomaticheski/",
@@ -25867,6 +26361,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/majlis-bayonnomasini-avtomatik-yozish/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Что входит в протокол совещания, почему вести его вручную сложно и как записать встречу на телефон и получить готовый протокол с помощью ИИ за несколько минут. Пошагово.",
@@ -25965,6 +26462,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -26182,6 +26680,8 @@
     },
     "ru/blog/rabochiy-den-rukovoditelya-dicta/index.html": {
       "path": "ru/blog/rabochiy-den-rukovoditelya-dicta/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Один день руководителя: как владелец компании пользуется Dicta с утра до вечера — Dicta",
       "description": "От утренней планёрки до последнего звонка клиенту: как владелец компании ведёт день с записью, транскриптами, AI-резюме, задачами и AI-чатом Dicta, не делая заметок.",
       "canonical": "https://dicta.uz/ru/blog/rabochiy-den-rukovoditelya-dicta/",
@@ -26199,6 +26699,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/kompaniya-rahbari-ish-kuni-dicta/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "От утренней планёрки до последнего звонка клиенту: как владелец компании ведёт день с записью, транскриптами, AI-резюме, задачами и AI-чатом Dicta, не делая заметок.",
@@ -26299,6 +26802,7 @@
         "/ru/use-cases/online-meetings/",
         "/ru/use-cases/round-table/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -26512,6 +27016,8 @@
     },
     "ru/blog/topic/comparisons/index.html": {
       "path": "ru/blog/topic/comparisons/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Сравнения — блог Dicta",
       "description": "Статьи блога Dicta в разделе «Сравнения»: запись встреч, расшифровка и ИИ-резюме.",
       "canonical": "https://dicta.uz/ru/blog/topic/comparisons/",
@@ -26533,6 +27039,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/comparisons/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Статьи блога Dicta в разделе «Сравнения»: запись встреч, расшифровка и ИИ-резюме.",
@@ -26587,6 +27096,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -26739,6 +27249,8 @@
     },
     "ru/blog/topic/education/index.html": {
       "path": "ru/blog/topic/education/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Обучение — блог Dicta",
       "description": "Статьи блога Dicta в разделе «Обучение»: запись встреч, расшифровка и ИИ-резюме.",
       "canonical": "https://dicta.uz/ru/blog/topic/education/",
@@ -26760,6 +27272,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/education/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Статьи блога Dicta в разделе «Обучение»: запись встреч, расшифровка и ИИ-резюме.",
@@ -26809,6 +27324,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -26954,6 +27470,8 @@
     },
     "ru/blog/topic/guides/index.html": {
       "path": "ru/blog/topic/guides/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Руководства — блог Dicta",
       "description": "Статьи блога Dicta в разделе «Руководства»: запись встреч, расшифровка и ИИ-резюме.",
       "canonical": "https://dicta.uz/ru/blog/topic/guides/",
@@ -26975,6 +27493,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/topic/guides/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Статьи блога Dicta в разделе «Руководства»: запись встреч, расшифровка и ИИ-резюме.",
@@ -27054,6 +27575,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -27241,6 +27763,8 @@
     },
     "ru/blog/zapis-lekcij-konspekt/index.html": {
       "path": "ru/blog/zapis-lekcij-konspekt/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Запись лекций и конспект: руководство для студентов — Dicta",
       "description": "Как записать лекцию на телефон, расшифровать аудио в текст и с помощью ИИ подготовить конспект: практическое руководство и советы для студентов.",
       "canonical": "https://dicta.uz/ru/blog/zapis-lekcij-konspekt/",
@@ -27262,6 +27786,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/ma-ruzani-yozib-olish-konspekt/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Как записать лекцию на телефон, расшифровать аудио в текст и с помощью ИИ подготовить конспект: практическое руководство и советы для студентов.",
@@ -27368,6 +27895,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -27584,6 +28112,8 @@
     },
     "ru/blog/zapis-vstrech-bez-bota-prilozhenie-dicta/index.html": {
       "path": "ru/blog/zapis-vstrech-bez-bota-prilozhenie-dicta/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Без бота и неловкости: запишите любую встречу в приложении Dicta — Dicta",
       "description": "Запись Zoom, Google Meet и Teams без бота. Приложение Dicta само определяет звонок и присылает расшифровку по спикерам и AI-резюме.",
       "canonical": "https://dicta.uz/ru/blog/zapis-vstrech-bez-bota-prilozhenie-dicta/",
@@ -27605,6 +28135,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/botsiz-uchrashuv-yozish-dicta-kompyuter-ilovasi/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Запись Zoom, Google Meet и Teams без бота. Приложение Dicta само определяет звонок и присылает расшифровку по спикерам и AI-резюме.",
@@ -27725,6 +28258,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -27989,6 +28523,8 @@
     },
     "ru/blog/zapis-zoom-google-meet-transkripciya/index.html": {
       "path": "ru/blog/zapis-zoom-google-meet-transkripciya/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Запись Zoom и Google Meet с транскрипцией: бот для встреч — Dicta",
       "description": "Как отправить бота на встречу в Zoom, Google Meet или Teams, записать её и получить транскрипт и ИИ-резюме. Шаги, плюсы и ограничения.",
       "canonical": "https://dicta.uz/ru/blog/zapis-zoom-google-meet-transkripciya/",
@@ -28010,6 +28546,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/blog/zoom-google-meet-uchrashuvni-yozib-olish/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Как отправить бота на встречу в Zoom, Google Meet или Teams, записать её и получить транскрипт и ИИ-резюме. Шаги, плюсы и ограничения.",
@@ -28104,6 +28643,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -28316,6 +28856,8 @@
     },
     "ru/delete-account/index.html": {
       "path": "ru/delete-account/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Как удалить аккаунт Dicta — Dicta",
       "description": "Вы можете удалить аккаунт Dicta самостоятельно, прямо в приложении — писать нам или спрашивать разрешения не нужно. На этой странице описано, где находится кнопка, что произойдёт после нажатия и что именно будет удалено.",
       "canonical": "https://dicta.uz/ru/delete-account/",
@@ -28337,6 +28879,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/delete-account/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Вы можете удалить аккаунт Dicta самостоятельно, прямо в приложении — писать нам или спрашивать разрешения не нужно. На этой странице описано, где находится кнопка, что произойдёт после нажатия и что именно будет удалено.",
@@ -28410,6 +28955,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -28577,6 +29123,8 @@
     },
     "ru/developers/index.html": {
       "path": "ru/developers/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Интеграции и API Dicta: Trello, Telegram и другое | Dicta",
       "description": "Отправляйте задачи со встреч в Trello, Jira, ClickUp, Asana или Hisobot, получайте резюме в Telegram и запросите доступ к API, чтобы отправлять записи и получать расшифровки.",
       "canonical": "https://dicta.uz/ru/developers/",
@@ -28598,6 +29146,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/developers/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Отправляйте задачи со встреч в Trello, Jira, ClickUp, Asana или Hisobot, получайте резюме в Telegram и запросите доступ к API, чтобы отправлять записи и получать расшифровки.",
@@ -28669,6 +29220,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -28824,6 +29376,8 @@
     },
     "ru/download/index.html": {
       "path": "ru/download/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Установите Dicta — Dicta",
       "description": "Dicta работает везде, где проходят ваши встречи — на телефоне, на компьютере и в браузере.",
       "canonical": "https://dicta.uz/ru/download/",
@@ -28845,6 +29399,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/download/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta работает везде, где проходят ваши встречи — на телефоне, на компьютере и в браузере.",
@@ -28897,6 +29454,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -29061,6 +29619,8 @@
     },
     "ru/faq/index.html": {
       "path": "ru/faq/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Часто задаваемые вопросы — Dicta",
       "description": "Как Dicta работает на онлайн- и офлайн-встречах, сколько это стоит и как обрабатываются ваши данные.",
       "canonical": "https://dicta.uz/ru/faq/",
@@ -29082,6 +29642,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/faq/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Как Dicta работает на онлайн- и офлайн-встречах, сколько это стоит и как обрабатываются ваши данные.",
@@ -29126,6 +29689,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -29301,6 +29865,8 @@
     },
     "ru/features/ai-chat/index.html": {
       "path": "ru/features/ai-chat/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "ИИ-чат по всем вашим встречам — Dicta",
       "description": "Задавайте вопросы о том, что говорили на прошлых встречах. ИИ-чат Dicta отвечает по вашим расшифровкам, и искать вручную не нужно.",
       "canonical": "https://dicta.uz/ru/features/ai-chat/",
@@ -29322,6 +29888,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/ai-chat/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Задавайте вопросы о том, что говорили на прошлых встречах. ИИ-чат Dicta отвечает по вашим расшифровкам, и искать вручную не нужно.",
@@ -29425,6 +29994,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -29598,6 +30168,8 @@
     },
     "ru/features/ai-summary/index.html": {
       "path": "ru/features/ai-summary/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "ИИ-протокол встречи: решения, темы и задачи — Dicta",
       "description": "После каждой встречи Dicta пишет короткое ИИ-резюме: главные темы, решения и задачи с ответственными. Две минуты чтения вместо часа записи.",
       "canonical": "https://dicta.uz/ru/features/ai-summary/",
@@ -29619,6 +30191,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/ai-summary/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "После каждой встречи Dicta пишет короткое ИИ-резюме: главные темы, решения и задачи с ответственными. Две минуты чтения вместо часа записи.",
@@ -29722,6 +30297,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -29898,6 +30474,8 @@
     },
     "ru/features/desktop-app/index.html": {
       "path": "ru/features/desktop-app/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Приложение Dicta для macOS и Windows: автозапись встреч — Dicta",
       "description": "Приложение Dicta для macOS и Windows записывает встречи на вашем компьютере, затем даёт расшифровку по спикерам и ИИ-резюме.",
       "canonical": "https://dicta.uz/ru/features/desktop-app/",
@@ -29919,6 +30497,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/desktop-app/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Приложение Dicta для macOS и Windows записывает встречи на вашем компьютере, затем даёт расшифровку по спикерам и ИИ-резюме.",
@@ -30022,6 +30603,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -30197,6 +30779,8 @@
     },
     "ru/features/index.html": {
       "path": "ru/features/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Возможности: ИИ-протокол встречи, расшифровка и бот для записи — Dicta",
       "description": "Возможности Dicta: расшифровка аудио в текст с разметкой спикеров, ИИ-резюме, бот для записи Zoom, Google Meet и Teams, офлайн-запись, вебинары, ИИ-чат и задачи. На узбекском, русском, английском и арабском.",
       "canonical": "https://dicta.uz/ru/features/",
@@ -30218,6 +30802,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Возможности Dicta: расшифровка аудио в текст с разметкой спикеров, ИИ-резюме, бот для записи Zoom, Google Meet и Teams, офлайн-запись, вебинары, ИИ-чат и задачи. На узбекском, русском, английском и арабском.",
@@ -30315,6 +30902,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -30480,6 +31068,8 @@
     },
     "ru/features/meeting-room/index.html": {
       "path": "ru/features/meeting-room/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Онлайн встречи в Узбекистане: в браузере и приложении, с ИИ-заметками — Dicta",
       "description": "Проводите онлайн встречи в комнате Dicta: мгновенные или по расписанию, вход по коду из браузера и приложений. Каждая встреча записывается, расшифровывается и резюмируется.",
       "canonical": "https://dicta.uz/ru/features/meeting-room/",
@@ -30501,6 +31091,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/meeting-room/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Проводите онлайн встречи в комнате Dicta: мгновенные или по расписанию, вход по коду из браузера и приложений. Каждая встреча записывается, расшифровывается и резюмируется.",
@@ -30604,6 +31197,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -30777,6 +31371,8 @@
     },
     "ru/features/notetaker-bot/index.html": {
       "path": "ru/features/notetaker-bot/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Бот для записи Zoom, Google Meet и Microsoft Teams — Dicta",
       "description": "Отправьте бота Dicta на звонок в Zoom, Google Meet или Microsoft Teams. Он запишет встречу и пришлёт расшифровку по спикерам и ИИ-резюме.",
       "canonical": "https://dicta.uz/ru/features/notetaker-bot/",
@@ -30798,6 +31394,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/notetaker-bot/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Отправьте бота Dicta на звонок в Zoom, Google Meet или Microsoft Teams. Он запишет встречу и пришлёт расшифровку по спикерам и ИИ-резюме.",
@@ -30901,6 +31500,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -31077,6 +31677,8 @@
     },
     "ru/features/offline-recording/index.html": {
       "path": "ru/features/offline-recording/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Запись совещаний на телефон: расшифровка по спикерам — Dicta",
       "description": "Записывайте живые совещания, лекции и интервью на телефон. Dicta разделяет голоса, делает расшифровку и ИИ-резюме. В режиме «круглый стол» записи с нескольких телефонов объединяются.",
       "canonical": "https://dicta.uz/ru/features/offline-recording/",
@@ -31098,6 +31700,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/offline-recording/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Записывайте живые совещания, лекции и интервью на телефон. Dicta разделяет голоса, делает расшифровку и ИИ-резюме. В режиме «круглый стол» записи с нескольких телефонов объединяются.",
@@ -31201,6 +31806,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -31376,6 +31982,8 @@
     },
     "ru/features/tasks-integrations/index.html": {
       "path": "ru/features/tasks-integrations/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Задачи из встреч: экспорт в Trello и итоги в Telegram — Dicta",
       "description": "Dicta выделяет задачи из каждой встречи, назначает ответственных и экспортирует в Trello и другие трекеры. Итоги встреч можно получать в Telegram.",
       "canonical": "https://dicta.uz/ru/features/tasks-integrations/",
@@ -31397,6 +32005,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/tasks-integrations/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta выделяет задачи из каждой встречи, назначает ответственных и экспортирует в Trello и другие трекеры. Итоги встреч можно получать в Telegram.",
@@ -31500,6 +32111,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -31675,6 +32287,8 @@
     },
     "ru/features/transcription/index.html": {
       "path": "ru/features/transcription/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Расшифровка аудио в текст на узбекском, русском, английском и арабском — Dicta",
       "description": "Превращайте речь в текст с разметкой спикеров. Dicta расшифровывает встречи на узбекском, русском, английском и арабском, а по тексту можно искать и переходить к нужному моменту записи.",
       "canonical": "https://dicta.uz/ru/features/transcription/",
@@ -31696,6 +32310,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/transcription/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Превращайте речь в текст с разметкой спикеров. Dicta расшифровывает встречи на узбекском, русском, английском и арабском, а по тексту можно искать и переходить к нужному моменту записи.",
@@ -31799,6 +32416,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -31974,6 +32592,8 @@
     },
     "ru/features/upload/index.html": {
       "path": "ru/features/upload/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Аудио в текст: загрузите запись и получите расшифровку и резюме — Dicta",
       "description": "Загрузите аудио- или видеофайл в Dicta и получите расшифровку по спикерам и ИИ-резюме. Работает с записями на узбекском, русском, английском и арабском.",
       "canonical": "https://dicta.uz/ru/features/upload/",
@@ -31995,6 +32615,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/upload/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Загрузите аудио- или видеофайл в Dicta и получите расшифровку по спикерам и ИИ-резюме. Работает с записями на узбекском, русском, английском и арабском.",
@@ -32098,6 +32721,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -32271,6 +32895,8 @@
     },
     "ru/features/webinars/index.html": {
       "path": "ru/features/webinars/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Вебинары до 600 участников с ИИ-резюме — Dicta",
       "description": "Проводите вебинары в Dicta примерно до 600 участников. Запись, расшифровка и ИИ-резюме каждой сессии.",
       "canonical": "https://dicta.uz/ru/features/webinars/",
@@ -32292,6 +32918,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/features/webinars/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Проводите вебинары в Dicta примерно до 600 участников. Запись, расшифровка и ИИ-резюме каждой сессии.",
@@ -32395,6 +33024,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -32572,6 +33202,8 @@
     },
     "ru/index.html": {
       "path": "ru/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Dicta: протокол офлайн и онлайн встреч, бот для Zoom и Meet",
       "description": "Dicta записывает встречи, расшифровывает речь и составляет протокол с задачами. Офлайн-совещания, онлайн-встречи и бот для Zoom, Meet и Teams.",
       "canonical": "https://dicta.uz/ru/",
@@ -32593,6 +33225,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta записывает встречи, расшифровывает речь и составляет протокол с задачами. Офлайн-совещания, онлайн-встречи и бот для Zoom, Meet и Teams.",
@@ -32714,6 +33349,7 @@
         "/ru/use-cases/round-table/",
         "/ru/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -33065,6 +33701,8 @@
     },
     "ru/offer/index.html": {
       "path": "ru/offer/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Публичная оферта — Dicta",
       "description": "Настоящий документ является публичной офертой ООО «NORLAS IT SOLUTIONS» (далее — «Продавец»), адресованной любому физическому или юридическому лицу (далее — «Покупатель»), заключить договор возмездного оказания услуг по предоставлению доступа к сервису Dicta на изложенных ниже условиях. Пожалуйста, прочитайте её полностью до оплаты: оплата означает согласие со всеми условиями настоящей оферты.",
       "canonical": "https://dicta.uz/ru/offer/",
@@ -33086,6 +33724,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/offer/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Настоящий документ является публичной офертой ООО «NORLAS IT SOLUTIONS» (далее — «Продавец»), адресованной любому физическому или юридическому лицу (далее — «Покупатель»), заключить договор возмездного оказания услуг по предоставлению доступа к сервису Dicta на изложенных ниже условиях. Пожалуйста, прочитайте её полностью до оплаты: оплата означает согласие со всеми условиями настоящей оферты.",
@@ -33200,6 +33841,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -33448,6 +34090,8 @@
     },
     "ru/pricing/index.html": {
       "path": "ru/pricing/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Тарифы Dicta: бесплатный, Pro, Business и Top | Dicta",
       "description": "Сравните тарифы Dicta для ИИ-протоколов встреч: минуты транскрибации в месяц, хранилище, история и поддержка. Начните бесплатно, оплата в сумах картой или кошельком, в USD через магазины приложений.",
       "canonical": "https://dicta.uz/ru/pricing/",
@@ -33469,6 +34113,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/pricing/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Сравните тарифы Dicta для ИИ-протоколов встреч: минуты транскрибации в месяц, хранилище, история и поддержка. Начните бесплатно, оплата в сумах картой или кошельком, в USD через магазины приложений.",
@@ -33557,6 +34204,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -33826,6 +34474,8 @@
     },
     "ru/privacy/index.html": {
       "path": "ru/privacy/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Политика конфиденциальности — Dicta",
       "description": "Dicta («мы», «наш») управляет сервисом видеовстреч на dicta.uz. На этой странице описано, какие данные мы собираем, как мы их собираем, для чего используем и каким третьим лицам передаём.",
       "canonical": "https://dicta.uz/ru/privacy/",
@@ -33847,6 +34497,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/privacy/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta («мы», «наш») управляет сервисом видеовстреч на dicta.uz. На этой странице описано, какие данные мы собираем, как мы их собираем, для чего используем и каким третьим лицам передаём.",
@@ -33932,6 +34585,7 @@
         "/ru/use-cases/offline-meetings/",
         "/ru/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -34135,6 +34789,8 @@
     },
     "ru/terms/index.html": {
       "path": "ru/terms/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Условия использования — Dicta",
       "description": "Используя Dicta, вы соглашаетесь с настоящими условиями. Если вы не согласны — не пользуйтесь сервисом.",
       "canonical": "https://dicta.uz/ru/terms/",
@@ -34156,6 +34812,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/terms/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Используя Dicta, вы соглашаетесь с настоящими условиями. Если вы не согласны — не пользуйтесь сервисом.",
@@ -34237,6 +34896,7 @@
         "/ru/use-cases/online-meetings/",
         "/terms/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -34403,6 +35063,8 @@
     },
     "ru/use-cases/education/index.html": {
       "path": "ru/use-cases/education/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Запись лекций и расшифровка в текст для студентов — Dicta",
       "description": "Запись лекций: студент записывает занятие на телефон, Dicta переводит аудио в текст и делает краткий конспект. Расшифровка на узбекском, русском и английском.",
       "canonical": "https://dicta.uz/ru/use-cases/education/",
@@ -34424,6 +35086,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/education/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Запись лекций: студент записывает занятие на телефон, Dicta переводит аудио в текст и делает краткий конспект. Расшифровка на узбекском, русском и английском.",
@@ -34529,6 +35194,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/education/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -34718,6 +35384,8 @@
     },
     "ru/use-cases/government/index.html": {
       "path": "ru/use-cases/government/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Протокол совещания автоматически: для госорганов — Dicta",
       "description": "Для государственных организаций: протокол совещания автоматически, расшифровка аудио в текст на узбекском и русском, решения и поручения с ответственными.",
       "canonical": "https://dicta.uz/ru/use-cases/government/",
@@ -34739,6 +35407,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/government/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Для государственных организаций: протокол совещания автоматически, расшифровка аудио в текст на узбекском и русском, решения и поручения с ответственными.",
@@ -34844,6 +35515,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/government/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -35031,6 +35703,8 @@
     },
     "ru/use-cases/hr-interviews/index.html": {
       "path": "ru/use-cases/hr-interviews/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Запись собеседований и расшифровка интервью для HR — Dicta",
       "description": "Для HR и рекрутеров: записывайте собеседования, получайте расшифровку интервью на узбекском и русском и ИИ-итоги, сравнивайте кандидатов по тексту.",
       "canonical": "https://dicta.uz/ru/use-cases/hr-interviews/",
@@ -35052,6 +35726,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/hr-interviews/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Для HR и рекрутеров: записывайте собеседования, получайте расшифровку интервью на узбекском и русском и ИИ-итоги, сравнивайте кандидатов по тексту.",
@@ -35157,6 +35834,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/hr-interviews/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -35343,6 +36021,8 @@
     },
     "ru/use-cases/index.html": {
       "path": "ru/use-cases/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Сценарии использования: встречи, звонки, лекции — Dicta",
       "description": "Dicta записывает встречи, расшифровывает речь на узбекском и русском и готовит протокол: офлайн-совещания, онлайн встречи, бот для Zoom, продажи, HR, учёба и госорганы.",
       "canonical": "https://dicta.uz/ru/use-cases/",
@@ -35364,6 +36044,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta записывает встречи, расшифровывает речь на узбекском и русском и готовит протокол: офлайн-совещания, онлайн встречи, бот для Zoom, продажи, HR, учёба и госорганы.",
@@ -35444,6 +36127,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -35605,6 +36289,8 @@
     },
     "ru/use-cases/meeting-bot/index.html": {
       "path": "ru/use-cases/meeting-bot/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Бот для записи Zoom: ИИ-секретарь для Meet и Teams — Dicta",
       "description": "Бот для записи Zoom и ИИ-секретарь для встреч: Dicta заходит в звонки Zoom, Google Meet и Microsoft Teams, расшифровывает речь и готовит ИИ-протокол встречи.",
       "canonical": "https://dicta.uz/ru/use-cases/meeting-bot/",
@@ -35626,6 +36312,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/meeting-bot/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Бот для записи Zoom и ИИ-секретарь для встреч: Dicta заходит в звонки Zoom, Google Meet и Microsoft Teams, расшифровывает речь и готовит ИИ-протокол встречи.",
@@ -35731,6 +36420,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/meeting-bot/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -35921,6 +36611,8 @@
     },
     "ru/use-cases/offline-meetings/index.html": {
       "path": "ru/use-cases/offline-meetings/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Запись офлайн-совещаний и протокол встречи — Dicta",
       "description": "Протокол совещания автоматически: запишите встречу на телефон, Dicta расшифрует аудио в текст на узбекском и русском и разделит речь по спикерам.",
       "canonical": "https://dicta.uz/ru/use-cases/offline-meetings/",
@@ -35942,6 +36634,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/offline-meetings/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Протокол совещания автоматически: запишите встречу на телефон, Dicta расшифрует аудио в текст на узбекском и русском и разделит речь по спикерам.",
@@ -36047,6 +36742,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/offline-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -36236,6 +36932,8 @@
     },
     "ru/use-cases/online-meetings/index.html": {
       "path": "ru/use-cases/online-meetings/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Онлайн встречи в Узбекистане: запись и ИИ-итоги — Dicta",
       "description": "Онлайн встречи в Узбекистане: проводите видеозвонки в комнате Dicta, записывайте их и получайте расшифровку на узбекском и русском с ИИ-итогами. Гости входят по ссылке.",
       "canonical": "https://dicta.uz/ru/use-cases/online-meetings/",
@@ -36257,6 +36955,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/online-meetings/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Онлайн встречи в Узбекистане: проводите видеозвонки в комнате Dicta, записывайте их и получайте расшифровку на узбекском и русском с ИИ-итогами. Гости входят по ссылке.",
@@ -36362,6 +37063,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -36552,6 +37254,8 @@
     },
     "ru/use-cases/round-table/index.html": {
       "path": "ru/use-cases/round-table/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Круглый стол: запись совещания на несколько телефонов — Dicta",
       "description": "Для больших совещаний: каждый участник записывает на свой телефон, Dicta объединяет дорожки и готовит точную расшифровку и протокол совещания.",
       "canonical": "https://dicta.uz/ru/use-cases/round-table/",
@@ -36573,6 +37277,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/round-table/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Для больших совещаний: каждый участник записывает на свой телефон, Dicta объединяет дорожки и готовит точную расшифровку и протокол совещания.",
@@ -36678,6 +37385,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/round-table/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -36864,6 +37572,8 @@
     },
     "ru/use-cases/sales-calls/index.html": {
       "path": "ru/use-cases/sales-calls/index.html",
+      "htmlLang": "ru-RU",
+      "htmlDir": "ltr",
       "title": "Запись звонков продаж и ИИ-итоги разговора — Dicta",
       "description": "Для отдела продаж: записывайте встречи и звонки с клиентами, получайте расшифровку аудио в текст на узбекском и русском и ИИ-итоги с договорённостями и следующими шагами.",
       "canonical": "https://dicta.uz/ru/use-cases/sales-calls/",
@@ -36885,6 +37595,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/sales-calls/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Для отдела продаж: записывайте встречи и звонки с клиентами, получайте расшифровку аудио в текст на узбекском и русском и ИИ-итоги с договорённостями и следующими шагами.",
@@ -36990,6 +37703,7 @@
         "/ru/use-cases/sales-calls/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -37176,6 +37890,8 @@
     },
     "terms/index.html": {
       "path": "terms/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Foydalanish shartlari — Dicta",
       "description": "Dicta-dan foydalanish orqali siz ushbu shartlarga rozilik bildirasiz. Agar rozi boʻlmasangiz, xizmatdan foydalanmang.",
       "canonical": "https://dicta.uz/terms/",
@@ -37197,6 +37913,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/terms/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta-dan foydalanish orqali siz ushbu shartlarga rozilik bildirasiz. Agar rozi boʻlmasangiz, xizmatdan foydalanmang.",
@@ -37278,6 +37997,7 @@
         "/use-cases/offline-meetings/",
         "/use-cases/online-meetings/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -37444,6 +38164,8 @@
     },
     "use-cases/education/index.html": {
       "path": "use-cases/education/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Ma'ruzani yozib olish va matnga aylantirish talabalar uchun — Dicta",
       "description": "Ma'ruzani yozib olish: talaba darsni telefonda yozadi, Dicta ovozni matnga aylantiradi, qisqa konspekt tuzadi. Audio matnga o'zbek, rus va ingliz tillarida.",
       "canonical": "https://dicta.uz/use-cases/education/",
@@ -37465,6 +38187,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/education/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Ma'ruzani yozib olish: talaba darsni telefonda yozadi, Dicta ovozni matnga aylantiradi, qisqa konspekt tuzadi. Audio matnga o'zbek, rus va ingliz tillarida.",
@@ -37570,6 +38295,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -37759,6 +38485,8 @@
     },
     "use-cases/government/index.html": {
       "path": "use-cases/government/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Majlis xulosasi va yig'ilish protokoli avtomatik — Dicta",
       "description": "Davlat tashkilotlari va idoralar uchun: majlis xulosasi va yig'ilish protokolini avtomatik tuzing, o'zbek va rus tilida transkripsiya, qarorlar va topshiriqlar mas'ullar bilan.",
       "canonical": "https://dicta.uz/use-cases/government/",
@@ -37780,6 +38508,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/government/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Davlat tashkilotlari va idoralar uchun: majlis xulosasi va yig'ilish protokolini avtomatik tuzing, o'zbek va rus tilida transkripsiya, qarorlar va topshiriqlar mas'ullar bilan.",
@@ -37885,6 +38616,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -38072,6 +38804,8 @@
     },
     "use-cases/hr-interviews/index.html": {
       "path": "use-cases/hr-interviews/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "HR suhbatlarini yozib olish va transkripsiya — Dicta",
       "description": "HR va rekruterlar uchun: nomzod bilan suhbatni yozib oling, o'zbek va rus tilida transkripsiyaga va AI xulosaga aylantiring, nomzodlarni matn bo'yicha solishtiring.",
       "canonical": "https://dicta.uz/use-cases/hr-interviews/",
@@ -38093,6 +38827,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/hr-interviews/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "HR va rekruterlar uchun: nomzod bilan suhbatni yozib oling, o'zbek va rus tilida transkripsiyaga va AI xulosaga aylantiring, nomzodlarni matn bo'yicha solishtiring.",
@@ -38198,6 +38935,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -38384,6 +39122,8 @@
     },
     "use-cases/index.html": {
       "path": "use-cases/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Qo'llanish holatlari: yig'ilish, qo'ng'iroq, ma'ruza — Dicta",
       "description": "Dicta uchrashuvlarni yozib oladi, o'zbek tilida matnga aylantiradi va protokol tayyorlaydi: oflayn yig'ilish, onlayn uchrashuv, Zoom bot, savdo, HR, ta'lim va davlat tashkilotlari.",
       "canonical": "https://dicta.uz/use-cases/",
@@ -38405,6 +39145,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Dicta uchrashuvlarni yozib oladi, o'zbek tilida matnga aylantiradi va protokol tayyorlaydi: oflayn yig'ilish, onlayn uchrashuv, Zoom bot, savdo, HR, ta'lim va davlat tashkilotlari.",
@@ -38485,6 +39228,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -38646,6 +39390,8 @@
     },
     "use-cases/meeting-bot/index.html": {
       "path": "use-cases/meeting-bot/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Zoom uchrashuvni yozib olish: Meet va Teams uchun bot — Dicta",
       "description": "Zoom uchrashuvni yozib olish uchun AI notetaker: Dicta boti Zoom, Google Meet va Microsoft Teams qo'ng'irog'iga kirib, transkripsiya va xulosa tayyorlaydi.",
       "canonical": "https://dicta.uz/use-cases/meeting-bot/",
@@ -38667,6 +39413,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/meeting-bot/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Zoom uchrashuvni yozib olish uchun AI notetaker: Dicta boti Zoom, Google Meet va Microsoft Teams qo'ng'irog'iga kirib, transkripsiya va xulosa tayyorlaydi.",
@@ -38772,6 +39521,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -38962,6 +39712,8 @@
     },
     "use-cases/offline-meetings/index.html": {
       "path": "use-cases/offline-meetings/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Oflayn yig'ilishni yozib olish va xulosa — Dicta",
       "description": "Majlis xulosasi va yig'ilish protokolini avtomatik tuzing: telefonda uchrashuvni yozib oling, Dicta o'zbek tilida matnga aylantiradi va so'zlovchilarni ajratadi.",
       "canonical": "https://dicta.uz/use-cases/offline-meetings/",
@@ -38983,6 +39735,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/offline-meetings/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Majlis xulosasi va yig'ilish protokolini avtomatik tuzing: telefonda uchrashuvni yozib oling, Dicta o'zbek tilida matnga aylantiradi va so'zlovchilarni ajratadi.",
@@ -39088,6 +39843,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -39277,6 +40033,8 @@
     },
     "use-cases/online-meetings/index.html": {
       "path": "use-cases/online-meetings/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Onlayn uchrashuv o'zbek tilida: yozuv va AI xulosa — Dicta",
       "description": "Onlayn uchrashuv O'zbekistonda: Dicta xonasida video uchrashuv o'tkazing, uni yozib oling va o'zbek tilida transkripsiya va AI xulosa oling. Mehmonlar havola orqali kiradi.",
       "canonical": "https://dicta.uz/use-cases/online-meetings/",
@@ -39298,6 +40056,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/online-meetings/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Onlayn uchrashuv O'zbekistonda: Dicta xonasida video uchrashuv o'tkazing, uni yozib oling va o'zbek tilida transkripsiya va AI xulosa oling. Mehmonlar havola orqali kiradi.",
@@ -39403,6 +40164,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -39593,6 +40355,8 @@
     },
     "use-cases/round-table/index.html": {
       "path": "use-cases/round-table/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Davra suhbati: ko'p telefonda yig'ilishni yozib olish — Dicta",
       "description": "Katta yig'ilish va majlislar uchun: har bir ishtirokchi o'z telefonida yozadi, Dicta yozuvlarni birlashtirib, aniq transkripsiya va yig'ilish protokolini tayyorlaydi.",
       "canonical": "https://dicta.uz/use-cases/round-table/",
@@ -39614,6 +40378,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/round-table/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Katta yig'ilish va majlislar uchun: har bir ishtirokchi o'z telefonida yozadi, Dicta yozuvlarni birlashtirib, aniq transkripsiya va yig'ilish protokolini tayyorlaydi.",
@@ -39719,6 +40486,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
@@ -39905,6 +40673,8 @@
     },
     "use-cases/sales-calls/index.html": {
       "path": "use-cases/sales-calls/index.html",
+      "htmlLang": "uz-UZ",
+      "htmlDir": "ltr",
       "title": "Savdo qo'ng'iroqlarini yozib olish va AI xulosa — Dicta",
       "description": "Savdo bo'limi uchun: mijoz bilan uchrashuv va qo'ng'iroqlarni yozib oling, o'zbek tilida transkripsiya, kelishuvlar va keyingi qadamlar bilan AI xulosa oling.",
       "canonical": "https://dicta.uz/use-cases/sales-calls/",
@@ -39926,6 +40696,9 @@
           "lang": "x-default",
           "href": "https://dicta.uz/use-cases/sales-calls/"
         }
+      ],
+      "headLinks": [
+        "alternate|application/rss+xml|/blog/rss.xml"
       ],
       "meta": {
         "og:description": "Savdo bo'limi uchun: mijoz bilan uchrashuv va qo'ng'iroqlarni yozib oling, o'zbek tilida transkripsiya, kelishuvlar va keyingi qadamlar bilan AI xulosa oling.",
@@ -40031,6 +40804,7 @@
         "/use-cases/round-table/",
         "/use-cases/sales-calls/"
       ],
+      "internalRel": [],
       "outbound": [
         {
           "href": "https://apps.apple.com/app/id6764618560",
