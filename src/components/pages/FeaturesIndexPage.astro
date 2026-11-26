@@ -26,7 +26,7 @@ const jsonLd = [
 ];
 ---
 
-<Layout title={`${ui.indexMetaTitle} — Dicta`} description={ui.indexMetaDesc} locale={locale} path="/features" jsonLd={jsonLd}>
+<Layout title={`${ui.indexMetaTitle} — Dicta`} description={ui.indexMetaDesc} locale={locale} path="/features" jsonLd={jsonLd} visitTopic="features">
   <Header locale={locale} path="/features" />
   <main class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24">
@@ -34,12 +34,13 @@ const jsonLd = [
       <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{ui.indexSub}</p>
     </div>
     <section aria-label={ui.breadcrumbRoot} class="max-w-6xl mx-auto px-6 lg:px-10 pt-12 pb-20">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {FEATURE_SLUGS.map((s) => (
-          <a href={localePath(`/features/${s}`, locale)} class="group block rounded-panel border border-border p-6 hover:border-border-strong hover:bg-surface-2 transition-colors">
+          <a href={localePath(`/features/${s}`, locale)} class="group record">
             <h2 class="font-display text-xl font-semibold text-foreground group-hover:text-accent transition-colors">{L.features[s].name}</h2>
-            <p class="mt-2 text-muted leading-relaxed">{L.features[s].card}</p>
-            <span class="mt-4 inline-block text-sm font-medium text-accent">{ui.learnMore}</span>
+            <p class="mt-2 text-muted leading-relaxed flex-1">{L.features[s].card}</p>
+            <hr class="record__rule" />
+            <span class="record__foot"><span>{ui.learnMore}</span><span aria-hidden="true" class="record__arrow">→</span></span>
           </a>
         ))}
       </div>

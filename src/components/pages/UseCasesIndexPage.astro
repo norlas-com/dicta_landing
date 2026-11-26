@@ -27,7 +27,7 @@ const jsonLd = [
 ];
 ---
 
-<Layout title={`${u.indexTitle} — Dicta`} description={u.indexMeta} locale={locale} path="/use-cases" jsonLd={jsonLd}>
+<Layout title={`${u.indexTitle} — Dicta`} description={u.indexMeta} locale={locale} path="/use-cases" jsonLd={jsonLd} visitTopic="useCases">
   <Header locale={locale} path="/use-cases" />
   <main class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 pb-6">
@@ -47,13 +47,14 @@ const jsonLd = [
                 data-analytics-event="cta_clicked"
                 data-analytics-location="use_cases_index"
                 data-analytics-target={s}
-                class="group flex h-full flex-col rounded-card border border-border bg-surface p-6 hover:border-border-strong hover:shadow-card transition-[border-color,box-shadow] duration-150 ease-out-expo"
+                class="group record"
               >
                 <h2 class="font-display text-xl font-semibold tracking-[-0.01em] text-foreground group-hover:text-accent transition-colors">
                   {c.name}
                 </h2>
                 <p class="text-muted mt-3 leading-relaxed flex-1">{c.card}</p>
-                <span class="mt-5 text-sm font-medium text-accent">{u.learnMore}<span aria-hidden="true" class="inline-block ms-1 rtl:-scale-x-100">→</span></span>
+                <hr class="record__rule" />
+                <span class="record__foot"><span>{u.learnMore}</span><span aria-hidden="true" class="record__arrow">→</span></span>
               </a>
             </li>
           );

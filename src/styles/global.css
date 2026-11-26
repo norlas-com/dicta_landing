@@ -526,6 +526,61 @@ html.js .notes-in.revealed {
   line-height: 1.25;
 }
 
+/* Meeting records: the index cards. A paper slip with a ruled footer and an
+ * arrow; the whole card is the link. */
+.record {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: border-color 0.15s ease;
+}
+.record:hover,
+.record:focus-visible {
+  border-color: var(--color-border-strong);
+}
+.record__rule {
+  margin-block: 1.25rem 0.9rem;
+  border: 0;
+  border-block-start: 1px dashed var(--color-border-strong);
+}
+.record__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+.record__arrow {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.record:hover .record__arrow {
+  transform: translateX(3px);
+}
+[dir="rtl"] .record__arrow {
+  transform: scaleX(-1);
+}
+[dir="rtl"] .record:hover .record__arrow {
+  transform: translateX(-3px) scaleX(-1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .record__arrow,
+  .record:hover .record__arrow {
+    transition: none;
+    transform: none;
+  }
+  [dir="rtl"] .record__arrow,
+  [dir="rtl"] .record:hover .record__arrow {
+    transform: scaleX(-1);
+  }
+}
+
 /* Focus rings stay visible on ink. */
 .room *:focus-visible {
   outline-color: var(--color-ink-accent);

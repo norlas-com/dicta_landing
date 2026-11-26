@@ -49,7 +49,7 @@ if (topic) {
 }
 ---
 
-<Layout title={title} description={description} locale={locale} path={path} alternates={alternates} noindex={posts.length === 0}>
+<Layout title={title} description={description} locale={locale} path={path} alternates={alternates} noindex={posts.length === 0} visitTopic="blog">
   <Header locale={locale} path={path} switchPaths={switchPaths} />
   <div class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-14 sm:pt-16 pb-8">
@@ -118,41 +118,47 @@ if (topic) {
                   />
                 </div>
                 <div>
-                  <p class="text-sm font-medium text-accent">{c.topics[featured.data.topic]}</p>
+                  <p class="meeting-label text-muted flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <span class="text-accent font-medium">{c.topics[featured.data.topic]}</span>
+                    <span aria-hidden="true">·</span>
+                    {c.readMin(readingMinutes(featured.body, locale))}
+                    <span aria-hidden="true">·</span>
+                    <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date, locale)}</time>
+                  </p>
                   <h2 class="font-display text-[1.9rem] sm:text-[2.3rem] font-semibold tracking-[-0.02em] leading-[1.15] text-foreground mt-2 text-balance group-hover:text-accent transition-colors">
                     {featured.data.title}
                   </h2>
                   <p class="text-muted mt-4 leading-relaxed max-w-[52ch]">{featured.data.description}</p>
-                  <p class="text-sm text-muted mt-4">
-                    <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date, locale)}</time>
-                    <span aria-hidden="true"> · </span>
-                    {c.readMin(readingMinutes(featured.body, locale))}
-                  </p>
                 </div>
               </a>
             )}
-            <ul class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((p) => (
                 <li>
                   <a
                     href={postPath(p)}
                     data-analytics-event="blog_post_clicked"
                     data-analytics-slug={p.data.slug}
-                    class="group block"
+                    class="group record !p-0 overflow-hidden"
                   >
-                    <div class="aspect-[16/10] rounded-card overflow-hidden">
+                    <div class="aspect-[16/10] overflow-hidden border-b border-border">
                       <BlogCover topic={p.data.topic} image={p.data.cover} alt={p.data.coverAlt} />
                     </div>
-                    <p class="text-sm font-medium text-accent mt-5">{c.topics[p.data.topic]}</p>
-                    <h2 class="font-display text-xl font-semibold tracking-[-0.01em] leading-snug text-foreground mt-1.5 text-balance group-hover:text-accent transition-colors">
-                      {p.data.title}
-                    </h2>
-                    <p class="text-muted mt-2.5 leading-relaxed line-clamp-3">{p.data.description}</p>
-                    <p class="text-sm text-muted mt-3">
-                      <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
-                      <span aria-hidden="true"> · </span>
-                      {c.readMin(readingMinutes(p.body, locale))}
-                    </p>
+                    <div class="flex flex-1 flex-col p-5">
+                      <p class="meeting-label text-muted flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span class="text-accent font-medium">{c.topics[p.data.topic]}</span>
+                        <span aria-hidden="true">·</span>
+                        {c.readMin(readingMinutes(p.body, locale))}
+                        <span aria-hidden="true">·</span>
+                        <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
+                      </p>
+                      <h2 class="font-display text-xl font-semibold tracking-[-0.01em] leading-snug text-foreground mt-3 text-balance group-hover:text-accent transition-colors">
+                        {p.data.title}
+                      </h2>
+                      <p class="text-muted mt-2.5 leading-relaxed line-clamp-3 flex-1">{p.data.description}</p>
+                      <hr class="record__rule" />
+                      <span aria-hidden="true" class="record__foot"><span class="record__arrow">→</span></span>
+                    </div>
                   </a>
                 </li>
               ))}
