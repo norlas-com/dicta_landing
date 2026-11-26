@@ -6,6 +6,8 @@
 /* The italic cut carries the accent half of every home-page headline. */
 @import "@fontsource-variable/literata/opsz-italic.css";
 @import "@fontsource-variable/inter";
+/* Mono face for labels and timestamps (Latin + Cyrillic). */
+@import "@fontsource-variable/jetbrains-mono";
 /* Arabic script. Neither Literata nor Inter carries Arabic glyphs, so without
  * this an Arabic page falls back to whatever the OS supplies, usually a much
  * heavier face. Appended AFTER the Latin faces in the Tailwind stacks, so the
@@ -20,6 +22,7 @@
   --font-sans: "Inter Variable", "Inter";
   --font-serif: "Literata Variable", "Literata";
   --font-arabic: "Noto Sans Arabic Variable", "Noto Sans Arabic";
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono";
 }
 
 /* Theme tokens, ported from the app (web/app/globals.css, web/DESIGN.md):
@@ -420,5 +423,67 @@ html.js .revealed .beat {
   .plan-card:hover,
   .plan-card:hover .plan-art {
     transform: none;
+  }
+}
+
+/* ---- Meeting ----------------------------------------------------------
+ * The visit-as-a-meeting chrome: small mono labels, the REC dot and notes
+ * that write themselves in. */
+.meeting-label {
+  font-family: var(--font-mono), var(--font-arabic), ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+/* Arabic has no case and joins letters: no transform, no tracking, and the
+ * Arabic face instead of a mono one. */
+.meeting-label:lang(ar) {
+  font-family: var(--font-arabic), sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.rec-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--color-live);
+  animation: rec-pulse 1.4s ease-in-out infinite;
+}
+@keyframes rec-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* Notes that write themselves: fade + 6px rise, gated on html.js so no-JS
+ * visitors always see them. Driven by the same .revealed observer. */
+html.js .notes-in {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--rd, 0s);
+}
+html.js .notes-in.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-dot {
+    animation: none;
+  }
+  html.js .notes-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

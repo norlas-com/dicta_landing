@@ -96,7 +96,15 @@ export default {
           "serif",
         ],
         serif: ["var(--font-serif)", "var(--font-arabic)", "Literata", "ui-serif", "Georgia", "serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+        mono: [
+          "var(--font-mono)",
+          "var(--font-arabic)",
+          "JetBrains Mono",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace",
+        ],
       },
 
       fontSize: {
