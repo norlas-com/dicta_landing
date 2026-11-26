@@ -118,12 +118,13 @@ if (topic) {
                   />
                 </div>
                 <div>
-                  <p class="meeting-label text-muted flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <span class="text-accent font-medium">{c.topics[featured.data.topic]}</span>
-                    <span aria-hidden="true">·</span>
-                    {c.readMin(readingMinutes(featured.body, locale))}
-                    <span aria-hidden="true">·</span>
-                    <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date, locale)}</time>
+                  <p class="meeting-label text-muted">
+                    <span class="block text-accent font-medium">{c.topics[featured.data.topic]}</span>
+                    <span class="block mt-1.5 whitespace-nowrap">
+                      <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date, locale)}</time>
+                      <span aria-hidden="true"> · </span>
+                      {c.readMin(readingMinutes(featured.body, locale))}
+                    </span>
                   </p>
                   <h2 class="font-display text-[1.9rem] sm:text-[2.3rem] font-semibold tracking-[-0.02em] leading-[1.15] text-foreground mt-2 text-balance group-hover:text-accent transition-colors">
                     {featured.data.title}
@@ -145,12 +146,13 @@ if (topic) {
                       <BlogCover topic={p.data.topic} image={p.data.cover} alt={p.data.coverAlt} />
                     </div>
                     <div class="flex flex-1 flex-col p-5">
-                      <p class="meeting-label text-muted flex flex-wrap items-center gap-x-2 gap-y-1">
-                        <span class="text-accent font-medium">{c.topics[p.data.topic]}</span>
-                        <span aria-hidden="true">·</span>
-                        {c.readMin(readingMinutes(p.body, locale))}
-                        <span aria-hidden="true">·</span>
-                        <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
+                      <p class="meeting-label text-muted">
+                        <span class="block text-accent font-medium">{c.topics[p.data.topic]}</span>
+                        <span class="block mt-1.5 whitespace-nowrap">
+                          <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
+                          <span aria-hidden="true"> · </span>
+                          {c.readMin(readingMinutes(p.body, locale))}
+                        </span>
                       </p>
                       <h2 class="font-display text-xl font-semibold tracking-[-0.01em] leading-snug text-foreground mt-3 text-balance group-hover:text-accent transition-colors">
                         {p.data.title}
