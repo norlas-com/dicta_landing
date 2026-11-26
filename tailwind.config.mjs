@@ -12,6 +12,17 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}"],
   darkMode: "class",
+  // No `bg-opacity-*`-style utilities are used (opacity comes from the /NN
+  // modifier), so the per-utility `--tw-*-opacity: 1` indirection only made
+  // the render-blocking stylesheet longer. Colours resolve to the same value.
+  corePlugins: {
+    textOpacity: false,
+    backgroundOpacity: false,
+    borderOpacity: false,
+    ringOpacity: false,
+    divideOpacity: false,
+    placeholderOpacity: false,
+  },
   theme: {
     extend: {
       colors: {

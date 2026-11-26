@@ -512,25 +512,6 @@ html.js .notes-in:focus-within {
  * everything else is a small mark a real recap would carry: a checkbox, a
  * tick, a timestamp on a dashed tape. */
 
-/* Display sizes for the room's headings (callers keep their own h1/h2). */
-.meeting-display {
-  font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
-  font-weight: 500;
-  font-size: clamp(2.5rem, 5.4vw, 4.25rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  font-optical-sizing: auto;
-  text-wrap: balance;
-}
-.meeting-title {
-  font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
-  font-weight: 500;
-  font-size: clamp(1.875rem, 3.4vw, 2.75rem);
-  line-height: 1.06;
-  letter-spacing: -0.025em;
-  font-optical-sizing: auto;
-  text-wrap: balance;
-}
 .notes-title {
   font-family: var(--font-serif), var(--font-arabic), Georgia, serif;
   font-weight: 500;
@@ -539,7 +520,7 @@ html.js .notes-in:focus-within {
   letter-spacing: -0.012em;
 }
 /* Arabic joins letters: negative tracking breaks the joins. */
-:lang(ar) :is(.meeting-display, .meeting-title, .notes-title) {
+:lang(ar) .notes-title {
   letter-spacing: 0;
   line-height: 1.25;
 }
