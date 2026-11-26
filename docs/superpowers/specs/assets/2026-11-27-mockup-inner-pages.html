@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dicta — inner pages in the new look</title>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:oklch(0.977 0.004 85); --surface:oklch(0.992 0.003 85); --s2:oklch(0.955 0.005 85);
+    --line:oklch(0.895 0.007 80); --line2:oklch(0.82 0.01 80);
+    --fg:oklch(0.235 0.022 278); --soft:oklch(0.34 0.02 278); --muted:oklch(0.47 0.018 278);
+    --accent:oklch(0.5 0.155 278); --accent-soft:oklch(0.94 0.025 278);
+    --ink:oklch(0.27 0.075 278); --ink2:oklch(0.32 0.085 278); --ink-fg:oklch(0.965 0.008 85); --ink-muted:oklch(0.8 0.035 278); --ink-acc:oklch(0.82 0.1 278);
+    --live:oklch(0.55 0.19 25);
+    --serif:"Literata",Georgia,serif; --sans:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:oklch(0.93 0.006 85);color:var(--fg);font-family:var(--sans);padding:40px 24px 80px}
+  .wrap{max-width:1180px;margin:0 auto}
+  .intro h1{font-family:var(--serif);font-weight:500;font-size:32px;letter-spacing:-.02em}
+  .intro p{color:var(--muted);margin-top:8px;max-width:76ch;line-height:1.55}
+  .block{margin-top:40px}
+  .block h2{font-family:var(--serif);font-weight:500;font-size:22px}
+  .block > p{color:var(--muted);font-size:14.5px;line-height:1.5;margin:4px 0 14px;max-width:92ch}
+  .frame{background:var(--bg);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px oklch(0.24 0.04 278/.35),0 0 0 1px var(--line)}
+  .chrome{height:30px;background:var(--s2);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 12px}
+  .chrome i{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+  .chrome span{margin-left:10px;font:11px var(--mono);color:var(--muted)}
+  .nav{height:52px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 22px;gap:18px;font-size:13px;color:var(--soft);background:var(--bg)}
+  .logo{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--fg);display:flex;align-items:center;gap:7px}
+  .logo svg{color:var(--accent)}
+  .sp{flex:1}
+  .rec{display:inline-flex;align-items:center;gap:8px;font:12px var(--mono);border:1px solid var(--line2);border-radius:999px;height:28px;padding:0 12px;background:var(--surface)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--live);animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.25}}
+  .btn{background:var(--accent);color:#fff;border-radius:999px;height:32px;padding:0 16px;display:inline-flex;align-items:center;font-weight:600;font-size:13px}
+  .eyebrow{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .mono{font-family:var(--mono)}
+
+  /* feature page */
+  .fhero{display:grid;grid-template-columns:1.15fr .85fr}
+  .froom{background:var(--ink);color:var(--ink-fg);padding:40px 44px}
+  .froom .eyebrow{color:var(--ink-muted)}
+  .froom h3{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.2vw,48px);line-height:1.04;letter-spacing:-.03em;margin-top:14px;max-width:16ch}
+  .froom p{color:var(--ink-muted);margin-top:16px;line-height:1.55;max-width:44ch}
+  .scene{margin-top:26px;display:flex;gap:8px;align-items:flex-end}
+  .phone{width:62px;height:104px;border-radius:12px;background:var(--ink2);border:1.5px solid var(--ink-acc);display:grid;place-items:center}
+  .phone .dot{width:10px;height:10px}
+  .person{width:40px;height:40px;border-radius:50%;background:var(--ink2);display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--ink-muted)}
+  .person.on{box-shadow:0 0 0 2px var(--ink-acc);color:var(--ink-fg)}
+  .fnotes{background:var(--surface);padding:30px 30px;border-left:1px solid var(--line)}
+  .fnotes .h{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .fnotes .h b{font-family:var(--serif);font-weight:500;font-size:17px}
+  .fnotes h4{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}
+  .fnotes li{list-style:none;display:flex;gap:9px;font-size:13.5px;line-height:1.45;margin-top:7px}
+  .fnotes li b{font-weight:600}
+  .tick{color:var(--accent);font-weight:700}
+  .box{width:15px;height:15px;border:1.5px solid var(--line2);border-radius:4px;flex:none;margin-top:2px}
+  .steps{padding:34px 44px 40px;display:grid;grid-template-columns:150px 1fr;gap:18px 30px;border-top:1px solid var(--line)}
+  .steps h4{font-family:var(--serif);font-weight:500;font-size:24px;grid-column:1/-1}
+  .tstep{display:contents}
+  .tstep .ts{font:12px var(--mono);color:var(--muted);padding-top:3px;border-top:1px dashed var(--line);padding-top:12px}
+  .tstep .tx{border-top:1px dashed var(--line);padding-top:10px}
+  .tstep .tx b{font-weight:600;font-size:15px}
+  .tstep .tx p{color:var(--soft);font-size:14px;line-height:1.5;margin-top:2px}
+
+  /* blog */
+  .post{display:grid;grid-template-columns:220px 1fr;}
+  .pmeta{padding:40px 24px;border-right:1px solid var(--line);background:var(--surface);font-size:13px}
+  .pmeta dl{display:grid;gap:12px}
+  .pmeta dt{font:10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .pmeta dd{margin-top:2px}
+  .pbody{padding:40px 56px 44px}
+  .pbody h3{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,42px);letter-spacing:-.025em;line-height:1.08;max-width:20ch}
+  .pbody p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--soft);max-width:60ch;margin-top:18px}
+  .ptask{margin-top:26px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:center;background:var(--surface);max-width:60ch}
+  .ptask .sp{flex:1}
+
+  .callout{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .card{background:var(--surface);border-radius:14px;padding:20px 22px;box-shadow:0 0 0 1px var(--line)}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:19px;margin-bottom:10px}
+  .card p,.card li{font-size:14px;line-height:1.55;color:var(--soft)}
+  .card li{margin-left:18px;margin-top:4px}
+  .visit{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+  .visit span{font:12px var(--mono);border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--bg)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <h1>How the other pages carry the same idea</h1>
+    <p>Home page is the full "meeting". The other pages reuse the same parts at a smaller scale: the dark room, the notes card, timestamps, and tasks with checkboxes. All headings and copy below are the <b>real text from today's pages</b>, just set in the new layout, so SEO doesn't move.</p>
+  </div>
+
+  <div class="block">
+    <h2>Feature page: "Record in-person meetings on your phone"</h2>
+    <p>The hero becomes a small room (H1 + sub on the left, with a little scene) and a notes card on the right. The notes card holds the page's three benefits as "decisions". "How it works" becomes timestamped steps. FAQ, related features and the CTA follow the same pattern. The same template covers all 10 feature pages and all 8 use-case pages.</p>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i><span>dicta.uz/en/features/offline-recording/</span></div>
+      <div class="nav"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9v6M8 6v12M12 9v6"/><path d="M14 5h2a7 7 0 0 1 0 14h-2"/></svg>Dicta</span><span>Features</span><span>Use cases</span><span>Pricing</span><span>Blog</span><span class="sp"></span><span class="rec"><span class="dot"></span><span id="t1">02:41</span></span><span class="btn">Start free</span></div>
+      <div class="fhero">
+        <div class="froom">
+          <div class="eyebrow"><span style="color:var(--live)">●</span> Features · In-person meetings</div>
+          <h3>Record in-person meetings on your phone</h3>
+          <p>Put the phone on the table. Dicta tells the voices apart and gives you a transcript and a summary of the meeting, lecture or interview.</p>
+          <div class="scene"><span class="person">DK</span><span class="person on">RT</span><span class="phone"><span class="dot"></span></span><span class="person">AZ</span><span class="person">MS</span></div>
+        </div>
+        <div class="fnotes">
+          <div class="h"><b>In short</b><span class="mono" style="font-size:11px;color:var(--muted)">3 points</span></div>
+          <h4>What you get</h4>
+          <ul>
+            <li><span class="tick">✓</span><span><b>Speakers told apart.</b> The minutes show who said what.</span></li>
+            <li><span class="tick">✓</span><span><b>Round table mode.</b> One room, many phones, merged into one meeting.</span></li>
+            <li><span class="tick">✓</span><span><b>For meetings and lectures.</b> Management, sales, HR, majlis, students.</span></li>
+          </ul>
+          <h4>Next step</h4>
+          <ul><li><span class="box"></span><span><b>You</b>: record your next meeting free</span></li></ul>
+        </div>
+      </div>
+      <div class="steps">
+        <h4>How it works</h4>
+        <div class="tstep"><span class="ts">00:00 · you</span><div class="tx"><b>Open the app and record</b><p>Start recording on iOS or Android. For a round table, everyone records on their own phone.</p></div></div>
+        <div class="tstep"><span class="ts">00:01 · Dicta</span><div class="tx"><b>Dicta processes it</b><p>It separates speakers and merges tracks when several phones were used.</p></div></div>
+        <div class="tstep"><span class="ts">+ minutes · you</span><div class="tx"><b>Read the minutes</b><p>Get the transcript and the AI summary with decisions and action items.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Blog post</h2>
+    <p>Reading stays calm: a wide serif column, no animation in the text. The side rail shows the post's details the way a meeting record does (author as speaker, reading time as duration, date, topic). The end of the post is a single task instead of a big banner.</p>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i><span>dicta.uz/en/blog/what-is-a-webinar/</span></div>
+      <div class="nav"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9v6M8 6v12M12 9v6"/><path d="M14 5h2a7 7 0 0 1 0 14h-2"/></svg>Dicta</span><span>Features</span><span>Use cases</span><span>Pricing</span><span>Blog</span><span class="sp"></span><span class="rec"><span class="dot"></span><span id="t2">04:12</span></span><span class="btn">Start free</span></div>
+      <div class="post">
+        <aside class="pmeta"><dl>
+          <div><dt>Topic</dt><dd>Guides</dd></div>
+          <div><dt>Written by</dt><dd>Dicta team</dd></div>
+          <div><dt>Duration</dt><dd class="mono">7 min read</dd></div>
+          <div><dt>Date</dt><dd class="mono">3 Nov 2026</dd></div>
+          <div><dt>In this post</dt><dd style="color:var(--soft);line-height:1.6">What a webinar is<br>Webinar vs meeting<br>How to run one</dd></div>
+        </dl></aside>
+        <div class="pbody">
+          <div class="eyebrow">Guides</div>
+          <h3 style="margin-top:12px">What is a webinar, and how is it different from a meeting?</h3>
+          <p>A webinar is an online event where one or a few people present to a large audience. Unlike a meeting, most of the audience listens…</p>
+          <div class="ptask"><span class="box"></span><span style="font-size:14px"><b>You</b>: run your first webinar on Dicta</span><span class="sp"></span><span class="btn">Start free</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="card">
+      <h3>One small idea that ties the site together</h3>
+      <p>The "● Recording" pill in the header counts your <b>whole visit</b>, not just one page, so the meeting carries on as you browse (stored only in your own browser, nothing is sent anywhere). On the closing section of any page, Dicta shows a tiny recap of the visit:</p>
+      <div class="visit"><span>4 pages</span><span>06:53</span><span>Looked at: in-person, pricing</span></div>
+    </div>
+    <div class="card">
+      <h3>Pages that stay plain</h3>
+      <ul>
+        <li>Privacy, Terms, Offer, Delete account: new typography and header/footer only.</li>
+        <li>Pricing, Download, Developers, FAQ: new layout pieces (notes cards, tasks), no pinned story.</li>
+        <li>Arabic (dicta.live) mirrors everything right-to-left.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+  const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  let a=161,b=252; setInterval(()=>{a++;b++;document.getElementById('t1').textContent=fmt(a);document.getElementById('t2').textContent=fmt(b)},1000);
+</script>
+</body>
+</html>

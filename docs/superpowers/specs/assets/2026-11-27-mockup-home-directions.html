@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dicta — "the page is a meeting"</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:oklch(0.977 0.004 85); --surface:oklch(0.992 0.003 85); --s2:oklch(0.955 0.005 85);
+    --line:oklch(0.895 0.007 80); --line2:oklch(0.82 0.01 80);
+    --fg:oklch(0.235 0.022 278); --soft:oklch(0.34 0.02 278); --muted:oklch(0.47 0.018 278);
+    --accent:oklch(0.5 0.155 278); --accent-soft:oklch(0.94 0.025 278);
+    --ink:oklch(0.27 0.075 278); --ink-fg:oklch(0.965 0.008 85); --ink-muted:oklch(0.8 0.035 278);
+    --live:oklch(0.55 0.19 25); --ok:oklch(0.52 0.13 155);
+    --serif:"Literata",Georgia,serif; --sans:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:oklch(0.93 0.006 85);color:var(--fg);font-family:var(--sans);padding:40px 24px 80px}
+  .wrap{max-width:1180px;margin:0 auto}
+  header.intro h1{font-family:var(--serif);font-weight:500;font-size:34px;letter-spacing:-.02em}
+  header.intro p{color:var(--muted);margin-top:8px;max-width:72ch;line-height:1.55}
+  .dir{margin-top:44px;cursor:pointer;border-radius:18px;padding:18px;border:2px solid transparent;transition:border-color .2s,background .2s}
+  .dir:hover{background:oklch(0.955 0.005 85 / .6)}
+  .dir.selected{border-color:var(--accent);background:var(--accent-soft)}
+  .dir-head{display:flex;gap:14px;align-items:baseline;margin-bottom:14px}
+  .letter{font-family:var(--mono);font-size:13px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--fg);color:var(--bg);flex:none}
+  .dir-head h2{font-family:var(--serif);font-weight:500;font-size:24px}
+  .dir-head p{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:4px;max-width:90ch}
+  .notes{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:12px;font-size:13.5px;color:var(--soft);line-height:1.5}
+  .notes b{font-weight:600;color:var(--fg)}
+
+  /* browser frame */
+  .frame{background:var(--bg);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px oklch(0.24 0.04 278/.35),0 0 0 1px var(--line);height:560px;display:flex;flex-direction:column}
+  .chrome{height:30px;background:var(--s2);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 12px;flex:none}
+  .chrome i{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+  .chrome span{margin-left:10px;font:11px var(--mono);color:var(--muted)}
+  .nav{height:52px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 22px;gap:18px;flex:none;font-size:13px;color:var(--soft)}
+  .logo{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--fg);display:flex;align-items:center;gap:7px}
+  .logo svg{color:var(--accent)}
+  .nav .sp{flex:1}
+  .rec{display:inline-flex;align-items:center;gap:8px;font:12px var(--mono);color:var(--fg);border:1px solid var(--line2);border-radius:999px;height:28px;padding:0 12px;background:var(--surface)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--live);animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.25}}
+  .btn{background:var(--accent);color:#fff;border-radius:999px;height:32px;padding:0 16px;display:inline-flex;align-items:center;font-weight:600;font-size:13px}
+  .btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line2)}
+  .viewport{flex:1;overflow:hidden;position:relative}
+  .mono{font-family:var(--mono)}
+  .eyebrow{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  h3.big{font-family:var(--serif);font-weight:500;letter-spacing:-.035em;line-height:.98}
+  h3.big em{font-weight:400;color:var(--accent)}
+  .lede{color:var(--soft);line-height:1.55}
+
+  /* ---------- A: margin transcript ---------- */
+  .A .viewport{display:grid;grid-template-columns:250px 1fr}
+  .A .margin{border-right:1px solid var(--line);padding:22px 18px;background:var(--surface);overflow:hidden;position:relative}
+  .A .margin::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(transparent,var(--surface))}
+  .A .tline{display:grid;grid-template-columns:42px 1fr;gap:4px 8px;font-size:12.5px;line-height:1.45;margin-top:14px;opacity:0;transform:translateY(6px);animation:in .5s ease forwards}
+  .A .tline .ts{font:11px var(--mono);color:var(--muted);padding-top:2px}
+  .A .who{font-weight:600;font-size:11.5px}
+  .who.you{color:oklch(0.55 0.14 155)} .who.dicta{color:var(--accent)}
+  @keyframes in{to{opacity:1;transform:none}}
+  .A .main{padding:40px 44px;position:relative;padding-right:290px}
+  .A h3.big{font-size:clamp(44px,6vw,70px)}
+  @media (max-width:980px){.A .agenda{display:none}.A .main{padding-right:44px}.A .viewport{grid-template-columns:200px 1fr}}
+  .B h3.big,.C .room h3.big{font-size:clamp(40px,5.5vw,66px)!important}
+  @media (max-width:980px){.B .main{padding:40px 36px 0}}
+  .A .lede{font-size:17px;max-width:46ch;margin-top:22px}
+  .A .cta{display:flex;gap:10px;margin-top:26px}
+  .A .agenda{position:absolute;right:40px;top:44px;width:230px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px 16px;font-size:12.5px}
+  .A .agenda li{list-style:none;display:flex;gap:10px;padding:6px 0;border-top:1px dashed var(--line);color:var(--muted)}
+  .A .agenda li:first-of-type{border-top:0}
+  .A .agenda li.on{color:var(--fg);font-weight:500}
+  .A .agenda li .n{font-family:var(--mono);font-size:11px;width:20px}
+
+  /* ---------- B: live captions ---------- */
+  .B .main{padding:56px 72px 0;max-width:900px}
+  .B .spk{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .B .avatar{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:600;color:#fff;background:var(--accent)}
+  .B .spk .mono{font-size:12px;color:var(--muted)}
+  .B h3.big{font-size:66px}
+  .B .karaoke{font-family:var(--serif);font-size:25px;line-height:1.45;margin-top:28px;max-width:34ch;color:oklch(0.235 0.022 278 / .22)}
+  .B .karaoke span{transition:color .25s}
+  .B .karaoke span.said{color:var(--fg)}
+  .B .karaoke span.now{color:var(--accent);background:var(--accent-soft);border-radius:4px}
+  .B .capbar{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:min(680px,90%);background:var(--ink);color:var(--ink-fg);border-radius:16px;padding:12px 16px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;box-shadow:0 20px 40px -18px oklch(0.27 0.075 278/.6)}
+  .B .wave{display:flex;gap:3px;align-items:center;height:26px}
+  .B .wave i{width:3px;border-radius:2px;background:var(--ink-muted);animation:bar 1s ease-in-out infinite}
+  @keyframes bar{0%,100%{height:5px}50%{height:24px}}
+  .B .capbar .cap{font-size:14px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .B .capbar .cap b{color:var(--ink-muted);font-weight:500;margin-right:6px}
+  .B .capbar .mono{font-size:11.5px;color:var(--ink-muted)}
+
+  /* ---------- C: meeting + notes split ---------- */
+  .C .viewport{display:grid;grid-template-columns:1fr 1fr}
+  .C .room{background:var(--ink);color:var(--ink-fg);padding:36px 40px;display:flex;flex-direction:column;position:relative}
+  .C .room h3.big{font-size:54px;color:var(--ink-fg)}
+  .C .room h3.big em{color:oklch(0.82 0.1 278)}
+  .C .room .lede{color:var(--ink-muted);font-size:15px;margin-top:16px;max-width:40ch}
+  .C .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+  .C .tile{border-radius:12px;background:oklch(0.32 0.085 278);height:118px;position:relative;display:grid;place-items:center}
+  .C .tile.speaking{box-shadow:0 0 0 2px oklch(0.82 0.1 278)}
+  .C .tile .face{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:600;background:oklch(0.42 0.07 278)}
+  .C .tile .name{position:absolute;left:10px;bottom:8px;font-size:11.5px;color:var(--ink-muted)}
+  .C .tile .mini{position:absolute;right:10px;bottom:10px;display:flex;gap:2px;align-items:end;height:14px}
+  .C .tile .mini i{width:2px;background:oklch(0.82 0.1 278);animation:bar2 .9s ease-in-out infinite}
+  @keyframes bar2{0%,100%{height:3px}50%{height:14px}}
+  .C .notes-pane{padding:30px 34px;background:var(--surface);overflow:hidden}
+  .C .np-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
+  .C .np-head b{font-family:var(--serif);font-weight:500;font-size:19px}
+  .C .sec{margin-top:18px}
+  .C .sec h4{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .C .sec p,.C .sec li{font-size:14px;line-height:1.5}
+  .C .sec li{list-style:none;display:flex;gap:9px;margin-top:6px}
+  .C .box{width:15px;height:15px;border:1.5px solid var(--line2);border-radius:4px;flex:none;margin-top:3px}
+  .C .typing::after{content:"▍";color:var(--accent);animation:pulse 1s steps(1) infinite}
+  .C .fade{opacity:0;animation:in .5s ease forwards}
+  .C .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="intro">
+    <h1>"The page is a meeting": three ways to show it</h1>
+    <p>Each is the first screen of dicta.uz with its own Dicta look (paper, indigo, Literata). The animation is the idea: your visit is being recorded and turned into notes. Copy is English here; the real page stays uz/ru/en. Click the one that feels most like <i>us</i>. You can also say "A's margin with C's ending", for example.</p>
+  </header>
+
+  <!-- A -->
+  <section class="dir A" data-choice="a" onclick="toggleSelect(this)">
+    <div class="dir-head"><div class="letter">A</div><div>
+      <h2>Margin transcript</h2>
+      <p>A normal long page with an agenda on the side. On the left, a transcript of your visit fills in as you scroll, with timestamps and speakers ("You", "Dicta"). Each section is an agenda item. At the end, the margin turns into the recap of your visit.</p>
+    </div></div>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i><span>dicta.uz</span></div>
+      <div class="nav"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9v6M8 6v12M12 9v6"/><path d="M14 5h2a7 7 0 0 1 0 14h-2"/></svg>Dicta</span><span>Features</span><span>Pricing</span><span>Blog</span><span class="sp"></span><span class="rec"><span class="dot"></span>Recording <span id="a-t">00:00</span></span><span class="btn">Start free</span></div>
+      <div class="viewport">
+        <aside class="margin">
+          <div class="eyebrow">Transcript · this visit</div>
+          <div id="a-lines"></div>
+        </aside>
+        <div class="main">
+          <div class="eyebrow">Agenda 1 / 6 · What Dicta is</div>
+          <h3 class="big" style="margin-top:18px">You talk.<br><em>Dicta writes.</em></h3>
+          <p class="lede">A board meeting, a call or a lecture: Dicta records it, tells the speakers apart and hands you the decisions and tasks within minutes.</p>
+          <div class="cta"><span class="btn" style="height:44px;padding:0 22px;font-size:14px">Start free →</span><span class="btn ghost" style="height:44px;padding:0 22px;font-size:14px">Get the app</span></div>
+          <ol class="agenda">
+            <div class="eyebrow" style="margin-bottom:6px">Agenda</div>
+            <li class="on"><span class="n">01</span>What Dicta is</li>
+            <li><span class="n">02</span>In the room</li>
+            <li><span class="n">03</span>Zoom, Meet, Teams</li>
+            <li><span class="n">04</span>The recap</li>
+            <li><span class="n">05</span>Price</li>
+            <li><span class="n">06</span>Questions</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <div><b>Feels like:</b> the closest to shareuntil's structure, but in our own words. Calm and readable, works well on long SEO pages too.</div>
+      <div><b>Risk:</b> on phones the margin has to become a small bar at the bottom, so the effect is quieter there.</div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="dir B" data-choice="b" onclick="toggleSelect(this)">
+    <div class="dir-head"><div class="letter">B</div><div>
+      <h2>Live captions</h2>
+      <p>The page "speaks" as you scroll: each section's text lights up word by word, like Dicta's live transcription. A dark caption bar at the bottom shows what's being heard, with a waveform and a timer. The last section is the recap.</p>
+    </div></div>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i><span>dicta.uz</span></div>
+      <div class="nav"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9v6M8 6v12M12 9v6"/><path d="M14 5h2a7 7 0 0 1 0 14h-2"/></svg>Dicta</span><span>Features</span><span>Pricing</span><span>Blog</span><span class="sp"></span><span class="btn">Start free</span></div>
+      <div class="viewport">
+        <div class="main">
+          <div class="spk"><span class="avatar">D</span><b style="font-size:13px">Dicta</b><span class="mono">00:00 – 00:14</span></div>
+          <h3 class="big">You talk. <em>Dicta writes.</em></h3>
+          <p class="karaoke" id="b-k"></p>
+        </div>
+        <div class="capbar">
+          <div class="wave" id="b-w"></div>
+          <div class="cap" id="b-cap"><b>Dilnoza</b>Let's move the warehouse launch to the 15th.</div>
+          <div class="mono"><span style="color:var(--live)">●</span> <span id="b-t">00:00</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <div><b>Feels like:</b> the boldest, and it shows the core feature (speech becoming text) more directly than the other two.</div>
+      <div><b>Risk:</b> greyed-out text until you scroll can feel like a gimmick, and it hurts readability. Crawlers still see all the text, so SEO is fine.</div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="dir C" data-choice="c" onclick="toggleSelect(this)">
+    <div class="dir-head"><div class="letter">C</div><div>
+      <h2>Meeting room + notes</h2>
+      <p>The screen is split. On the left, a stylised call: you and Dicta, a timer, a waveform. On the right, the notes write themselves as you scroll: summary, then decisions, then tasks. At the end, the right side <i>is</i> a finished Dicta recap, and the button is the task "Sign up".</p>
+    </div></div>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i><span>dicta.uz</span></div>
+      <div class="nav"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9v6M8 6v12M12 9v6"/><path d="M14 5h2a7 7 0 0 1 0 14h-2"/></svg>Dicta</span><span>Features</span><span>Pricing</span><span>Blog</span><span class="sp"></span><span class="btn">Start free</span></div>
+      <div class="viewport">
+        <div class="room">
+          <div class="eyebrow" style="color:var(--ink-muted)"><span style="color:var(--live)">●</span> Recording · <span id="c-t">00:00</span></div>
+          <h3 class="big" style="margin-top:16px">You talk.<br><em>Dicta writes.</em></h3>
+          <p class="lede">A board meeting, a call or a lecture: Dicta records it and hands you the decisions and tasks within minutes.</p>
+          <div class="tiles">
+            <div class="tile speaking"><span class="face">You</span><span class="name">You · visitor</span><span class="mini"><i></i><i style="animation-delay:.2s"></i><i style="animation-delay:.4s"></i></span></div>
+            <div class="tile"><span class="face" style="background:var(--accent)">D</span><span class="name">Dicta · taking notes</span></div>
+          </div>
+        </div>
+        <div class="notes-pane">
+          <div class="np-head"><b>Your visit to dicta.uz</b><span class="mono" style="font-size:11px;color:var(--muted)">Notes · live</span></div>
+          <div class="sec"><h4>Summary</h4><p id="c-sum" class="typing"></p></div>
+          <div class="sec fade" style="animation-delay:5s"><h4>Decisions</h4><ul><li>✓&nbsp; Recordings work offline too<span class="tag">in the room</span></li></ul></div>
+          <div class="sec fade" style="animation-delay:6.5s"><h4>Tasks</h4><ul>
+            <li><span class="box"></span><span><b>You</b>: try one meeting for free</span></li>
+            <li><span class="box"></span><span><b>You</b>: get the app for in-person meetings</span></li></ul></div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <div><b>Feels like:</b> the visitor sees the actual output (a recap) being built, so it explains what Dicta does with no reading at all.</div>
+      <div><b>Risk:</b> split screens are harder on phones (stacked there), and it's the most work to build.</div>
+    </div>
+  </section>
+</div>
+
+<script>
+  const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  let sec=0; setInterval(()=>{sec++;['a-t','b-t','c-t'].forEach(id=>{const e=document.getElementById(id); if(e) e.textContent=fmt(sec)})},1000);
+
+  // A: transcript lines appear one by one, loop
+  const aLines=[
+    ['00:00','dicta','Dicta','Recording started. One participant: you.'],
+    ['00:03','you','You','Opened "You talk. Dicta writes."'],
+    ['00:09','dicta','Dicta','Agenda item 1: what Dicta is.'],
+    ['00:14','you','You','Read the first paragraph.'],
+    ['00:21','you','You','Scrolled to "In the room".'],
+    ['00:22','dicta','Dicta','Noted: interested in in-person meetings.'],
+    ['00:30','you','You','Looked at the price.'],
+  ];
+  const aBox=document.getElementById('a-lines'); let ai=0;
+  function aStep(){ if(ai>=aLines.length){aBox.innerHTML='';ai=0}
+    const [ts,c,w,t]=aLines[ai++]; const d=document.createElement('div'); d.className='tline';
+    d.innerHTML=`<span class="ts">${ts}</span><span><span class="who ${c}">${w}</span><br>${t}</span>`; aBox.appendChild(d); }
+  aStep(); setInterval(aStep,1500);
+
+  // B: karaoke
+  const words="A board meeting, a call or a lecture: Dicta records it, tells the speakers apart and hands you the decisions and tasks within minutes.".split(' ');
+  const k=document.getElementById('b-k'); k.innerHTML=words.map(w=>`<span>${w}</span>`).join(' ');
+  const spans=[...k.children]; let bi=0;
+  setInterval(()=>{ if(bi>=spans.length+6){spans.forEach(s=>s.className='');bi=0;return}
+    spans.forEach((s,i)=>s.className=i<bi?'said':i===bi?'now':''); bi++; },260);
+  const w=document.getElementById('b-w'); for(let i=0;i<14;i++){const b=document.createElement('i'); b.style.animationDelay=(i*0.07)+'s'; w.appendChild(b)}
+  const caps=[['Dilnoza',"Let's move the warehouse launch to the 15th."],['Rustam',"Then I'll have the contracts signed by Friday."],['Dilnoza','Agreed. Aziz, can you let the client know?']];
+  let ci=0; setInterval(()=>{ci=(ci+1)%caps.length; document.getElementById('b-cap').innerHTML=`<b>${caps[ci][0]}</b>${caps[ci][1]}`},2600);
+
+  // C: summary types itself
+  const sum="You came to see how Dicta handles meetings. It records in the room and on Zoom, Meet or Teams, tells speakers apart, and writes the recap for you.";
+  const cs=document.getElementById('c-sum'); let cj=0;
+  function cType(){ if(cj<=sum.length){cs.textContent=sum.slice(0,cj); cj+=2; setTimeout(cType,35)} else {setTimeout(()=>{cj=0; cType()},6000)} }
+  cType();
+</script>
+</body>
+</html>
