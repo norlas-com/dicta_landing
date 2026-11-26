@@ -1,0 +1,33 @@
+---
+/**
+ * An inner page's hero: a compact room (eyebrow, H1, sub, a small drawn scene)
+ * beside a NotesCard (slot "notes"), which drops below the room on mobile.
+ * The default slot is for extra real content under the sub line (offers,
+ * secondary links); it keeps the caller's own markup and analytics.
+ */
+import Room from "./Room.astro";
+import SceneArt from "./SceneArt.astro";
+
+interface Props {
+  eyebrow: string;
+  h1: string;
+  sub: string;
+  art: "offline" | "online" | "languages" | "audience" | "phone";
+}
+const { eyebrow, h1, sub, art } = Astro.props;
+---
+
+<div class="grid lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] gap-4 lg:gap-6 items-stretch">
+  <Room variant="compact" as="div" class="min-w-0">
+    <p class="text-sm font-medium text-ink-accent">{eyebrow}</p>
+    <h1 class="font-display text-ink-fg mt-4 text-[clamp(2.1rem,5.4vw,3.4rem)] leading-[1.04] tracking-[-0.03em] font-medium text-balance">{h1}</h1>
+    <p class="mt-5 max-w-[48ch] text-base sm:text-lg text-ink-muted leading-relaxed">{sub}</p>
+    <slot />
+    <div slot="art" class="max-w-[22rem] w-full mx-auto lg:mx-0 lg:ms-auto">
+      <SceneArt kind={art} />
+    </div>
+  </Room>
+  <div class="min-w-0">
+    <slot name="notes" />
+  </div>
+</div>

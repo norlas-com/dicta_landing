@@ -9,6 +9,15 @@ import Header from "../Header.astro";
 import Footer from "../Footer.astro";
 import Faq from "../Faq.astro";
 import Shot from "../Shot.astro";
+import { meetingUi } from "../../i18n/pages/meeting-ui";
+import CompactHero from "../meeting/CompactHero.astro";
+import NotesCard from "../meeting/NotesCard.astro";
+import NotesItem from "../meeting/NotesItem.astro";
+import NotesSection from "../meeting/NotesSection.astro";
+import TaskLine from "../meeting/TaskLine.astro";
+import TimedSteps from "../meeting/TimedSteps.astro";
+import VisitRecap from "../meeting/VisitRecap.astro";
+import Room from "../meeting/Room.astro";
 
 interface Props {
   locale: Locale;
@@ -40,93 +49,92 @@ const jsonLd = [
     ],
   },
 ];
+const m = meetingUi(locale);
+const ART = {
+  "offline-meetings": "offline",
+  "round-table": "offline",
+  "online-meetings": "online",
+  "meeting-bot": "online",
+  "sales-calls": "phone",
+  "hr-interviews": "offline",
+  education: "audience",
+  government: "audience",
+} as const;
+const art = ART[slug];
+const last = c.steps.length - 1;
+const stamps = c.steps.map((_, i) => (i === 0 ? `00:00 · ${m.you}` : i === last ? `${m.stepLater} · ${m.you}` : `00:0${i} · ${m.dicta}`));
 const kicker = "text-sm font-medium text-accent mb-3";
 const h2 = "font-display text-[1.8rem] sm:text-[2.3rem] font-semibold tracking-[-0.02em] leading-[1.15] text-foreground text-balance";
 ---
 
-<Layout title={`${c.title} — Dicta`} description={c.meta} locale={locale} path={path} jsonLd={jsonLd}>
+<Layout title={`${c.title} — Dicta`} description={c.meta} locale={locale} path={path} jsonLd={jsonLd} visitTopic="useCases">
   <Header locale={locale} path={path} />
   <main class="relative flex-1">
-    <section class="max-w-6xl mx-auto px-6 lg:px-10 pt-14 pb-16 grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-12 items-center">
-      <div>
+    <div class="max-w-6xl mx-auto px-3 sm:px-5 pt-8 lg:pt-12">
+      <p class="mb-5 px-3 sm:px-1">
         <a href={localePath("/use-cases", locale)} class="text-sm font-medium text-accent hover:text-accent-strong">{u.crumb}</a>
-        <h1 class="font-display text-[2.3rem] sm:text-[3.1rem] font-semibold tracking-[-0.025em] leading-[1.1] text-foreground text-balance mt-4">
-          {c.h1}
-        </h1>
-        <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{c.sub}</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={appUrl("/sign-up")}
-            data-analytics-event="signup_start_click"
-            data-analytics-location={`use_case_${slug}_hero`}
-            class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill bg-accent text-accent-fg text-base font-semibold hover:bg-accent-strong active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
-          >
-            {u.ctaPrimary}
-          </a>
+      </p>
+      <CompactHero eyebrow={c.name} h1={c.h1} sub={c.sub} art={art}>
+        <p class="mt-7">
           <a
             href={localePath("/pricing", locale)}
-            class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill border border-border-strong text-foreground text-base font-medium hover:bg-surface-2 transition-colors duration-150"
+            class="inline-flex items-center justify-center min-h-[3rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150"
           >
             {u.ctaPricing}
           </a>
-        </div>
-      </div>
-      <div class:list={[meta.mobile && "max-w-[18rem] mx-auto w-full"]}>
-        <Shot
-          mobile={meta.mobile}
-          light={light}
-          dark={dark}
-          alt={u.shotAlt[meta.shot]}
-          sizes={meta.mobile ? "18rem" : "(min-width: 1024px) 34rem, calc(100vw - 3rem)"}
-          eager
-        />
-      </div>
-    </section>
+        </p>
+        <NotesCard slot="notes" as="section" label={`${m.dicta} · ${m.notesLive}`} class="h-full">
+          <p class="meeting-label text-muted mb-2">{u.problemKicker}</p>
+          <h2 class="font-display text-[1.5rem] sm:text-[1.75rem] font-semibold tracking-[-0.02em] leading-tight text-foreground text-balance">{c.problemTitle}</h2>
+          <div class="mt-4 space-y-3 text-[0.9375rem] sm:text-base text-foreground-soft leading-relaxed">
+            {c.problem.map((p, i) => <p class="notes-in" style={`--rd:${(i * 0.12).toFixed(2)}s`}>{p}</p>)}
+          </div>
+          <NotesSection label={m.nextStep} class="mt-7 notes-in" style="--rd:.3s">
+            <TaskLine
+              who={m.you}
+              task={m.taskTryFeature}
+              href={appUrl("/sign-up")}
+              cta={u.ctaPrimary}
+              attrs={{ "data-analytics-event": "signup_start_click", "data-analytics-location": `use_case_${slug}_hero` }}
+            />
+          </NotesSection>
+        </NotesCard>
+      </CompactHero>
+    </div>
 
-    <section class="border-t border-border bg-surface-2">
-      <div class="max-w-4xl mx-auto px-6 lg:px-10 py-16">
-        <p class={kicker}>{u.problemKicker}</p>
-        <h2 class={h2}>{c.problemTitle}</h2>
-        <div class="mt-6 space-y-4 text-base sm:text-lg text-muted leading-relaxed max-w-[62ch]">
-          {c.problem.map((p) => <p>{p}</p>)}
-        </div>
-      </div>
-    </section>
+    <div class:list={["mx-auto px-6 lg:px-10 pt-14 lg:pt-20 w-full", meta.mobile ? "max-w-[21rem]" : "max-w-5xl"]}>
+      <Shot
+        mobile={meta.mobile}
+        light={light}
+        dark={dark}
+        alt={u.shotAlt[meta.shot]}
+        sizes={meta.mobile ? "18rem" : "(min-width: 1024px) 60rem, calc(100vw - 3rem)"}
+        eager
+      />
+    </div>
 
-    <section class="max-w-6xl mx-auto px-6 lg:px-10 py-16">
+    <section class="max-w-4xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
       <p class={kicker}>{u.howKicker}</p>
       <h2 class={h2}>{c.stepsTitle}</h2>
-      <ol class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <TimedSteps class="mt-10" steps={c.steps} stamps={stamps} numbers={c.steps.map((_, i) => String(i + 1))} titleTag="h3" />
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28">
+      <h2 class={h2}>{u.featuresTitle}</h2>
+      <ul class="mt-10 grid sm:grid-cols-2 gap-4">
         {
-          c.steps.map((s, i) => (
+          meta.features.map((k) => (
             <li class="rounded-card border border-border bg-surface p-6">
-              <span class="font-display text-3xl font-semibold text-accent tabular-nums">{i + 1}</span>
-              <h3 class="font-semibold text-foreground mt-3">{s.t}</h3>
-              <p class="text-muted mt-2 leading-relaxed text-[0.95rem]">{s.d}</p>
+              <h3 class="font-display text-lg font-semibold text-foreground">{u.features[k].t}</h3>
+              <p class="text-muted mt-1.5 leading-relaxed">{u.features[k].d}</p>
             </li>
           ))
         }
-      </ol>
+      </ul>
     </section>
 
-    <section class="border-t border-border">
-      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-16">
-        <h2 class={h2}>{u.featuresTitle}</h2>
-        <ul class="mt-10 grid sm:grid-cols-2 gap-x-10 gap-y-7">
-          {
-            meta.features.map((k) => (
-              <li class="border-s-2 border-accent ps-5">
-                <h3 class="font-semibold text-foreground">{u.features[k].t}</h3>
-                <p class="text-muted mt-1.5 leading-relaxed">{u.features[k].d}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
-
-    <section class="border-t border-border">
-      <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-16">
+    <section class="pt-20 lg:pt-28">
+      <div class="max-w-3xl mx-auto px-6 lg:px-10">
         <h2 class={h2}>{u.faqTitle}</h2>
       </div>
       <div class="pt-8">
@@ -134,23 +142,25 @@ const h2 = "font-display text-[1.8rem] sm:text-[2.3rem] font-semibold tracking-[
       </div>
     </section>
 
-    <section class="bg-ink text-ink-fg">
-      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
-        <h2 class="font-display text-[2rem] sm:text-[2.8rem] font-semibold tracking-[-0.025em] leading-[1.1] max-w-[20ch] text-balance">{u.ctaTitle}</h2>
+    <section class="px-3 sm:px-5 mt-4 mb-3 sm:mb-5">
+      <Room variant="hero" as="div" class="max-w-6xl mx-auto">
+        <h2 class="font-display text-[2rem] sm:text-[2.8rem] font-medium tracking-[-0.025em] leading-[1.1] max-w-[20ch] text-balance">{u.ctaTitle}</h2>
         <p class="text-lg text-ink-muted mt-4">{u.ctaSub}</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
+        <div class="mt-8 flex flex-col lg:flex-row lg:items-center gap-4 max-w-4xl">
+          <TaskLine
+            tone="ink"
+            class="lg:flex-1"
+            who={m.you}
+            task={m.taskStartFree}
             href={appUrl("/sign-up")}
-            data-analytics-event="signup_start_click"
-            data-analytics-location={`use_case_${slug}_cta`}
-            class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill bg-ink-fg text-ink text-base font-semibold hover:bg-ink-accent active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
-          >
-            {u.ctaPrimary}
-          </a>
-          <a href={localePath("/pricing", locale)} class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150">{u.ctaPricing}</a>
-          <a href={localePath("/faq", locale)} class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150">{u.ctaFaq}</a>
+            cta={u.ctaPrimary}
+            attrs={{ "data-analytics-event": "signup_start_click", "data-analytics-location": `use_case_${slug}_cta` }}
+          />
+          <a href={localePath("/pricing", locale)} class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150">{u.ctaPricing}</a>
+          <a href={localePath("/faq", locale)} class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150">{u.ctaFaq}</a>
         </div>
-      </div>
+        <VisitRecap locale={locale} tone="ink" class="mt-6" />
+      </Room>
     </section>
 
     <nav aria-label={u.othersTitle} class="max-w-6xl mx-auto px-6 lg:px-10 py-14">

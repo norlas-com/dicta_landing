@@ -8,10 +8,12 @@
 interface Props {
   steps: { t: string; d: string }[];
   stamps: string[];
+  /** A page's own step numbers ("01", "2"): real copy, kept as text. */
+  numbers?: string[];
   titleTag: "h3" | "p";
   class?: string;
 }
-const { steps, stamps, titleTag, class: className } = Astro.props;
+const { steps, stamps, numbers, titleTag, class: className } = Astro.props;
 const Title = titleTag;
 const state = (i: number) => (i === 0 ? "start" : i === steps.length - 1 ? "end" : "mid");
 ---
@@ -23,6 +25,7 @@ const state = (i: number) => (i === 0 ? "start" : i === steps.length - 1 ? "end"
         <span class="timed-stamp meeting-label" data-ui-label>{stamps[i] ?? ""}</span>
         <span class="timed-node" aria-hidden="true" />
         <div class="timed-body">
+          {numbers && <span class="block font-display text-sm font-semibold text-accent tabular-nums mb-0.5">{numbers[i]}</span>}
           <Title class="font-display text-xl font-medium leading-snug text-foreground">{s.t}</Title>
           <p class="mt-1.5 max-w-[62ch] text-foreground-soft leading-relaxed">{s.d}</p>
         </div>
