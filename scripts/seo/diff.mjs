@@ -2,8 +2,12 @@
 // difference a search engine could notice. The only tolerated differences:
 //   - text / alts / outbound / analytics entries that are gone in `next` and
 //     are listed in allow.json (the removals the redesign signed off on);
-//   - text that is *new* in `next` (new UI labels are already excluded at
-//     extraction through data-ui-label; new copy is caught in review).
+//   - text and alts that are *new* in `next` (new UI labels are already
+//     excluded at extraction through data-ui-label; new copy is caught in
+//     review);
+//   - hiddenText entries that are gone in `next`: copy that stops being hidden
+//     is fine, and copy that vanishes altogether is caught by `text`. Only
+//     newly hidden copy is a finding.
 // Everything else — including pages added or removed — is a finding.
 
 /** @typedef {{ path: string, field: string, detail: string }} Finding */
@@ -35,17 +39,17 @@ function counted(list) {
 
 /**
  * Per-field set/multiset rules: how an entry is keyed, which allow list
- * excuses its removal, and whether additions count.
+ * excuses its removal, and whether removals / additions count at all.
  */
 const COLLECTIONS = {
-  hreflang: { key: (e) => `${e.lang} ${e.href}`, allow: null, added: true },
-  jsonLd: { key: (e) => e, allow: null, added: true },
-  links: { key: (e) => e, allow: null, added: true },
-  outbound: { key: (e) => show(e), allow: { list: "removedOutbound", of: (e) => e.href }, added: true },
-  text: { key: (e) => e, allow: { list: "removedText", of: (e) => e }, added: false },
-  alts: { key: (e) => e, allow: { list: "removedAlts", of: (e) => e }, added: true },
-  analytics: { key: (e) => e, allow: { list: "removedAnalytics", of: (e) => e }, added: true },
-  hiddenText: { key: (e) => e, allow: null, added: true },
+  hreflang: { key: (e) => `${e.lang} ${e.href}`, allow: null, removed: true, added: true },
+  jsonLd: { key: (e) => e, allow: null, removed: true, added: true },
+  links: { key: (e) => e, allow: null, removed: true, added: true },
+  outbound: { key: (e) => show(e), allow: { list: "removedOutbound", of: (e) => e.href }, removed: true, added: true },
+  text: { key: (e) => e, allow: { list: "removedText", of: (e) => e }, removed: true, added: false },
+  alts: { key: (e) => e, allow: { list: "removedAlts", of: (e) => e }, removed: true, added: false },
+  analytics: { key: (e) => e, allow: { list: "removedAnalytics", of: (e) => e }, removed: true, added: true },
+  hiddenText: { key: (e) => e, allow: null, removed: false, added: true },
 };
 
 /**
@@ -94,7 +98,7 @@ function diffPage(base, next, allow) {
     const allowed = rule.allow ? new Set(allow[rule.allow.list] ?? []) : new Set();
     const byKey = new Map(a.map((e) => [rule.key(e), e]));
     const removed = minus(aKeys, bKeys).filter((k) => !(rule.allow && allowed.has(rule.allow.of(byKey.get(k)))));
-    for (const k of counted(removed)) add(field, `removed ${k}`);
+    if (rule.removed) for (const k of counted(removed)) add(field, `removed ${k}`);
     if (rule.added) for (const k of counted(minus(bKeys, aKeys))) add(field, `added ${k}`);
   }
 

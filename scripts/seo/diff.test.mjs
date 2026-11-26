@@ -64,3 +64,20 @@ test("page missing in next → finding field page", () => {
     { path: "index.html", field: "page", detail: "removed" },
   ]);
 });
+
+test("hiddenText: newly hidden copy is a finding, un-hidden copy is not", () => {
+  // Hidden in base, visible in next: the string leaves hiddenText, still in text.
+  assert.deepEqual(diffSnapshots(snap(`<div hidden><p>Menu</p></div>`), snap(`<div><p>Menu</p></div>`), NO_ALLOW), []);
+
+  // Visible in base, hidden in next.
+  const findings = diffSnapshots(snap(`<p>Copy</p>`), snap(`<p hidden>Copy</p>`), NO_ALLOW);
+  assert.deepEqual(findings, [{ path: "index.html", field: "hiddenText", detail: "added Copy" }]);
+});
+
+test("alts: added alt is not a finding, removed alt needs allow.removedAlts", () => {
+  assert.deepEqual(diffSnapshots(snap(`<img alt="Old">`), snap(`<img alt="Old"><img alt="Screenshot">`), NO_ALLOW), []);
+
+  const removed = diffSnapshots(snap(`<img alt="Photo">`), snap(``), NO_ALLOW);
+  assert.deepEqual(removed, [{ path: "index.html", field: "alts", detail: "removed Photo" }]);
+  assert.deepEqual(diffSnapshots(snap(`<img alt="Photo">`), snap(``), { ...NO_ALLOW, removedAlts: ["Photo"] }), []);
+});
