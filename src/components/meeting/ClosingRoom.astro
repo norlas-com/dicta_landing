@@ -1,0 +1,101 @@
+---
+/**
+ * A page's closing section: the ink room with the page's own H2 and sub, its
+ * CTA, and the visit recap. Every string and analytics attribute comes from
+ * the caller unchanged; this only owns the layout.
+ *
+ * The CTA is either `task` (a TaskLine: "☐ You: start for free [Start
+ * free]") or, where the page's first action is not signing up (contact
+ * sales, the API), `primary`: a solid paper-on-ink button with no task
+ * wording, so the page keeps its original priority. `secondary` buttons are
+ * the ghost buttons beside it.
+ *
+ * Slots:
+ * - head:    replaces the default H2 + sub (a page with a richer head)
+ * - default: after the actions, before the visit recap (a footnote)
+ * - after:   inside the section, after the room (a row of links)
+ */
+import type { Locale } from "../../i18n/locales";
+import Room from "./Room.astro";
+import TaskLine from "./TaskLine.astro";
+import VisitRecap from "./VisitRecap.astro";
+
+interface Action {
+  href: string;
+  label: string;
+  attrs?: Record<string, string>;
+}
+
+interface Props {
+  locale: Locale;
+  /** H2 id; the section is then labelled by it. */
+  headingId?: string;
+  /** H2 text. Omit when the `head` slot brings its own heading. */
+  title?: string;
+  sub?: string;
+  /** "md" for a quieter closing under long reading (a blog post). */
+  size?: "lg" | "md";
+  task?: { who: string; task: string; href: string; cta: string; attrs?: Record<string, string> };
+  primary?: Action;
+  secondary?: Action[];
+  /** Spacing around the section (the page's rhythm above and below it). */
+  class?: string;
+}
+
+const { locale, headingId, title, sub, size = "lg", task, primary, secondary = [], class: className } = Astro.props;
+const hasHead = Astro.slots.has("head");
+const ghost =
+  "inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150";
+---
+
+<section aria-labelledby={headingId} class:list={["px-3 sm:px-5", className]}>
+  <Room variant="hero" as="div" class="max-w-6xl mx-auto">
+    {
+      hasHead ? (
+        <slot name="head" />
+      ) : (
+        <Fragment>
+          {title && (
+            <h2
+              id={headingId}
+              class:list={[
+                "font-display font-medium text-balance",
+                size === "lg"
+                  ? "text-[2rem] sm:text-[2.8rem] leading-[1.08] tracking-[-0.025em] max-w-[20ch]"
+                  : "text-[1.9rem] sm:text-[2.4rem] leading-[1.1] tracking-[-0.02em] max-w-[22ch]",
+              ]}
+            >
+              {title}
+            </h2>
+          )}
+          {sub && <p class="text-lg text-ink-muted mt-4 max-w-[52ch] leading-relaxed">{sub}</p>}
+        </Fragment>
+      )
+    }
+    <div class:list={["mt-8 flex flex-col lg:flex-row lg:items-center gap-4", secondary.length > 1 ? "max-w-4xl" : "max-w-3xl"]}>
+      {task && <TaskLine tone="ink" class="lg:flex-1" {...task} />}
+      {
+        primary && (
+          <a
+            href={primary.href}
+            {...primary.attrs}
+            class="group inline-flex items-center justify-center gap-2 min-h-[3.25rem] px-7 rounded-pill bg-ink-fg text-ink text-base font-semibold hover:bg-ink-accent active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
+          >
+            {primary.label}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-none transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        )
+      }
+      {
+        secondary.map((s) => (
+          <a href={s.href} {...s.attrs} class={ghost}>
+            {s.label}
+          </a>
+        ))
+      }
+    </div>
+    <slot />
+    <VisitRecap locale={locale} tone="ink" class="mt-6" />
+  </Room>
+  <slot name="after" />
+</section>

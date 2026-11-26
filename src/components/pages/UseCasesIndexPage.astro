@@ -5,6 +5,7 @@ import { USE_CASES, USE_CASE_SLUGS, UI } from "../../i18n/pages/use-cases";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
+import VisitRecap from "../meeting/VisitRecap.astro";
 
 interface Props {
   locale: Locale;
@@ -36,7 +37,7 @@ const jsonLd = [
       </h1>
       <p class="text-base sm:text-lg text-muted mt-5 max-w-[60ch] leading-relaxed">{u.indexSub}</p>
     </div>
-    <ul class="max-w-6xl mx-auto px-6 lg:px-10 pt-8 pb-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <ul class="max-w-6xl mx-auto px-6 lg:px-10 pt-8 pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {
         USE_CASE_SLUGS.map((s) => {
           const c = USE_CASES[s][locale];
@@ -61,6 +62,11 @@ const jsonLd = [
         })
       }
     </ul>
+    {/* The recap is hidden until there is a visit to show; the wrapper keeps
+        the page's foot spacing either way. */}
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 pb-14">
+      <VisitRecap locale={locale} />
+    </div>
   </div>
   <Footer locale={locale} />
 </Layout>

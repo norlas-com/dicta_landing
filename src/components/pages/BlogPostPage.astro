@@ -16,10 +16,8 @@ import {
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
+import ClosingRoom from "../meeting/ClosingRoom.astro";
 import { meetingUi } from "../../i18n/pages/meeting-ui";
-import Room from "../meeting/Room.astro";
-import TaskLine from "../meeting/TaskLine.astro";
-import VisitRecap from "../meeting/VisitRecap.astro";
 
 interface Props {
   post: Post;
@@ -212,35 +210,28 @@ const jsonLd = [
       </div>
     </div>
 
-    <section aria-labelledby="blog-cta" class="px-3 sm:px-5 mb-16">
-      <Room variant="hero" as="div" class="max-w-6xl mx-auto">
-        <h2 id="blog-cta" class="font-display text-[1.9rem] sm:text-[2.4rem] font-medium leading-[1.1] tracking-[-0.02em] max-w-[22ch] text-balance">
-          {c.ctaTitle}
-        </h2>
-        <p class="text-lg text-ink-muted mt-4 max-w-[52ch] leading-relaxed">{c.ctaSub}</p>
-        <div class="mt-8 flex flex-col lg:flex-row lg:items-center gap-4 max-w-3xl">
-          <TaskLine
-            tone="ink"
-            class="lg:flex-1"
-            who={m.you}
-            task={m.taskStartFree}
-            href={appUrl("/sign-up")}
-            cta={c.ctaPrimary}
-            attrs={{ "data-analytics-event": "signup_start_click", "data-analytics-location": "blog_post" }}
-          />
-          <a
-            href={localePath("/download", locale)}
-            data-analytics-event="download_app_clicked"
-            data-analytics-os="na"
-            data-analytics-arch="na"
-            class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors"
-          >
-            {c.ctaSecondary}
-          </a>
-        </div>
-        <VisitRecap locale={locale} tone="ink" class="mt-6" />
-      </Room>
-    </section>
+    <ClosingRoom
+      locale={locale}
+      headingId="blog-cta"
+      title={c.ctaTitle}
+      sub={c.ctaSub}
+      size="md"
+      task={{
+        who: m.you,
+        task: m.taskStartFree,
+        href: appUrl("/sign-up"),
+        cta: c.ctaPrimary,
+        attrs: { "data-analytics-event": "signup_start_click", "data-analytics-location": "blog_post" },
+      }}
+      secondary={[
+        {
+          href: localePath("/download", locale),
+          label: c.ctaSecondary,
+          attrs: { "data-analytics-event": "download_app_clicked", "data-analytics-os": "na", "data-analytics-arch": "na" },
+        },
+      ]}
+      class="mb-16"
+    />
 
     {
       related.length > 0 && (

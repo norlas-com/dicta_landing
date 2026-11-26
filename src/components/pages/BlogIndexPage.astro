@@ -16,6 +16,7 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
 import BlogCover from "./BlogCover.astro";
+import VisitRecap from "../meeting/VisitRecap.astro";
 
 interface Props {
   locale: Locale;
@@ -168,6 +169,7 @@ if (topic) {
           </Fragment>
         )
       }
+      <VisitRecap locale={locale} class="mt-14" />
     </div>
   </div>
   <Footer locale={locale} />

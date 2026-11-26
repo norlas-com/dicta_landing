@@ -16,8 +16,7 @@ import NotesItem from "../meeting/NotesItem.astro";
 import NotesSection from "../meeting/NotesSection.astro";
 import TaskLine from "../meeting/TaskLine.astro";
 import TimedSteps from "../meeting/TimedSteps.astro";
-import VisitRecap from "../meeting/VisitRecap.astro";
-import Room from "../meeting/Room.astro";
+import ClosingRoom from "../meeting/ClosingRoom.astro";
 
 interface Props {
   locale: Locale;
@@ -142,26 +141,23 @@ const h2 = "font-display text-[1.8rem] sm:text-[2.3rem] font-semibold tracking-[
       </div>
     </section>
 
-    <section class="px-3 sm:px-5 mt-4 mb-3 sm:mb-5">
-      <Room variant="hero" as="div" class="max-w-6xl mx-auto">
-        <h2 class="font-display text-[2rem] sm:text-[2.8rem] font-medium tracking-[-0.025em] leading-[1.1] max-w-[20ch] text-balance">{u.ctaTitle}</h2>
-        <p class="text-lg text-ink-muted mt-4">{u.ctaSub}</p>
-        <div class="mt-8 flex flex-col lg:flex-row lg:items-center gap-4 max-w-4xl">
-          <TaskLine
-            tone="ink"
-            class="lg:flex-1"
-            who={m.you}
-            task={m.taskStartFree}
-            href={appUrl("/sign-up")}
-            cta={u.ctaPrimary}
-            attrs={{ "data-analytics-event": "signup_start_click", "data-analytics-location": `use_case_${slug}_cta` }}
-          />
-          <a href={localePath("/pricing", locale)} class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150">{u.ctaPricing}</a>
-          <a href={localePath("/faq", locale)} class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors duration-150">{u.ctaFaq}</a>
-        </div>
-        <VisitRecap locale={locale} tone="ink" class="mt-6" />
-      </Room>
-    </section>
+    <ClosingRoom
+      locale={locale}
+      title={u.ctaTitle}
+      sub={u.ctaSub}
+      task={{
+        who: m.you,
+        task: m.taskStartFree,
+        href: appUrl("/sign-up"),
+        cta: u.ctaPrimary,
+        attrs: { "data-analytics-event": "signup_start_click", "data-analytics-location": `use_case_${slug}_cta` },
+      }}
+      secondary={[
+        { href: localePath("/pricing", locale), label: u.ctaPricing },
+        { href: localePath("/faq", locale), label: u.ctaFaq },
+      ]}
+      class="mt-4 mb-3 sm:mb-5"
+    />
 
     <nav aria-label={u.othersTitle} class="max-w-6xl mx-auto px-6 lg:px-10 py-14">
       <h2 class="font-display text-xl font-semibold text-foreground">{u.othersTitle}</h2>

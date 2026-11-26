@@ -14,8 +14,7 @@ import NotesItem from "../meeting/NotesItem.astro";
 import NotesSection from "../meeting/NotesSection.astro";
 import TaskLine from "../meeting/TaskLine.astro";
 import TimedSteps from "../meeting/TimedSteps.astro";
-import VisitRecap from "../meeting/VisitRecap.astro";
-import Room from "../meeting/Room.astro";
+import ClosingRoom from "../meeting/ClosingRoom.astro";
 
 interface Props {
   locale: Locale;
@@ -164,33 +163,27 @@ const jsonLd: Record<string, unknown>[] = [
       </p>
     </section>
 
-    <section aria-labelledby="cta-title" class="px-3 sm:px-5 mt-20 lg:mt-28 mb-3 sm:mb-5">
-      <Room variant="hero" as="div" class="max-w-6xl mx-auto">
-        <h2 id="cta-title" class="font-display text-[2rem] sm:text-[2.8rem] font-medium leading-[1.08] tracking-[-0.025em] max-w-[18ch] text-balance">{ui.ctaTitle}</h2>
-        <p class="text-lg text-ink-muted mt-4 max-w-[48ch] leading-relaxed">{ui.ctaSub}</p>
-        <div class="mt-8 flex flex-col lg:flex-row lg:items-center gap-4 max-w-3xl">
-          <TaskLine
-            tone="ink"
-            class="lg:flex-1"
-            who={m.you}
-            task={m.taskStartFree}
-            href={appUrl("/sign-up")}
-            cta={ui.ctaPrimary}
-            attrs={{ "data-analytics-event": "cta_clicked", "data-analytics-location": `feature_${slug}_footer` }}
-          />
-          <a
-            href={localePath("/download", locale)}
-            data-analytics-event="download_app_clicked"
-            data-analytics-os="na"
-            data-analytics-arch="na"
-            class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors"
-          >
-            {ui.ctaSecondary}
-          </a>
-        </div>
-        <VisitRecap locale={locale} tone="ink" class="mt-6" />
-      </Room>
-    </section>
+    <ClosingRoom
+      locale={locale}
+      headingId="cta-title"
+      title={ui.ctaTitle}
+      sub={ui.ctaSub}
+      task={{
+        who: m.you,
+        task: m.taskStartFree,
+        href: appUrl("/sign-up"),
+        cta: ui.ctaPrimary,
+        attrs: { "data-analytics-event": "cta_clicked", "data-analytics-location": `feature_${slug}_footer` },
+      }}
+      secondary={[
+        {
+          href: localePath("/download", locale),
+          label: ui.ctaSecondary,
+          attrs: { "data-analytics-event": "download_app_clicked", "data-analytics-os": "na", "data-analytics-arch": "na" },
+        },
+      ]}
+      class="mt-20 lg:mt-28 mb-3 sm:mb-5"
+    />
   </div>
   <Footer locale={locale} />
 </Layout>

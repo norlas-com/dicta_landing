@@ -5,6 +5,8 @@ import { FEATURES, FEATURE_SLUGS } from "../../i18n/pages/features";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
+import ClosingRoom from "../meeting/ClosingRoom.astro";
+import { meetingUi } from "../../i18n/pages/meeting-ui";
 
 interface Props {
   locale: Locale;
@@ -12,6 +14,7 @@ interface Props {
 const { locale } = Astro.props;
 const L = FEATURES[locale];
 const ui = L.ui;
+const m = meetingUi(locale);
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -49,22 +52,19 @@ const jsonLd = [
         <a href={localePath("/pricing", locale)} class="text-foreground hover:text-accent transition-colors">{ui.pricing}</a>
       </p>
     </section>
-    <section class="bg-ink text-ink-fg">
-      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-        <div>
-          <h2 class="font-display text-[1.8rem] sm:text-[2.4rem] font-semibold tracking-[-0.02em]">{ui.ctaTitle}</h2>
-          <p class="text-ink-muted mt-2">{ui.ctaSub}</p>
-        </div>
-        <a
-          href={appUrl("/sign-up")}
-          data-analytics-event="cta_clicked"
-          data-analytics-location="features_index"
-          class="inline-flex items-center justify-center h-[3.25rem] px-8 rounded-pill bg-ink-fg text-ink text-base font-semibold hover:bg-ink-accent transition-colors"
-        >
-          {ui.ctaPrimary}
-        </a>
-      </div>
-    </section>
+    <ClosingRoom
+      locale={locale}
+      title={ui.ctaTitle}
+      sub={ui.ctaSub}
+      task={{
+        who: m.you,
+        task: m.taskStartFree,
+        href: appUrl("/sign-up"),
+        cta: ui.ctaPrimary,
+        attrs: { "data-analytics-event": "cta_clicked", "data-analytics-location": "features_index" },
+      }}
+      class="mb-3 sm:mb-5"
+    />
   </div>
   <Footer locale={locale} />
 </Layout>
