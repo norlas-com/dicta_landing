@@ -26,6 +26,9 @@ interface Props {
   ogType?: "website" | "article";
   /** What this page is about, for the visit recap ("Looked at: Pricing"). */
   visitTopic?: VisitTopic;
+  /** The page's LCP image (a blog cover), fetched from <head> instead of when
+   *  the parser reaches it ~40 KB into the body. */
+  preloadImage?: string;
 }
 
 const {
@@ -39,6 +42,7 @@ const {
   alternates,
   ogType = "website",
   visitTopic,
+  preloadImage,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://dicta.uz");
@@ -200,6 +204,7 @@ const siteJsonLd =
       )
     }
 
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
     {preloadFonts.map((href) => <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />)}
     <title>{title}</title>
     <meta name="description" content={description} />
