@@ -19,3 +19,8 @@ node_modules/
 
 # os
 .DS_Store
+
+# SEO snapshot builds and the working snapshot (seo-baseline/ is committed)
+dist-uz/
+dist-global/
+seo-next/

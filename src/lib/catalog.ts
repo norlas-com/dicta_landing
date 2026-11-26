@@ -3,6 +3,8 @@
 // is skipped entirely — never a broken UI, never stale prices. A Cloudflare
 // Pages Deploy Hook (+ nightly rebuild) keeps the baked prices fresh.
 
+import { readFixture } from "./fixtures.ts";
+
 export type BillingCurrency = "UZS" | "USD";
 
 export interface CatalogPrices {
@@ -33,19 +35,28 @@ export interface BillingCatalog {
   packs: CatalogPack[];
 }
 
-const CATALOG_URL = "https://api.dicta.uz/v1/billing/catalog";
+export const CATALOG_URL = "https://api.dicta.uz/v1/billing/catalog";
+
+/** The API body if it is a usable catalog, else null. */
+function parseCatalog(body: unknown): BillingCatalog | null {
+  const data = body as BillingCatalog;
+  if (!data || !Array.isArray(data.plans) || data.plans.length === 0) {
+    return null;
+  }
+  return data;
+}
 
 export async function fetchCatalog(): Promise<BillingCatalog | null> {
+  // Snapshot builds read a recorded response (see fixtures.ts). Outside the
+  // try: a missing fixture must fail the build, not fall back quietly.
+  const fixture = await readFixture<unknown>("catalog");
+  if (fixture !== undefined) return parseCatalog(fixture);
   try {
     const res = await fetch(CATALOG_URL, {
       headers: { accept: "application/json" },
     });
     if (!res.ok) return null;
-    const data = (await res.json()) as BillingCatalog;
-    if (!data || !Array.isArray(data.plans) || data.plans.length === 0) {
-      return null;
-    }
-    return data;
+    return parseCatalog(await res.json());
   } catch {
     return null;
   }

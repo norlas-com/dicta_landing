@@ -1,0 +1,127 @@
+{
+  "default_currency": "UZS",
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "minutes": 60,
+      "prices": {
+        "USD": 0,
+        "UZS": 0
+      },
+      "storage_gb": 3,
+      "retention_days": 14,
+      "support": "community",
+      "popular": false,
+      "rank": 10,
+      "tier": "neutral",
+      "description": "Uchrashuvlar bepul va cheksiz. Yozib olish, transkripsiya va AI — tarif daqiqalari doirasida.",
+      "features": [],
+      "max_members": 1
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "minutes": 500,
+      "prices": {
+        "USD": 999,
+        "UZS": 11900000
+      },
+      "storage_gb": 50,
+      "retention_days": null,
+      "support": "standard",
+      "popular": true,
+      "rank": 20,
+      "tier": "accent",
+      "description": "Cheksiz uchrashuvlar, ko'proq yozuv va AI daqiqalari, barcha premium funksiyalar.",
+      "features": [
+        "ask_ai",
+        "live_translation",
+        "follow_ups",
+        "integrations",
+        "webinars",
+        "unlimited_history",
+        "same_room"
+      ],
+      "max_members": 1
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "minutes": 1250,
+      "prices": {
+        "USD": 2499,
+        "UZS": 29900000
+      },
+      "storage_gb": 200,
+      "retention_days": null,
+      "support": "priority",
+      "popular": false,
+      "rank": 30,
+      "tier": "business",
+      "description": "Jamoalar uchun: cheksiz a'zolar, ko'proq daqiqalar, ustuvor yordam.",
+      "features": [
+        "ask_ai",
+        "live_translation",
+        "follow_ups",
+        "integrations",
+        "webinars",
+        "unlimited_history",
+        "same_room"
+      ],
+      "max_members": null
+    },
+    {
+      "id": "top",
+      "name": "Top",
+      "minutes": 3500,
+      "prices": {
+        "USD": 6999,
+        "UZS": 84900000
+      },
+      "storage_gb": 500,
+      "retention_days": null,
+      "support": "priority",
+      "popular": false,
+      "rank": 40,
+      "tier": "top",
+      "description": "Katta jamoalar uchun maksimal yozuv va AI daqiqalari.",
+      "features": [
+        "ask_ai",
+        "live_translation",
+        "follow_ups",
+        "integrations",
+        "webinars",
+        "unlimited_history",
+        "same_room"
+      ],
+      "max_members": null
+    }
+  ],
+  "packs": [
+    {
+      "id": "pack_100",
+      "minutes": 100,
+      "prices": {
+        "USD": 199,
+        "UZS": 2400000
+      }
+    },
+    {
+      "id": "pack_300",
+      "minutes": 300,
+      "prices": {
+        "USD": 499,
+        "UZS": 5900000
+      }
+    },
+    {
+      "id": "pack_500",
+      "minutes": 500,
+      "prices": {
+        "USD": 799,
+        "UZS": 9500000
+      }
+    }
+  ]
+}

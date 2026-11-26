@@ -7,7 +7,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:uz": "LANDING_FIXTURES=seo-fixtures PUBLIC_SITE_ID=uz astro build --force && rm -rf dist-uz && mv dist dist-uz",
+    "build:global": "LANDING_FIXTURES=seo-fixtures PUBLIC_SITE_ID=global astro build --force && rm -rf dist-global && mv dist dist-global",
+    "seo:snapshot": "node scripts/seo/snapshot.mjs dist-uz seo-next/uz.json && node scripts/seo/snapshot.mjs dist-global seo-next/global.json",
+    "seo:check": "npm run build:uz && npm run build:global && npm run seo:snapshot && node scripts/seo/compare.mjs seo-baseline/uz.json seo-next/uz.json scripts/seo/allow.json && node scripts/seo/compare.mjs seo-baseline/global.json seo-next/global.json scripts/seo/allow.json",
+    "test": "node --test \"scripts/seo/*.test.mjs\" && node --experimental-strip-types --test \"tests/unit/*.test.ts\"",
+    "test:pages": "node --test \"tests/pages/*.test.mjs\""
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -21,6 +27,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "parse5": "^7.3.0",
     "typescript": "^5.9.3"
   }
 }
