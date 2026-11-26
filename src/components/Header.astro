@@ -15,8 +15,12 @@ interface Props {
   /** Per-locale targets for pages that do not exist in every locale (blog
    *  topics); a locale missing here falls back to the same bare path. */
   switchPaths?: Partial<Record<Locale, string>>;
+  /** The page's own path when `path` is its section's (a blog post passes
+   *  path="/blog" so the language switcher lands on each blog index): the
+   *  nav then marks Blog as the current section, not as this page. */
+  pagePath?: string;
 }
-const { locale, path, switchPaths } = Astro.props;
+const { locale, path, switchPaths, pagePath } = Astro.props;
 const d = t(locale);
 const home = localePath("/", locale);
 const nx = navExtra[locale];
@@ -34,7 +38,7 @@ const menuLinks = [
 
 // The bar marks the section you are in: the page itself, or any page under it
 // (a feature page under Features, a post under Blog).
-const here = localePath(path, locale);
+const here = localePath(pagePath ?? path, locale);
 // The pill spells out "Recording" from xl up, where the bar has room for it.
 // Uzbek has the longest nav and the longest label ("Yozib olinmoqda"); with
 // both, the bar runs edge to edge at 1280, so there it keeps the dot + clock.
@@ -195,7 +199,7 @@ const current = (href: string) => (here === href ? "page" : here.startsWith(href
                 data-analytics-event="nav_clicked"
                 data-analytics-item={l.item}
                 data-analytics-location="mobile_menu"
-                aria-current={localePath(path, locale) === l.href ? "page" : undefined}
+                aria-current={here === l.href ? "page" : undefined}
                 class="flex items-center justify-between py-3.5 border-b border-border text-lg font-medium text-foreground aria-[current=page]:text-accent"
               >
                 {l.label}

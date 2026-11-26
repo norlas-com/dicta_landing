@@ -108,7 +108,7 @@ const jsonLd = [
   jsonLd={jsonLd}
   visitTopic="blog"
 >
-  <Header locale={locale} path="/blog" />
+  <Header locale={locale} path="/blog" pagePath={`/blog/${post.data.slug}`} />
   <article class="relative flex-1">
     <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-12 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-14">
       <aside data-post-rail class="mb-8 lg:mb-0 lg:pt-[3.4rem]">
