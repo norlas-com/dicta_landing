@@ -5,12 +5,19 @@ import { developersPage } from "../../i18n/pages/developers";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../Header.astro";
 import Footer from "../Footer.astro";
+import { meetingUi } from "../../i18n/pages/meeting-ui";
+import Room from "../meeting/Room.astro";
+import NotesCard from "../meeting/NotesCard.astro";
+import NotesItem from "../meeting/NotesItem.astro";
+import TaskLine from "../meeting/TaskLine.astro";
+import VisitRecap from "../meeting/VisitRecap.astro";
 
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
 const c = developersPage[locale];
+const m = meetingUi(locale);
 const home = localePath("/", locale);
 const homeBase = home === "/" ? "" : home;
 const origin = "https://dicta.uz";
@@ -24,18 +31,21 @@ const crumbLd = {
 };
 ---
 
-<Layout title={c.metaTitle} description={c.metaDescription} locale={locale} path="/developers" jsonLd={[crumbLd]}>
+<Layout title={c.metaTitle} description={c.metaDescription} locale={locale} path="/developers" jsonLd={[crumbLd]} visitTopic="developers">
   <Header locale={locale} path="/developers" />
-  <div class="relative flex-1">
-    <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-16 pb-10">
-      <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] font-semibold tracking-[-0.02em] leading-[1.12] text-foreground text-balance">
-        {c.h1}
-      </h1>
-      <p class="text-base sm:text-lg text-muted mt-5 max-w-[56ch] leading-relaxed">{c.intro}</p>
+  <main class="relative flex-1">
+    <div class="max-w-6xl mx-auto px-3 sm:px-5 pt-8 lg:pt-12">
+      <Room variant="compact" as="div">
+        <p class="meeting-label text-ink-muted" data-ui-label>{m.topics.developers}</p>
+        <h1 class="font-display text-ink-fg mt-4 text-[clamp(2.1rem,5.4vw,3.4rem)] leading-[1.04] tracking-[-0.03em] font-medium text-balance">
+          {c.h1}
+        </h1>
+        <p class="mt-5 max-w-[56ch] text-base sm:text-lg text-ink-muted leading-relaxed">{c.intro}</p>
+      </Room>
     </div>
 
     <section class="relative" aria-labelledby="integrations-title">
-      <div class="max-w-6xl mx-auto px-6 lg:px-10 pb-16 lg:pb-24">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24 pb-16 lg:pb-24">
         <p class="text-sm font-medium text-accent mb-4">{c.integrations.eyebrow}</p>
         <h2 id="integrations-title" class="font-display text-[2rem] sm:text-[2.6rem] font-semibold tracking-[-0.02em] leading-[1.1] text-foreground text-balance">
           {c.integrations.title}
@@ -44,64 +54,65 @@ const crumbLd = {
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {
             c.integrations.items.map((it) => (
-              <div class="rounded-panel border border-border bg-surface p-6">
-                <h3 class="text-lg font-semibold text-foreground">{it.name}</h3>
-                <p class="mt-2 text-sm text-muted leading-relaxed">{it.body}</p>
-              </div>
+              <NotesCard>
+                <NotesItem kind="check">
+                  <h3 class="font-display text-lg font-semibold leading-snug text-foreground">{it.name}</h3>
+                  <p class="mt-1.5 text-sm text-muted leading-relaxed">{it.body}</p>
+                </NotesItem>
+              </NotesCard>
             ))
           }
         </div>
       </div>
     </section>
 
-    <section class="relative" aria-labelledby="api-title">
-      <div class="max-w-6xl mx-auto px-6 lg:px-10 pb-24">
-        <div class="rounded-panel border border-border bg-surface shadow-card p-8 sm:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-8 items-start">
+    <section aria-labelledby="api-title" class="px-3 sm:px-5 mb-3 sm:mb-5">
+      <Room variant="hero" as="div" class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-start">
           <div>
-            <p class="text-sm font-medium text-accent mb-3">{c.api.eyebrow}</p>
-            <h2 id="api-title" class="font-display text-[1.7rem] sm:text-[2.1rem] font-semibold tracking-[-0.02em] leading-[1.15] text-foreground text-balance">
+            <p class="text-sm font-medium text-ink-accent mb-3">{c.api.eyebrow}</p>
+            <h2 id="api-title" class="font-display text-[2rem] sm:text-[2.6rem] font-medium leading-[1.08] tracking-[-0.025em] text-balance">
               {c.api.title}
             </h2>
-            <p class="text-base text-muted mt-3 leading-relaxed">{c.api.body}</p>
-            <ul class="mt-5 space-y-2.5">
+            <p class="text-lg text-ink-muted mt-4 max-w-[48ch] leading-relaxed">{c.api.body}</p>
+          </div>
+          <NotesCard>
+            <ul class="grid gap-3">
               {
                 c.api.points.map((pt) => (
-                  <li class="flex items-start gap-2.5 text-sm text-foreground-soft">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 mt-0.5 text-accent">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span class="leading-snug">{pt}</span>
-                  </li>
+                  <NotesItem kind="check" as="li">{pt}</NotesItem>
                 ))
               }
             </ul>
-          </div>
-          <div class="flex flex-col gap-3">
-            <a
-              href={`${homeBase}/#contact`}
-              data-analytics-event="cta_clicked"
-              data-analytics-location="developers_api"
-              class="inline-flex items-center justify-center h-12 px-7 rounded-pill bg-accent text-accent-fg font-medium hover:bg-accent-strong active:scale-[0.98] transition-[background-color,transform] duration-200 ease-out-expo"
-            >
-              {c.api.cta}
-            </a>
-            <p class="text-sm text-muted-soft leading-relaxed">{c.api.note}</p>
-            <a
-              href={appUrl("/sign-up")}
-              data-analytics-event="signup_start_click"
-              data-analytics-location="developers_page"
-              class="text-accent hover:text-accent-strong font-medium text-sm"
-            >
-              {c.links.signup}
-            </a>
-          </div>
+          </NotesCard>
         </div>
-        <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
-          <a href={localePath("/pricing", locale)} class="text-accent hover:text-accent-strong font-medium">{c.links.pricing}</a>
-          <a href={localePath("/faq", locale)} class="text-accent hover:text-accent-strong font-medium">{c.links.faq}</a>
-        </p>
-      </div>
+        <div class="mt-8 flex flex-col lg:flex-row lg:items-center gap-4 max-w-3xl">
+          <TaskLine
+            tone="ink"
+            class="lg:flex-1"
+            who={m.you}
+            task={m.taskStartFree}
+            href={appUrl("/sign-up")}
+            cta={c.links.signup}
+            attrs={{ "data-analytics-event": "signup_start_click", "data-analytics-location": "developers_page" }}
+          />
+          <a
+            href={`${homeBase}/#contact`}
+            data-analytics-event="cta_clicked"
+            data-analytics-location="developers_api"
+            class="inline-flex items-center justify-center min-h-[3.25rem] px-7 rounded-pill border border-ink-line text-ink-fg text-base font-medium hover:bg-ink-2 transition-colors"
+          >
+            {c.api.cta}
+          </a>
+        </div>
+        <p class="text-sm text-ink-muted mt-5 max-w-[60ch] leading-relaxed">{c.api.note}</p>
+        <VisitRecap locale={locale} tone="ink" class="mt-6" />
+      </Room>
+      <p class="max-w-6xl mx-auto px-3 sm:px-5 mt-8 mb-12 flex flex-wrap gap-x-6 gap-y-2">
+        <a href={localePath("/pricing", locale)} class="text-accent hover:text-accent-strong font-medium">{c.links.pricing}</a>
+        <a href={localePath("/faq", locale)} class="text-accent hover:text-accent-strong font-medium">{c.links.faq}</a>
+      </p>
     </section>
-  </div>
+  </main>
   <Footer locale={locale} />
 </Layout>

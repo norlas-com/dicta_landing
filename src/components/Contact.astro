@@ -2,6 +2,7 @@
 import type { Locale } from "../i18n/ui";
 import { t } from "../i18n/utils";
 import { SITE } from "../../site.config.mjs";
+import { meetingUi } from "../i18n/pages/meeting-ui";
 
 /**
  * "Contact sales" form. Posts JSON to the Pages Function at /api/contact
@@ -18,11 +19,12 @@ interface Props {
 }
 const { locale } = Astro.props;
 const c = t(locale).contact;
+const m = meetingUi(locale);
 const phonePlaceholder = SITE.id === "uz" ? "+998 90 123 45 67" : "+971 50 123 4567";
 
 // text-base (16px) so iOS does not zoom the page when a field is focused.
 const field =
-  "w-full text-base rounded-control border border-border-strong bg-surface text-foreground placeholder:text-muted-soft px-4 transition-colors duration-150 ease-out-expo hover:border-accent/60 focus:border-accent";
+  "w-full text-base rounded-control border border-border-strong bg-background text-foreground placeholder:text-muted-soft px-4 transition-colors duration-150 ease-out-expo hover:border-accent/60 focus:border-accent";
 const label = "block text-sm font-medium text-foreground-soft mb-1.5";
 ---
 
@@ -48,7 +50,12 @@ const label = "block text-sm font-medium text-foreground-soft mb-1.5";
         </a>
       </div>
 
-      <div class="reveal relative rounded-panel border border-border bg-surface shadow-card p-6 sm:p-8" style="--rd:.1s">
+      <div class="reveal notes-card relative min-w-0 bg-surface text-foreground rounded-card border border-border shadow-card px-5 pt-4 pb-6 sm:px-7 sm:pt-5 sm:pb-7" style="--rd:.1s">
+        <p class="meeting-label flex items-center gap-2 text-muted pb-3.5 mb-5 border-b border-dashed border-border" data-ui-label>
+          <img src="/logo.svg" alt="" width="370" height="319" decoding="async" class="h-3 w-auto flex-none" />
+          <span>{m.dicta} · {m.nextStep}</span>
+        </p>
+
         <form
           data-contact-form
           method="post"
